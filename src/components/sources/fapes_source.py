@@ -41,6 +41,7 @@ class FapesSource(ISource[RawEdital]):
                     if not elements:
                         logger.warning("No PDF edital links found on the current page.")
                     
+                    unique_links = {}
                     for el in elements:
                         title = el.inner_text().strip()
                         href = el.get_attribute("href")
@@ -48,14 +49,25 @@ class FapesSource(ISource[RawEdital]):
                         if not href:
                             continue
                         
-                        # Fallback for empty texts but valid links
-                        if not title or title.lower() in ["baixar", "clique aqui", "download"]:
-                            title = href.split("/")[-1]
-                            
                         # Standardize URL
                         if href.startswith("/"):
                             href = f"https://fapes.es.gov.br{href}"
                             
+                        # Fallback for empty texts but valid links
+                        if not title or title.lower() in ["baixar", "clique aqui", "download"]:
+                            title = href.split("/")[-1]
+                            
+                        if href in unique_links:
+                            existing_title = unique_links[href]
+                            # Prefer a more descriptive title (not just the .pdf filename)
+                            if title and existing_title.lower().endswith('.pdf') and not title.lower().endswith('.pdf'):
+                                unique_links[href] = title
+                            elif len(title) > len(existing_title) and not title.lower().endswith('.pdf'):
+                                unique_links[href] = title
+                        else:
+                            unique_links[href] = title
+                            
+                    for href, title in unique_links.items():
                         # Download PDF binary
                         pdf_bytes = None
                         try:
