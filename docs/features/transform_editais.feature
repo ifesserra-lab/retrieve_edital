@@ -1,23 +1,30 @@
 Feature: Transformação e Limpeza de Dados de Editais (Transform)
-  Como um processo de normalização no pipeline ETL
-  Eu quero processar a base bruta de editais raspados
-  Para garantir que eles obedeçam ao contrato de dados estruturados e regras de negócio
+  As a normalization process in the ETL pipeline
+  I want to process the raw scraped editais
+  So that they comply with the data contract and business rules
 
-  Scenario: Normalizar dados de um edital válido
-    Given que existe um registro de edital bruto contendo "  EDITAL FAPES N 01/2026  "
-    And o órgão de fomento original é descrito de forma irregular
-    When o componente `Transform` processa este registro
-    Then os espaços em branco extras do título devem ser removidos e ele deve estar padronizado
-    And o órgão de fomento deve ser normalizado para "FAPES"
-    And deve ser retornado um modelo de edital válido (Domain)
+  Background:
+    Given the Transformation engine is ready to receive raw data dictionaries
 
-  Scenario: Extração da categoria do edital a partir do texto
-    Given que o edital bruto contém a descrição "Apoio a projetos de extensão tecnológica"
-    When o componente `Transform` processa o registro
-    Then a lógica de negócio deve classificar e construir a "categoria" como "Extensão" baseada no texto
+  Scenario Outline: Normalize valid edital data
+    Given a raw edital record with title "<raw_title>" and agency "<raw_agency>"
+    When the Transform component processes the record
+    Then the title should be normalized to "<clean_title>"
+    And the funding agency should be standardized to "<clean_agency>"
+    And it should return a valid Edital domain object
 
-  Scenario: Invalidação de edital sem nome
-    Given que um registro bruto falhou ao ser extraído e não contém título (None ou vazio)
-    When o componente `Transform` tenta validar o dado
-    Then um erro de validação (ou descarte silencioso explícito) deve ocorrer
-    And o registro não deve ser passado para a próxima etapa do pipeline
+    Examples:
+      | raw_title                  | raw_agency   | clean_title              | clean_agency |
+      |   EDITAL FAPES N 01/2026   | Fapes-ES     | EDITAL FAPES N 01/2026   | FAPES        |
+      | Apoio a projetos - CNPQ    | cnpq         | APOIO A PROJETOS - CNPQ  | CNPQ         |
+
+  Scenario: Extract edital category from text description
+    Given a raw edital contains the description "Apoio a projetos de extensão tecnológica"
+    When the Transform component processes the record
+    Then the business logic should classify and set the "category" field as "Extensão"
+
+  Scenario: Invalidate edital without a name
+    Given a raw record failed extraction and has an empty title
+    When the Transform component attempts validation
+    Then a validation error should occur
+    And the record should be explicitly dropped from the pipeline
