@@ -7,11 +7,12 @@ scenarios("../../docs/features/transform_editais.feature")
 
 @pytest.fixture
 def context():
-    return {"raw_data": None, "transform_engine": None, "result": None, "error": None}
+    return {"raw_data": None, "transform_engine": None, "result": None, "error": None, "raw_editais": []}
 
 @given('the Transformation engine is ready to receive raw data dictionaries')
 def transform_engine_ready(context):
     context["transform_engine"] = EditalNormalizer()
+    context["normalizer"] = EditalNormalizer() # Assuming normalizer is the same as transform_engine
 
 @given(parsers.parse('a raw edital record with title "{raw_title}" and agency "{raw_agency}"'))
 def raw_edital_record(context, raw_title, raw_agency):

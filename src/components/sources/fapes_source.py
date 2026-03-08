@@ -1,4 +1,5 @@
 import logging
+import requests
 from typing import List
 from playwright.sync_api import sync_playwright, TimeoutError
 from src.core.interfaces import ISource
@@ -55,13 +56,25 @@ class FapesSource(ISource[RawEdital]):
                         if href.startswith("/"):
                             href = f"https://fapes.es.gov.br{href}"
                             
+                        # Download PDF binary
+                        pdf_bytes = None
+                        try:
+                            resp = requests.get(href, timeout=30)
+                            if resp.status_code == 200:
+                                pdf_bytes = resp.content
+                            else:
+                                logger.warning(f"Failed to download PDF {href} (status: {resp.status_code})")
+                        except Exception as dl_error:
+                            logger.error(f"Error downloading PDF {href}: {dl_error}")
+                            
                         # Add to payload
                         raw_editais.append(
                             RawEdital(
                                 title=title,
                                 url=href,
                                 raw_agency="Fapes-ES", # Assumed by context
-                                raw_description=None
+                                raw_description=None,
+                                pdf_content=pdf_bytes
                             )
                         )
                         
