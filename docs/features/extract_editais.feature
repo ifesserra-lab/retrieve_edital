@@ -4,7 +4,7 @@ Feature: Extração de Editais (Source)
   So that I can build a raw funding information database
 
   Background:
-    Given the FAPES website at "https://fapes.es.gov.br/editais-abertos" is accessible
+    Given the FAPES website at "https://fapes.es.gov.br/difusao-do-conhecimento" is accessible
     And the Playwright scraping engine is initialized
 
   Scenario: Successfully extract a list of open editais
