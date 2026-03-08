@@ -1,10 +1,15 @@
 import logging
 import os
+from dotenv import load_dotenv
+
 from src.core.interfaces import ISource, ITransform, ISink
 from src.components.sources.fapes_source import FapesSource
 from src.components.transforms.edital_normalizer import EditalNormalizer
 from src.components.sinks.json_sink import LocalJSONSink
 from src.domain.models import RawEdital, EditalDomain
+
+# Load environment variables from .env file
+load_dotenv()
 
 logger = logging.getLogger(__name__)
 

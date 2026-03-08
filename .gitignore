@@ -27,3 +27,4 @@ venv*.bak/
 
 # Project specifics
 .gemini/
+.env
