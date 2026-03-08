@@ -14,12 +14,13 @@ Todo o código produzido neste repositório será regido pelas seguintes premiss
 - **Paradigma Orientado a Objetos (OOP)**: O design sistêmico deve ser puramente orientado a objetos.
 - **Padrões de Projeto (Design Patterns)**: Aplicação consistente de padrões do GoF (Strategy, Factory, Repository, etc) para resolver problemas estruturais.
 - **Clean Code e SOLID**: Classes com responsabilidade única, código limpo, legível, nomes explicativos e total aversão a anti-padrões (como God Classes, Magic Numbers, ou Hardcoding).
+- **Definition of Done (DoD) e Critérios de Aceite**: Toda *Issue* e *Feature* deve obrigatoriamente possuir Critérios de Aceite (Acceptance Criteria) explícitos. Nenhuma tarefa pode ser considerada concluída (Done) sem validar publicamente que todos os critérios foram atendidos e que os testes BDD correspondentes passaram.
 
 ## Fluxo de Trabalho e Implementação (Obrigatório)
 Sempre que uma nova feature ou implementação for solicitada, o seguinte fluxo **deve ser seguido estritamente**:
 1. **Mostrar o Planejamento**: Exibir as etapas e o design planejado.
-2. **Criar a Issue**: Registrar a demanda no GitHub.
-3. **Criar a Branch**: Seguir o padrão do GitFlow para criar a branch apropriada (ex: `feature/...`).
-4. **Escrever Testes (BDD)**: Escrever os cenários de teste primeiro utilizando Gherkin (Behavior-Driven Development).
-5. **Implementar**: Escrever o código real Python/Playwright fazendo os testes passarem.
-6. **Mostrar o Resultado**: Apresentar os resultados, logs ou capturas de tela validando que a funcionalidade está pronta.
+2. **Criar a Issue**: Registrar a Issue no Github e lincá-la no `.md` de Backlog. A Issue deve conter a descrição e os **Critérios de Aceite** detalhados.
+3. **Criar a Branch (GitFlow)**: Não commitar na `main` ou `developing`. Sempre abrir ramificações como `feature/NOME` ou `fix/NOME`.
+4. **Escrever a Feature BDD/Gherkin**: Antes de qualquer código produtivo, escrever os cenários no padrão BDD (`docs/features/`). Isso servirá como nosso **Definition of Done (DoD)** e guiará a implementação.
+5. **Escrever Código**: Escrever o `.py` propriamente dito com testes que garantem as features.
+6. **Mostrar Resultados**: Printar o passe limpo de testes ou linting e notificar a disponibilidade de mesclagem.
