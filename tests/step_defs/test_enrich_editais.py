@@ -68,11 +68,12 @@ def cronograma_not_empty():
 
 @given('the pipeline has downloaded an Anexo PDF with structural anomalies')
 def pdf_with_anomalies(context):
-    text = "APENAS TEXTO ALEATORIO SEM HEADERS"
+    context["pdf_text"] = "APENAS TEXTO ALEATORIO SEM HEADERS"
+    context["pdf_tables"] = []
     context["raw_edital"] = RawEdital(
         title="Valid Title",
         url="http",
-        pdf_content=_create_fake_pdf(text)
+        pdf_content=b"%PDF-1.4 mock content"
     )
 
 @then('the engine should gracefully fallback to empty descriptions or empty schedule lists without aborting')

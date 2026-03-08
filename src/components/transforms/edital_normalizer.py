@@ -72,8 +72,8 @@ class EditalNormalizer(ITransform[RawEdital, EditalDomain]):
                                         break
                                         
                     # Extract "1. OBJETO" text using Regex over the joined pages text
-                    # Match "1. OBJETO" up to the next "2. " or "CRONOGRAMA"
-                    objetivo_pattern = r'(?:\d+\.\s*)?OBJETO\s*\n(.*?)(?=\n\s*\d+\.\s*[A-Z]|\n\s*CRONOGRAMA)'
+                    # Match "1. OBJETO" up to the next "2. " or "CRONOGRAMA" or End of String
+                    objetivo_pattern = r'(?:\d+\.\s*)?OBJETO\s*\n(.*?)(?=\n\s*\d+\.\s*[A-Z]|\n\s*CRONOGRAMA|\Z)'
                     match = re.search(objetivo_pattern, full_text, re.IGNORECASE | re.DOTALL)
                     if match:
                         extracted_desc = match.group(1).strip()
