@@ -1,4 +1,5 @@
 import logging
+import os
 from src.core.interfaces import ISource, ITransform, ISink
 from src.components.sources.fapes_source import FapesSource
 from src.components.transforms.edital_normalizer import EditalNormalizer
@@ -15,7 +16,14 @@ def run_pipeline(
     """
     Orchestrates the ETL execution injecting dependencies.
     """
-    source = source or FapesSource()
+    processed_titles = set()
+    output_dir = "data/output"
+    if os.path.exists(output_dir):
+        for file in os.listdir(output_dir):
+            if file.endswith(".json"):
+                processed_titles.add(file.replace(".json", ""))
+
+    source = source or FapesSource(processed_titles=processed_titles)
     transform = transform or EditalNormalizer()
     sink = sink or LocalJSONSink()
     

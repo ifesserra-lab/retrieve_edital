@@ -1,17 +1,30 @@
+import os
 import re
 import io
+import json
 import logging
 from typing import List, Dict
 import pdfplumber
+from pydantic import BaseModel, Field
+from google import genai
+
 from src.core.interfaces import ITransform
 from src.domain.models import RawEdital, EditalDomain
 
 logger = logging.getLogger(__name__)
 
+class CronogramaItem(BaseModel):
+    Etapa: str = Field(description="O nome da etapa ou evento no cronograma.")
+    Previsao: str = Field(description="A data ou string apontando o período previsto para referida etapa.")
+
+class EditalExtraction(BaseModel):
+    descricao: str = Field(description="O objetivo principal e a descrição semântica profunda do edital.")
+    cronograma: List[CronogramaItem] = Field(description="A lista em ordem cronológica das etapas e datas do fluxo.")
+
 class EditalNormalizer(ITransform[RawEdital, EditalDomain]):
     """
     Normalizes the RawEdital data into a validated EditalDomain object.
-    Applies regex cleaning and parses PDF bytes using pdfplumber to extract Object and Schedule.
+    Applies regex cleaning on metadata and parses PDF bytes using Gemini LLM for deep Semantic Extraction.
     """
     
     def process(self, raw_data: RawEdital) -> EditalDomain:
@@ -40,48 +53,39 @@ class EditalNormalizer(ITransform[RawEdital, EditalDomain]):
             try:
                 with pdfplumber.open(io.BytesIO(raw_data.pdf_content)) as pdf:
                     full_text = ""
-                    # Keep memory usage somewhat low but capture headers
+                    # Keep memory usage somewhat low but capture enough pages
                     for page in pdf.pages[:15]:
                         extracted = page.extract_text()
                         if extracted:
                             full_text += f"\n{extracted}"
                             
-                        # Try extracting tables for cronograma
-                        tables = page.extract_tables()
-                        for table in tables:
-                            # Heuristic: the first row represents headers
-                            # often 'Etapa' or 'Eventos' and 'Datas' or 'Previsão'
-                            if len(table) > 1 and table[0]:
-                                flat_header = " ".join([str(c) for c in table[0] if c]).lower()
-                                if "etapa" in flat_header or "previsão" in flat_header or "data" in flat_header:
-                                    # It's highly likely to be the chronogram table
-                                    # Loop over rows avoiding header
-                                    for row in table[1:]:
-                                        # Clean None types and strings
-                                        cleaned_row = [str(r).replace('\n', ' ').strip() if r else "" for r in row]
-                                        
-                                        # We only map the first two valid columns assuming Phase and Date
-                                        valid_cols = [c for c in cleaned_row if c]
-                                        if len(valid_cols) >= 2:
-                                            cronograma.append({
-                                                "Etapa": valid_cols[0],
-                                                "Previsão": valid_cols[1]
-                                            })
-                                    # If found, avoid keeping extracting other tables
-                                    if len(cronograma) > 0:
-                                        break
-                                        
-                    # Extract "1. OBJETO" text using Regex over the joined pages text
-                    # Match "1. OBJETO" up to the next "2. " or "CRONOGRAMA" or End of String
-                    objetivo_pattern = r'(?:\d+\.\s*)?OBJETO\s*\n(.*?)(?=\n\s*\d+\.\s*[A-Z]|\n\s*CRONOGRAMA|\Z)'
-                    match = re.search(objetivo_pattern, full_text, re.IGNORECASE | re.DOTALL)
-                    if match:
-                        extracted_desc = match.group(1).strip()
-                        # Clean newlines from pdf extraction
-                        description = re.sub(r'\s+', ' ', extracted_desc)
-                        
+                api_key = os.environ.get("GEMINI_API_KEY")
+                if api_key and full_text.strip():
+                    client = genai.Client(api_key=api_key)
+                    prompt = f"Você é uma IA de extração de dados públicos. Analise o seguinte extrato bruto do PDF de um edital de pesquisa. Extraia de forma acurada o Objetivo (descricao) e mapeie todas as etapas e previsões para compor a tabela de Cronograma:\n\n{full_text}"
+                    
+                    response = client.models.generate_content(
+                        model='gemini-2.5-flash',
+                        contents=prompt,
+                        config={
+                            'response_mime_type': 'application/json',
+                            'response_schema': EditalExtraction
+                        }
+                    )
+                    
+                    extracted_data = json.loads(response.text)
+                    description = extracted_data.get("descricao", "")
+                    
+                    for item in extracted_data.get("cronograma", []):
+                        cronograma.append({
+                            "Etapa": item.get("Etapa", ""),
+                            "Previsão": item.get("Previsao", "")
+                        })
+                else:
+                    logger.warning("GEMINI_API_KEY missing or PDF empty. Applying fallback to empty structured data.")
+                    
             except Exception as e:
-                logger.warning(f"Failed to parse PDF for Edital {clean_title}: {e}")
+                logger.warning(f"Failed to parse PDF and query LLM for Edital {clean_title}: {e}")
 
         # Category extraction by empirical rule on the description/title
         combined_text = (description + " " + clean_title).lower()

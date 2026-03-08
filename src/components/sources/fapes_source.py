@@ -13,8 +13,14 @@ class FapesSource(ISource[RawEdital]):
     Complies with ISource interface returning a List of RawEdition models.
     """
     
-    def __init__(self, start_url: str = "https://fapes.es.gov.br/difusao-do-conhecimento"):
+    def __init__(self, start_url: str = "https://fapes.es.gov.br/difusao-do-conhecimento", processed_titles: set = None):
         self.start_url = start_url
+        self.processed_titles = processed_titles or set()
+        
+    def _sanitize(self, filename: str) -> str:
+        keepcharacters = (' ', '.', '_', '-')
+        sanitized = "".join(c for c in filename if c.isalnum() or c in keepcharacters).rstrip()
+        return sanitized.replace(' ', '_').lower()
 
     def read(self) -> List[RawEdital]:
         raw_editais: List[RawEdital] = []
@@ -68,6 +74,12 @@ class FapesSource(ISource[RawEdital]):
                             unique_links[href] = title
                             
                     for href, title in unique_links.items():
+                        # Incremental Sieve
+                        safe_title = self._sanitize(title)
+                        if safe_title in self.processed_titles:
+                            logger.info(f"Incremental Filter: Skipping already processed edital '{title}'")
+                            continue
+
                         # Download PDF binary
                         pdf_bytes = None
                         try:
