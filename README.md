@@ -16,4 +16,4 @@ Consulte a documentação completa em [docs/etl_architecture.md](docs/etl_archit
 
 O agente utiliza as seguintes *skills* (via pacote `@vercel/skills`):
 - Gerenciamento Ágil (`agile-product-owner`)
-- Fluxo GitOps CI/CD (`gitops-workflow`)
+- Metodologia de versionamento (`gitflow`)

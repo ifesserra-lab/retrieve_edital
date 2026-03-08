@@ -11,6 +11,11 @@
       "sourceType": "github",
       "computedHash": "6412eb4eb3b91595ebab937f0c69501240e7ba761b3d82510b5cf506ec5c7adc"
     },
+    "gitflow": {
+      "source": "metalagman/agent-skills",
+      "sourceType": "github",
+      "computedHash": "5e0baf7e815eae0b89595b8eed25c2ab3e32e81a21366ed8ec5989425ca9de56"
+    },
     "gitops-workflow": {
       "source": "wshobson/agents",
       "sourceType": "github",
