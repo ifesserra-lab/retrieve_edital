@@ -1,10 +1,21 @@
-from pytest_bdd import scenarios, given, when, then, parsers
 import os
 import json
-from src.domain.models import EditalDomain
+import pytest
+import shutil
+from pytest_bdd import scenarios, given, when, then, parsers
 from src.components.sinks.json_sink import LocalJSONSink
+from src.domain.models import EditalDomain
 
 scenarios("../../docs/features/load_editais.feature")
+
+@pytest.fixture
+def temp_output_dir(tmp_path):
+    output_dir = tmp_path / "data" / "output"
+    yield str(output_dir)
+
+@pytest.fixture
+def context():
+    return {"sink": None, "editais": [], "expected_files": []}
 
 @given('a list in memory containing N validated Edital domain objects')
 def list_in_memory(context):
@@ -39,7 +50,6 @@ def json_files_created(context, temp_output_dir, expected_format):
     
     context["expected_files"] = []
     for item in context["editais"]:
-        # our sanitization lowers and replaces space with underscore
         expected_filename = context["sink"]._sanitize_filename(item.nome_do_edital).replace(' ', '_').lower() + ".json"
         assert expected_filename in created_files
         context["expected_files"].append(os.path.join(temp_output_dir, expected_filename))
@@ -58,7 +68,6 @@ def older_json_exists(context, temp_output_dir):
     context["sink"] = LocalJSONSink(output_dir=temp_output_dir)
     os.makedirs(temp_output_dir, exist_ok=True)
     
-    # Create fake older edital
     older_edital = EditalDomain(
         nome_do_edital="Edital Atualizacao",
         orgao_de_fomento="FAPES",
@@ -69,7 +78,6 @@ def older_json_exists(context, temp_output_dir):
     )
     context["sink"].write([older_edital])
     
-    # Store for further steps
     context["editais"] = [
         EditalDomain(
             nome_do_edital="Edital Atualizacao",
@@ -80,15 +88,19 @@ def older_json_exists(context, temp_output_dir):
             categoria="Outros"
         )
     ]
+    filename = context["sink"]._sanitize_filename("Edital Atualizacao").replace(' ', '_').lower() + ".json"
+    context["target_file"] = os.path.join(temp_output_dir, filename)
 
 @when('the pipeline successfully loads new updates for that edital')
-def pipeline_loads_new_updates():
-    pass
+def pipeline_loads_new_updates(context):
+    context["sink"].write(context["editais"])
 
 @then('the specific older JSON file should be safely overwritten')
-def file_overwritten():
-    pass
+def file_overwritten(context):
+    assert os.path.exists(context["target_file"])
 
 @then('the new JSON stored on disk should reflect only the newly extracted valid data')
-def new_json_stored():
-    pass
+def new_json_stored(context):
+    with open(context["target_file"], 'r', encoding='utf-8') as f:
+        data = json.load(f)
+        assert data["descricao"] == "Descricao NOVA E ATUALIZADA"
