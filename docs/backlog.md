@@ -19,6 +19,7 @@ Este documento rastreia todas as funcionalidades a serem desenvolvidas para o ag
 | 📚 | ✅ Done | #6 | **Issue #6: PDF Parsing & Data Extraction**<br>Extração de objetivos e cronogramas diretamente dos arquivos PDF. | 5 |
 | 📚 | ✅ Done | #7 | **Issue #7: Gemini LLM & Incremental Load**<br>Implementação de carga incremental (Sieve) e extração semântica (revertida na Issue #8). | 8 |
 | 📚 | ✅ Done | #8 | **Issue #8: Revert LLM and New JSON Schema**<br>Remoção da dependência de LLM (custo) e adoção do novo padrão de schema em português. | 3 |
+| 📚 | ⏳ To Do | #9 | **Issue #9: Multi-URL Support for FAPES**<br>Adicionar suporte para varredura em múltiplas URLs: Extensão, Pesquisa, Inovação e Chamadas Internacionais. | 5 |
 
 ---
 *Este backlog reflete nosso planejamento e serve de ponto de partida principal antes de puxar o código (Code).*
