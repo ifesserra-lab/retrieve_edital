@@ -2,10 +2,9 @@ name: Daily Edital Scraper
 
 on:
   schedule:
-    # Runs at 00:00 UTC every day.
-    # Note: Adjust the cron for your specific timezone if midnight local time is strongly required (UTC-3 for Brazil is 03:00 UTC).
+    # Roda todos os dias às 03:00 UTC (meia-noite no horário de Brasília, UTC-3)
     - cron: '0 3 * * *'
-  workflow_dispatch: # Allows manual trigger from the GitHub UI
+  workflow_dispatch: # Permite disparo manual pela UI do GitHub
 
 jobs:
   scrape-editais:
@@ -20,24 +19,23 @@ jobs:
       with:
         python-version: '3.12'
 
-    - name: Install dependencies
+    - name: Install Python dependencies
       run: |
         python -m pip install --upgrade pip
-        # pip install -r requirements.txt (Descomentar quando requirementes existir)
-        # pip install playwright
-        # playwright install chromium
+        pip install -r requirements.txt
+
+    - name: Install Playwright browsers
+      run: playwright install chromium --with-deps
 
     - name: Run Scraper (Extract, Transform, Sink)
       run: |
-        # python main.py (Substituir pelo script principal da aplicação)
-        echo "Rodando o scraper..."
+        python -m src.flows.ingest_fapes_flow
 
-    # Opcional: Se o Sink for em JSON e precisar ser salvo (commitado) de volta no repositório
-    # - name: Commit and Push JSON Results
-    #   if: always()
-    #   run: |
-    #     git config --local user.email "action@github.com"
-    #     git config --local user.name "GitHub Action"
-    #     git add *.json
-    #     git commit -m "chore: atualiza dados raspados dos editais [skip ci]" || echo "No changes to commit"
-    #     git push
+    - name: Commit and Push JSON Results
+      if: always()
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add data/output/*.json || true
+        git diff --staged --quiet || git commit -m "chore: atualiza dados raspados dos editais [skip ci]"
+        git push
