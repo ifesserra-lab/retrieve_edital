@@ -20,7 +20,7 @@ Este documento rastreia todas as funcionalidades a serem desenvolvidas para o ag
 | 📚 | ✅ Done | #7 | **Issue #7: Gemini LLM & Incremental Load**<br>Implementação de carga incremental (Sieve) e extração semântica (revertida na Issue #8). | 8 |
 | 📚 | ✅ Done | #8 | **Issue #8: Revert LLM and New JSON Schema**<br>Remoção da dependência de LLM (custo) e adoção do novo padrão de schema em português. | 3 |
 | 📚 | ⏳ To Do | #9 | **Issue #9: Multi-URL Support for FAPES**<br>Adicionar suporte para varredura em múltiplas URLs: Extensão, Pesquisa, Inovação e Chamadas Internacionais. | 5 |
-| 📚 | ⏳ To Do | #10 | **Issue #10: Mistral AI Integration (OCR & LLM)**<br>Substituir o Gemini pelo Mistral para processamento de PDFs (Mistral OCR) e extração semântica de dados (LLM), garantindo independência de provedor anterior. | 8 |
+| 📚 | ⏳ To Do | #10 | **Issue #10: Mistral AI Integration (OCR & LLM)**<br>Substituir o Gemini pelo Mistral para processamento de PDFs (Mistral OCR) e extração semântica de dados (LLM) com saída estruturada seguindo o novo padrão JSON. | 8 |
 
 ---
 *Este backlog reflete nosso planejamento e serve de ponto de partida principal antes de puxar o código (Code).*
