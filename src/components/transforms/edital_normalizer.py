@@ -2,6 +2,7 @@ import os
 import re
 import io
 import json
+import time
 import logging
 from typing import List, Dict
 import pdfplumber
@@ -64,8 +65,12 @@ class EditalNormalizer(ITransform[RawEdital, EditalDomain]):
                     client = genai.Client(api_key=api_key)
                     prompt = f"Você é uma IA de extração de dados públicos. Analise o seguinte extrato bruto do PDF de um edital de pesquisa. Extraia de forma acurada o Objetivo (descricao) e mapeie todas as etapas e previsões para compor a tabela de Cronograma:\n\n{full_text}"
                     
+                    # Rate Limit Protection: 5 Requests Per Minute (RPM) free-tier limit bypass
+                    logger.info(f"Rate Limiter: Delaying Gemini API call by 15s for '{clean_title}' to respect quota limits...")
+                    time.sleep(15)
+                    
                     response = client.models.generate_content(
-                        model='gemini-2.5-flash',
+                        model='gemini-1.5-flash-8b',
                         contents=prompt,
                         config={
                             'response_mime_type': 'application/json',
