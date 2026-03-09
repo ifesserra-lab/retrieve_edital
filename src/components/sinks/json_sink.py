@@ -30,7 +30,7 @@ class LocalJSONSink(ISink[EditalDomain]):
         os.makedirs(self.output_dir, exist_ok=True)
         
         for idx, item in enumerate(items, start=1):
-            base_name = self._sanitize_filename(item.nome_do_edital)
+            base_name = self._sanitize_filename(item.nome)
             if not base_name:
                 base_name = f"edital_anonimo_{idx}"
             

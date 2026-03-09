@@ -11,9 +11,13 @@ class RawEdital:
 
 @dataclass
 class EditalDomain:
-    nome_do_edital: str
-    orgao_de_fomento: str
-    cronograma: List[Dict[str, str]]
-    link: str
-    descricao: str
+    nome: str
+    descrição: str
+    orgão_fomento: str
     categoria: str
+    status: str
+    data_abertura: str
+    data_encerramento: str
+    link: str
+    cronograma: List[Dict[str, str]]
+    tags: List[str]

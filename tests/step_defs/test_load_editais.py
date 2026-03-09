@@ -21,20 +21,28 @@ def context():
 def list_in_memory(context):
     context["editais"] = [
         EditalDomain(
-            nome_do_edital="Edital de Pesquisa X",
-            orgao_de_fomento="FAPES",
-            cronograma=[{"fase": "Inscrição", "data": "2025-01-01"}],
+            nome="Edital de Pesquisa X",
+            orgão_fomento="FAPES",
+            cronograma=[{"evento": "Inscrição", "data": "2025-01-01"}],
             link="http://mocked",
-            descricao="Mock description",
-            categoria="Pesquisa"
+            descrição="Mock description",
+            categoria="pesquisa",
+            status="aberto",
+            data_abertura="2025-01-10",
+            data_encerramento="2025-03-31",
+            tags=["pesquisa"]
         ),
         EditalDomain(
-            nome_do_edital="Edital de Inovação Y",
-            orgao_de_fomento="FAPES",
+            nome="Edital de Inovação Y",
+            orgão_fomento="FAPES",
             cronograma=[],
             link="http://mocked2",
-            descricao="Mock description 2",
-            categoria="Inovação"
+            descrição="Mock description 2",
+            categoria="inovação",
+            status="aberto",
+            data_abertura="",
+            data_encerramento="",
+            tags=["inovação"]
         )
     ]
 
@@ -50,13 +58,13 @@ def json_files_created(context, temp_output_dir, expected_format):
     
     context["expected_files"] = []
     for item in context["editais"]:
-        expected_filename = context["sink"]._sanitize_filename(item.nome_do_edital).replace(' ', '_').lower() + ".json"
+        expected_filename = context["sink"]._sanitize_filename(item.nome).replace(' ', '_').lower() + ".json"
         assert expected_filename in created_files
         context["expected_files"].append(os.path.join(temp_output_dir, expected_filename))
 
 @then('each separate JSON must strictly contain the following keys:')
 def check_json_keys(context, datatable):
-    expected_keys = {"nome_do_edital", "orgao_de_fomento", "cronograma", "link", "descricao", "categoria"}
+    expected_keys = {"nome", "descrição", "orgão_fomento", "categoria", "status", "data_abertura", "data_encerramento", "link", "cronograma", "tags"}
     
     for filepath in context["expected_files"]:
         with open(filepath, 'r', encoding='utf-8') as f:
@@ -69,23 +77,31 @@ def older_json_exists(context, temp_output_dir):
     os.makedirs(temp_output_dir, exist_ok=True)
     
     older_edital = EditalDomain(
-        nome_do_edital="Edital Atualizacao",
-        orgao_de_fomento="FAPES",
+        nome="Edital Atualizacao",
+        orgão_fomento="FAPES",
         cronograma=[],
         link="http://mocked3",
-        descricao="Descricao VELHA",
-        categoria="Outros"
+        descrição="Descricao VELHA",
+        categoria="outros",
+        status="aberto",
+        data_abertura="",
+        data_encerramento="",
+        tags=[]
     )
     context["sink"].write([older_edital])
     
     context["editais"] = [
         EditalDomain(
-            nome_do_edital="Edital Atualizacao",
-            orgao_de_fomento="FAPES",
+            nome="Edital Atualizacao",
+            orgão_fomento="FAPES",
             cronograma=[],
             link="http://mocked3",
-            descricao="Descricao NOVA E ATUALIZADA",
-            categoria="Outros"
+            descrição="Descricao NOVA E ATUALIZADA",
+            categoria="outros",
+            status="aberto",
+            data_abertura="",
+            data_encerramento="",
+            tags=[]
         )
     ]
     filename = context["sink"]._sanitize_filename("Edital Atualizacao").replace(' ', '_').lower() + ".json"
@@ -103,4 +119,4 @@ def file_overwritten(context):
 def new_json_stored(context):
     with open(context["target_file"], 'r', encoding='utf-8') as f:
         data = json.load(f)
-        assert data["descricao"] == "Descricao NOVA E ATUALIZADA"
+        assert data["descrição"] == "Descricao NOVA E ATUALIZADA"

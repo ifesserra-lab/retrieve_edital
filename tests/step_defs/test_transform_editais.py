@@ -31,11 +31,11 @@ def transform_processes_record(context):
 
 @then(parsers.parse('the title should be normalized to "{clean_title}"'))
 def title_normalized(context, clean_title):
-    assert context["result"].nome_do_edital == clean_title
+    assert context["result"].nome == clean_title
 
 @then(parsers.parse('the funding agency should be standardized to "{clean_agency}"'))
 def agency_standardized(context, clean_agency):
-    assert context["result"].orgao_de_fomento == clean_agency
+    assert context["result"].orgão_fomento == clean_agency
 
 @then('it should return a valid Edital domain object')
 def valid_edital_domain_object(context):
@@ -53,7 +53,7 @@ def raw_edital_with_description(context):
 
 @then('the business logic should classify and set the "category" field as "Extensão"')
 def category_is_extensao(context):
-    assert context["result"].categoria == "Extensão"
+    assert context["result"].categoria == "extensão"
 
 @given('a raw record failed extraction and has an empty title')
 def record_empty_title(context):
