@@ -1,6 +1,6 @@
 {
     "nome": "CHAMADA BELMONT FORUM CRA OCEAN 2 - 2025",
-    "descrição": "Apoio à mobilidade de pesquisadores do Brasil para intercâmbio na Europa, com foco em pesquisas transdisciplinares de alto impacto sobre desafios globais do oceano, incluindo resiliência das zonas costeiras, economia azul e integração entre oceano, clima e biodiversidade.",
+    "descrição": "Apoiar pesquisas transdisciplinares de alto impacto focadas em soluções para desafios globais do oceano, como resiliência das zonas costeiras, economia azul e integração entre oceano, clima e biodiversidade. O edital visa conectar ciência, políticas públicas e sociedade, promovendo a mobilidade de pesquisadores do Brasil para intercâmbio na Europa.",
     "orgão_fomento": "FAPES (FUNDAÇÃO DE AMPARO À PESQUISA E INOVAÇÃO DO ESPÍRITO SANTO)",
     "categoria": "chamadas",
     "status": "aberto",
@@ -14,14 +14,14 @@
         },
         {
             "evento": "Início da mobilidade dos pesquisadores com projetos aprovados",
-            "data": "Primeiro semestre de 2027"
+            "data": "2027-01-01 (primeiro semestre de 2027)"
         }
     ],
     "tags": [
-        "oceanos",
-        "mobilidade internacional",
+        "oceanografia",
         "pesquisa transdisciplinar",
+        "mobilidade internacional",
         "economia azul",
-        "clima"
+        "mudanças climáticas"
     ]
 }

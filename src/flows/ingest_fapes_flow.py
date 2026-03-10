@@ -50,8 +50,8 @@ def run_pipeline(
     valid_domains = []
     
     # Use ThreadPoolExecutor to parallelize Mistral API calls
-    # max_workers=5 is a safe default to avoid aggressive rate limiting
-    with ThreadPoolExecutor(max_workers=5) as executor:
+    # max_workers=2 is a safe default to avoid aggressive rate limiting
+    with ThreadPoolExecutor(max_workers=2) as executor:
         # Map transform.process to the list of raw items
         future_to_item = {executor.submit(transform.process, item): item for item in raw_data_list}
         

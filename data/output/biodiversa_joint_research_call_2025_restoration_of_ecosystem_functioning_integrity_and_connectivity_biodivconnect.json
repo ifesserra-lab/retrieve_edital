@@ -1,7 +1,7 @@
 {
     "nome": "BIODIVERSA+ JOINT RESEARCH CALL 2025: RESTORATION OF ECOSYSTEM FUNCTIONING, INTEGRITY AND CONNECTIVITY (BIODIVCONNECT)",
-    "descrição": "Edital de pesquisa conjunta focado na restauração da funcionalidade, integridade e conectividade dos ecossistemas, visando produzir conhecimento aplicável para reverter o declínio da biodiversidade. Abrange temas como definição de metas de restauração, escalabilidade de esforços, resiliência e sustentabilidade a longo prazo, com ênfase em abordagens interdisciplinares e transdisciplinares.",
-    "orgão_fomento": "BIODIVERSA+ (CO-FINANCIADO PELA COMISSÃO EUROPEIA)",
+    "descrição": "O edital visa fomentar pesquisas inovadoras integradas a práticas de restauração da natureza, com foco na funcionalidade, integridade e conectividade dos ecossistemas. Abrange a definição de metas e métricas de sucesso para restauração, a escalabilidade e transferibilidade de esforços, e a sustentabilidade de longo prazo, incluindo resiliência a mudanças climáticas. Os projetos devem apoiar compromissos internacionais de biodiversidade, como o Quadro Global de Biodiversidade Kunming-Montreal, e políticas regionais, como o Regulamento de Restauração da Natureza da UE. São incentivadas abordagens interdisciplinares, transdisciplinares e multissetoriais, com engajamento de stakeholders e comunidades locais.",
+    "orgão_fomento": "BIODIVERSA+ (EUROPEAN BIODIVERSITY PARTNERSHIP)",
     "categoria": "chamadas",
     "status": "aberto",
     "data_abertura": "2025-05-21",
@@ -9,23 +9,19 @@
     "link": "https://fapes.es.gov.br/Media/fapes/Editais/BiodivConnect_CallText_FINAL.pdf",
     "cronograma": [
         {
-            "evento": "Lançamento da versão final do edital",
+            "evento": "Lançamento do edital (versão final)",
             "data": "2025-05-21"
         },
         {
-            "evento": "Submissão de propostas (período estimado, não especificado no texto)",
-            "data": "2025-06 a 2025-09 (aproximado)"
-        },
-        {
-            "evento": "Duração dos projetos aprovados",
-            "data": "3 anos (a partir da data de início)"
+            "evento": "Período de submissão de propostas (datas não especificadas no texto)",
+            "data": ""
         }
     ],
     "tags": [
         "biodiversidade",
         "restauração de ecossistemas",
+        "conectividade ecológica",
         "pesquisa interdisciplinar",
-        "sustentabilidade",
-        "políticas públicas"
+        "políticas ambientais"
     ]
 }

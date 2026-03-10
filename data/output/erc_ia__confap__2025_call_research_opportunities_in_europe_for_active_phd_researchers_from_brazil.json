@@ -1,0 +1,31 @@
+{
+    "nome": "ERC IA – CONFAP – 2025 CALL: RESEARCH OPPORTUNITIES IN EUROPE FOR ACTIVE PHD RESEARCHERS FROM BRAZIL",
+    "descrição": "O edital visa promover colaborações de pesquisa entre pesquisadores brasileiros ativos (com doutorado) e pesquisadores principais financiados pelo European Research Council (ERC) na Europa. O objetivo é facilitar intercâmbios científicos de curta ou longa duração (até 12 meses), abrangendo diversas áreas do conhecimento, com apoio financeiro para despesas de viagem e subsistência, conforme modalidades definidas pelas agências de fomento estaduais brasileiras (FAPs) participantes.",
+    "orgão_fomento": "CONFAP (CONSELHO NACIONAL DAS FUNDAÇÕES ESTADUAIS DE AMPARO À PESQUISA)",
+    "categoria": "chamadas",
+    "status": "aberto",
+    "data_abertura": "2025-09-25",
+    "data_encerramento": "2025-11-03",
+    "link": "https://fapes.es.gov.br/Media/fapes/Editais/Chamada-CONFAP-ERC-IA-2025.pdf",
+    "cronograma": [
+        {
+            "evento": "Lançamento do edital",
+            "data": "2025-09-25"
+        },
+        {
+            "evento": "Prazo para submissão de propostas",
+            "data": "2025-11-03"
+        },
+        {
+            "evento": "Início previsto das atividades de intercâmbio",
+            "data": "2026-01 (primeiro semestre)"
+        }
+    ],
+    "tags": [
+        "colaboração internacional",
+        "pesquisa científica",
+        "intercâmbio acadêmico",
+        "ERC",
+        "CONFAP"
+    ]
+}

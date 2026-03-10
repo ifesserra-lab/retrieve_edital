@@ -26,75 +26,95 @@ class MistralExtractionService:
         """
         Processes PDF bytes through Mistral OCR and extracts structured data using LLM.
         """
-        try:
-            logger.info(f"Uploading PDF {filename} to Mistral for OCR...")
-            
-            # 1. Upload file for OCR
-            # Mistral client.files.upload takes a file object or a dictionary with content
-            uploaded_file = self.client.files.upload(
-                file={
-                    "file_name": filename,
-                    "content": pdf_bytes,
-                },
-                purpose="ocr"
-            )
-            
-            logger.info(f"File uploaded with ID: {uploaded_file.id}. Processing OCR...")
-            
-            # 2. Process OCR
-            ocr_response = self.client.ocr.process(
-                model=self.ocr_model,
-                document={
-                    "type": "file",
-                    "file_id": uploaded_file.id
-                }
-            )
-            
-            # Concatenate all pages text
-            # The structure of ocr_response might vary, but usually it has a 'pages' list
-            full_ocr_text = ""
-            for page in ocr_response.pages:
-                full_ocr_text += f"\n{page.markdown}" # markdown is common for mistral ocr
-            
-            logger.info("OCR completed. Extracting structured data...")
-            
-            # 3. Extract structured data via LLM
-            # Small delay to respect rate limits if processing many items
-            time.sleep(2)
-            prompt = self._get_extraction_prompt(full_ocr_text)
-            
-            response = self.client.chat.complete(
-                model=self.llm_model,
-                messages=[
-                    {"role": "system", "content": "Você é um especialista em análise de editais públicos de fomento (FAPES, CNPq, etc)."},
-                    {"role": "user", "content": prompt}
-                ],
-                response_format={"type": "json_object"}
-            )
-            
-            raw_json = response.choices[0].message.content
-            extracted_data = json.loads(raw_json)
-            
-            # Cleanup: Delete the uploaded file to save space/cost
+        max_retries = 3
+        for attempt in range(1, max_retries + 1):
+            uploaded_file_id = None
             try:
-                self.client.files.delete(file_id=uploaded_file.id)
-            except Exception as cleanup_err:
-                logger.warning(f"Failed to delete uploaded file {uploaded_file.id}: {cleanup_err}")
+                logger.info(f"Uploading PDF {filename} to Mistral for OCR (Attempt {attempt})...")
+                
+                # 1. Upload file for OCR
+                # Mistral client.files.upload takes a file object or a dictionary with content
+                uploaded_file = self.client.files.upload(
+                    file={
+                        "file_name": filename,
+                        "content": pdf_bytes,
+                    },
+                    purpose="ocr"
+                )
+                uploaded_file_id = uploaded_file.id
+                
+                logger.info(f"File uploaded with ID: {uploaded_file_id}. Processing OCR...")
+                
+                # 2. Process OCR
+                ocr_response = self.client.ocr.process(
+                    model=self.ocr_model,
+                    document={
+                        "type": "file",
+                        "file_id": uploaded_file_id
+                    }
+                )
+                
+                # Concatenate all pages text
+                # The structure of ocr_response might vary, but usually it has a 'pages' list
+                full_ocr_text = ""
+                for page in ocr_response.pages:
+                    full_ocr_text += f"\n{page.markdown}" # markdown is common for mistral ocr
+                
+                logger.info("OCR completed. Extracting structured data...")
+                
+                # 3. Extract structured data via LLM
+                # Delay to respect rate limits if processing many items
+                time.sleep(5)
+                prompt = self._get_extraction_prompt(full_ocr_text)
+                
+                response = self.client.chat.complete(
+                    model=self.llm_model,
+                    messages=[
+                        {"role": "system", "content": "Você é um especialista em análise de editais públicos de fomento (FAPES, CNPq, etc)."},
+                        {"role": "user", "content": prompt}
+                    ],
+                    response_format={"type": "json_object"}
+                )
+                
+                raw_json = response.choices[0].message.content
+                extracted_data = json.loads(raw_json)
+                
+                # Cleanup: Delete the uploaded file to save space/cost
+                try:
+                    self.client.files.delete(file_id=uploaded_file_id)
+                except Exception as cleanup_err:
+                    logger.warning(f"Failed to delete uploaded file {uploaded_file_id}: {cleanup_err}")
+    
+                return self._map_to_domain(extracted_data)
+    
+            except Exception as e:
+                logger.error(f"Mistral extraction failed for {filename} on attempt {attempt}: {e}")
+                
+                if uploaded_file_id:
+                    # Attempt cleanup on failure
+                    try:
+                        self.client.files.delete(file_id=uploaded_file_id)
+                    except Exception:
+                        pass
 
-            return self._map_to_domain(extracted_data)
-
-        except Exception as e:
-            logger.error(f"Mistral extraction failed for {filename}: {e}", exc_info=True)
-            return None
+                if attempt < max_retries:
+                    wait_time = attempt * 15
+                    logger.info(f"Waiting {wait_time} seconds before retrying...")
+                    time.sleep(wait_time)
+                else:
+                    logger.error(f"Max retries reached for {filename}. Returning None.")
+                    return None
 
     def _get_extraction_prompt(self, ocr_text: str) -> str:
         return f"""
 Analise o seguinte texto OCR de um edital de fomento e extraia as informações estruturadas em formato JSON.
 
+Para preencher o campo 'descrição', procure especificamente pela seção 'Objeto' ou pela seção 'Finalidade' (ou termos similares) no texto do edital e utilize-a para redigir um resumo claro e conciso.
+
 O JSON deve seguir exatamente esta estrutura:
 {{
     "nome": "Título oficial do edital",
-    "descrição": "Resumo objetivo do edital (objeto)",
+    "descrição": "Resumo conciso baseado na seção 'Objeto' ou 'Finalidade' do edital",
     "orgão_fomento": "Nome da instituição (Ex: FAPES)",
     "categoria": "extensão, pesquisa, inovação ou outros",
     "status": "aberto",

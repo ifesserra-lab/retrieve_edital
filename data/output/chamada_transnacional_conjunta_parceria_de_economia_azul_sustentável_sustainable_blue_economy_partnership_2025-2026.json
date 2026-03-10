@@ -1,7 +1,7 @@
 {
     "nome": "CHAMADA TRANSNACIONAL CONJUNTA: PARCERIA DE ECONOMIA AZUL SUSTENTÁVEL (SUSTAINABLE BLUE ECONOMY PARTNERSHIP) 2025-2026",
-    "descrição": "Apoiar projetos transnacionais de pesquisa e inovação em economia azul sustentável, abordando áreas prioritárias como digitalização de oceanos, transição de setores da economia azul, planejamento climático inteligente, biorrecursos azuis e resiliência costeira. Os projetos devem incluir consórcios com mínimo de 3 parceiros de 3 países diferentes e ter duração de até 36 meses.",
-    "orgão_fomento": "FAPES (FUNDAÇÃO DE AMPARO À PESQUISA E INOVAÇÃO DO ESPÍRITO SANTO)",
+    "descrição": "Apoiar projetos transnacionais de pesquisa e inovação que abordem uma das cinco áreas prioritárias da economia azul sustentável: gêmeos digitais dos oceanos, transição dos setores da economia azul, planejamento e gestão climática inteligente dos usos do mar, biorrecursos azuis, e comunidades e empresas costeiras resilientes. Os projetos devem incluir consórcios com no mínimo três parceiros de três países diferentes e ter duração de até 36 meses.",
+    "orgão_fomento": "FAPES",
     "categoria": "chamadas",
     "status": "aberto",
     "data_abertura": "2025-09-15",
@@ -24,8 +24,8 @@
     "tags": [
         "economia azul",
         "pesquisa transnacional",
-        "inovação sustentável",
-        "oceanos",
-        "digitalização"
+        "inovação",
+        "sustentabilidade",
+        "oceanos"
     ]
 }

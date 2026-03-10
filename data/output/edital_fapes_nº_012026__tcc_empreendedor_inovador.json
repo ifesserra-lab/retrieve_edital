@@ -1,0 +1,83 @@
+{
+    "nome": "EDITAL FAPES Nº 01/2026 – TCC EMPREENDEDOR INOVADOR",
+    "descrição": "O edital tem por objeto a concessão de bolsas de apoio a Trabalhos de Conclusão de Curso (TCC) para estudantes de graduação em Instituições de Ensino Superior (IES) no Espírito Santo. O foco é incentivar o desenvolvimento de TCCs com ênfase em inovação, empreendedorismo e aplicabilidade prática, alinhados aos Objetivos de Desenvolvimento Sustentável (ODS) da ONU e ao Plano ES 500 Anos. As propostas devem apresentar soluções inovadoras e empreendedoras com potencial de geração de valor, criação de negócios ou produtos inovadores, e impacto econômico, social e/ou ambiental no estado.",
+    "orgão_fomento": "FAPES",
+    "categoria": "extensão",
+    "status": "aberto",
+    "data_abertura": "2026-01-26",
+    "data_encerramento": "2027-03-30",
+    "link": "https://fapes.es.gov.br/Media/fapes/Editais/1ª_retificação_-_Edital_01-2026_-_TCC_Empreendedor_Inovador.pdf",
+    "cronograma": [
+        {
+            "evento": "Publicação do Edital",
+            "data": "2026-01-26"
+        },
+        {
+            "evento": "Primeira Chamada - Período de submissão das propostas",
+            "data": "2026-02-02 até 2026-03-30"
+        },
+        {
+            "evento": "Primeira Chamada - Divulgação do resultado preliminar da habilitação e mérito",
+            "data": "A partir de 2026-05-26"
+        },
+        {
+            "evento": "Primeira Chamada - Prazo para interposição de recursos administrativos",
+            "data": "5 dias úteis a partir da publicação do resultado de seleção"
+        },
+        {
+            "evento": "Primeira Chamada - Divulgação da homologação da seleção",
+            "data": "A partir de 2026-06-22"
+        },
+        {
+            "evento": "Primeira Chamada - Prazo de contratação",
+            "data": "Até 5 dias úteis da publicação do resultado homologado"
+        },
+        {
+            "evento": "Segunda Chamada - Período de submissão das propostas",
+            "data": "2026-09-02 até 2026-10-27"
+        },
+        {
+            "evento": "Segunda Chamada - Divulgação do resultado preliminar da habilitação e mérito",
+            "data": "A partir de 2026-12-22"
+        },
+        {
+            "evento": "Segunda Chamada - Prazo para interposição de recursos administrativos",
+            "data": "5 dias úteis a partir da publicação do resultado de seleção"
+        },
+        {
+            "evento": "Segunda Chamada - Divulgação da homologação da seleção",
+            "data": "A partir de 2027-01-27"
+        },
+        {
+            "evento": "Segunda Chamada - Prazo de contratação",
+            "data": "Até 5 dias úteis da publicação do resultado homologado"
+        },
+        {
+            "evento": "Terceira Chamada - Período de submissão das propostas",
+            "data": "2027-02-02 até 2027-03-30"
+        },
+        {
+            "evento": "Terceira Chamada - Divulgação do resultado preliminar da habilitação e mérito",
+            "data": "A partir de 2027-05-24"
+        },
+        {
+            "evento": "Terceira Chamada - Prazo para interposição de recursos administrativos",
+            "data": "5 dias úteis a partir da publicação do resultado de seleção"
+        },
+        {
+            "evento": "Terceira Chamada - Divulgação da homologação da seleção",
+            "data": "A partir de 2027-06-22"
+        },
+        {
+            "evento": "Terceira Chamada - Prazo de contratação",
+            "data": "Até 5 dias úteis da publicação do resultado homologado"
+        }
+    ],
+    "tags": [
+        "TCC",
+        "inovação",
+        "empreendedorismo",
+        "Espírito Santo",
+        "bolsas de estudo"
+    ]
+}

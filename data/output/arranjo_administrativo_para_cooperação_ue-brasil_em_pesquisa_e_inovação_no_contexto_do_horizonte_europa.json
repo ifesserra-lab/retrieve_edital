@@ -1,0 +1,39 @@
+{
+    "nome": "ARRANJO ADMINISTRATIVO PARA COOPERAÇÃO UE-BRASIL EM PESQUISA E INOVAÇÃO NO CONTEXTO DO HORIZONTE EUROPA",
+    "descrição": "Este edital estabelece mecanismos de apoio à cooperação entre a União Europeia (UE) e o Brasil em atividades de pesquisa e inovação, no âmbito do programa Horizonte Europa. Seu objetivo é promover uma colaboração mais forte e abrangente entre as partes, por meio de apoio financeiro a entidades brasileiras participantes em ações colaborativas, geminação de atividades paralelas, chamadas coordenadas para propostas e reforço do conhecimento mútuo através de intercâmbio de informações e ações de divulgação.",
+    "orgão_fomento": "COMISSÃO EUROPEIA, CNPQ, FINEP, CONFAP",
+    "categoria": "chamadas",
+    "status": "aberto",
+    "data_abertura": "2021-11-19",
+    "data_encerramento": "",
+    "link": "https://fapes.es.gov.br/Media/fapes/Editais/AA_EC_BRAZIL_PT-1.pdf",
+    "cronograma": [
+        {
+            "evento": "Assinatura do Arranjo Administrativo",
+            "data": "2021-11-19 (Brasil) / 2021-12-16 (Bruxelas)"
+        },
+        {
+            "evento": "Início da cooperação sob o Horizonte Europa",
+            "data": "A partir da assinatura"
+        },
+        {
+            "evento": "Reuniões técnicas de trabalho (mínimo duas por ano)",
+            "data": "Periódico (a definir)"
+        },
+        {
+            "evento": "Identificação conjunta de tópicos ou chamadas para financiamento",
+            "data": "A definir durante reuniões técnicas"
+        },
+        {
+            "evento": "Publicação de chamadas coordenadas para propostas",
+            "data": "A definir durante reuniões técnicas"
+        }
+    ],
+    "tags": [
+        "cooperação internacional",
+        "Horizonte Europa",
+        "pesquisa e inovação",
+        "financiamento colaborativo",
+        "UE-Brasil"
+    ]
+}

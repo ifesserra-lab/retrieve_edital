@@ -1,0 +1,27 @@
+{
+    "nome": "HORIZON EUROPE - COOPERAÇÃO UE-BRASIL EM PESQUISA, DESENVOLVIMENTO & INOVAÇÃO",
+    "descrição": "O edital visa apoiar a cooperação entre a União Europeia e o Brasil em atividades de pesquisa, desenvolvimento e inovação no contexto do programa Horizon Europe (2021-2027). O objetivo é fortalecer a base de conhecimento, estimular inovações, apoiar soluções inovadoras e enfrentar desafios como a pandemia de coronavírus e as mudanças climáticas, além de promover a recuperação industrial e econômica.",
+    "orgão_fomento": "CONFAP, FINEP, CNPQ E COMISSÃO EUROPEIA",
+    "categoria": "chamadas",
+    "status": "aberto",
+    "data_abertura": "2021-11-19",
+    "data_encerramento": "2027-12-31",
+    "link": "https://fapes.es.gov.br/Media/fapes/Editais/Publicação%20CONFAP-12.pdf",
+    "cronograma": [
+        {
+            "evento": "Assinatura do Arranjo Administrativo",
+            "data": "2021-11-19"
+        },
+        {
+            "evento": "Vigência do programa Horizon Europe",
+            "data": "2021-2027"
+        }
+    ],
+    "tags": [
+        "Horizon Europe",
+        "cooperação internacional",
+        "pesquisa e inovação",
+        "União Europeia",
+        "Brasil"
+    ]
+}

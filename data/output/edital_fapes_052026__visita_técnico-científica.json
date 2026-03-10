@@ -1,20 +1,20 @@
 {
-    "nome": "EDITAL FAPES Nº 02/2026 - PARTICIPAÇÃO EM EVENTOS TÉCNICO-CIENTÍFICOS",
-    "descrição": "Este edital tem como objetivo selecionar e apoiar financeiramente pesquisadores e alunos de pós-graduação vinculados a instituições de ensino e/ou pesquisa no Espírito Santo para participação em eventos técnico-científicos de curta duração, como congressos, simpósios, workshops e similares. O foco é a divulgação de resultados de projetos de pesquisa, desenvolvimento e inovação (P&D&I) desenvolvidos no estado, abrangendo todas as oito áreas do conhecimento do CNPq, visando estimular o intercâmbio de conhecimentos, apoiar a divulgação das produções científicas capixabas e contribuir para o desenvolvimento científico e tecnológico do Espírito Santo.",
+    "nome": "EDITAL FAPES 05/2026 – VISITA TÉCNICO-CIENTÍFICA",
+    "descrição": "Selecionar propostas para concessão de auxílio financeiro à realização de visitas técnico-científicas em laboratórios ou centros de pesquisa, desenvolvimento ou inovação (PD&I), no país ou no exterior. O objetivo é aprimorar e desenvolver técnicas ou processos e adquirir conhecimentos específicos vinculados a projetos de PD&I desenvolvidos em instituições de ensino e pesquisa do Espírito Santo. O edital visa estimular o intercâmbio e a atualização de conhecimentos entre pesquisadores e alunos, apoiar a formação de alunos de pós-graduação e fortalecer os programas de pós-graduação do estado.",
     "orgão_fomento": "FAPES",
     "categoria": "divulgação de conhecimento",
     "status": "aberto",
     "data_abertura": "2026-02-06",
     "data_encerramento": "2026-08-20",
-    "link": "https://fapes.es.gov.br/Media/fapes/Editais/Edital_Fapes_02-2026-Participação_Evento_Técnico_Científico.pdf",
+    "link": "https://fapes.es.gov.br/Media/fapes/Editais/Edital%20Fapes%2005_2026%20-%20Visita%20Técnico%20Cientifica%20(1).pdf",
     "cronograma": [
         {
             "evento": "Publicação do Edital",
             "data": "2026-02-06"
         },
         {
-            "evento": "1ª Chamada - Período de submissão (eventos de 01/05/2026 a 31/07/2026)",
-            "data": "2026-02-06 a 2026-03-09"
+            "evento": "1ª Chamada - Período de submissão",
+            "data": "2026-02-09 a 2026-03-12"
         },
         {
             "evento": "1ª Chamada - Divulgação do resultado preliminar",
@@ -29,7 +29,7 @@
             "data": "A partir de 2026-03-31"
         },
         {
-            "evento": "2ª Chamada - Período de submissão (eventos de 01/08/2026 a 31/12/2026)",
+            "evento": "2ª Chamada - Período de submissão",
             "data": "2026-03-17 a 2026-04-24"
         },
         {
@@ -45,7 +45,7 @@
             "data": "A partir de 2026-06-19"
         },
         {
-            "evento": "3ª Chamada - Período de submissão (eventos de 04/01/2027 a 30/04/2027)",
+            "evento": "3ª Chamada - Período de submissão",
             "data": "2026-07-01 a 2026-08-20"
         },
         {
@@ -62,10 +62,10 @@
         }
     ],
     "tags": [
-        "eventos técnico-científicos",
+        "visita técnico-científica",
         "pesquisa e desenvolvimento",
-        "intercâmbio científico",
-        "FAPES",
-        "Espírito Santo"
+        "intercâmbio acadêmico",
+        "pós-graduação",
+        "inovação"
     ]
 }

@@ -1,15 +1,71 @@
 {
     "nome": "EDITAL FAPES N° 25/2025 - PARTICIPAÇÃO DE EQUIPES DE ESTUDANTES EM MOSTRAS E COMPETIÇÕES TÉCNICO-CIENTÍFICAS",
-    "descrição": "Edital de fomento FAPES: EDITAL FAPES N° 25/2025 - PARTICIPAÇÃO DE EQUIPES DE ESTUDANTES EM MOSTRAS E COMPETIÇÕES TÉCNICO-CIENTÍFICAS",
+    "descrição": "O edital visa conceder apoio financeiro a equipes formadas por estudantes de nível médio, graduação e pós-graduação, coordenadas por um professor orientador, para participação em mostras e competições técnico-científicas de âmbito regional, nacional e internacional. O objetivo é promover a divulgação e difusão de resultados obtidos por instituições de ensino localizadas no Espírito Santo, incentivando o intercâmbio de conhecimento, a solução de problemas cotidianos por meio da ciência e tecnologia, e o protagonismo estudantil.",
     "orgão_fomento": "FAPES",
     "categoria": "divulgação de conhecimento",
     "status": "aberto",
-    "data_abertura": "2026-01-01",
-    "data_encerramento": "",
+    "data_abertura": "2025-11-10",
+    "data_encerramento": "2025-12-16",
     "link": "https://fapes.es.gov.br/Media/fapes/Editais/EDITAL_FAPES_N_25_2025_Participação_Equipe_em_Mostras_e_Competições.pdf",
-    "cronograma": [],
+    "cronograma": [
+        {
+            "evento": "Data de publicação do edital",
+            "data": "2025-11-10"
+        },
+        {
+            "evento": "Período de submissão (1ª Chamada)",
+            "data": "2025-11-10 a 2025-12-16"
+        },
+        {
+            "evento": "Previsão para divulgação do resultado preliminar (1ª Chamada)",
+            "data": "A partir de 2026-01-09"
+        },
+        {
+            "evento": "Prazo para interposição de recursos administrativos (1ª Chamada)",
+            "data": "5 dias úteis a partir da publicação do resultado preliminar"
+        },
+        {
+            "evento": "Previsão para divulgação do resultado homologado (1ª Chamada)",
+            "data": "A partir de 2026-01-30"
+        },
+        {
+            "evento": "Período de submissão (2ª Chamada)",
+            "data": "2026-03-04 a 2026-04-09"
+        },
+        {
+            "evento": "Previsão para divulgação do resultado preliminar (2ª Chamada)",
+            "data": "A partir de 2026-04-30"
+        },
+        {
+            "evento": "Prazo para interposição de recursos administrativos (2ª Chamada)",
+            "data": "5 dias úteis a partir da publicação do resultado preliminar"
+        },
+        {
+            "evento": "Previsão para divulgação do resultado homologado (2ª Chamada)",
+            "data": "A partir de 2026-05-29"
+        },
+        {
+            "evento": "Período de submissão (3ª Chamada)",
+            "data": "2026-08-04 a 2026-09-11"
+        },
+        {
+            "evento": "Previsão para divulgação do resultado preliminar (3ª Chamada)",
+            "data": "A partir de 2026-09-30"
+        },
+        {
+            "evento": "Prazo para interposição de recursos administrativos (3ª Chamada)",
+            "data": "5 dias úteis a partir da publicação do resultado preliminar"
+        },
+        {
+            "evento": "Previsão para divulgação do resultado homologado (3ª Chamada)",
+            "data": "A partir de 2026-10-30"
+        }
+    ],
     "tags": [
-        "fapes",
-        "edital"
+        "competição técnico-científica",
+        "estudantes",
+        "apoio financeiro",
+        "Espírito Santo",
+        "intercâmbio de conhecimento"
     ]
 }

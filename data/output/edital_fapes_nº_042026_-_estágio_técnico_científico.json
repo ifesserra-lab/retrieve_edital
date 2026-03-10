@@ -1,15 +1,71 @@
 {
     "nome": "EDITAL FAPES Nº 04/2026 - ESTÁGIO TÉCNICO CIENTÍFICO",
-    "descrição": "Edital de fomento FAPES: EDITAL FAPES Nº 04/2026 - ESTÁGIO TÉCNICO CIENTÍFICO",
+    "descrição": "Selecionar propostas para concessão de auxílio financeiro à realização de estágio técnico-científico em laboratório ou centro de pesquisa, desenvolvimento ou inovação (PD&I), no país ou no exterior. O objetivo é aprimorar e desenvolver técnicas ou processos e adquirir conhecimentos específicos vinculados a projetos de PD&I desenvolvidos em Instituições de Ensino e/ou Pesquisa (IES/P), públicas ou privadas, localizadas no estado do Espírito Santo. O edital visa estimular o intercâmbio e a atualização de conhecimentos entre pesquisadores e alunos de pós-graduação, apoiar a formação de alunos e fortalecer os Programas de Pós-Graduação do Espírito Santo.",
     "orgão_fomento": "FAPES",
     "categoria": "divulgação de conhecimento",
     "status": "aberto",
-    "data_abertura": "2026-01-01",
-    "data_encerramento": "",
+    "data_abertura": "2026-02-06",
+    "data_encerramento": "2026-08-20",
     "link": "https://fapes.es.gov.br/Media/fapes/Editais/Edital_Fapes_04_2026_-_Estágio_Técnico_Cientifico.pdf",
-    "cronograma": [],
+    "cronograma": [
+        {
+            "evento": "Publicação do Edital",
+            "data": "2026-02-06"
+        },
+        {
+            "evento": "1ª Chamada: Período de submissão de propostas (estágios com início entre 01/05/2026 a 31/07/2026)",
+            "data": "2026-02-09 a 2026-03-12"
+        },
+        {
+            "evento": "1ª Chamada: Divulgação do resultado preliminar",
+            "data": "A partir de 2026-03-19"
+        },
+        {
+            "evento": "1ª Chamada: Prazo para interposição de recursos",
+            "data": "5 dias úteis após a publicação do resultado preliminar"
+        },
+        {
+            "evento": "1ª Chamada: Divulgação do resultado final",
+            "data": "A partir de 2026-03-31"
+        },
+        {
+            "evento": "2ª Chamada: Período de submissão de propostas (estágios com início entre 01/08/2026 a 31/12/2026)",
+            "data": "2026-03-17 a 2026-04-24"
+        },
+        {
+            "evento": "2ª Chamada: Divulgação do resultado preliminar",
+            "data": "A partir de 2026-05-22"
+        },
+        {
+            "evento": "2ª Chamada: Prazo para interposição de recursos",
+            "data": "5 dias úteis após a publicação do resultado preliminar"
+        },
+        {
+            "evento": "2ª Chamada: Divulgação do resultado final",
+            "data": "A partir de 2026-06-19"
+        },
+        {
+            "evento": "3ª Chamada: Período de submissão de propostas (estágios com início entre 04/01/2027 a 30/04/2027)",
+            "data": "2026-07-01 a 2026-08-20"
+        },
+        {
+            "evento": "3ª Chamada: Divulgação do resultado preliminar",
+            "data": "A partir de 2026-10-02"
+        },
+        {
+            "evento": "3ª Chamada: Prazo para interposição de recursos",
+            "data": "5 dias úteis após a publicação do resultado preliminar"
+        },
+        {
+            "evento": "3ª Chamada: Divulgação do resultado final",
+            "data": "A partir de 2026-10-26"
+        }
+    ],
     "tags": [
-        "fapes",
-        "edital"
+        "estágio técnico-científico",
+        "pesquisa e desenvolvimento",
+        "pós-graduação",
+        "intercâmbio acadêmico",
+        "inovação"
     ]
 }

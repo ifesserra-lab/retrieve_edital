@@ -1,6 +1,6 @@
 {
-    "nome": "BELMONT FORUM – OCEAN 2 (ANNEX FOR FAPES)",
-    "descrição": "Edital de fomento à pesquisa colaborativa internacional no âmbito do Belmont Forum, com foco em projetos relacionados ao oceano, apoiados pela FAPES no estado do Espírito Santo, Brasil.",
+    "nome": "BELMONT FORUM – OCEAN 2 (INSTITUTION-SPECIFIC ANNEX FOR FAPES)",
+    "descrição": "Edital de fomento à pesquisa colaborativa internacional no âmbito do Belmont Forum, com foco em projetos relacionados ao tema OCEAN 2. A chamada visa apoiar propostas que abordem áreas-chave do edital, com duração de até 36 meses, restritas ao estado do Espírito Santo, Brasil, e limitadas a dois pesquisadores por projeto.",
     "orgão_fomento": "FAPES",
     "categoria": "chamadas",
     "status": "aberto",
@@ -15,17 +15,13 @@
         {
             "evento": "Início da mobilidade para pesquisadores com projetos aprovados",
             "data": "2027-01-01 (primeiro semestre de 2027)"
-        },
-        {
-            "evento": "Duração máxima dos projetos aprovados",
-            "data": "36 meses a partir da aprovação"
         }
     ],
     "tags": [
-        "pesquisa oceânica",
-        "colaboração internacional",
+        "pesquisa colaborativa",
+        "OCEAN 2",
         "Belmont Forum",
         "FAPES",
-        "financiamento"
+        "internacionalização"
     ]
 }

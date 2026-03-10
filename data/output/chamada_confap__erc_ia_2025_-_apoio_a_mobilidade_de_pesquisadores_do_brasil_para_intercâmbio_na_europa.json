@@ -1,0 +1,27 @@
+{
+    "nome": "CHAMADA CONFAP & ERC IA 2025 - APOIO A MOBILIDADE DE PESQUISADORES DO BRASIL PARA INTERCÂMBIO NA EUROPA",
+    "descrição": "A chamada tem como finalidade apoiar a mobilidade de pesquisadores brasileiros para visitas a grupos de pesquisa na Europa que desenvolvem projetos financiados pelo Conselho Europeu de Pesquisa (ERC) no âmbito do programa Horizon Europe. O edital abrange todas as áreas do conhecimento e visa cobrir despesas como diárias, passagens e outros custos relacionados à execução dos projetos.",
+    "orgão_fomento": "FAPES",
+    "categoria": "chamadas",
+    "status": "aberto",
+    "data_abertura": "2025-01-01",
+    "data_encerramento": "2025-11-03",
+    "link": "https://fapes.es.gov.br/Media/fapes/Editais/Diretrizes_Chamada%20Internacional_ERC%20IA%202024-2.pdf",
+    "cronograma": [
+        {
+            "evento": "Data limite para envio de propostas",
+            "data": "2025-11-03"
+        },
+        {
+            "evento": "Início da mobilidade dos pesquisadores com projetos aprovados",
+            "data": "Primeiro semestre de 2026"
+        }
+    ],
+    "tags": [
+        "mobilidade internacional",
+        "pesquisa",
+        "ERC",
+        "Horizon Europe",
+        "intercâmbio"
+    ]
+}
