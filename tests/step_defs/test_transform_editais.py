@@ -1,6 +1,7 @@
 from pytest_bdd import scenarios, given, when, then, parsers
 from src.domain.models import RawEdital, EditalDomain
 from src.components.transforms.edital_normalizer import EditalNormalizer
+from unittest.mock import MagicMock
 import pytest
 
 scenarios("../../docs/features/transform_editais.feature")
@@ -11,8 +12,9 @@ def context():
 
 @given('the Transformation engine is ready to receive raw data dictionaries')
 def transform_engine_ready(context):
-    context["transform_engine"] = EditalNormalizer()
-    context["normalizer"] = EditalNormalizer() # Assuming normalizer is the same as transform_engine
+    mock_service = MagicMock()
+    context["transform_engine"] = EditalNormalizer(extraction_service=mock_service)
+    context["normalizer"] = context["transform_engine"]
 
 @given(parsers.parse('a raw edital record with title "{raw_title}" and agency "{raw_agency}"'))
 def raw_edital_record(context, raw_title, raw_agency):

@@ -1,0 +1,70 @@
+{
+    "nome": "DIGITALISATION AND INNOVATION FOR RESILIENT MARINE ECOSYSTEMS, BUSINESSES, AND COMMUNITIES TO STRENGTHEN THE EU BLUE ECONOMY'S COMPETITIVENESS",
+    "descrição": "Terceira Chamada Conjunta Transnacional Cofinanciada pela Parceria para uma Economia Azul Sustentável (SBEP), focada em inovação e digitalização para ecossistemas marinhos resilientes, setores econômicos azuis e comunidades costeiras. O edital abrange cinco áreas prioritárias: Gêmeos Digitais do Oceano, transição de setores da economia azul, planejamento climático inteligente para usos do mar, biorrecursos azuis e comunidades costeiras resilientes.",
+    "orgão_fomento": "SUSTAINABLE BLUE ECONOMY PARTNERSHIP (SBEP)",
+    "categoria": "chamadas",
+    "status": "aberto",
+    "data_abertura": "2025-09-15",
+    "data_encerramento": "2026-06-17",
+    "link": "https://fapes.es.gov.br/Media/fapes/Editais/SBEP%20Call%20text%202025.pdf",
+    "cronograma": [
+        {
+            "evento": "Lançamento oficial do edital e abertura da plataforma de submissão (EPSS) e ferramenta de busca de parceiros",
+            "data": "2025-09-15"
+        },
+        {
+            "evento": "Webinar internacional para candidatos",
+            "data": "2025-09-29"
+        },
+        {
+            "evento": "Prazo final para submissão de pré-propostas",
+            "data": "2025-11-17"
+        },
+        {
+            "evento": "Verificação de elegibilidade e avaliação das pré-propostas",
+            "data": "2025-11-18 a 2026-03-15"
+        },
+        {
+            "evento": "Comunicação dos resultados das pré-propostas e convite para submissão de propostas completas",
+            "data": "2026-03-15"
+        },
+        {
+            "evento": "Período para procedimento de recurso (redress)",
+            "data": "2026-03-15 a 2026-04-15"
+        },
+        {
+            "evento": "Prazo final para submissão de propostas completas",
+            "data": "2026-06-17"
+        },
+        {
+            "evento": "Verificação de elegibilidade e avaliação das propostas completas",
+            "data": "2026-06-18 a 2026-10-31"
+        },
+        {
+            "evento": "Comunicação dos resultados das propostas completas",
+            "data": "2026-10-31"
+        },
+        {
+            "evento": "Período para procedimento de recurso (redress)",
+            "data": "2026-11-01 a 2026-11-30"
+        },
+        {
+            "evento": "Negociações de concessão de financiamento nacional/regional para projetos recomendados",
+            "data": "2026-12-01 em diante"
+        },
+        {
+            "evento": "Início dos projetos",
+            "data": "2027-06-01"
+        }
+    ],
+    "tags": [
+        "economia azul sustentável",
+        "digitalização",
+        "inovação marinha",
+        "resiliência climática",
+        "ecossistemas costeiros",
+        "planejamento marítimo",
+        "biorrecursos azuis",
+        "comunidades resilientes"
+    ]
+}

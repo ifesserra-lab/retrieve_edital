@@ -34,6 +34,12 @@ class LocalJSONSink(ISink[EditalDomain]):
             if not base_name:
                 base_name = f"edital_anonimo_{idx}"
             
+            # Truncate and add hash if too long to avoid collisions and FS errors
+            if len(base_name) > 150:
+                import hashlib
+                name_hash = hashlib.md5(item.nome.encode()).hexdigest()[:6]
+                base_name = f"{base_name[:140]}_{name_hash}"
+            
             # Use lower-case robust naming
             filename = f"{base_name.replace(' ', '_').lower()}.json"
             filepath = os.path.join(self.output_dir, filename)

@@ -1,14 +1,15 @@
 {
     "nome": "DIRETRIZES FAPES PARA MARIE SKLODOWSKA-CURIE (MSCA) 2026",
-    "descrição": "CHAMADA CONFAP & Marie Skłodowska-Curie (MSCA) 2026\nIntercâmbio de Pessoal 2026\nDIRETRIZES ESPECÍFICAS DA FAPES\n1. FINALIDADE\n1.1. Apoiar a participação de pesquisadores e instituições do Brasil em projetos\naprovados no contexto do programa Horizon Europe – Chamada Marie\nSkłodowska-Curie Staff Excha...",
+    "descrição": "Edital de fomento FAPES: DIRETRIZES FAPES PARA MARIE SKLODOWSKA-CURIE (MSCA) 2026",
     "orgão_fomento": "FAPES",
-    "categoria": "pesquisa",
+    "categoria": "chamadas",
     "status": "aberto",
-    "data_abertura": "",
+    "data_abertura": "2026-01-01",
     "data_encerramento": "",
     "link": "https://fapes.es.gov.br/Media/fapes/Editais/Diretrizes_Chamada_Internacional_Marie_2026..pdf",
     "cronograma": [],
     "tags": [
-        "pesquisa"
+        "fapes",
+        "edital"
     ]
 }

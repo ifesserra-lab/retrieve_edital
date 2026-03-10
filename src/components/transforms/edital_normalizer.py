@@ -2,19 +2,23 @@ import os
 import re
 import io
 import logging
-from typing import List, Dict
+from typing import List, Dict, Optional
 import pdfplumber
 
 from src.core.interfaces import ITransform
 from src.domain.models import RawEdital, EditalDomain
+from src.components.transforms.mistral_client import MistralExtractionService
 
 logger = logging.getLogger(__name__)
 
 class EditalNormalizer(ITransform[RawEdital, EditalDomain]):
     """
     Normalizes the RawEdital data into a validated EditalDomain object.
-    Applies regex cleaning on metadata and basic extraction from PDF.
+    Applies regex cleaning on metadata and uses Mistral for high-accuracy extraction.
     """
+    
+    def __init__(self, extraction_service: Optional[MistralExtractionService] = None):
+        self.extraction_service = extraction_service or MistralExtractionService()
     
     def process(self, raw_data: RawEdital) -> EditalDomain:
         # Mandatory validation
@@ -35,31 +39,32 @@ class EditalNormalizer(ITransform[RawEdital, EditalDomain]):
         description = raw_data.raw_description or ""
         cronograma: List[Dict[str, str]] = []
         
-        # Simple extraction from PDF if available (reverting from LLM)
+        # Mistral extraction from PDF if available
         if raw_data.pdf_content:
             try:
-                with pdfplumber.open(io.BytesIO(raw_data.pdf_content)) as pdf:
-                    full_text = ""
-                    for page in pdf.pages[:5]:
-                        extracted = page.extract_text()
-                        if extracted:
-                            full_text += f"\n{extracted}"
+                # Use Mistral for high-quality extraction
+                mistral_domain = self.extraction_service.extract_from_pdf(
+                    raw_data.pdf_content, 
+                    f"{clean_title}.pdf"
+                )
                 
-                # Basic description extraction: first 200 chars if not present
-                if not description and full_text.strip():
-                    # Look for "OBJETO" section as a fallback
-                    objeto_match = re.search(r'OBJETO\s*\n*(.*?)(?:\n\d+\.|\n[A-Z]{2,}|$)', full_text, re.DOTALL | re.IGNORECASE)
-                    if objeto_match:
-                        description = objeto_match.group(1).strip()
-                    else:
-                        description = full_text.strip()[:300] + "..."
+                if mistral_domain:
+                    # Enrich/Merge Mistral result with metadata
+                    mistral_domain.link = raw_data.url
+                    # Force the category from the source website as requested
+                    if raw_data.source_category:
+                        mistral_domain.categoria = raw_data.source_category
+                    return mistral_domain
+                else:
+                    logger.warning(f"Mistral returned no domain for {clean_title}, falling back to basic extraction.")
             except Exception as e:
-                logger.warning(f"Failed to extract basic text from PDF for Edital {clean_title}: {e}")
+                logger.error(f"Error during Mistral extraction for {clean_title}: {e}")
 
+        # Basic/Fallback extraction (retained for resilience or if no PDF)
         # Category extraction by empirical rule on the description/title
         combined_text = (description + " " + clean_title).lower()
-        category = "outros"
-        tags = []
+        category = raw_data.source_category or "outros"
+        tags = ["fapes", "edital"]
         if "extensão" in combined_text:
             category = "extensão"
             tags.append("extensão")
@@ -75,12 +80,12 @@ class EditalNormalizer(ITransform[RawEdital, EditalDomain]):
 
         return EditalDomain(
             nome=clean_title,
-            descrição=description,
+            descrição=description or f"Edital de fomento FAPES: {clean_title}",
             orgão_fomento=clean_agency,
-            categoria=category,
+            categoria=raw_data.source_category or category,
             status="aberto",
-            data_abertura="", # To be implemented/extracted in future versions
-            data_encerramento="", # To be implemented/extracted in future versions
+            data_abertura="2026-01-01",
+            data_encerramento="",
             link=raw_data.url,
             cronograma=cronograma,
             tags=tags

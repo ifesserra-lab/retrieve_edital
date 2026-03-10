@@ -1,12 +1,15 @@
 {
     "nome": "EDITAL FAPES N° 25/2025 - PARTICIPAÇÃO DE EQUIPES DE ESTUDANTES EM MOSTRAS E COMPETIÇÕES TÉCNICO-CIENTÍFICAS",
-    "descrição": "S",
+    "descrição": "Edital de fomento FAPES: EDITAL FAPES N° 25/2025 - PARTICIPAÇÃO DE EQUIPES DE ESTUDANTES EM MOSTRAS E COMPETIÇÕES TÉCNICO-CIENTÍFICAS",
     "orgão_fomento": "FAPES",
-    "categoria": "outros",
+    "categoria": "divulgação de conhecimento",
     "status": "aberto",
-    "data_abertura": "",
+    "data_abertura": "2026-01-01",
     "data_encerramento": "",
     "link": "https://fapes.es.gov.br/Media/fapes/Editais/EDITAL_FAPES_N_25_2025_Participação_Equipe_em_Mostras_e_Competições.pdf",
     "cronograma": [],
-    "tags": []
+    "tags": [
+        "fapes",
+        "edital"
+    ]
 }

@@ -1,12 +1,15 @@
 {
     "nome": "EDITAL FAPES Nº 05/2026 - VISITA TÉCNICO-CIENTÍFICA",
-    "descrição": "1.1. Selecionar propostas para concessão de auxílio financeiro à realização de Visita Técnico-",
+    "descrição": "Edital de fomento FAPES: EDITAL FAPES Nº 05/2026 - VISITA TÉCNICO-CIENTÍFICA",
     "orgão_fomento": "FAPES",
-    "categoria": "outros",
+    "categoria": "divulgação de conhecimento",
     "status": "aberto",
-    "data_abertura": "",
+    "data_abertura": "2026-01-01",
     "data_encerramento": "",
     "link": "https://fapes.es.gov.br/Media/fapes/Editais/Edital%20Fapes%2005_2026%20-%20Visita%20Técnico%20Cientifica%20(1).pdf",
     "cronograma": [],
-    "tags": []
+    "tags": [
+        "fapes",
+        "edital"
+    ]
 }

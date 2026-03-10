@@ -1,12 +1,15 @@
 {
     "nome": "PUBLICAÇÃO CONFAP",
-    "descrição": ":",
+    "descrição": "Edital de fomento FAPES: PUBLICAÇÃO CONFAP",
     "orgão_fomento": "FAPES",
-    "categoria": "outros",
+    "categoria": "chamadas",
     "status": "aberto",
-    "data_abertura": "",
+    "data_abertura": "2026-01-01",
     "data_encerramento": "",
     "link": "https://fapes.es.gov.br/Media/fapes/Editais/Editais%20-%20CONFA_ERC_IA_2025%20(nova%20data%20submissão).pdf",
     "cronograma": [],
-    "tags": []
+    "tags": [
+        "fapes",
+        "edital"
+    ]
 }

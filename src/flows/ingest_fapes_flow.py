@@ -1,5 +1,6 @@
 import logging
 import os
+from concurrent.futures import ThreadPoolExecutor
 from dotenv import load_dotenv
 
 from src.core.interfaces import ISource, ITransform, ISink
@@ -45,14 +46,23 @@ def run_pipeline(
     logger.info(f"Extracted {len(raw_data_list)} raw records.")
 
     # 2. Transform
-    logger.info("Phase 2: Transformation")
+    logger.info("Phase 2: Transformation (Parallel)")
     valid_domains = []
-    for count, raw_item in enumerate(raw_data_list, start=1):
-        try:
-            domain_item = transform.process(raw_item)
-            valid_domains.append(domain_item)
-        except Exception as e:
-            logger.error(f"Failed to transform item {count} ({raw_item.title}): {e}")
+    
+    # Use ThreadPoolExecutor to parallelize Mistral API calls
+    # max_workers=5 is a safe default to avoid aggressive rate limiting
+    with ThreadPoolExecutor(max_workers=5) as executor:
+        # Map transform.process to the list of raw items
+        future_to_item = {executor.submit(transform.process, item): item for item in raw_data_list}
+        
+        for future in future_to_item:
+            raw_item = future_to_item[future]
+            try:
+                domain_item = future.result()
+                if domain_item:
+                    valid_domains.append(domain_item)
+            except Exception as e:
+                logger.error(f"Failed to transform item {raw_item.title}: {e}")
             
     logger.info(f"Successfully transformed {len(valid_domains)} out of {len(raw_data_list)} records.")
 

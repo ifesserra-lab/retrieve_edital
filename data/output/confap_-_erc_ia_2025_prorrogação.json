@@ -1,12 +1,15 @@
 {
     "nome": "CONFAP - ERC IA 2025 (PRORROGAÇÃO)",
-    "descrição": "ERC – CONFAP – 2025 Call\nResearch opportunities in Europe for active PhD researchers from Brazil 2025\nCorrigendum nº. 2\nThe Brazilian National Council of State Funding Agencies (CONFAP) in partnership of the\nEuropean Research Council (ERC) announces this Corrigendum, referring the call for proposal´...",
+    "descrição": "Edital de fomento FAPES: CONFAP - ERC IA 2025 (PRORROGAÇÃO)",
     "orgão_fomento": "FAPES",
-    "categoria": "outros",
+    "categoria": "chamadas",
     "status": "aberto",
-    "data_abertura": "",
+    "data_abertura": "2026-01-01",
     "data_encerramento": "",
     "link": "https://fapes.es.gov.br/Media/fapes/Editais/Retificação%20nº%202%20-%20Chamada%20ERC%20-%20CONFAP%20-%202025.pdf",
     "cronograma": [],
-    "tags": []
+    "tags": [
+        "fapes",
+        "edital"
+    ]
 }

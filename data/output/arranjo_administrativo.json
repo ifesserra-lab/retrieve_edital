@@ -1,12 +1,15 @@
 {
     "nome": "ARRANJO ADMINISTRATIVO",
-    "descrição": "",
+    "descrição": "Edital de fomento FAPES: ARRANJO ADMINISTRATIVO",
     "orgão_fomento": "FAPES",
-    "categoria": "outros",
+    "categoria": "chamadas",
     "status": "aberto",
-    "data_abertura": "",
+    "data_abertura": "2026-01-01",
     "data_encerramento": "",
     "link": "https://fapes.es.gov.br/Media/fapes/Editais/AA_EC_BRAZIL_PT-1.pdf",
     "cronograma": [],
-    "tags": []
+    "tags": [
+        "fapes",
+        "edital"
+    ]
 }

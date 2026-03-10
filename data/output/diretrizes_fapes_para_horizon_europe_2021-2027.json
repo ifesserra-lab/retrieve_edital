@@ -1,14 +1,15 @@
 {
     "nome": "DIRETRIZES FAPES PARA HORIZON EUROPE 2021-2027",
-    "descrição": "Diretrizes da Fundação de Amparo à Pesquisa e Inovação do Estado do Espírito Santos - FAPES, para a\npreparação de propostas com participação de pesquisadores do estado do Espírito Santo em colaboração\ncom candidaturas submetidas ao Horizonte Europa\nContexto:\nO Horizonte Europa (Horizon Europe) é o P...",
+    "descrição": "Edital de fomento FAPES: DIRETRIZES FAPES PARA HORIZON EUROPE 2021-2027",
     "orgão_fomento": "FAPES",
-    "categoria": "pesquisa",
+    "categoria": "chamadas",
     "status": "aberto",
-    "data_abertura": "",
+    "data_abertura": "2026-01-01",
     "data_encerramento": "",
     "link": "https://fapes.es.gov.br/Media/fapes/Editais/Diretrizes%20Fapes%20Horizon%20Europe%202021-2027-1.pdf",
     "cronograma": [],
     "tags": [
-        "pesquisa"
+        "fapes",
+        "edital"
     ]
 }

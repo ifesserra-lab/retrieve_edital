@@ -1,12 +1,15 @@
 {
     "nome": "FICHA INFORMATIVA - MARIE SKŁODOWSKA-CURIE (INTERCÂMBIO DE PESSOAL) 2026",
-    "descrição": "MSCA Staff Exchanges\nMSCA Staff Exchanges promote innovative international, inter-sectoral and\ninterdisciplinary collaboration in research and innovation through exchanging staff\nand sharing knowledge and ideas at all stages of the innovation chain.\n2026 call for proposals\nMSCA Staff HORIZON 97.92 ...",
+    "descrição": "Edital de fomento FAPES: FICHA INFORMATIVA - MARIE SKŁODOWSKA-CURIE (INTERCÂMBIO DE PESSOAL) 2026",
     "orgão_fomento": "FAPES",
-    "categoria": "outros",
+    "categoria": "chamadas",
     "status": "aberto",
-    "data_abertura": "",
+    "data_abertura": "2026-01-01",
     "data_encerramento": "",
     "link": "https://fapes.es.gov.br/Media/fapes/Editais/MSCA%20Staff%20Exchanges%20-%20European%20Research%20Executive%20Agency.pdf",
     "cronograma": [],
-    "tags": []
+    "tags": [
+        "fapes",
+        "edital"
+    ]
 }

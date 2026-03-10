@@ -40,7 +40,22 @@ class FapesSource(ISource[RawEdital]):
                 page = browser.new_page()
                 
                 for url in self.start_urls:
-                    logger.info(f"Navigating to open editais page at {url}")
+                    # Determine category based on URL suffix
+                    # Example: https://fapes.es.gov.br/inovacao -> inovacao
+                    # https://fapes.es.gov.br/editais-abertos-pesquisa-4 -> pesquisa
+                    category = url.split("/")[-1].replace("editais-abertos-", "").split("-")[0]
+                    if "difusao" in url:
+                        category = "divulgação de conhecimento"
+                    elif "extensao" in url:
+                        category = "extensão"
+                    elif "pesquisa" in url:
+                        category = "pesquisa"
+                    elif "inovacao" in url:
+                        category = "inovação"
+                    elif "internacional" in url:
+                        category = "internacional"
+
+                    logger.info(f"Navigating to open editais page at {url} (Category: {category})")
                     try:
                         page.goto(url, timeout=30000)
                     except Exception as e:
@@ -111,6 +126,7 @@ class FapesSource(ISource[RawEdital]):
                                 RawEdital(
                                     title=title,
                                     url=href,
+                                    source_category=category,
                                     raw_agency="Fapes-ES",
                                     raw_description=None,
                                     pdf_content=pdf_bytes

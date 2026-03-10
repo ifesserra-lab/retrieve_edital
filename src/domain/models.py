@@ -5,6 +5,7 @@ from typing import Optional, List, Dict
 class RawEdital:
     title: str
     url: str
+    source_category: Optional[str] = None
     raw_agency: Optional[str] = None
     raw_description: Optional[str] = None
     pdf_content: Optional[bytes] = None
