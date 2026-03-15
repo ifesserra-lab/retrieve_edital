@@ -1,9 +1,10 @@
 import logging
 import requests
-from typing import List
+from typing import List, Optional
 from playwright.sync_api import sync_playwright, TimeoutError
 from src.core.interfaces import ISource
 from src.domain.models import RawEdital
+from src.components.transforms.mistral_client import MistralExtractionService
 
 logger = logging.getLogger(__name__)
 
@@ -13,7 +14,7 @@ class FapesSource(ISource[RawEdital]):
     Complies with ISource interface returning a List of RawEdition models.
     """
     
-    def __init__(self, start_urls: List[str] = None, processed_titles: set = None):
+    def __init__(self, start_urls: List[str] = None, processed_titles: set = None, classifier: Optional[MistralExtractionService] = None):
         if start_urls is None:
             self.start_urls = [
                 "https://fapes.es.gov.br/editais-abertos-pesquisa-4",
@@ -25,7 +26,17 @@ class FapesSource(ISource[RawEdital]):
         else:
             self.start_urls = start_urls
         self.processed_titles = processed_titles or set()
+        self.classifier = classifier or MistralExtractionService()
         
+    def _download_pdf(self, url: str) -> Optional[bytes]:
+        try:
+            resp = requests.get(url, timeout=30)
+            if resp.status_code == 200:
+                return resp.content
+        except Exception as e:
+            logger.error(f"Error downloading PDF from {url}: {e}")
+        return None
+
     def _sanitize(self, filename: str) -> str:
         keepcharacters = (' ', '.', '_', '-')
         sanitized = "".join(c for c in filename if c.isalnum() or c in keepcharacters).rstrip()
@@ -71,80 +82,149 @@ class FapesSource(ISource[RawEdital]):
                             logger.warning(f"Timeout waiting for anchors to load on {url}.")
                             break
 
-                        # Simple heuristic: searching for PDF links
-                        elements = page.locator('a[href$=".pdf"]').all()
+                        # FAPES organizes editais in accordions or panels. 
+                        # Each group is usually within an element that has a title.
+                        # Based on browser analysis: Documents are grouped within a specific table relevant to each notice.
+                        # The tables are often preceded by a header or within an accordion.
                         
-                        if not elements:
-                            logger.warning(f"No PDF edital links found on the current page: {url}")
+                        # Find notice groups (e.g., accordions or panels)
+                        # FAPES often uses elements with specific classes for their notice lists.
+                        notice_blocks = page.locator('div.accordion-group, div.panel-group, div.item-edital, div.view-editais tr.edital-row').all()
                         
-                        unique_links = {}
-                        for el in elements:
-                            title = el.inner_text().strip()
-                            href = el.get_attribute("href")
+                        if not notice_blocks:
+                            # If no structural blocks, try to find tables and use their preceding headers
+                            # Or just treat the whole content as one group if necessary
+                            notice_blocks = page.locator('table:has(a[href$=".pdf"])').all()
+
+                        if not notice_blocks:
+                            logger.warning(f"No document groups found on {url}.")
+                            break
+
+                        for block in notice_blocks:
+                            # Try to find a descriptive group title
+                            # Look for h1-h4 or specific classes nearby
+                            group_title_el = block.locator('h3, h4, .title, strong, td.col-titulo').first
+                            group_id = group_title_el.inner_text().strip() if group_title_el.count() > 0 else "Grupo desconhecido"
                             
-                            if not href:
-                                continue
+                            logger.info(f"Processing document group: {group_id}")
                             
-                            # Standardize URL
-                            if href.startswith("/"):
-                                href = f"https://fapes.es.gov.br{href}"
+                            # Using a more flexible selector to find links that likely contain PDFs
+                            links_elements = block.locator('a').all()
+                            unique_docs = {} # href -> title
+                            
+                            found_any_pdf = False
+                            for el in links_elements:
+                                title = el.inner_text().strip()
+                                href = el.get_attribute("href")
+                                if not href:
+                                    continue
                                 
-                            # Fallback for empty texts but valid links
-                            if not title or title.lower() in ["baixar", "clique aqui", "download"]:
-                                title = href.split("/")[-1]
+                                # Standardize URL
+                                if href.startswith("/"):
+                                    href = f"https://fapes.es.gov.br{href}"
                                 
-                            if href in unique_links:
-                                existing_title = unique_links[href]
-                                # Prefer a more descriptive title (not just the .pdf filename)
-                                if title and existing_title.lower().endswith('.pdf') and not title.lower().endswith('.pdf'):
-                                    unique_links[href] = title
-                                elif len(title) > len(existing_title) and not title.lower().endswith('.pdf'):
-                                    unique_links[href] = title
-                            else:
-                                unique_links[href] = title
+                                # Check if it's a document link or looks like one
+                                extensions = [".pdf", ".doc", ".docx", ".xls", ".xlsx", ".zip", ".odt"]
+                                is_doc_link = any(ext in href.lower() for ext in extensions)
                                 
-                        for href, title in unique_links.items():
-                            # Incremental Sieve
-                            safe_title = self._sanitize(title)
-                            if safe_title in self.processed_titles:
-                                logger.info(f"Incremental Filter: Skipping already processed edital '{title}'")
+                                if is_doc_link or "baixar" in title.lower():
+                                    found_any_pdf = True
+                                    # Standardize title: if title is too short or generic, try to get from URL
+                                    if not title or title.lower() in ["baixar", "clique aqui", "download", "pdf", "docx"]:
+                                        # But only if we don't already have a better title for this href
+                                        if href not in unique_docs or unique_docs[href].lower() in ["baixar", "clique aqui"]:
+                                            # Try to extract from URL segments
+                                            url_title = href.split("/")[-1].replace(".pdf", "").replace(".docx", "").replace("_", " ")
+                                            title = url_title
+                                    
+                                    is_generic = title.lower() in ["baixar", "clique aqui", "download", "pdf"]
+                                    if href not in unique_docs:
+                                        unique_docs[href] = title
+                                    else:
+                                        # If existing title is generic or shorter, replace
+                                        if (unique_docs[href].lower() in ["baixar", "clique aqui"]) and not is_generic:
+                                            unique_docs[href] = title
+                                        elif not is_generic and len(title) > len(unique_docs[href]):
+                                            unique_docs[href] = title
+
+                            if not unique_docs:
+                                if not found_any_pdf:
+                                    logger.debug(f"No PDF links found in group {group_id}")
                                 continue
 
-                            # Download PDF binary
-                            pdf_bytes = None
-                            try:
-                                resp = requests.get(href, timeout=30)
-                                if resp.status_code == 200:
-                                    pdf_bytes = resp.content
-                                else:
-                                    logger.warning(f"Failed to download PDF {href} (status: {resp.status_code})")
-                            except Exception as dl_error:
-                                logger.error(f"Error downloading PDF {href}: {dl_error}")
-                                
-                            # Add to payload
-                            raw_editais.append(
-                                RawEdital(
-                                    title=title,
-                                    url=href,
-                                    source_category=category,
-                                    raw_agency="Fapes-ES",
-                                    raw_description=None,
-                                    pdf_content=pdf_bytes
-                                )
-                            )
+                            logger.info(f"Foud {len(unique_docs)} unique document links in group {group_id}")
+                            temp_docs = [{"title": t, "url": h} for h, t in unique_docs.items()]
+
+                            # Classify titles in bulk using Mistral
+                            titles_to_classify = [d["title"] for d in temp_docs if d["title"].lower() not in ["baixar", "clique aqui"]]
+                            classifications = {}
+                            if titles_to_classify:
+                                classifications = self.classifier.classify_document_titles(titles_to_classify)
                             
-                        # Handle pagination according to BDD spec
+                            # Map back to RawEdital objects
+                            group_raw_editais = []
+                            for doc in temp_docs:
+                                href = doc["url"]
+                                title = doc["title"]
+                                doc_type = classifications.get(title, "edital")
+                                
+                                # Heuristic if Mistral didn't see it (e.g., if we skipped it)
+                                if title.lower() in ["baixar", "clique aqui"]:
+                                    # If it's a generic link with same href as something else, we already deduplicated.
+                                    # If it's unique but generic, it's likely the edital itself.
+                                    doc_type = "edital"
+
+                                safe_title = self._sanitize(title)
+                                if safe_title in self.processed_titles:
+                                    continue
+                                
+                                # Download content only for edital and alteração
+                                # But wait, if it's nested, maybe we only want to download the main one?
+                                # For now, let's keep the logic: only download if type is edital or alteração
+                                pdf_bytes = None
+                                if doc_type in ["edital", "alteração"] and ".pdf" in doc["url"].lower():
+                                    pdf_bytes = self._download_pdf(doc["url"])
+                                
+                                raw = RawEdital(
+                                    title=doc["title"],
+                                    url=doc["url"],
+                                    source_category=category,
+                                    raw_agency="FAPES",
+                                    pdf_content=pdf_bytes,
+                                    document_type=doc_type,
+                                    group_id=group_id,
+                                    is_main=False # Default to false, will set one to true
+                                )
+                                group_raw_editais.append(raw)
+
+                            if not group_raw_editais:
+                                continue
+
+                            # Identify the main edital in the group
+                            # Strategy: First one classified as 'edital', or first one overall
+                            main_candidates = [r for r in group_raw_editais if r.document_type == "edital"]
+                            if main_candidates:
+                                main_edital = main_candidates[0]
+                            else:
+                                main_edital = group_raw_editais[0]
+                            
+                            main_edital.is_main = True
+                            
+                            # All other documents in the group are attachments
+                            main_edital.attachments = [r for r in group_raw_editais if r != main_edital]
+                            
+                            raw_editais.append(main_edital)
+                                
+                        # Handle pagination
                         try:
                             next_page_element = page.locator('a:has-text("Próxima Página"), a:has-text("Próxima")').first
                             if next_page_element.count() > 0 and next_page_element.evaluate("el => el.offsetParent !== null") and next_page_element.is_enabled():
-                                logger.info("Moving to next page...")
                                 next_page_element.click()
                                 page.wait_for_load_state('networkidle')
                             else:
-                                # Reached end of pagination
                                 break
                         except Exception:
-                            break # No next page found
+                            break
                 browser.close()
         except Exception as e:
             logger.error(f"Error during playwright extraction: {e}")

@@ -9,6 +9,10 @@ class RawEdital:
     raw_agency: Optional[str] = None
     raw_description: Optional[str] = None
     pdf_content: Optional[bytes] = None
+    document_type: str = "edital" # edital, anexo, alteração, desconhecido
+    group_id: Optional[str] = None
+    is_main: bool = True
+    attachments: List['RawEdital'] = None # Nested attachments
 
 @dataclass
 class EditalDomain:
@@ -22,3 +26,4 @@ class EditalDomain:
     link: str
     cronograma: List[Dict[str, str]]
     tags: List[str]
+    anexos: List[Dict[str, str]] = None # List of {title, url, type}

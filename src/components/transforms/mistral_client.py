@@ -104,6 +104,53 @@ class MistralExtractionService:
                 else:
                     logger.error(f"Max retries reached for {filename}. Returning None.")
                     return None
+    
+    def classify_document_titles(self, titles: List[str]) -> Dict[str, str]:
+        """
+        Uses Mistral to classify a list of document titles within a notice group.
+        Returns a mapping of title -> document_type (edital, anexo, alteração).
+        """
+        if not titles:
+            return {}
+
+        prompt = f"""
+Classifique cada título de documento abaixo em uma das seguintes categorias:
+- 'edital': O documento principal da chamada pública ou concurso.
+- 'anexo': Documentos técnicos, formulários, declarações ou manuais complementares.
+- 'alteração': Aditivos, retificações ou mudanças no edital original.
+
+Retorne APENAS um JSON onde a chave é o título exato e o valor é a categoria.
+
+Títulos:
+{json.dumps(titles, indent=2, ensure_ascii=False)}
+"""
+        try:
+            response = self.client.chat.complete(
+                model=self.llm_model,
+                messages=[
+                    {"role": "system", "content": "Você é um assistente especializado em organizar documentos de editais de fomento."},
+                    {"role": "user", "content": prompt}
+                ],
+                response_format={"type": "json_object"}
+            )
+            
+            raw_json = response.choices[0].message.content
+            classification = json.loads(raw_json)
+            logger.info(f"Classified {len(titles)} titles: {classification}")
+            return classification
+        except Exception as e:
+            logger.error(f"Failed to classify titles: {e}")
+            # Fallback heuristic
+            fallback = {}
+            for t in titles:
+                tl = t.lower()
+                if "anexo" in tl or "formulário" in tl or "declaração" in tl:
+                    fallback[t] = "anexo"
+                elif "alteração" in tl or "retificação" in tl or "aditivo" in tl:
+                    fallback[t] = "alteração"
+                else:
+                    fallback[t] = "edital"
+            return fallback
 
     def _get_extraction_prompt(self, ocr_text: str) -> str:
         return f"""
@@ -118,13 +165,19 @@ O JSON deve seguir exatamente esta estrutura:
     "orgão_fomento": "Nome da instituição (Ex: FAPES)",
     "categoria": "extensão, pesquisa, inovação ou outros",
     "status": "aberto",
-    "data_abertura": "YYYY-MM-DD (OBRIGATÓRIO, use data aproximada se necessário)",
+    "data_abertura": "YYYY-MM-DD",
     "data_encerramento": "YYYY-MM-DD ou \"\"",
     "cronograma": [
-        {{"evento": "Descrição da etapa", "data": "Data ou período"}}
+        {{"evento": "Descrição da etapa", "data": "ISO YYYY-MM-DD ou texto original caso seja data relativa (ex: '5 dias úteis após...')"}}
     ],
     "tags": ["lista", "de", "palavras-chave", "(MÍNIMO 3 TAGS)"]
 }}
+
+IMPORTANTE para o CRONOGRAMA:
+1. Priorize o formato ISO YYYY-MM-DD.
+2. Se houver um intervalo (ex: '10/11/2025 a 16/12/2025'), use apenas a primeira data no formato ISO ('2025-11-10').
+3. Se o texto disser 'A partir de 26/10/2026', use '2026-10-26'.
+4. Se a data for relativa (ex: '5 dias úteis após o resultado preliminar'), mantenha o texto original para processamento posterior.
 
 Texto do Edital:
 {ocr_text}
