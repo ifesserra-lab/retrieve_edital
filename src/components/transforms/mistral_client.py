@@ -152,6 +152,47 @@ Títulos:
                     fallback[t] = "edital"
             return fallback
 
+    FINEP_CATEGORIES = ("divulgação de conhecimento", "extensão", "inovação")
+
+    def categorize_finep_by_description(self, description: str) -> str:
+        """
+        Classifica um edital FINEP em uma das categorias, com base na descrição.
+        Retorna: "divulgação de conhecimento", "extensão" ou "inovação".
+        """
+        if not (description or "").strip():
+            return "inovação"
+        prompt = f"""
+Classifique o edital de chamada pública FINEP abaixo em exatamente UMA destas categorias:
+- divulgação de conhecimento: difusão científica, popularização da ciência, museus, feiras, eventos de divulgação, educação científica para o público.
+- extensão: extensão universitária, projetos que levam conhecimento à comunidade, parcerias universidade-sociedade, ações extensionistas.
+- inovação: PD&I, desenvolvimento tecnológico, inovação em empresas, subvenção econômica, startups, produtos/processos inovadores.
+
+Retorne APENAS um JSON com uma única chave "categoria" e o valor sendo exatamente uma das três opções acima (use a grafia exata).
+
+Descrição do edital:
+{description[:4000]}
+"""
+        try:
+            response = self.client.chat.complete(
+                model=self.llm_model,
+                messages=[
+                    {"role": "system", "content": "Você é um classificador de editais de fomento. Responda apenas com o JSON solicitado."},
+                    {"role": "user", "content": prompt}
+                ],
+                response_format={"type": "json_object"}
+            )
+            data = json.loads(response.choices[0].message.content or "{}")
+            cat = (data.get("categoria") or "").strip().lower()
+            if cat in self.FINEP_CATEGORIES:
+                return cat
+            for allowed in self.FINEP_CATEGORIES:
+                if allowed in cat or cat in allowed:
+                    return allowed
+            return "inovação"
+        except Exception as e:
+            logger.warning("Mistral categorize_finep_by_description failed: %s", e)
+            return "inovação"
+
     def _get_extraction_prompt(self, ocr_text: str) -> str:
         return f"""
 Analise o seguinte texto OCR de um edital de fomento e extraia as informações estruturadas em formato JSON.

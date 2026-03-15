@@ -1,0 +1,83 @@
+{
+    "nome": "FINEP MAIS INOVAÇÃO BRASIL – RODADA 2 – ECONOMIA CIRCULAR E CIDADES SUSTENTÁVEIS",
+    "descrição": "Esta Seleção Pública tem por objetivo conceder recursos de subvenção econômica para atividades de pesquisa, desenvolvimento tecnológico e inovação (PD&I) em projetos inovadores, com risco tecnológico associado, executados por empresas, obrigatoriamente com a parceria de Instituições Científicas, Tecnológicas e de Inovação (ICTs). A iniciativa busca promover o desenvolvimento de tecnologias inovadoras voltadas à Economia Circular e às Cidades Sustentáveis, abrangendo temáticas como o desenvolvimento de produtos e processos que incorporem princípios de circularidade; o desenvolvimento de químicos de base renovável; soluções sustentáveis para água e esgoto, bem como inovações em materiais e sistemas construtivos para moradias e espaços públicos, dentre outras, conforme linhas temáticas definidas no item 2 do Anexo 1 do Regulamento.",
+    "orgão_fomento": "FINEP",
+    "categoria": "inovação",
+    "status": "aberto",
+    "data_abertura": "2026-02-13",
+    "data_encerramento": "2026-08-31",
+    "link": "http://www.finep.gov.br/chamadas-publicas/chamadapublica/777",
+    "cronograma": [
+        {
+            "evento": "Data de publicação",
+            "data": "2026-02-13"
+        },
+        {
+            "evento": "Prazo de envio da proposta",
+            "data": "2026-08-31"
+        }
+    ],
+    "tags": [
+        "BIM - Building Information Modeling",
+        "Bioeconomia",
+        "Cidades inteligentes e sustentáveis",
+        "Bioeconomia",
+        "Química",
+        "Saneamento",
+        "Segurança hídrica",
+        "Sustentabilidade",
+        "inovação"
+    ],
+    "anexos": [
+        {
+            "titulo": "Regulamento",
+            "link": "http://www.finep.gov.br/images/chamadas-publicas/2026/13_02_2026_EC_Regulamento.pdf",
+            "tipo": "Documentos"
+        },
+        {
+            "titulo": "Apresentação - Atualizada em 10/03/2026",
+            "link": "http://www.finep.gov.br/images/chamadas-publicas/2026/11_03_2026_Apresentacao.pptx",
+            "tipo": "Documentos"
+        },
+        {
+            "titulo": "FAQ - Perguntas Frequentes",
+            "link": "http://www.finep.gov.br/images/chamadas-publicas/2026/02_03_2026_EC_FAQ.pdf",
+            "tipo": "Documentos"
+        },
+        {
+            "titulo": "Anexo 1: Características Específicas da Seleção Pública",
+            "link": "http://www.finep.gov.br/images/chamadas-publicas/2026/13_02_2026_EC_Anexo1.pdf",
+            "tipo": "Documentos"
+        },
+        {
+            "titulo": "Anexo 2: Minuta de Termo de Outorga de Subvenção Econômica",
+            "link": "http://www.finep.gov.br/images/chamadas-publicas/2026/13_02_2026_EC_Anexo2.pdf",
+            "tipo": "Documentos"
+        },
+        {
+            "titulo": "Anexo 3: Declaração de ações coletivas",
+            "link": "http://www.finep.gov.br/images/chamadas-publicas/2026/13_02_2026_EC_Anexo3.pdf",
+            "tipo": "Documentos"
+        },
+        {
+            "titulo": "Anexo 4: Declaração ambiental e outros aspectos regulatórios",
+            "link": "http://www.finep.gov.br/images/chamadas-publicas/2026/13_02_2026_EC_Anexo4.pdf",
+            "tipo": "Documentos"
+        },
+        {
+            "titulo": "Anexo 5: Definição do Nível de Maturidade Tecnológica",
+            "link": "http://www.finep.gov.br/images/chamadas-publicas/2026/13_02_2026_EC_Anexo5.pdf",
+            "tipo": "Documentos"
+        },
+        {
+            "titulo": "Anexo 6: Carta de Manifestação de Interesse",
+            "link": "http://www.finep.gov.br/images/chamadas-publicas/2026/13_02_2026_EC_Anexo6.pdf",
+            "tipo": "Documentos"
+        },
+        {
+            "titulo": "Apresentação",
+            "link": "http://www.finep.gov.br/images/chamadas-publicas/2026/13_02_2026_EC_Apresentacao.pdf",
+            "tipo": "Documentos"
+        }
+    ]
+}

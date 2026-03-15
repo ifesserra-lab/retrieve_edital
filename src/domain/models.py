@@ -9,10 +9,14 @@ class RawEdital:
     raw_agency: Optional[str] = None
     raw_description: Optional[str] = None
     pdf_content: Optional[bytes] = None
-    document_type: str = "edital" # edital, anexo, alteração, desconhecido
+    document_type: str = "edital"  # edital, anexo, alteração, desconhecido
     group_id: Optional[str] = None
     is_main: bool = True
-    attachments: List['RawEdital'] = None # Nested attachments
+    attachments: Optional[List['RawEdital']] = None  # Nested attachments
+    # Optional structured data from detail pages (e.g. FINEP chamadapublica)
+    raw_cronograma: Optional[List[Dict[str, str]]] = None  # [{"evento": "...", "data": "YYYY-MM-DD"}]
+    raw_tags: Optional[List[str]] = None
+    raw_anexos: Optional[List[Dict[str, str]]] = None  # [{"titulo": "...", "link": "...", "tipo": "pdf"}]
 
 @dataclass
 class EditalDomain:

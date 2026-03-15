@@ -1,0 +1,63 @@
+{
+    "nome": "FINEP MAIS INOVAÇÃO BRASIL – RODADA 2 – CADEIAS AGROINDUSTRIAIS SUSTENTÁVEIS",
+    "descrição": "Esta Seleção Pública objetiva conceder recursos de subvenção econômica para o desenvolvimento de produtos ou processos inovadores, promovendo o desenvolvimento da agroindústria nacional visando a garantida da segurança alimentar e nutricional da população brasileira. Também visa promover parcerias para o desenvolvimento entre empresas e ICTs, no desenvolvimento de projetos em redes. Orçamento da chamada: R$ 300 milhões Público-alvo: Empresas Em caso de dúvidas e orientações sobre a seleção pública: cp_mib_sbv_agro2@finep.gov.br. Para apresentar sua proposta através da Plataforma de Apoio e Financiamento, verifique abaixo os materiais de orientação para cadastro e preenchimento do formulário no sistema: Manuais Manual do Cliente - Cadastro Manual do Cliente - Formulário de Apresentação de Proposta - FAP Manual do Cliente - Recursos Vídeos Tutorial geral Como se vincular a uma empresa já cadastrada Problemas de acesso à Plataforma da Finep Em caso de dúvida e orientações sobre CADASTRO: cp_cadastroempresas@finep.gov.br",
+    "orgão_fomento": "FINEP",
+    "categoria": "inovação",
+    "status": "aberto",
+    "data_abertura": "2026-02-06",
+    "data_encerramento": "2026-09-30",
+    "link": "http://www.finep.gov.br/chamadas-publicas/chamadapublica/774",
+    "cronograma": [
+        {
+            "evento": "Data de publicação",
+            "data": "2026-02-06"
+        },
+        {
+            "evento": "Prazo de envio da proposta",
+            "data": "2026-09-30"
+        }
+    ],
+    "tags": [
+        "Agricultura, agronegócio e saúde animal",
+        "Foodtech",
+        "Outros",
+        "inovação"
+    ],
+    "anexos": [
+        {
+            "titulo": "FAQ - Perguntas frequentes",
+            "link": "http://www.finep.gov.br/images/chamadas-publicas/2026/19_02_2026_Perguntas_Frequentes_Mais_Inovacao_Cadeias_Agro_Rodada_2.pdf",
+            "tipo": "Documentos"
+        },
+        {
+            "titulo": "Regulamento",
+            "link": "http://www.finep.gov.br/images/chamadas-publicas/2026/06022026_C_Agro_Regulamento.pdf",
+            "tipo": "Documentos"
+        },
+        {
+            "titulo": "Anexo 1: Características Específicas da Seleção Pública",
+            "link": "http://www.finep.gov.br/images/chamadas-publicas/2026/06_02_2026_C_Agro_Anexo1.pdf",
+            "tipo": "Documentos"
+        },
+        {
+            "titulo": "Anexo 2: Minuta de Termo de Outorga de Subvenção Econômica",
+            "link": "http://www.finep.gov.br/images/chamadas-publicas/2026/06_02_2026_C_Agro_Anexo2.pdf",
+            "tipo": "Documentos"
+        },
+        {
+            "titulo": "Anexo 3: Declaração de ações coletivas",
+            "link": "http://www.finep.gov.br/images/chamadas-publicas/2026/06_02_2026_C_Agro_Anexo3.pdf",
+            "tipo": "Documentos"
+        },
+        {
+            "titulo": "Anexo 4: Declaração ambiental e outros aspectos regulatórios",
+            "link": "http://www.finep.gov.br/images/chamadas-publicas/2026/06_02_2026_C_Agro_Anexo4.pdf",
+            "tipo": "Documentos"
+        },
+        {
+            "titulo": "Anexo 5: Definição do Nível de Maturidade Tecnológica",
+            "link": "http://www.finep.gov.br/images/chamadas-publicas/2026/06_02_2026_C_Agro_Anexo5.pdf",
+            "tipo": "Documentos"
+        }
+    ]
+}

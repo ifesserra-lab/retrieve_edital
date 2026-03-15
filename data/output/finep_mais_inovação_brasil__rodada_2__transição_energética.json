@@ -1,0 +1,68 @@
+{
+    "nome": "FINEP MAIS INOVAÇÃO BRASIL – RODADA 2 – TRANSIÇÃO ENERGÉTICA",
+    "descrição": "Esta Seleção Pública tem por objetivo conceder recursos de subvenção econômica para atividades de pesquisa, desenvolvimento tecnológico e inovação (PD&I) em projetos inovadores, com risco tecnológico associado, executados por empresas, obrigatoriamente com a parceria de Instituições Científicas, Tecnológicas e de Inovação (ICTs). A iniciativa busca promover o desenvolvimento de tecnologias essenciais para a transição energética, em temáticas como tecnologias para geração de eletricidade, armazenamento de energia, hidrogênio de baixa emissão de carbono, biocombustíveis, biogás e biometano, captura de carbono, dentre outros, conforme linhas temáticas definidas no item 2 do Anexo 1 do Regulamento.",
+    "orgão_fomento": "FINEP",
+    "categoria": "inovação",
+    "status": "aberto",
+    "data_abertura": "2026-02-06",
+    "data_encerramento": "2026-08-31",
+    "link": "http://www.finep.gov.br/chamadas-publicas/chamadapublica/772",
+    "cronograma": [
+        {
+            "evento": "Data de publicação",
+            "data": "2026-02-06"
+        },
+        {
+            "evento": "Prazo de envio da proposta",
+            "data": "2026-08-31"
+        }
+    ],
+    "tags": [
+        "Bioeconomia",
+        "Combustíveis",
+        "Eficiência energética",
+        "Energia",
+        "Energia renovável",
+        "Petróleo, gás e etanol",
+        "Eficiência energética de veículos movidos a biocombustíveis",
+        "Descarbonização Foco em Hidrogênio Verde - H2V",
+        "inovação"
+    ],
+    "anexos": [
+        {
+            "titulo": "Apresentação",
+            "link": "http://www.finep.gov.br/images/chamadas-publicas/2026/26_02_2026_Apresentacao.pdf",
+            "tipo": "Documentos"
+        },
+        {
+            "titulo": "Regulamento",
+            "link": "http://www.finep.gov.br/images/chamadas-publicas/2026/09_02_2026_T_Energetica_Regulamento.pdf",
+            "tipo": "Documentos"
+        },
+        {
+            "titulo": "Anexo 1: Características Específicas da Seleção Pública",
+            "link": "http://www.finep.gov.br/images/chamadas-publicas/2026/06_02_2026_T_Energetica_Anexo1.pdf",
+            "tipo": "Documentos"
+        },
+        {
+            "titulo": "Anexo 2: Minuta de Termo de Outorga de Subvenção Econômica",
+            "link": "http://www.finep.gov.br/images/chamadas-publicas/2026/06_02_2026_T_Energetica_Anexo2.pdf",
+            "tipo": "Documentos"
+        },
+        {
+            "titulo": "Anexo 3: Declaração de ações coletivas",
+            "link": "http://www.finep.gov.br/images/chamadas-publicas/2026/06_02_2026_T_Energetica_Anexo3.pdf",
+            "tipo": "Documentos"
+        },
+        {
+            "titulo": "Anexo 4: Declaração ambiental e outros aspectos regulatórios",
+            "link": "http://www.finep.gov.br/images/chamadas-publicas/2026/06_02_2026_T_Energetica_Anexo4.pdf",
+            "tipo": "Documentos"
+        },
+        {
+            "titulo": "Anexo 5: Definição do Nível de Maturidade Tecnológica",
+            "link": "http://www.finep.gov.br/images/chamadas-publicas/2026/06_02_2026_T_Energetica_Anexo5.pdf",
+            "tipo": "Documentos"
+        }
+    ]
+}
