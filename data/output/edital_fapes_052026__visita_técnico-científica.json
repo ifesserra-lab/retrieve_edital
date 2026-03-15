@@ -1,6 +1,6 @@
 {
     "nome": "EDITAL FAPES 05/2026 – VISITA TÉCNICO-CIENTÍFICA",
-    "descrição": "Selecionar propostas para concessão de auxílio financeiro à realização de Visita Técnico-Científica em laboratório ou centro de pesquisa, desenvolvimento ou inovação (PD&I), no país ou no exterior. O objetivo é aprimorar e desenvolver técnicas ou processos e adquirir conhecimentos específicos vinculados a projetos de PD&I desenvolvidos em Instituições de Ensino e/ou Pesquisa (IES/P) no estado do Espírito Santo. Os objetivos específicos incluem estimular o intercâmbio e a atualização de conhecimentos entre pesquisadores e alunos nas áreas de Ciência, Tecnologia e Inovação (CT&I), apoiar a formação de alunos de pós-graduação e fortalecer os Programas de Pós-Graduação do Espírito Santo.",
+    "descrição": "Selecionar propostas para concessão de auxílio financeiro à realização de Visita Técnico-Científica em laboratório ou centro de pesquisa, desenvolvimento ou inovação (PD&I), no país ou no exterior. O objetivo é aprimorar e desenvolver técnicas ou processos e adquirir conhecimentos específicos vinculados a projetos de PD&I desenvolvidos em Instituições de Ensino e/ou Pesquisa (IES/P) no estado do Espírito Santo, estimulando o intercâmbio e a atualização de conhecimentos entre pesquisadores e alunos, a formação de alunos de pós-graduação e o apoio aos Programas de Pós-Graduação do Espírito Santo.",
     "orgão_fomento": "FAPES",
     "categoria": "divulgação de conhecimento",
     "status": "aberto",
@@ -15,10 +15,6 @@
         {
             "evento": "1ª Chamada - Período de submissão",
             "data": "2026-02-09"
-        },
-        {
-            "evento": "1ª Chamada - Prazo para envio de dúvidas",
-            "data": "2026-03-10"
         },
         {
             "evento": "1ª Chamada - Divulgação do resultado preliminar",
@@ -37,10 +33,6 @@
             "data": "2026-03-17"
         },
         {
-            "evento": "2ª Chamada - Prazo para envio de dúvidas",
-            "data": "2026-04-22"
-        },
-        {
             "evento": "2ª Chamada - Divulgação do resultado preliminar",
             "data": "2026-05-22"
         },
@@ -55,10 +47,6 @@
         {
             "evento": "3ª Chamada - Período de submissão",
             "data": "2026-07-01"
-        },
-        {
-            "evento": "3ª Chamada - Prazo para envio de dúvidas",
-            "data": "2026-08-18"
         },
         {
             "evento": "3ª Chamada - Divulgação do resultado preliminar",
@@ -77,8 +65,8 @@
         "visita técnico-científica",
         "pesquisa e desenvolvimento",
         "intercâmbio acadêmico",
-        "pós-graduação",
-        "inovação"
+        "auxílio financeiro",
+        "pós-graduação"
     ],
     "anexos": []
 }

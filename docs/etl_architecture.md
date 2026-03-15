@@ -1,48 +1,64 @@
-# System Architecture: ETL Pipeline for FAPES Editais
+# System Architecture: ETL Pipeline (FAPES e FINEP)
 
 **Author**: Horizon Project Agent
-**Date**: 2026-03-08
+**Date**: 2026-03-15
 **Status**: Approved
 
 ## Overview
-Este documento de arquitetura descreve o design de sistema (System Design Document - SDD) para os pipelines de ETL (Extract, Transform, Load) do projeto `retrieve_edital`. O objetivo central deste sistema é extrair dados brutos de chamadas públicas (editais) do portal da FAPES, normalizá-los e gravá-los como cargas JSON individuais.
+Este documento descreve o design dos pipelines ETL (Extract, Transform, Load) do projeto `retrieve_edital`. O sistema extrai dados de chamadas públicas (editais) de **FAPES** e **FINEP**, normaliza e grava um JSON por edital em `data/output/`.
 
 ## Architecture Diagram
 
-O diagrama abaixo ilustra a arquitetura baseada no padrão T-Shape (Source, Transform, Sink), promovendo um altíssimo desacoplamento entre extração web, regras de negócio e camada de persistência.
+Padrão T-Shape (Source, Transform, Sink); múltiplos Sources podem ser injetados no mesmo Transform e Sink.
 
 ```mermaid
 graph TB
-    A[FAPES Portal] -->|Playwright/HTTP| B[Source: FapesSource]
-    B -->|Raw Python Dicts| C[Transform: EditalNormalizer]
-    C -->|Validated Domain Objects| D[Sink: JSONWriter]
-    D -->|Persistenced Files| E[(Local Disk / JSON Repo)]
+    subgraph Sources
+        A1[FAPES Portal] -->|Playwright| B1[FapesSource]
+        A2[FINEP Chamadas Abertas] -->|Playwright| B2[FinepSource]
+        B2 -->|Por chamada| A3[FINEP Página de detalhe]
+        A3 -->|descrição, cronograma, tags, anexos| B2
+    end
+    B1 --> C[EditalNormalizer]
+    B2 --> C
+    C -->|Mistral: OCR/PDF ou categorização FINEP| C
+    C --> D[LocalJSONSink]
+    D --> E[(data/output/*.json)]
 ```
+
+## Fluxos (Flows)
+
+| Fluxo | Arquivo | Source | Descrição |
+|-------|---------|--------|-----------|
+| FAPES | `src/flows/ingest_fapes_flow.py` | `FapesSource` | Editais FAPES (múltiplas URLs), PDF + Mistral OCR quando disponível, carga incremental por títulos já persistidos. |
+| FINEP | `src/flows/ingest_finep_flow.py` | `FinepSource` | Chamadas abertas FINEP; para cada link, acessa a página de detalhe e extrai descrição, cronograma, Tema(s)→tags, tabela Documentos→anexos; categorização Mistral (divulgação de conhecimento / extensão / inovação). Filtro de prazo por ano (`REFERENCE_YEAR`). |
+
+## Configuração global
+
+- **`src/config.py`**: `get_reference_year(override)` — ano de referência para filtro de prazos (FINEP). Ordem: parâmetro > env `REFERENCE_YEAR` > ano atual.
+- **`.env`**: `MISTRAL_API_KEY` (obrigatório para Mistral OCR e categorização FINEP), opcionalmente `REFERENCE_YEAR`.
 
 ## Components
 
 ### Component 1: Source (Extract)
-- **Responsibility**: Extrair estritamente os dados brutos. Não deve conhecer regras de negócio nem realizar limpezas profundas. Abstraído pela interface `ISource`.
-- **Technology Stack**: Python, Playwright
-- **Interfaces**: Retorna `List[RawEdital]` ou um conjunto de dicionários nativos.
+- **Responsibility**: Extrair dados brutos. Não aplica regras de negócio profundas. Abstraído por `ISource`.
+- **Implementações**:
+  - **FapesSource**: Múltiplas URLs FAPES, paginação, download de PDFs, classificação de títulos (Mistral), retorna `List[RawEdital]`.
+  - **FinepSource**: Listagem FINEP (situação=aberta), filtro por ano de prazo; para cada resultado abre a página de detalhe e preenche descrição, cronograma, tags, anexos em `RawEdital` (campos `raw_cronograma`, `raw_tags`, `raw_anexos`). Ver [finep_source.md](finep_source.md).
 
 ### Component 2: Transform (Process)
-- **Responsibility**: Aplicar validações de domínio, limpeza de strings, remoção de espaços e padronização de nomenclatura de órgãos de fomento. Abstraído pela interface `ITransform`.
-- **Technology Stack**: Python puro.
-- **Interfaces**: Recebe `RawEdital`, retorna objeto de validação estrita (ex: `EditalDomain`).
+- **Responsibility**: Validar e normalizar para `EditalDomain`; aplicar regras de datas (data de publicação → `data_abertura`, prazo de envio → `data_encerramento`); para FINEP, categorizar via Mistral (divulgação de conhecimento / extensão / inovação) com base na descrição.
+- **Technology Stack**: Python, Mistral (OCR para PDF FAPES; chat para categorização FINEP).
+- **Interfaces**: Recebe `RawEdital`, retorna `EditalDomain`.
 
 ### Component 3: Sink (Load)
-- **Responsibility**: Receber os objetos de domínio em memória e gravá-los na camada de persistência sob as regras acordadas (1 arquivo JSON formatado por edital). Abstraído pela interface `ISink`.
-- **Technology Stack**: Python `json` dinâmico ou adaptadores Cloud.
-- **Interfaces**: Recebe `List[EditalDomain]`, salva no destino sem alterar os valores.
+- **Responsibility**: Gravar `List[EditalDomain]` em arquivos JSON (1 por edital) em `data/output/`. Abstraído por `ISink`.
+- **Implementação**: `LocalJSONSink`.
 
 ## Data Flow
 
-A movimentação da informação segue uma direção imutável através do fluxo (Flow):
-1. O processo agendado (Cron via GitHub Actions) inicializa as dependências em memória (`ingest_fapes_flow.py`).
-2. O `Source` carrega a página `https://fapes.es.gov.br/difusao-do-conhecimento` e itera a paginação, entregando dados rústicos extraídos da Web.
-3. A lista inteira é enviada iterativamente para o `Transform`, que avalia erros em blocos (`try/except`) individuais, removendo dados imprestáveis e tipando os saudáveis.
-4. Por fim, a lista enriquecida e limpa é delegada para o `Sink`, que realiza a operação massiva de `I/O` para a criação dos artefatos `edital_[ID].json`.
+1. **Fluxo FAPES**: `ingest_fapes_flow` → `FapesSource.read()` (paginação, PDFs, classificação) → `EditalNormalizer.process()` (com ou sem Mistral OCR por item) → `LocalJSONSink.write()`.
+2. **Fluxo FINEP**: `ingest_finep_flow` → `FinepSource.read()` (listagem + uma requisição por página de detalhe) → `EditalNormalizer.process()` (usa `raw_cronograma`/`raw_tags`/`raw_anexos` e chama Mistral para categoria) → `LocalJSONSink.write()`.
 
 ## Key Design Decisions
 
@@ -65,21 +81,28 @@ A movimentação da informação segue uma direção imutável através do fluxo
 
 ## Directory Structure
 
-A aderência a esta estrutura é mandatória para respeitar o isolamento arquitetural das diretrizes `clean-code`:
-
 ```text
 src/
-├── core/              # Classes abstratas (ISource, ITransform, ISink) genéricas
-├── components/        # Conectores reais
-│   ├── sources/       # (Onde FapesSource reside)
-│   ├── transforms/    # (Onde EditalNormalizer reside)
-│   └── sinks/         # (Onde JSONWriter reside)
-├── flows/             # Pipeline orquestrado integrando as partes
-└── domain/            # Models de dados base de negócio
+├── config.py          # get_reference_year() — REFERENCE_YEAR / ano atual
+├── core/              # ISource, ITransform, ISink
+├── domain/            # RawEdital (incl. raw_cronograma, raw_tags, raw_anexos), EditalDomain
+├── components/
+│   ├── sources/       # FapesSource, FinepSource
+│   ├── transforms/    # EditalNormalizer, date_utils, mistral_client
+│   └── sinks/         # LocalJSONSink
+└── flows/             # ingest_fapes_flow, ingest_finep_flow
 ```
 
+## Modelo de dados (extensões para FINEP)
+
+- **RawEdital** pode carregar dados já estruturados da página de detalhe:
+  - `raw_cronograma`: lista `[{"evento": "...", "data": "YYYY-MM-DD"}]` (ex.: data de publicação, prazo de envio).
+  - `raw_tags`: lista de strings (ex.: temas do campo Tema(s)).
+  - `raw_anexos`: lista `[{"titulo": "...", "link": "...", "tipo": "Documentos"}]` (tabela Documentos da FINEP).
+- O **EditalNormalizer** usa esses campos quando presentes e mapeia datas para `data_abertura` / `data_encerramento`; para FINEP ainda chama Mistral para definir `categoria`.
+
 ## Scalability
-O sistema escala não pelo volume (existem poucas centenas de editais concorrentes), mas pela manutenção (Adição de novos fomentadores no futuro: FAPEMIG, CNPq). Com as interfaces definidas, escalar é uma questão de criar um novo pacote `<Agencia>Source` e injetar no Flow correspondente.
+O sistema escala pela manutenção: novos fomentadores (FAPEMIG, CNPq, etc.) exigem um novo `*Source` e um flow que o injete. As interfaces `ISource`, `ITransform` e `ISink` permanecem estáveis.
 
 ## Monitoring and Observability
 - O fluxo roda em *Headless Mode* dentro de um runner do GitHub Actions.

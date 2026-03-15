@@ -3,11 +3,55 @@ import logging
 import base64
 import json
 import time
-from typing import Optional, Dict, Any, List
+from typing import Optional, Dict, Any, List, Callable, TypeVar
 from mistralai import Mistral
 from src.domain.models import EditalDomain
 
 logger = logging.getLogger(__name__)
+
+T = TypeVar("T")
+
+# Retry config for rate limit (429)
+RATE_LIMIT_MAX_RETRIES = 10
+RATE_LIMIT_INITIAL_WAIT_SEC = 60
+RATE_LIMIT_BACKOFF_FACTOR = 2.0
+
+
+def _is_rate_limit_error(exc: Exception) -> bool:
+    s = str(exc).lower()
+    return "429" in s or "rate" in s and "limit" in s or "rate_limited" in s
+
+
+def _call_with_rate_limit_retry(
+    fn: Callable[[], T],
+    context: str = "",
+) -> T:
+    """
+    Executes fn(); on 429 (rate limit) retries with exponential backoff.
+    Does not stop: retries up to RATE_LIMIT_MAX_RETRIES times.
+    """
+    last_exc = None
+    for attempt in range(RATE_LIMIT_MAX_RETRIES):
+        try:
+            return fn()
+        except Exception as e:
+            last_exc = e
+            if not _is_rate_limit_error(e) or attempt == RATE_LIMIT_MAX_RETRIES - 1:
+                raise
+            wait_sec = RATE_LIMIT_INITIAL_WAIT_SEC * (RATE_LIMIT_BACKOFF_FACTOR ** attempt)
+            logger.warning(
+                "Rate limit hit (%s). Waiting %.0fs before retry %s/%s. Context: %s",
+                e,
+                wait_sec,
+                attempt + 1,
+                RATE_LIMIT_MAX_RETRIES,
+                context or "Mistral API",
+            )
+            time.sleep(wait_sec)
+    if last_exc is not None:
+        raise last_exc
+    raise RuntimeError("Unexpected retry exit")
+
 
 class MistralExtractionService:
     """
@@ -32,48 +76,54 @@ class MistralExtractionService:
             try:
                 logger.info(f"Uploading PDF {filename} to Mistral for OCR (Attempt {attempt})...")
                 
-                # 1. Upload file for OCR
-                # Mistral client.files.upload takes a file object or a dictionary with content
-                uploaded_file = self.client.files.upload(
-                    file={
-                        "file_name": filename,
-                        "content": pdf_bytes,
-                    },
-                    purpose="ocr"
+                # 1. Upload file for OCR (with rate-limit retry)
+                uploaded_file = _call_with_rate_limit_retry(
+                    lambda: self.client.files.upload(
+                        file={
+                            "file_name": filename,
+                            "content": pdf_bytes,
+                        },
+                        purpose="ocr",
+                    ),
+                    context=f"upload {filename}",
                 )
                 uploaded_file_id = uploaded_file.id
                 
                 logger.info(f"File uploaded with ID: {uploaded_file_id}. Processing OCR...")
                 
-                # 2. Process OCR
-                ocr_response = self.client.ocr.process(
-                    model=self.ocr_model,
-                    document={
-                        "type": "file",
-                        "file_id": uploaded_file_id
-                    }
+                # 2. Process OCR (with rate-limit retry)
+                ocr_response = _call_with_rate_limit_retry(
+                    lambda: self.client.ocr.process(
+                        model=self.ocr_model,
+                        document={
+                            "type": "file",
+                            "file_id": uploaded_file_id,
+                        },
+                    ),
+                    context=f"OCR {filename}",
                 )
                 
                 # Concatenate all pages text
-                # The structure of ocr_response might vary, but usually it has a 'pages' list
                 full_ocr_text = ""
                 for page in ocr_response.pages:
-                    full_ocr_text += f"\n{page.markdown}" # markdown is common for mistral ocr
+                    full_ocr_text += f"\n{page.markdown}"
                 
                 logger.info("OCR completed. Extracting structured data...")
                 
-                # 3. Extract structured data via LLM
-                # Delay to respect rate limits if processing many items
-                time.sleep(5)
+                # 3. Extract structured data via LLM (with rate-limit retry)
+                time.sleep(2)
                 prompt = self._get_extraction_prompt(full_ocr_text)
                 
-                response = self.client.chat.complete(
-                    model=self.llm_model,
-                    messages=[
-                        {"role": "system", "content": "Você é um especialista em análise de editais públicos de fomento (FAPES, CNPq, etc)."},
-                        {"role": "user", "content": prompt}
-                    ],
-                    response_format={"type": "json_object"}
+                response = _call_with_rate_limit_retry(
+                    lambda: self.client.chat.complete(
+                        model=self.llm_model,
+                        messages=[
+                            {"role": "system", "content": "Você é um especialista em análise de editais públicos de fomento (FAPES, CNPq, etc)."},
+                            {"role": "user", "content": prompt},
+                        ],
+                        response_format={"type": "json_object"},
+                    ),
+                    context=f"extract LLM {filename}",
                 )
                 
                 raw_json = response.choices[0].message.content
@@ -88,22 +138,18 @@ class MistralExtractionService:
                 return self._map_to_domain(extracted_data)
     
             except Exception as e:
-                logger.error(f"Mistral extraction failed for {filename} on attempt {attempt}: {e}")
-                
+                logger.error("Mistral extraction failed for %s on attempt %s: %s", filename, attempt, e)
                 if uploaded_file_id:
-                    # Attempt cleanup on failure
                     try:
                         self.client.files.delete(file_id=uploaded_file_id)
                     except Exception:
                         pass
-
-                if attempt < max_retries:
-                    wait_time = attempt * 15
-                    logger.info(f"Waiting {wait_time} seconds before retrying...")
-                    time.sleep(wait_time)
-                else:
-                    logger.error(f"Max retries reached for {filename}. Returning None.")
+                if attempt >= max_retries:
+                    logger.error("Max retries reached for %s. Returning None.", filename)
                     return None
+                wait_time = 120 if _is_rate_limit_error(e) else attempt * 15
+                logger.info("Waiting %s seconds before next attempt...", wait_time)
+                time.sleep(wait_time)
     
     def classify_document_titles(self, titles: List[str]) -> Dict[str, str]:
         """
@@ -125,18 +171,20 @@ Títulos:
 {json.dumps(titles, indent=2, ensure_ascii=False)}
 """
         try:
-            response = self.client.chat.complete(
-                model=self.llm_model,
-                messages=[
-                    {"role": "system", "content": "Você é um assistente especializado em organizar documentos de editais de fomento."},
-                    {"role": "user", "content": prompt}
-                ],
-                response_format={"type": "json_object"}
+            response = _call_with_rate_limit_retry(
+                lambda: self.client.chat.complete(
+                    model=self.llm_model,
+                    messages=[
+                        {"role": "system", "content": "Você é um assistente especializado em organizar documentos de editais de fomento."},
+                        {"role": "user", "content": prompt},
+                    ],
+                    response_format={"type": "json_object"},
+                ),
+                context="classify_document_titles",
             )
-            
             raw_json = response.choices[0].message.content
             classification = json.loads(raw_json)
-            logger.info(f"Classified {len(titles)} titles: {classification}")
+            logger.info("Classified %s titles: %s", len(titles), classification)
             return classification
         except Exception as e:
             logger.error(f"Failed to classify titles: {e}")
@@ -173,13 +221,16 @@ Descrição do edital:
 {description[:4000]}
 """
         try:
-            response = self.client.chat.complete(
-                model=self.llm_model,
-                messages=[
-                    {"role": "system", "content": "Você é um classificador de editais de fomento. Responda apenas com o JSON solicitado."},
-                    {"role": "user", "content": prompt}
-                ],
-                response_format={"type": "json_object"}
+            response = _call_with_rate_limit_retry(
+                lambda: self.client.chat.complete(
+                    model=self.llm_model,
+                    messages=[
+                        {"role": "system", "content": "Você é um classificador de editais de fomento. Responda apenas com o JSON solicitado."},
+                        {"role": "user", "content": prompt},
+                    ],
+                    response_format={"type": "json_object"},
+                ),
+                context="categorize_finep",
             )
             data = json.loads(response.choices[0].message.content or "{}")
             cat = (data.get("categoria") or "").strip().lower()

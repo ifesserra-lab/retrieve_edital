@@ -2,15 +2,18 @@
 
 ## Objetivo
 
-O **FinepSource** extrai chamadas públicas em situação **aberta** do portal da FINEP e entrega apenas aquelas cujo **Prazo para envio de propostas** termina no **ano de referência** ou no **ano seguinte**. Para cada chamada, o source **acessa a página de detalhe** (ex.: `http://www.finep.gov.br/chamadas-publicas/chamadapublica/777`) e extrai:
+O **FinepSource** extrai chamadas públicas em situação **aberta** do portal da FINEP e entrega apenas aquelas cujo **Prazo para envio de propostas** termina no **ano de referência** ou no **ano seguinte**. Para cada chamada, o source **acessa a página de detalhe** e extrai:
 
-- **Descrição:** texto inicial da página (ex.: "Esta Seleção Pública tem por objetivo conceder recursos de subvenção econômica...")
-- **Cronograma:** Data de publicação e Prazo para envio de propostas até (como itens de cronograma)
-- **Tags:** temas listados no campo Tema(s), separados por `;`
-- **Anexos:** links da tabela de Documentos (nome do documento + link para PDF/documento)
+| Dado na página | Uso no pipeline |
+|----------------|------------------|
+| Texto inicial (“Esta Seleção Pública tem por objetivo…”) | **Descrição** do edital |
+| Data de publicação | **Cronograma** + **data_abertura** |
+| Prazo para envio de propostas até | **Cronograma** + **data_encerramento** |
+| Tema(s) (separados por `;`) | **Tags** |
+| Tabela **Documentos** (nome + link) | **Anexos** (`tipo`: "Documentos") |
 
 - **Listagem:** [Chamadas Públicas - Situação Aberta](http://www.finep.gov.br/chamadas-publicas/chamadaspublicas?situacao=aberta)
-- **Detalhe (ex.):** [Chamada 777](http://www.finep.gov.br/chamadas-publicas/chamadapublica/777)
+- **Detalhe (ex.):** [chamadapublica/777](http://www.finep.gov.br/chamadas-publicas/chamadapublica/777)
 
 ## Variável de ano (referência)
 
@@ -22,34 +25,54 @@ O ano usado no filtro de prazo é configurável:
 | Variável de ambiente `REFERENCE_YEAR` | 2 |
 | Ano atual do sistema | 3 |
 
-Exemplos:
+Implementação: `src.config.get_reference_year()`.
 
-- Usar ano atual (padrão): não defina `REFERENCE_YEAR` e não passe `reference_year` no construtor.
-- Fixar em 2026: no `.env` defina `REFERENCE_YEAR=2026` ou use `FinepSource(reference_year=2026)`.
-- Injetar em fluxo: `run_pipeline(source=FinepSource(reference_year=2027))`.
+## Categorização (Transform)
 
-Implementação centralizada em `src.config.get_reference_year()`.
+No **EditalNormalizer**, para editais FINEP a **categoria** é definida pelo **Mistral** com base na descrição, em uma de:
 
-## Uso no pipeline
+- **divulgação de conhecimento**
+- **extensão**
+- **inovação**
+
+Requer `MISTRAL_API_KEY` no ambiente.
+
+## Fluxo recomendado: ingest_finep_flow
+
+Use o fluxo dedicado FINEP em `src/flows/ingest_finep_flow.py`:
+
+```bash
+# Só a primeira página (teste)
+python -m src.flows.ingest_finep_flow
+
+# Todas as páginas da listagem
+python -m src.flows.ingest_finep_flow --all
+```
+
+Parâmetros opcionais via código:
+
+```python
+from src.flows.ingest_finep_flow import run_pipeline
+
+run_pipeline(reference_year=2026, max_pages=1)  # 1ª página, ano 2026
+run_pipeline(reference_year=2027, max_pages=None)  # todas as páginas, ano 2027
+```
+
+## Uso do Source diretamente
 
 ```python
 from src.components.sources.finep_source import FinepSource
-from src.flows.ingest_fapes_flow import run_pipeline
+from src.flows.ingest_finep_flow import run_pipeline
 
-# Ano pelo .env ou ano atual
-source = FinepSource()
-run_pipeline(source=source, ...)
-
-# Ano fixo
-source = FinepSource(reference_year=2026)
-run_pipeline(source=source, ...)
+source = FinepSource(reference_year=2026, max_pages=1)
+run_pipeline(source=source)
 ```
 
 ## Contrato (ISource)
 
 - **Entrada:** nenhuma (lê da URL configurada).
-- **Saída:** `List[RawEdital]`, com `raw_agency="FINEP"`, `document_type="edital"`, e apenas itens cujo prazo (campo “Prazo para envio de propostas até”) tem ano em `[reference_year, reference_year + 1]`.
+- **Saída:** `List[RawEdital]` com `raw_agency="FINEP"`, `document_type="edital"`, e apenas itens cujo prazo tem ano em `[reference_year, reference_year + 1]`. Campos opcionais preenchidos quando disponíveis: `raw_cronograma`, `raw_tags`, `raw_anexos`.
 
 ## Paginação
 
-O source percorre todas as páginas de resultados (link “Próx”/“Próxima”) até não haver mais páginas.
+O source percorre todas as páginas de resultados (link “Próx”/“Próxima”) até não haver mais páginas. O parâmetro **`max_pages`** (ex.: `1`) limita o número de páginas para testes.

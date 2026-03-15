@@ -15,7 +15,7 @@ falls in the reference year or the next year.
 import logging
 import re
 from datetime import datetime
-from typing import List, Optional, Tuple
+from typing import List, Optional, Set, Tuple
 from urllib.parse import urljoin
 
 from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout
@@ -103,12 +103,14 @@ class FinepSource(ISource[RawEdital]):
         start_url: str = FINEP_CHAMADAS_ABERTAS_URL,
         reference_year: Optional[int] = None,
         max_pages: Optional[int] = None,
+        processed_urls: Optional[Set[str]] = None,
     ):
         self.start_url = start_url
         self.reference_year = (
             reference_year if reference_year is not None else get_reference_year()
         )
         self.max_pages = max_pages  # None = all pages; 1 = only first page (e.g. for quick test)
+        self.processed_urls = processed_urls or set()
         logger.info(
             "FinepSource using reference_year=%s (deadline filter: %s or %s)%s",
             self.reference_year,
@@ -187,6 +189,9 @@ class FinepSource(ISource[RawEdital]):
                                 self.reference_year,
                                 self.reference_year + 1,
                             )
+                            continue
+                        if detail_url in self.processed_urls:
+                            logger.debug("Skipping already processed: %s", detail_url)
                             continue
                         detail_links.append((detail_url, title))
 

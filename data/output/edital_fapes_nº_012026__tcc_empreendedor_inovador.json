@@ -1,6 +1,6 @@
 {
     "nome": "EDITAL FAPES Nº 01/2026 – TCC EMPREENDEDOR INOVADOR",
-    "descrição": "O edital tem por objeto a concessão de bolsas de apoio a Trabalhos de Conclusão de Curso (TCC) para estudantes de graduação, com foco em inovação, empreendedorismo e aplicabilidade prática. Os TCCs devem apresentar soluções inovadoras e empreendedoras, com fundamentação teórico-metodológica consistente, voltadas para aplicação prática e impacto econômico, social e/ou ambiental no Estado do Espírito Santo. As propostas devem estar alinhadas aos Objetivos de Desenvolvimento Sustentável (ODS) da ONU, especialmente os ODS 4, 8, 9, 10 e 17, e ao Plano ES 500 Anos.",
+    "descrição": "O edital tem por objeto a concessão de bolsas de apoio a Trabalhos de Conclusão de Curso (TCC) para estudantes de graduação, com foco em inovação, empreendedorismo e aplicabilidade prática. Visa incentivar o desenvolvimento de TCCs que apresentem soluções inovadoras e empreendedoras, alinhadas aos Objetivos de Desenvolvimento Sustentável (ODS) da ONU e ao Plano ES 500 Anos, com potencial de geração de valor, criação de negócios ou produtos inovadores, e impacto socioeconômico e ambiental no Espírito Santo.",
     "orgão_fomento": "FAPES",
     "categoria": "extensão",
     "status": "aberto",
@@ -77,8 +77,8 @@
         "TCC",
         "inovação",
         "empreendedorismo",
-        "Espírito Santo",
-        "bolsas"
+        "bolsas",
+        "Espírito Santo"
     ],
     "anexos": [
         {

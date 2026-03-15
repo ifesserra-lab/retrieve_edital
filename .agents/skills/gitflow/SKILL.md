@@ -41,3 +41,12 @@ git checkout -b <new_branch_name>
 -   **Production Release** -> `release/` (from `develop`)
 -   **Critical Production Fix** -> `hotfix/` (from `master`)
 *Ref: [references/branching-model.md](references/branching-model.md)*
+
+### 3. Pipelines do projeto (validação local / CI)
+O repositório possui dois fluxos ETL. Ao validar o código ou antes de abrir PR, considere rodar ambos:
+
+- **FAPES**: `python -m src.flows.ingest_fapes_flow`
+- **FINEP** (1ª página): `python -m src.flows.ingest_finep_flow`
+- **FINEP** (todas as páginas): `python -m src.flows.ingest_finep_flow --all`
+
+Requisitos: `pip install -r requirements.txt`, `playwright install chromium`, e para Mistral (FINEP/FAPES): `MISTRAL_API_KEY` no `.env`.

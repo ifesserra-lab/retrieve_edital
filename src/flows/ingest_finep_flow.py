@@ -10,6 +10,7 @@ from src.components.sources.finep_source import FinepSource
 from src.components.transforms.edital_normalizer import EditalNormalizer
 from src.components.sinks.json_sink import LocalJSONSink
 from src.domain.models import RawEdital, EditalDomain
+from src.processed_store import get_keys_set, add_many, DEFAULT_PATH
 
 load_dotenv()
 
@@ -22,15 +23,19 @@ def run_pipeline(
     sink: Optional[ISink[EditalDomain]] = None,
     reference_year: Optional[int] = None,
     max_pages: Optional[int] = None,
+    processed_index_path: str = DEFAULT_PATH,
 ) -> None:
     """
     Orquestra o ETL de chamadas públicas FINEP (extract → transform → sink).
+    Usa processed_editais.json para não reprocessar chamadas já processadas.
     Por padrão usa FinepSource com ano de referência do ambiente (REFERENCE_YEAR)
     ou ano atual. Opcionalmente limita à primeira página com max_pages=1.
     """
+    processed_urls = get_keys_set("finep", path=processed_index_path)
     source = source or FinepSource(
         reference_year=reference_year or get_reference_year(),
         max_pages=max_pages,
+        processed_urls=processed_urls,
     )
     transform = transform or EditalNormalizer()
     sink = sink or LocalJSONSink()
@@ -75,6 +80,7 @@ def run_pipeline(
     logger.info("Phase 3: Load/Sink")
     if valid_domains:
         sink.write(valid_domains)
+        add_many("finep", [d.link for d in valid_domains], path=processed_index_path)
         logger.info("Pipeline completed successfully.")
     else:
         logger.warning("No valid domains to sink. Pipeline finished with warnings.")

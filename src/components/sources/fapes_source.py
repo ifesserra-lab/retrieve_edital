@@ -5,6 +5,7 @@ from playwright.sync_api import sync_playwright, TimeoutError
 from src.core.interfaces import ISource
 from src.domain.models import RawEdital
 from src.components.transforms.mistral_client import MistralExtractionService
+from src.components.sinks.json_sink import key_from_nome
 
 logger = logging.getLogger(__name__)
 
@@ -36,11 +37,6 @@ class FapesSource(ISource[RawEdital]):
         except Exception as e:
             logger.error(f"Error downloading PDF from {url}: {e}")
         return None
-
-    def _sanitize(self, filename: str) -> str:
-        keepcharacters = (' ', '.', '_', '-')
-        sanitized = "".join(c for c in filename if c.isalnum() or c in keepcharacters).rstrip()
-        return sanitized.replace(' ', '_').lower()
 
     def read(self) -> List[RawEdital]:
         raw_editais: List[RawEdital] = []
@@ -174,7 +170,7 @@ class FapesSource(ISource[RawEdital]):
                                     # If it's unique but generic, it's likely the edital itself.
                                     doc_type = "edital"
 
-                                safe_title = self._sanitize(title)
+                                safe_title = key_from_nome(title)
                                 if safe_title in self.processed_titles:
                                     continue
                                 

@@ -8,6 +8,7 @@ from src.components.sources.fapes_source import FapesSource
 from src.components.transforms.edital_normalizer import EditalNormalizer
 from src.components.sinks.json_sink import LocalJSONSink
 from src.domain.models import RawEdital, EditalDomain
+from src.processed_store import get_keys_set, add_many, DEFAULT_PATH
 
 # Load environment variables from .env file
 load_dotenv()
@@ -17,13 +18,15 @@ logger = logging.getLogger(__name__)
 def run_pipeline(
     source: ISource[RawEdital] = None,
     transform: ITransform[RawEdital, EditalDomain] = None,
-    sink: ISink[EditalDomain] = None
+    sink: ISink[EditalDomain] = None,
+    processed_index_path: str = DEFAULT_PATH,
 ) -> None:
     """
     Orchestrates the ETL execution injecting dependencies.
+    Uses processed_editais.json to skip already-processed editais.
     """
-    processed_titles = set()
     output_dir = "data/output"
+    processed_titles = get_keys_set("fapes", path=processed_index_path)
     if os.path.exists(output_dir):
         for file in os.listdir(output_dir):
             if file.endswith(".json"):
@@ -70,6 +73,8 @@ def run_pipeline(
     logger.info("Phase 3: Load/Sink")
     if valid_domains:
         sink.write(valid_domains)
+        keys = [sink.basename_for(d, index=i) for i, d in enumerate(valid_domains, start=1)]
+        add_many("fapes", keys, path=processed_index_path)
         logger.info("Pipeline completed successfully.")
     else:
         logger.warning("No valid domains to sink. Pipeline finished with warnings.")
