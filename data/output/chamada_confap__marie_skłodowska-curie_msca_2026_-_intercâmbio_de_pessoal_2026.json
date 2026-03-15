@@ -1,0 +1,47 @@
+{
+    "nome": "CHAMADA CONFAP & MARIE SKŁODOWSKA-CURIE (MSCA) 2026 - INTERCÂMBIO DE PESSOAL 2026",
+    "descrição": "Apoiar a participação de pesquisadores e instituições do Brasil em projetos colaborativos de mobilidade e pesquisa de excelência científica, no contexto do programa Horizon Europe – Chamada Marie Skłodowska-Curie Staff Exchange. A chamada visa fomentar intercâmbios envolvendo países da União Europeia e associados ao Horizon Europe, abrangendo aspectos inovadores em qualquer área do conhecimento.",
+    "orgão_fomento": "FAPES",
+    "categoria": "chamadas",
+    "status": "aberto",
+    "data_abertura": "2025-12-16",
+    "data_encerramento": "2026-04-16",
+    "link": "https://fapes.es.gov.br/Media/fapes/Editais/Diretrizes_Chamada_Internacional_Marie_2026..pdf",
+    "cronograma": [
+        {
+            "evento": "Lançamento da chamada de propostas pela MSCA",
+            "data": "2025-12-16"
+        },
+        {
+            "evento": "Prazo final para submissão de propostas no SigFapes",
+            "data": "2026-04-16"
+        },
+        {
+            "evento": "Prazo final para submissão da proposta geral à chamada MSCA Staff Exchanges – SE 2026 no portal do programa Horizon Europe",
+            "data": "2026-04-16"
+        },
+        {
+            "evento": "Prazo previsto para início dos projetos financiados",
+            "data": "2027-01-01"
+        }
+    ],
+    "tags": [
+        "intercâmbio",
+        "pesquisa colaborativa",
+        "Horizon Europe",
+        "mobilidade internacional",
+        "inovação"
+    ],
+    "anexos": [
+        {
+            "titulo": "PUBLICAÇÃO CONFAP - Marie Skłodowska-Curie (Intercâmbio de Pessoal) 2026",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/CONFAP%20—%20Lançada%20a%20chamada%20Marie%20Skłodowska-Curie%20(Intercâmbio%20de%20Pessoal)%202026.pdf",
+            "tipo": "edital"
+        },
+        {
+            "titulo": "FICHA INFORMATIVA - Marie Skłodowska-Curie (Intercâmbio de Pessoal) 2026",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/MSCA%20Staff%20Exchanges%20-%20European%20Research%20Executive%20Agency.pdf",
+            "tipo": "anexo"
+        }
+    ]
+}

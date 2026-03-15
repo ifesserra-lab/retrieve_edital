@@ -1,0 +1,50 @@
+{
+    "nome": "EDITAL FAPES N° 07/2026 ESPAÇOS CIENTÍFICOS CULTURAIS",
+    "descrição": "O edital tem por objeto apoiar a implantação, estruturação, modernização, manutenção e expansão de Espaços Científico-Culturais (ECCs) no estado do Espírito Santo. Seu objetivo é promover a popularização da Ciência, Tecnologia e Inovação (CT&I), valorizar o conhecimento como bem público, ampliar o acesso à cultura científica e aprimorar as infraestruturas e práticas desses espaços. Visa estimular o interesse e a aprendizagem em diferentes faixas etárias por meio da exploração acessível e criativa de temas como ciência, física, matemática, educação ambiental, sustentabilidade e cidadania.",
+    "orgão_fomento": "FAPES",
+    "categoria": "divulgação de conhecimento",
+    "status": "aberto",
+    "data_abertura": "2026-02-27",
+    "data_encerramento": "2026-04-03",
+    "link": "https://fapes.es.gov.br/Media/fapes/Editais/Edital_Fapes_07.2026_-_Espaços_Científicos_Culturais-ECCs%20-%20Assinado.pdf",
+    "cronograma": [
+        {
+            "evento": "Publicação do edital",
+            "data": "2026-02-27"
+        },
+        {
+            "evento": "Abertura submissão no Sigfapes",
+            "data": "2026-03-02"
+        },
+        {
+            "evento": "Envio da proposta e documentos",
+            "data": "2026-04-03"
+        },
+        {
+            "evento": "Divulgação do resultado preliminar",
+            "data": "2026-04-30"
+        },
+        {
+            "evento": "Prazo para recorrer",
+            "data": "2026-05-07"
+        },
+        {
+            "evento": "Divulgação do resultado final",
+            "data": "2026-05-25"
+        }
+    ],
+    "tags": [
+        "popularização da ciência",
+        "espaços científico-culturais",
+        "educação não formal",
+        "inclusão social",
+        "inovação"
+    ],
+    "anexos": [
+        {
+            "titulo": "Webinário%20do%20Edital%20Fapes%20n°%2007 2026%20Espaço%20Científicos%20Culturais.mp4",
+            "link": "https://fapes.es.gov.br/Media/fapes/Vídeos/Webinário%20do%20Edital%20Fapes%20n°%2007_2026%20Espaço%20Científicos%20Culturais.mp4",
+            "tipo": "anexo"
+        }
+    ]
+}

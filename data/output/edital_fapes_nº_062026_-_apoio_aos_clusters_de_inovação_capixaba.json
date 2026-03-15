@@ -1,0 +1,82 @@
+{
+    "nome": "EDITAL FAPES Nº 06/2026 - APOIO AOS CLUSTERS DE INOVAÇÃO CAPIXABA",
+    "descrição": "Fomentar projetos inovadores voltados ao fortalecimento, modernização e aumento da competitividade dos setores de Comércio e da Indústria de Alimentos e Bebidas no Estado do Espírito Santo. A iniciativa busca incentivar a transformação digital, a melhoria da eficiência operacional e a adoção de práticas sustentáveis pelas empresas, contribuindo para o desenvolvimento econômico, social e ambiental do Estado.",
+    "orgão_fomento": "FAPES",
+    "categoria": "inovação",
+    "status": "aberto",
+    "data_abertura": "2026-02-20",
+    "data_encerramento": "2026-04-06",
+    "link": "https://fapes.es.gov.br/Media/fapes/Editais/Edital_Clusters_Inovadores_-_2ª_Edição_-_Lançamento.pdf",
+    "cronograma": [
+        {
+            "evento": "Data de publicação do Edital",
+            "data": "2026-02-20"
+        },
+        {
+            "evento": "Período de submissão das propostas",
+            "data": "2026-02-20"
+        },
+        {
+            "evento": "Divulgação do resultado preliminar da habilitação e mérito (seleção)",
+            "data": "2026-04-24"
+        },
+        {
+            "evento": "Prazo para submissão de recursos administrativos (habilitação)",
+            "data": "5 (cinco) dias úteis a partir da publicação do resultado de habilitação das propostas"
+        },
+        {
+            "evento": "Previsão de publicação final do resultado homologado (habilitação)",
+            "data": "2026-05-25"
+        },
+        {
+            "evento": "Previsão para publicação do resultado preliminar da análise das propostas (mérito)",
+            "data": "2026-06-26"
+        },
+        {
+            "evento": "Prazo para submissão de recursos administrativos (mérito)",
+            "data": "5 (cinco) dias úteis a partir da publicação do resultado preliminar de avaliação de mérito"
+        },
+        {
+            "evento": "Previsão para publicação final do resultado homologado (mérito)",
+            "data": "2026-07-20"
+        },
+        {
+            "evento": "Início da contratação",
+            "data": "2026-07-21"
+        },
+        {
+            "evento": "Início da vigência dos projetos contratados",
+            "data": "No 1º dia útil do mês subsequente à data de assinatura do Termo de Outorga"
+        }
+    ],
+    "tags": [
+        "inovação",
+        "clusters econômicos",
+        "desenvolvimento sustentável",
+        "transformação digital",
+        "alimentos e bebidas",
+        "comércio"
+    ],
+    "anexos": [
+        {
+            "titulo": "ANEXO I - FORMULÁRIO DE SUBMISSÃO",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/Anexo%20I%20-%20Formulário%20de%20Submissão%20-%20Cluster%2006-2026.docx",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "ANEXO III - DECLARAÇÃO AMBIENTAL",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/Anexo%20III%20-%20Declaração%20Ambiental%20-%20Cluster%2006-2026.docx",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "DECLARAÇÃO DE CIÊNCIA DO NIT",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/Declaração%20de%20ciência%20do%20NIT%20-%20Inovação.docx",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "TERMO DE COMPROMISSO ENTRE EMPRESA E ICT/IES/P",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/Termo%20de%20Compromisso%20entre%20a%20Empresa%20e%20a%20ICT-IES-P.docx",
+            "tipo": "anexo"
+        }
+    ]
+}
