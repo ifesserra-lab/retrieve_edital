@@ -128,22 +128,23 @@ class FinepSource(ISource[RawEdital]):
 
                 page_num = 1
                 while True:
-                    url = (
-                        self.start_url
-                        if page_num == 1
-                        else f"{self.start_url}&limitstart={(page_num - 1) * 10}"
-                    )
-                    logger.info(
-                        "Navigating to FINEP chamadas abertas (page %s): %s",
-                        page_num,
-                        url,
-                    )
-                    try:
-                        page.goto(url, timeout=60000, wait_until="domcontentloaded")
-                        page.wait_for_load_state("networkidle", timeout=20000)
-                    except Exception as e:
-                        logger.error("Error navigating to FINEP: %s", e)
-                        break
+                    if page_num == 1:
+                        url = self.start_url
+                        logger.info(
+                            "Navigating to FINEP chamadas abertas (page 1): %s",
+                            url,
+                        )
+                        try:
+                            page.goto(url, timeout=60000, wait_until="domcontentloaded")
+                            page.wait_for_load_state("networkidle", timeout=20000)
+                        except Exception as e:
+                            logger.error("Error navigating to FINEP: %s", e)
+                            break
+                    else:
+                        logger.info(
+                            "On page %s (navigated via pagination click).",
+                            page_num,
+                        )
 
                     try:
                         page.wait_for_selector(
@@ -157,6 +158,8 @@ class FinepSource(ISource[RawEdital]):
                     # Collect links to detail pages (chamadapublica/ID)
                     link_els = page.locator("a[href*='chamadapublica/']").all()
                     seen_urls = set()
+                    added_this_page = 0
+                    skipped_previous_year_this_page = 0
                     for link_el in link_els:
                         href = link_el.get_attribute("href")
                         if not href or "chamadapublica/" not in href:
@@ -182,6 +185,7 @@ class FinepSource(ISource[RawEdital]):
                         if not _deadline_in_range(
                             deadline_year, self.reference_year
                         ):
+                            skipped_previous_year_this_page += 1
                             logger.debug(
                                 "Skipping '%s' (deadline year %s not in %s/%s).",
                                 title[:50],
@@ -194,25 +198,49 @@ class FinepSource(ISource[RawEdital]):
                             logger.debug("Skipping already processed: %s", detail_url)
                             continue
                         detail_links.append((detail_url, title))
+                        added_this_page += 1
 
-                    next_links = page.locator(
-                        "a:has-text('Próx'), a:has-text('Próxima'), a:has-text('next'), .pagination a.next"
-                    ).all()
-                    has_next = False
-                    for link in next_links:
-                        if link.is_visible() and link.get_attribute("href"):
-                            try:
-                                link.click()
-                                page.wait_for_load_state("networkidle")
-                                page_num += 1
-                                has_next = True
-                                break
-                            except Exception:
-                                pass
-                    if not has_next:
+                    # Parar se todos os editais da página forem do ano anterior
+                    if skipped_previous_year_this_page > 0 and added_this_page == 0:
+                        logger.info(
+                            "All chamadas on page %s are from previous years. Stopping pagination.",
+                            page_num,
+                        )
                         break
-                    if self.max_pages is not None and page_num >= self.max_pages:
+
+                    # Próxima página: clicar no número da página (2, 3, 4, ...) na paginação
+                    next_page_num = page_num + 1
+                    if self.max_pages is not None and next_page_num > self.max_pages:
                         break
+                    pagination = page.locator(
+                        ".pagination, .pager, nav[aria-label*='pagina'], [class*='pagination']"
+                    )
+                    next_page_link = pagination.get_by_text(
+                        str(next_page_num), exact=True
+                    ).first
+                    clicked = False
+                    try:
+                        if next_page_link.count() and next_page_link.is_visible():
+                            next_page_link.click()
+                            page.wait_for_load_state("networkidle", timeout=20000)
+                            page_num = next_page_num
+                            clicked = True
+                    except Exception as e:
+                        logger.debug(
+                            "Could not click page number %s: %s",
+                            next_page_num,
+                            e,
+                        )
+                    if not clicked:
+                        # Fallback: navegar pela URL (limitstart) se o site não tiver link numérico
+                        url_next = f"{self.start_url}&limitstart={(next_page_num - 1) * 10}"
+                        try:
+                            page.goto(url_next, timeout=60000, wait_until="domcontentloaded")
+                            page.wait_for_load_state("networkidle", timeout=20000)
+                            page_num = next_page_num
+                        except Exception as e:
+                            logger.debug("Fallback goto next page failed: %s", e)
+                            break
 
                 raw_editais: List[RawEdital] = []
                 for detail_url, list_title in detail_links:

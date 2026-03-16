@@ -27,13 +27,45 @@ def pdf_contains_objeto(context):
 @when('the Transform engine processes the tables in the document')
 @when('the Transform engine attempts to find the "OBJETO" or "CRONOGRAMA" bounds')
 def engine_parses(context):
-    normalizer = EditalNormalizer()
-    
+    mock_extraction = MagicMock()
+    pdf_text = context.get("pdf_text", "")
+    if "APENAS TEXTO ALEATORIO" in pdf_text:
+        mock_extraction.extract_from_pdf.return_value = None
+    elif "CRONOGRAMA" in pdf_text:
+        mock_extraction.extract_from_pdf.return_value = EditalDomain(
+            nome="VALID TITLE",
+            descrição="Edital com cronograma.",
+            orgão_fomento="FAPES",
+            categoria="pesquisa",
+            status="aberto",
+            data_abertura="2026-01-01",
+            data_encerramento="",
+            link="http",
+            cronograma=[{"evento": "Etapa 1 - Inscrições", "data": "2025-01-01"}],
+            tags=[],
+            anexos=[],
+        )
+    else:
+        mock_extraction.extract_from_pdf.return_value = EditalDomain(
+            nome="VALID TITLE",
+            descrição="Este edital visa o financiamento estrito de pesquisas.",
+            orgão_fomento="FAPES",
+            categoria="pesquisa",
+            status="aberto",
+            data_abertura="2026-01-01",
+            data_encerramento="",
+            link="http",
+            cronograma=[],
+            tags=[],
+            anexos=[],
+        )
+    normalizer = EditalNormalizer(extraction_service=mock_extraction)
+
     mock_pdf = MagicMock()
     mock_page = MagicMock()
-    mock_page.extract_text.return_value = context.get("pdf_text", "")
+    mock_page.extract_text.return_value = pdf_text
     mock_pdf.pages = [mock_page]
-    
+
     with patch("src.components.transforms.edital_normalizer.pdfplumber.open") as mock_open:
         mock_open.return_value.__enter__.return_value = mock_pdf
         context["result"] = normalizer.process(context["raw_edital"])

@@ -37,6 +37,7 @@ graph TB
 
 - **`src/config.py`**: `get_reference_year(override)` — ano de referência para filtro de prazos (FINEP). Ordem: parâmetro > env `REFERENCE_YEAR` > ano atual.
 - **`.env`**: `MISTRAL_API_KEY` (obrigatório para Mistral OCR e categorização FINEP), opcionalmente `REFERENCE_YEAR`.
+- **`registry/processed_editais.json`**: índice de editais já processados por source (`fapes`, `finep`). Evita reprocessar itens já persistidos; populável via `processed_store.build_index_from_output_dir()` a partir de `data/output/`.
 
 ## Components
 
@@ -44,7 +45,7 @@ graph TB
 - **Responsibility**: Extrair dados brutos. Não aplica regras de negócio profundas. Abstraído por `ISource`.
 - **Implementações**:
   - **FapesSource**: Múltiplas URLs FAPES, paginação, download de PDFs, classificação de títulos (Mistral), retorna `List[RawEdital]`.
-  - **FinepSource**: Listagem FINEP (situação=aberta), filtro por ano de prazo; para cada resultado abre a página de detalhe e preenche descrição, cronograma, tags, anexos em `RawEdital` (campos `raw_cronograma`, `raw_tags`, `raw_anexos`). Ver [finep_source.md](finep_source.md).
+  - **FinepSource**: Listagem FINEP (situação=aberta), filtro por ano de prazo (referência dinâmica: ano atual ou `REFERENCE_YEAR`); para cada resultado abre a página de detalhe e preenche descrição, cronograma, tags, anexos em `RawEdital`. Para de navegar quando todos os itens da página têm prazo em ano anterior. Aceita `processed_urls` para pular chamadas já no registry. Ver [finep_source.md](finep_source.md).
 
 ### Component 2: Transform (Process)
 - **Responsibility**: Validar e normalizar para `EditalDomain`; aplicar regras de datas (data de publicação → `data_abertura`, prazo de envio → `data_encerramento`); para FINEP, categorizar via Mistral (divulgação de conhecimento / extensão / inovação) com base na descrição.
@@ -57,8 +58,8 @@ graph TB
 
 ## Data Flow
 
-1. **Fluxo FAPES**: `ingest_fapes_flow` → `FapesSource.read()` (paginação, PDFs, classificação) → `EditalNormalizer.process()` (com ou sem Mistral OCR por item) → `LocalJSONSink.write()`.
-2. **Fluxo FINEP**: `ingest_finep_flow` → `FinepSource.read()` (listagem + uma requisição por página de detalhe) → `EditalNormalizer.process()` (usa `raw_cronograma`/`raw_tags`/`raw_anexos` e chama Mistral para categoria) → `LocalJSONSink.write()`.
+1. **Fluxo FAPES**: `ingest_fapes_flow` → carrega chaves do registry + nomes em `data/output` → `FapesSource.read(processed_titles=...)` (paginação, PDFs, classificação) → `EditalNormalizer.process()` (com ou sem Mistral OCR por item) → `LocalJSONSink.write()` → `add_many("fapes", keys)` no registry.
+2. **Fluxo FINEP**: `ingest_finep_flow` → carrega URLs do registry → `FinepSource.read(processed_urls=...)` (listagem; para quando não há editais com prazo ≥ ano ref) → `EditalNormalizer.process()` (usa `raw_cronograma`/`raw_tags`/`raw_anexos` e Mistral para categoria) → `LocalJSONSink.write()` → `add_many("finep", links)` no registry.
 
 ## Key Design Decisions
 
@@ -84,13 +85,15 @@ graph TB
 ```text
 src/
 ├── config.py          # get_reference_year() — REFERENCE_YEAR / ano atual
+├── processed_store.py # Índice registry (get_keys_set, add_many, build_index_from_output_dir)
 ├── core/              # ISource, ITransform, ISink
 ├── domain/            # RawEdital (incl. raw_cronograma, raw_tags, raw_anexos), EditalDomain
 ├── components/
 │   ├── sources/       # FapesSource, FinepSource
 │   ├── transforms/    # EditalNormalizer, date_utils, mistral_client
-│   └── sinks/         # LocalJSONSink
+│   └── sinks/         # LocalJSONSink (key_from_nome, basename_for para registry)
 └── flows/             # ingest_fapes_flow, ingest_finep_flow
+registry/              # processed_editais.json (chaves fapes + finep)
 ```
 
 ## Modelo de dados (extensões para FINEP)

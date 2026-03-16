@@ -73,6 +73,10 @@ run_pipeline(source=source)
 - **Entrada:** nenhuma (lê da URL configurada).
 - **Saída:** `List[RawEdital]` com `raw_agency="FINEP"`, `document_type="edital"`, e apenas itens cujo prazo tem ano em `[reference_year, reference_year + 1]`. Campos opcionais preenchidos quando disponíveis: `raw_cronograma`, `raw_tags`, `raw_anexos`.
 
-## Paginação
+## Paginação e parada antecipada
 
-O source percorre todas as páginas de resultados (link “Próx”/“Próxima”) até não haver mais páginas. O parâmetro **`max_pages`** (ex.: `1`) limita o número de páginas para testes.
+O source navega pela paginação clicando nos números das páginas (1, 2, 3, …); a primeira é carregada via URL e as seguintes pelo clique no número (com fallback por URL se não houver link numérico). O source percorre as páginas (link “Próx”/“Próxima”) até não haver mais páginas. O source **para de navegar** quando todos os editais da página têm prazo em ano anterior ao de referência (log: *"All chamadas on page X are from previous years. Stopping pagination."*). O parâmetro **`max_pages`** (ex.: `1`) limita o número de páginas para testes.
+
+## Registry (editais já processados)
+
+O **FinepSource** aceita **`processed_urls`** (set de URLs já processadas). O flow carrega as chaves FINEP de **`registry/processed_editais.json`** e, após o sink, adiciona as URLs gravadas ao índice, evitando reprocessar chamadas já baixadas.

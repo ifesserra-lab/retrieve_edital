@@ -30,7 +30,8 @@ def list_in_memory(context):
             status="aberto",
             data_abertura="2025-01-10",
             data_encerramento="2025-03-31",
-            tags=["pesquisa"]
+            tags=["pesquisa"],
+            anexos=[],
         ),
         EditalDomain(
             nome="Edital de Inovação Y",
@@ -42,7 +43,8 @@ def list_in_memory(context):
             status="aberto",
             data_abertura="",
             data_encerramento="",
-            tags=["inovação"]
+            tags=["inovação"],
+            anexos=[],
         )
     ]
 
@@ -64,7 +66,7 @@ def json_files_created(context, temp_output_dir, expected_format):
 
 @then('each separate JSON must strictly contain the following keys:')
 def check_json_keys(context, datatable):
-    expected_keys = {"nome", "descrição", "orgão_fomento", "categoria", "status", "data_abertura", "data_encerramento", "link", "cronograma", "tags"}
+    expected_keys = {"nome", "descrição", "orgão_fomento", "categoria", "status", "data_abertura", "data_encerramento", "link", "cronograma", "tags", "anexos"}
     
     for filepath in context["expected_files"]:
         with open(filepath, 'r', encoding='utf-8') as f:

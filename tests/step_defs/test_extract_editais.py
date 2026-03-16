@@ -16,7 +16,8 @@ def fapes_website_accessible(context):
 
 @given('the Playwright scraping engine is initialized')
 def playwright_initialized(context):
-    context["scraper"] = FapesSource()
+    mock_classifier = MagicMock()
+    context["scraper"] = FapesSource(processed_titles=set(), classifier=mock_classifier)
 
 @when('the scraper navigates to the open editais page')
 def scraper_navigates(context):
@@ -88,7 +89,8 @@ def scraper_attempts_access(context):
         
         mock_pw.return_value.__enter__.return_value = mock_pw_context
         
-        scraper = FapesSource()
+        mock_classifier = MagicMock()
+        scraper = FapesSource(processed_titles=set(), classifier=mock_classifier)
         try:
             scraper.read()
         except Exception as e:
