@@ -24,4 +24,5 @@ Sempre que uma nova feature ou implementação for solicitada, o seguinte fluxo 
 3. **Criar a Issue**: Registrar a Issue no Github e lincá-la no `.md` de Backlog. **Toda issue deve obrigatoriamente conter**: descrição, **Critérios de Aceite** detalhados e **Definition of Done (DoD)** explícita.
 4. **Escrever a Feature BDD/Gherkin**: Antes de qualquer código produtivo, escrever os cenários no padrão BDD (`docs/features/`). Isso servirá como nosso **Definition of Done (DoD)** e guiará a implementação.
 5. **Escrever Código**: Somente após branch + issue + critérios de aceite + DoD + BDD, escrever o `.py` propriamente dito com testes que garantem as features.
-6. **Mostrar Resultados**: Printar o passe limpo de testes ou linting e notificar a disponibilidade de mesclagem.
+6. **Rodar Testes Antes de Commit/Push**: Antes de qualquer `commit` ou `push`, o agente deve obrigatoriamente executar os testes, linting ou validações aplicáveis à mudança e confirmar que passaram. É proibido realizar `commit` ou `push` sem essa validação prévia.
+7. **Mostrar Resultados**: Printar o passe limpo de testes ou linting, informar o que foi validado e só então notificar a disponibilidade de mesclagem.
