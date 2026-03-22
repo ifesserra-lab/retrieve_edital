@@ -1,0 +1,106 @@
+{
+    "nome": "PROGRAMA CAPES/UNIVERSIDADE DE PURDUE PARA PROJETOS CONJUNTOS DE PESQUISA",
+    "descrição": "O edital tem por objeto a seleção de até cinco projetos conjuntos de pesquisa, desenvolvidos por grupos brasileiros e estadunidenses vinculados a Instituições de Ensino Superior ou de Pesquisa. O objetivo é apoiar e fomentar o intercâmbio científico entre grupos de pesquisa e desenvolvimento do Brasil e da Universidade de Purdue, nas áreas de energia e ciências vegetais, ciências do solo, agricultura de precisão, genômica, proteômica, metabolômica, ciências da colheita e pós-colheita, restauração e conservação florestal, engenharias, ciência da computação e inteligência artificial.",
+    "orgão_fomento": "CAPES",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-03-06",
+    "data_encerramento": "2026-06-10",
+    "link": "https://www.gov.br/capes/pt-br/acesso-a-informacao/acoes-e-programas/bolsas/bolsas-e-auxilios-internacionais/encontre-aqui/paises/estados-unidos/programa-capes-purdue-para-projetos-conjuntos-de-pesquisa",
+    "cronograma": [
+        {
+            "evento": "Data-limite para solicitação do proponente para cadastramento de instituição brasileira ou estrangeira, caso esta não esteja cadastrada no Sistema de Inscrições da CAPES",
+            "data": "2026-06-03"
+        },
+        {
+            "evento": "Prazo para envio de dúvidas e questionamentos a respeito do Edital",
+            "data": "2026-06-08"
+        },
+        {
+            "evento": "Inscrição das propostas, incluindo preenchimento do formulário de inscrição de projetos online e envio da documentação obrigatória",
+            "data": "2026-06-10"
+        },
+        {
+            "evento": "Publicação da relação das inscrições recebidas",
+            "data": "Até 15 (quinze) dias úteis após o encerramento das inscrições"
+        },
+        {
+            "evento": "Análise das propostas",
+            "data": "2026-11-30"
+        },
+        {
+            "evento": "Interposição do recurso administrativo nas etapas de análise das propostas",
+            "data": "Em até 3 (três) dias úteis após a comunicação realizada pela CAPES"
+        },
+        {
+            "evento": "Divulgação do resultado",
+            "data": "2026-12-31"
+        },
+        {
+            "evento": "Início das atividades dos projetos",
+            "data": "2027-01"
+        },
+        {
+            "evento": "Início da indicação das bolsas",
+            "data": "A partir de abril de cada ano"
+        },
+        {
+            "evento": "Prazo de impugnação ao Edital, caso necessário",
+            "data": "Até 5 (cinco) dias úteis após a publicação do Edital no Diário Oficial da União (DOU)"
+        }
+    ],
+    "tags": [
+        "pesquisa conjunta",
+        "cooperação internacional",
+        "intercâmbio científico",
+        "agricultura de precisão",
+        "inteligência artificial"
+    ],
+    "anexos": [
+        {
+            "titulo": "Manual Cartão Pesquisador",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/documentos/09042024_manual-cartao-pesquisador-capes-2024-v04.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Edital nº 5/2026 - Programa CAPES - PURDUE de Doutorado em Agricultura - Agriculture / PHD Fellows Program, formato, pdf, 257kb",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/09032026_Edital_2780596_SEI_2779319_Edital_5__de_2026.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Edital nº 5/2026 - Termo de Outorga e Aceite de Bolsa - formato, pdf, 281kb",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/09032026_Edital_2727058_TERMO_DE_OUTORGA_E_ACEITE_DE_BOLSA.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Edital nº 5/2026 - Termo de Outorga e Aceite de projeto,  formato, pdf, 393kb",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/09032026_Edital_2727057_Termo_de_outorga_e_aceite_de_projeto.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "17092029_Anexo_III_LetterofRecommendationForm_SEI_n_2372884.pdf",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/17092029_Anexo_III_LetterofRecommendationForm_SEI_n_2372884.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "17092024_Anexo_IV_Regulamento_para_Bolsas_no_Exterior.pdf",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/17092024_Anexo_IV_Regulamento_para_Bolsas_no_Exterior.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Edital nº 5/2026 - Termo de Outorga e Aceite de pesquisa,  formato, pdf, 127kb",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/09032026_Edital_2727061_Modelo_de_Projeto_de_Pesquisa.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Edital nº 5/2026 - Declaração de Reconhecimento da Fluência Linguística Instituição Brasileira,  formato, pdf, 115kb",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/09032026_Edital_2727062_Declaracao_Fluencia_Orient_Brasileiro.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Edital nº 5/2026 - Declaração de Reconhecimento da Fluência Linguística Instituição no Exterior,  formato, pdf, 166kb",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/09032026_Edital_2727063_Anexo_VII___Declaracao_de_Fluencia_Orientador_Estrangeiro.pdf",
+            "tipo": "anexo"
+        }
+    ]
+}

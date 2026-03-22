@@ -1,0 +1,63 @@
+{
+    "nome": "EDITAL DE CHAMAMENTO PÚBLICO PROJETO DE ESTATUETA N° 1/2026",
+    "descrição": "O edital tem como objeto o recebimento de doação, sem ônus ou encargo, de obra intelectual de natureza artística consistente em projeto de estatueta original e inédita. A estatueta destina-se a representar simbolicamente a trajetória institucional da CAPES, sua missão de fomentar a formação de recursos humanos de alto nível e seu impacto no desenvolvimento científico e educacional do Brasil. A doação inclui a cessão gratuita dos direitos patrimoniais de autor para reprodução, adaptação e utilização institucional pela CAPES.",
+    "orgão_fomento": "CAPES",
+    "categoria": "outros",
+    "status": "aberto",
+    "data_abertura": "2026-03-23",
+    "data_encerramento": "2026-04-22",
+    "link": "https://www.gov.br/capes/pt-br/acesso-a-informacao/acoes-e-programas/outras-acoes/chamamento-publico/edital-de-chamamento-publico-projeto-estatueta-capes",
+    "cronograma": [
+        {
+            "evento": "Publicação do Edital de Chamamento Público",
+            "data": "2026-03-11"
+        },
+        {
+            "evento": "Prazo para impugnação do Edital",
+            "data": "2026-03-18"
+        },
+        {
+            "evento": "Período de Inscrição e Envio de Projetos",
+            "data": "2026-03-23"
+        },
+        {
+            "evento": "Análise e Julgamento Técnico das propostas",
+            "data": "2026-04-23"
+        },
+        {
+            "evento": "Publicação do resultado preliminar",
+            "data": "2026-05-08"
+        },
+        {
+            "evento": "Período de Recurso",
+            "data": "2026-03-18"
+        },
+        {
+            "evento": "Publicação do Resultado",
+            "data": "2026-05-19"
+        },
+        {
+            "evento": "Formalização da doação (Fase de habilitação documental)",
+            "data": "Até 5 (cinco) dias corridos após a publicação do resultado"
+        }
+    ],
+    "tags": [
+        "estatueta",
+        "arte",
+        "doação",
+        "direitos autorais",
+        "CAPES"
+    ],
+    "anexos": [
+        {
+            "titulo": "Manual Cartão Pesquisador",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/documentos/09042024_manual-cartao-pesquisador-capes-2024-v04.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Edital nº 1/2026 - Projeto Estatueta CAPES, formato, pdf, 102kb",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/12032026_Chamada_Publica_2782569.pdf",
+            "tipo": "anexo"
+        }
+    ]
+}
