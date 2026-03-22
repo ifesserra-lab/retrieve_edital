@@ -1,0 +1,139 @@
+{
+    "nome": "PROGRAMA BOLSA DE ATRATIVIDADE E FORMAÇÃO PARA A DOCÊNCIA - PÉ-DE-MEIA LICENCIATURAS - EDITAL 1/2025 - ALTERAÇÃO",
+    "descrição": "O edital tem como objeto a concessão de bolsas para atratividade e formação de docentes em cursos de licenciatura, visando fortalecer a formação inicial de professores e incentivar a permanência de estudantes em cursos de licenciatura por meio de apoio financeiro.",
+    "orgão_fomento": "CAPES",
+    "categoria": "formação e docência",
+    "status": "aberto",
+    "data_abertura": "2025-01-17",
+    "data_encerramento": "2025-12-19",
+    "link": "https://www.gov.br/capes/pt-br/acesso-a-informacao/acoes-e-programas/educacao-basica/pe-de-meia-licenciaturas",
+    "cronograma": [
+        {
+            "evento": "Solicitação de impugnação ao edital",
+            "data": "2025-02-14"
+        },
+        {
+            "evento": "Cadastramento de currículo e pré-inscrição dos candidatos na Plataforma Freire (1ª chamada)",
+            "data": "2025-02-17"
+        },
+        {
+            "evento": "Resultado preliminar (1ª chamada)",
+            "data": "2025-04-04"
+        },
+        {
+            "evento": "Interposição de recurso ao resultado preliminar (1ª chamada)",
+            "data": "2025-04-05"
+        },
+        {
+            "evento": "Resultado final da 1ª chamada",
+            "data": "2025-04-14"
+        },
+        {
+            "evento": "Indicação de ponto focal pelas IES (1ª chamada)",
+            "data": "2025-04-04"
+        },
+        {
+            "evento": "Cadastramento dos bolsistas da 1ª chamada pelas IES nos sistemas da Capes",
+            "data": "2025-04-15"
+        },
+        {
+            "evento": "Pagamento das bolsas (1ª chamada)",
+            "data": "2025-05-01"
+        },
+        {
+            "evento": "Cadastramento de currículo e pré-inscrição dos candidatos na Plataforma Freire (2ª chamada)",
+            "data": "2025-04-07"
+        },
+        {
+            "evento": "Aprovação das pré-inscrições pela CAPES (2ª chamada)",
+            "data": "Até o dia 20 de cada mês"
+        },
+        {
+            "evento": "Cadastramento dos bolsistas pelas IES no sistema de Pagamento de bolsas (SCBA) (2ª chamada)",
+            "data": "Até o dia 25 de cada mês"
+        },
+        {
+            "evento": "Pagamento das bolsas (2ª chamada)",
+            "data": "Até o 5º dia útil do mês subsequente ao cadastramento no SCBA"
+        }
+    ],
+    "tags": [
+        "bolsa",
+        "licenciatura",
+        "formação docente",
+        "CAPES",
+        "educação"
+    ],
+    "anexos": [
+        {
+            "titulo": "Manual Cartão Pesquisador",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/documentos/09042024_manual-cartao-pesquisador-capes-2024-v04.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "21022025_ComoseprInscrevernoProgramaPdeMeiaLicenciaturas.pdf",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/documentos/21022025_ComoseprInscrevernoProgramaPdeMeiaLicenciaturas.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Resumo Mais Professores",
+            "link": "https://www.gov.br/mec/pt-br/mais-professores/documentos/flyer.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Apresentação de slides Mais Professores",
+            "link": "https://www.gov.br/mec/pt-br/centrais-de-conteudo/publicacoes/apresentacao_14012025.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Alteração do edital nº 2/2026 - Pé-de-Meia Licenciaturas - formato, pdf, 55kb",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/19022026_Edital_2769828_SEI_2769557_Edital__2_2026.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Edital nº 2/2026 - Pé-de-Meia Licenciaturas - formato, pdf, 81kb",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/16012026_Edital_2753123_SEI_2753038_Edital_2_2026.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Resultado final dos estudantes contemplados do edital nº 1/2025 - Pé-de-Meia Licenciaturas - Primeira chamada - formato, pdf, 926kb",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/resultados-dos-editais/14042025_Planilha_2580505_Canditatos_Ranqueados_14_04_2025_Resultado_Final.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Resultado final dos estudantes contemplados do edital nº 1/2025 - Pé-de-Meia Licenciaturas - Segunda chamada - Planilha - formato, pdf, 492kb",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/resultados-dos-editais/11032025_Planilha_2774856_Resultado_2__Chamada_PDML_2025.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Resultado final dos estudantes contemplados do edital nº 1/2025 - Pé-de-Meia Licenciaturas - Segunda chamada - Documento - formato, pdf, 45kb",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/resultados-dos-editais/11032026_Edital_2782475_SEI_2781038_Edital_1_2025____Resultado_Final_2__Chamada.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Resultado preliminar dos estudantes contemplados do edital nº 1/2025 - Pé-de-Meia Licenciaturas - Primeira chamada - formato, pdf, 972kb",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/resultados-dos-editais/04042025_Resultado_preliminar___PDM_Licenciaturas.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Alteração do edital nº 1/2025 - Pé-de-Meia Licenciaturas - Segunda chamada - formato, pdf, 51kb",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/04042025_Edital_2574981_SEI_2574897_Edital_1_2025.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Tornar sem efeito a alteração do edital nº 1/2025 - Pé-de-Meia Licenciaturas - formato, pdf, 142kb",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/17022025_Publicacao_no_DOU_2546770_EDITAL_1_2025__TORNAR_SEM_EFEITO_ALTERACAO.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Alteração do edital nº 1/2025 - Pé-de-Meia Licenciaturas - formato, pdf, 76kb",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/07022025_Edital_2541491_SEI_2540577_Edital_1_2025.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Edital nº 1/2025 - Pé-de-Meia Licenciaturas - formato, pdf, 76kb",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/17012025_Edital_2529011_SEI_2528468_Edital_n__1_2025.pdf",
+            "tipo": "anexo"
+        }
+    ]
+}

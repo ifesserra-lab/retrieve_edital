@@ -1,0 +1,72 @@
+{
+    "nome": "EDITAL CONJUNTO N°2/2026 - APOIO A PESQUISAS JURÍDICAS CONSTITUCIONAIS",
+    "descrição": "O edital tem por objetivo fomentar pesquisas jurídicas de alto impacto no âmbito do Direito Constitucional, por meio da concessão de bolsas de estágio pós-doutoral a doutores. Visa subsidiar estudos especializados em temas constitucionais estratégicos para o Supremo Tribunal Federal (STF), fortalecendo a produção científica aplicada às demandas do Poder Judiciário e promovendo a integração entre a academia e o STF. Serão selecionadas até 10 propostas de projetos individuais de pesquisa, alinhadas a eixos temáticos prioritários definidos pelo edital.",
+    "orgão_fomento": "CAPES",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-02-19",
+    "data_encerramento": "2026-03-30",
+    "link": "https://www.gov.br/capes/pt-br/acesso-a-informacao/acoes-e-programas/bolsas/programas-estrategicos/formacao-de-recursos-humanos-em-areas-estrategicas/capes-stf-apoio-a-pesquisas-juridicas-constitucionais",
+    "cronograma": [
+        {
+            "evento": "Impugnação do Edital",
+            "data": "2026-02-09"
+        },
+        {
+            "evento": "Início do prazo para submissão das propostas",
+            "data": "2026-02-19"
+        },
+        {
+            "evento": "Data limite para submissão das propostas",
+            "data": "2026-03-30"
+        },
+        {
+            "evento": "Resultado preliminar da Análise Técnica",
+            "data": "2026-04-01"
+        },
+        {
+            "evento": "Prazo para envio de recurso referente ao resultado da Análise Técnica",
+            "data": "03 (três) dias úteis após o recebimento da comunicação do resultado da análise técnica"
+        },
+        {
+            "evento": "Divulgação do resultado preliminar da Análise de Mérito",
+            "data": "2026-05-04"
+        },
+        {
+            "evento": "Prazo para envio de recurso referente à Análise de Mérito",
+            "data": "03 (três) dias úteis após a divulgação do resultado preliminar no Diário Oficial da União (DOU)"
+        },
+        {
+            "evento": "Divulgação do resultado final no DOU",
+            "data": "2026-05-25"
+        },
+        {
+            "evento": "Início da implementação dos projetos",
+            "data": "2026-06-01"
+        }
+    ],
+    "tags": [
+        "Direito Constitucional",
+        "Pós-Doutorado",
+        "Supremo Tribunal Federal",
+        "Pesquisa Jurídica",
+        "Fomento à Pesquisa"
+    ],
+    "anexos": [
+        {
+            "titulo": "Manual Cartão Pesquisador",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/documentos/09042024_manual-cartao-pesquisador-capes-2024-v04.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Guia do preponente do Edital nº 02/2026 - CAPES/STF – Apoio a Pesquisas Jurídicas Constitucionais, pdf, 2,4mb",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/documentos/11032026_GuiadoProponenteEditalConjuntoCAPES.STFn2.2026.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Edital nº 02/2026 - CAPES/STF – Apoio a Pesquisas Jurídicas Constitucionais, pdf, 158kb",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/04022026_Edital_2762984_SEI_2759864_Edital_Conjunto_n__2_2026.pdf",
+            "tipo": "anexo"
+        }
+    ]
+}
