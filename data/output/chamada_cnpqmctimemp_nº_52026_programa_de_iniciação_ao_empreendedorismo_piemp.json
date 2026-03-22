@@ -1,0 +1,37 @@
+{
+    "nome": "CHAMADA CNPQ/MCTI/MEMP Nº 5/2026 PROGRAMA DE INICIAÇÃO AO EMPREENDEDORISMO PIEMP",
+    "descrição": "São objetivos desta Chamada:\r\na) fomentar projetos de empreendedorismo inovador nas ICT/IES, contribuindo para o desenvolvimento de um ambiente acadêmico voltado a criatividade, pesquisa, inovação e cooperação; e\r\nb) incentivar a participação de equipes de estudantes de graduação em projetos de empreendedorismo na ICT/IES, de modo a promover a liderança e o espírito empreendedor, por meio da concessão de bolsas de Iniciação Tecnológica e Industrial (ITI).",
+    "orgão_fomento": "CNPQ",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-01-01",
+    "data_encerramento": "",
+    "link": "http://memoria2.cnpq.br/web/guest/chamadas-publicas?p_p_id=resultadosportlet_WAR_resultadoscnpqportlet_INSTANCE_0ZaM&filtro=abertas&detalha=chamadaDivulgada&idDivulgacao=13405",
+    "cronograma": [
+        {
+            "evento": "abertura das inscrições",
+            "data": "2026-02-25"
+        },
+        {
+            "evento": "encerramento das inscrições",
+            "data": "2026-04-13"
+        }
+    ],
+    "tags": [
+        "cnpq",
+        "pesquisa",
+        "bolsa"
+    ],
+    "anexos": [
+        {
+            "titulo": "Modelo Estruturado do Projeto ¿ Plano de Desenvolvimento PIEMP",
+            "link": "http://resultado.cnpq.br/9807360046230112",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Declaração de Indicação do(a) Representante Institucional da ICT/IES",
+            "link": "http://resultado.cnpq.br/9891635911342146",
+            "tipo": "anexo"
+        }
+    ]
+}
