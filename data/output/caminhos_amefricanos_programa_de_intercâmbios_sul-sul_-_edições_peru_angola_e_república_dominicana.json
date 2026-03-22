@@ -1,7 +1,7 @@
 {
     "nome": "CAMINHOS AMEFRICANOS: PROGRAMA DE INTERCÂMBIOS SUL-SUL - EDIÇÕES PERU, ANGOLA E REPÚBLICA DOMINICANA",
-    "descrição": "Edital de seleção de beneficiários para o Programa Caminhos Amefricanos, que promove intercâmbios acadêmicos e culturais Sul-Sul entre instituições do Brasil, Peru, Angola e República Dominicana, em parceria com a CAPES e o Ministério da Igualdade Racial (MIR). O programa visa fortalecer a cooperação internacional e a troca de conhecimentos entre países do Sul Global.",
-    "orgão_fomento": "CAPES",
+    "descrição": "O edital visa selecionar beneficiários para o Programa Caminhos Amefricanos, que promove intercâmbios acadêmicos e culturais Sul-Sul, em parceria com instituições do Peru, Angola e República Dominicana. O programa busca fortalecer a cooperação internacional e a troca de conhecimentos entre países do Sul Global, com foco em temas relacionados à igualdade racial e desenvolvimento social.",
+    "orgão_fomento": "CAPES E MINISTÉRIO DA IGUALDADE RACIAL (MIR)",
     "categoria": "extensão",
     "status": "aberto",
     "data_abertura": "2024-12-23",
@@ -34,7 +34,7 @@
         },
         {
             "evento": "Interposição do recurso administrativo",
-            "data": "Em até 5 dias úteis após a comunicação ao candidato(a)"
+            "data": "Em até 5 (cinco) dias úteis após a comunicação ao candidato(a)"
         },
         {
             "evento": "Divulgação da Decisão Final",
@@ -47,10 +47,10 @@
     ],
     "tags": [
         "intercâmbio",
-        "cooperação internacional",
         "Sul-Sul",
-        "extensão acadêmica",
-        "igualdade racial"
+        "igualdade racial",
+        "cooperação internacional",
+        "extensão"
     ],
     "anexos": [
         {

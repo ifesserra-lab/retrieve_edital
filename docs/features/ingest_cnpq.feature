@@ -14,6 +14,11 @@ Feature: Ingestão de Chamadas Públicas CNPq
     When the CNPq source reads the listing page
     Then it should skip the CNPq chamada already present in the registry
 
+  Scenario: Ignore CNPq chamadas whose end date is earlier than the current year
+    Given the CNPq source identifies a chamada with end date earlier than the current year
+    When the CNPq source evaluates the chamada
+    Then it should discard the CNPq chamada from the extracted list
+
   Scenario: Persist CNPq chamadas through a dedicated flow
     Given the CNPq source returns new raw chamadas
     When the CNPq ingest flow runs successfully

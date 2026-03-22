@@ -14,6 +14,11 @@ Feature: Ingestão de Editais CAPES
     When the CAPES source reads the listing page
     Then it should skip the CAPES edital already present in the registry
 
+  Scenario: Ignore CAPES editais whose end date is earlier than the current year
+    Given the CAPES source identifies an edital with end date earlier than the current year
+    When the CAPES source evaluates the edital
+    Then it should discard the CAPES edital from the extracted list
+
   Scenario: Persist CAPES editais through a dedicated flow
     Given the CAPES source returns new raw editais
     When the CAPES ingest flow runs successfully

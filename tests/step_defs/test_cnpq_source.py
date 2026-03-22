@@ -52,6 +52,55 @@ def test_extract_raw_edital_from_card_maps_description_dates_and_anexos():
     ]
 
 
+def test_extract_raw_edital_from_card_discards_previous_year_end_date():
+    html = """
+    <li>
+      <div class="content">
+        <h4>Chamada CNPq Nº 4/2025</h4>
+        <p>Descricao da chamada.</p>
+        <div class="inscricao">
+          <ul class="datas">
+            <li>10/01/2025  a  15/12/2025</li>
+          </ul>
+        </div>
+      </div>
+      <input type="text" value="http://memoria2.cnpq.br/web/guest/chamadas-publicas?idDivulgacao=4">
+    </li>
+    """
+
+    source = CnpqSource(current_year=2026)
+    card = BeautifulSoup(html, "html.parser").find("li")
+
+    raw = source._extract_raw_edital_from_card(card)
+
+    assert raw is None
+
+
+def test_extract_raw_edital_from_card_keeps_current_or_future_end_date():
+    html = """
+    <li>
+      <div class="content">
+        <h4>Chamada CNPq Nº 8/2026</h4>
+        <p>Descricao da chamada.</p>
+        <div class="inscricao">
+          <ul class="datas">
+            <li>10/01/2026  a  15/12/2027</li>
+          </ul>
+        </div>
+      </div>
+      <input type="text" value="http://memoria2.cnpq.br/web/guest/chamadas-publicas?idDivulgacao=8">
+    </li>
+    """
+
+    source = CnpqSource(current_year=2026)
+    card = BeautifulSoup(html, "html.parser").find("li")
+
+    raw = source._extract_raw_edital_from_card(card)
+
+    assert raw is not None
+    assert raw.url.endswith("idDivulgacao=8")
+
+
 def test_extract_raw_edital_from_card_tries_next_attachment_when_first_is_not_pdf():
     html = """
     <li>

@@ -22,7 +22,7 @@
         },
         {
             "evento": "Publicação da relação das inscrições recebidas",
-            "data": "Até 15 (quinze) dias úteis após o encerramento das inscrições"
+            "data": "15 (quinze) dias úteis após o encerramento das inscrições"
         },
         {
             "evento": "Análise das propostas",
@@ -30,7 +30,7 @@
         },
         {
             "evento": "Interposição do recurso administrativo nas etapas de análise das propostas",
-            "data": "Em até 3 (três) dias úteis após a comunicação realizada pela CAPES"
+            "data": "3 (três) dias úteis após a comunicação realizada pela CAPES"
         },
         {
             "evento": "Divulgação do resultado",
@@ -38,7 +38,7 @@
         },
         {
             "evento": "Início das atividades dos projetos",
-            "data": "2027-01"
+            "data": "2027-01-01"
         },
         {
             "evento": "Início da indicação das bolsas",
@@ -46,13 +46,13 @@
         },
         {
             "evento": "Prazo de impugnação ao Edital, caso necessário",
-            "data": "Até 5 (cinco) dias úteis após a publicação do Edital no Diário Oficial da União (DOU)"
+            "data": "5 (cinco) dias úteis após a publicação do Edital no Diário Oficial da União (DOU)"
         }
     ],
     "tags": [
-        "pesquisa conjunta",
         "cooperação internacional",
-        "intercâmbio científico",
+        "pesquisa conjunta",
+        "bolsas de estudo",
         "agricultura de precisão",
         "inteligência artificial"
     ],
