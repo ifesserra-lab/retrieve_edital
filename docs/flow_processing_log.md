@@ -12,6 +12,7 @@ Documento operacional para registrar a data de processamento dos fluxos do proje
 
 | Data/Hora | Fluxo | Resultado | Observações |
 | :-- | :-- | :-- | :-- |
+| 2026-03-22 17:58:37 -03:00 | `CNPQ` | Sucesso com observações | Após limpeza controlada da chave `cnpq` no registry, o fluxo processou 4 chamadas abertas, persistiu 4 JSONs, atualizou `registry/processed_editais.json` com 4 permalinks e manteve `data/output/` apenas com `.json`. O source passou a ignorar anexos `application/msword` para OCR. Na validação final, 1 JSON ficou com `orgão_fomento` vazio após a extração. |
 | 2026-03-22 16:00:20 -03:00 | `CONIF` | Sucesso | Após limpeza completa do registry, o fluxo processou 3 editais, persistiu 3 JSONs e atualizou a chave `conif` com 3 URLs. |
 | 2026-03-22 15:57:50 -03:00 | `FINEP` | Sucesso | Após limpeza completa do registry, o fluxo processou 10 chamadas da primeira página, persistiu 10 JSONs e atualizou a chave `finep` com 10 URLs. |
 | 2026-03-22 15:39:03 -03:00 | `FAPES` | Sucesso com retries | Após limpeza completa do registry, o fluxo processou 13 editais e atualizou a chave `fapes` com 13 chaves. Houve múltiplos retries por `429` do Mistral, mas o pipeline concluiu com sucesso. |
