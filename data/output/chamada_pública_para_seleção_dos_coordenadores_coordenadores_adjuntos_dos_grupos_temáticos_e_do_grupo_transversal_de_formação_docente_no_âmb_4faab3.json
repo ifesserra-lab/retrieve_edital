@@ -1,0 +1,60 @@
+{
+    "nome": "CHAMADA PÚBLICA PARA SELEÇÃO DOS COORDENADORES, COORDENADORES ADJUNTOS DOS GRUPOS TEMÁTICOS E DO GRUPO TRANSVERSAL DE FORMAÇÃO DOCENTE, NO ÂMBITO AVALIA PIBID",
+    "descrição": "O edital tem como objeto a indicação, por Entidades científicas e acadêmicas e por Instituições de Educação Superior (IES), de candidatos para exercerem as funções de Coordenação dos Grupos Temáticos (GT) e do Grupo Transversal de Formação Docente (GT-FD), conforme previsto na Portaria CAPES nº 357, de 15 de dezembro de 2025, que institui a Avaliação dos Projetos Institucionais do Programa Institucional de Bolsa de Iniciação à Docência (Avalia Pibid).",
+    "orgão_fomento": "CAPES",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-01-16",
+    "data_encerramento": "2026-01-30",
+    "link": "https://www.gov.br/capes/pt-br/acesso-a-informacao/acoes-e-programas/educacao-basica/pibid/avalia-pibid-avaliacao-dos-projetos-institucionais-do-programa-institucional-de-bolsa-de-iniciacao-a-docencia",
+    "cronograma": [
+        {
+            "evento": "Indicação de candidatos pelas IES e entidades",
+            "data": "2026-01-30"
+        },
+        {
+            "evento": "Envio de manifestação de aceite e currículo Lattes pelos indicados",
+            "data": "2026-02-09"
+        },
+        {
+            "evento": "Análise preliminar pela CGDOC/DEB/CAPES",
+            "data": "2026-02-09"
+        },
+        {
+            "evento": "Publicação da lista de candidatos habilitados",
+            "data": "A partir da conclusão da análise preliminar"
+        },
+        {
+            "evento": "Prazo para recurso administrativo",
+            "data": "5 dias corridos após divulgação da lista de habilitados"
+        },
+        {
+            "evento": "Início do mandato dos Coordenadores e Coordenadores Adjuntos",
+            "data": "2026-03-01"
+        }
+    ],
+    "tags": [
+        "formação docente",
+        "avaliação",
+        "Pibid",
+        "coordenação",
+        "educação básica"
+    ],
+    "anexos": [
+        {
+            "titulo": "Manual Cartão Pesquisador",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/documentos/09042024_manual-cartao-pesquisador-capes-2024-v04.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Resultado, edital nº 01/2026 - formato, pdf, 129kb",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/09032026_Relacao_2775735.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Edital nº 01/2026 - formato, pdf, 102kb",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/19012026_Edital_2753903_SEI_2753034_Edital_1_2026.pdf",
+            "tipo": "anexo"
+        }
+    ]
+}
