@@ -1,6 +1,6 @@
 {
     "nome": "CHAMADA PÚBLICA PARA SELEÇÃO DOS COORDENADORES, COORDENADORES ADJUNTOS DOS GRUPOS TEMÁTICOS E DO GRUPO TRANSVERSAL DE FORMAÇÃO DOCENTE, NO ÂMBITO AVALIA PIBID",
-    "descrição": "O edital tem como objeto a indicação, por Entidades científicas e acadêmicas e por Instituições de Educação Superior (IES), de candidatos para exercerem as funções de Coordenação dos Grupos Temáticos (GT) e do Grupo Transversal de Formação Docente (GT-FD), conforme previsto na Portaria CAPES nº 357, de 15 de dezembro de 2025, que institui a Avaliação dos Projetos Institucionais do Programa Institucional de Bolsa de Iniciação à Docência (Avalia Pibid).",
+    "descrição": "O edital tem como objeto a indicação, por Entidades científicas e acadêmicas e por Instituições de Educação Superior (IES), de candidatos para exercerem as funções de Coordenação dos Grupos Temáticos (GT) e do Grupo Transversal de Formação Docente (GT-FD), no âmbito da Avaliação dos Projetos Institucionais do Programa Institucional de Bolsa de Iniciação à Docência (Avalia Pibid), conforme estabelecido pela Portaria CAPES nº 357, de 15 de dezembro de 2025.",
     "orgão_fomento": "CAPES",
     "categoria": "pesquisa",
     "status": "aberto",
@@ -17,7 +17,7 @@
             "data": "2026-02-09"
         },
         {
-            "evento": "Análise preliminar pela CGDOC/DEB/CAPES",
+            "evento": "Análise preliminar das indicações pela CGDOC/DEB/CAPES",
             "data": "2026-02-09"
         },
         {
@@ -25,7 +25,7 @@
             "data": "A partir da conclusão da análise preliminar"
         },
         {
-            "evento": "Prazo para recurso administrativo",
+            "evento": "Prazo para interposição de recurso administrativo",
             "data": "5 dias corridos após divulgação da lista de habilitados"
         },
         {

@@ -57,10 +57,12 @@ class CnpqSource(ISource[RawEdital]):
         self,
         start_url: str = CNPQ_CHAMADAS_ABERTAS_URL,
         processed_urls: Optional[Set[str]] = None,
+        current_year: Optional[int] = None,
         timeout: int = 30,
     ) -> None:
         self.start_url = start_url
         self.processed_urls = processed_urls or set()
+        self.current_year = current_year if current_year is not None else datetime.now().year
         self.timeout = timeout
 
     def _download_file_bytes(self, url: str) -> Optional[bytes]:
@@ -134,6 +136,10 @@ class CnpqSource(ISource[RawEdital]):
             inscricao_text = inscricao_item.get_text(" ", strip=True)
 
         data_abertura, data_encerramento = _parse_inscricao_range(inscricao_text)
+        if data_encerramento:
+            encerramento_year = int(data_encerramento[:4])
+            if encerramento_year < self.current_year:
+                return None
         cronograma = []
         if data_abertura:
             cronograma.append({"evento": "abertura das inscrições", "data": data_abertura})

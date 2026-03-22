@@ -1,6 +1,6 @@
 {
     "nome": "CHAMADA PÚBLICA MCTI/CNPQ N° 02/2026 - PROGRAMA DE COOPERAÇÃO LATINO-AMERICANA E CARIBENHA EM CIÊNCIA, TECNOLOGIA E INOVAÇÃO – PROSUL PEPE MUJICA",
-    "descrição": "Fomentar a cooperação científica, tecnológica e de inovação entre instituições do Brasil e de países da América Latina e do Caribe, por meio do apoio a redes e projetos colaborativos multilateral e bilateral, visando fortalecer capacidades regionais, a integração científica e a produção de conhecimento de impacto.",
+    "descrição": "Fomentar a cooperação científica, tecnológica e de inovação entre instituições do Brasil e de países da América Latina e do Caribe, por meio do apoio a redes e projetos colaborativos multilateral e bilateral. O objetivo é fortalecer capacidades regionais, a integração científica e a produção de conhecimento de impacto.",
     "orgão_fomento": "CNPQ",
     "categoria": "pesquisa",
     "status": "aberto",
@@ -14,11 +14,11 @@
         },
         {
             "evento": "Divulgação do resultado preliminar",
-            "data": "5 dias úteis após o encerramento da submissão (data relativa)"
+            "data": "5 dias úteis após a análise das propostas"
         },
         {
-            "evento": "Fase recursal",
-            "data": "5 dias úteis após a divulgação do resultado preliminar (data relativa)"
+            "evento": "Fase recursal (após divulgação do resultado preliminar)",
+            "data": "Dentro do prazo estabelecido no edital"
         }
     ],
     "tags": [
@@ -26,7 +26,7 @@
         "América Latina",
         "redes de pesquisa",
         "inovação",
-        "CT&I"
+        "C&T"
     ],
     "anexos": [
         {

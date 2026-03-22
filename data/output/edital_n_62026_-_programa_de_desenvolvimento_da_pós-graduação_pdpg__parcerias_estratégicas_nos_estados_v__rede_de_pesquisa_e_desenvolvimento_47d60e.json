@@ -1,0 +1,88 @@
+{
+    "nome": "EDITAL N° 6/2026 - PROGRAMA DE DESENVOLVIMENTO DA PÓS-GRADUAÇÃO (PDPG) – PARCERIAS ESTRATÉGICAS NOS ESTADOS V – REDE DE PESQUISA E DESENVOLVIMENTO DA AMAZÔNIA LEGAL",
+    "descrição": "O edital visa contribuir para a redução das assimetrias regionais no Sistema Nacional de Pós-Graduação (SNPG), com foco na formação, fixação e internacionalização de recursos humanos de alto nível. Objetiva fortalecer a pesquisa, inovação, produção científica e redes de colaboração em eixos estratégicos prioritários para promover soluções sustentáveis e inclusivas para os desafios da Amazônia Legal. Inclui a consolidação de Programas de Pós-Graduação (PPGs), nucleação de áreas estratégicas, interiorização da pós-graduação, aumento da produção científica e tecnológica, atração e fixação de doutores, promoção de atividades integradas de ensino, pesquisa e extensão, e fortalecimento de redes entre setores acadêmicos e não acadêmicos.",
+    "orgão_fomento": "CAPES",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-05-11",
+    "data_encerramento": "2026-10-02",
+    "link": "https://www.gov.br/capes/pt-br/acesso-a-informacao/acoes-e-programas/bolsas/programas-estrategicos/desenvolvimento-regional/redes-de-pesquisa-e-desenvolvimento/programa-rede-de-pesquisa-e-desenvolvimento-da-amazonia-legal",
+    "cronograma": [
+        {
+            "evento": "Prazo para apresentação pela FAP de manifestação de interesse e compromisso em participar do Edital",
+            "data": "2026-04-10"
+        },
+        {
+            "evento": "Início das inscrições",
+            "data": "2026-05-11"
+        },
+        {
+            "evento": "Data limite para submissão das propostas",
+            "data": "2026-10-02"
+        },
+        {
+            "evento": "Resultado Preliminar da Análise Técnica",
+            "data": "2026-10-16"
+        },
+        {
+            "evento": "Prazo para envio de recurso referente à Análise Técnica",
+            "data": "5 (cinco) dias corridos após o recebimento da comunicação do indeferimento da análise técnica"
+        },
+        {
+            "evento": "Divulgação do Resultado Final da Análise Técnica",
+            "data": "2026-10-26"
+        },
+        {
+            "evento": "Divulgação do Resultado Preliminar das Propostas P1",
+            "data": "2026-12-07"
+        },
+        {
+            "evento": "Prazo para envio de recurso referente ao Resultado Preliminar das Propostas P1",
+            "data": "5 (cinco) dias corridos após a divulgação do resultado preliminar no DOU"
+        },
+        {
+            "evento": "Divulgação da quantidade de vagas destinadas a Ampla Concorrência",
+            "data": "2026-12-21"
+        },
+        {
+            "evento": "Divulgação do Resultado Preliminar das propostas de Ampla Concorrência",
+            "data": "2027-01-25"
+        },
+        {
+            "evento": "Prazo para envio de recurso referente ao Resultado Preliminar das propostas de Ampla Concorrência",
+            "data": "5 (cinco) dias corridos após a divulgação do resultado preliminar no DOU"
+        },
+        {
+            "evento": "Divulgação do Resultado Final no DOU",
+            "data": "2027-02-15"
+        },
+        {
+            "evento": "Assinatura dos Acordos de Cooperação Técnica",
+            "data": "2027-02-15"
+        },
+        {
+            "evento": "Início da implementação dos projetos",
+            "data": "2027-03-01"
+        }
+    ],
+    "tags": [
+        "Amazônia Legal",
+        "pós-graduação",
+        "pesquisa e desenvolvimento",
+        "sustentabilidade",
+        "bioeconomia",
+        "internacionalização"
+    ],
+    "anexos": [
+        {
+            "titulo": "Manual Cartão Pesquisador",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/documentos/09042024_manual-cartao-pesquisador-capes-2024-v04.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Edital nº 06/2026 Programa Rede de Pesquisa e Desenvolvimento da Amazônia Legal - formato, pdf, 168kb",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/20032026_Edital_2787827_SEI_2787352_Edital_6_2026.pdf",
+            "tipo": "anexo"
+        }
+    ]
+}

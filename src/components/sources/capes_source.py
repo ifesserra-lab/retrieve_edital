@@ -1,5 +1,6 @@
 import logging
 import re
+from datetime import datetime
 from typing import Dict, List, Optional, Set
 from urllib.parse import urljoin
 from urllib.request import urlopen
@@ -41,9 +42,15 @@ class CapesSource(ISource[RawEdital]):
         self,
         start_url: str = CAPES_EDITAIS_URL,
         processed_urls: Optional[Set[str]] = None,
+        current_year: Optional[int] = None,
     ) -> None:
         self.start_url = start_url
         self.processed_urls = processed_urls or set()
+        self.current_year = current_year if current_year is not None else datetime.now().year
+
+    def _infer_year_from_text(self, text: str) -> Optional[int]:
+        years = [int(value) for value in re.findall(r"\b(20\d{2})\b", text or "")]
+        return max(years) if years else None
 
     def _extract_listing_entries(self, html: str) -> List[Dict[str, str]]:
         soup = BeautifulSoup(html, "html.parser")
@@ -76,6 +83,9 @@ class CapesSource(ISource[RawEdital]):
             if normalized_url in self.processed_urls or normalized_url in seen_urls:
                 continue
             if "gov.br/capes" not in normalized_url:
+                continue
+            inferred_year = self._infer_year_from_text(f"{title} {normalized_url}")
+            if inferred_year is not None and inferred_year < self.current_year:
                 continue
 
             entries.append({"title": title, "url": normalized_url})
@@ -173,6 +183,12 @@ class CapesSource(ISource[RawEdital]):
         description = paragraphs[0] if paragraphs else ""
         anexos = self._extract_pdf_links(html)
         main_pdf_url = self._select_main_pdf_url(anexos)
+        inferred_year = self._infer_year_from_text(
+            f"{title} {detail_url} {main_pdf_url or ''} "
+            f"{' '.join(item['titulo'] for item in anexos)}"
+        )
+        if inferred_year is not None and inferred_year < self.current_year:
+            return None
         pdf_content = self._download_file_bytes(main_pdf_url) if main_pdf_url else None
 
         return RawEdital(
