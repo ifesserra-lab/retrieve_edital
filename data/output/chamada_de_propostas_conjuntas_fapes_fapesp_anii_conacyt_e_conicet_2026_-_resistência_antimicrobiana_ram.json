@@ -1,0 +1,36 @@
+{
+    "nome": "CHAMADA DE PROPOSTAS CONJUNTAS: FAPES, FAPESP, ANII, CONACYT E CONICET 2026 - RESISTÊNCIA ANTIMICROBIANA (RAM)",
+    "descrição": "O edital tem como objetivo financiar projetos de pesquisa e transferência de conhecimento relacionados à Resistência Antimicrobiana (RAM) no contexto da produção intensiva de animais para consumo humano na Argentina, Brasil (estados do Espírito Santo e São Paulo), Paraguai e Uruguai. Os projetos devem abordar aspectos da RAM nas cadeias produtivas por meio de pesquisa científica, formulação de políticas públicas e implementação de adaptações produtivas, promovendo a participação intersetorial e a integração das capacidades regionais.",
+    "orgão_fomento": "FAPES",
+    "categoria": "chamadas",
+    "status": "aberto",
+    "data_abertura": "2026-02-01",
+    "data_encerramento": "2026-04-30",
+    "link": "https://fapes.es.gov.br/Media/fapes/Editais/Chamada%20de%20Propostas%20Conjuntas%20-%20FAPES-FAPESP-ANII-CONACYT-CONICET.pdf",
+    "cronograma": [
+        {
+            "evento": "Lançamento da Chamada",
+            "data": "2026-02-01"
+        },
+        {
+            "evento": "Data limite de submissão de propostas",
+            "data": "2026-04-30"
+        },
+        {
+            "evento": "Divulgação dos resultados",
+            "data": "2026-08-01"
+        },
+        {
+            "evento": "Início dos projetos",
+            "data": "2026-12-01"
+        }
+    ],
+    "tags": [
+        "Resistência Antimicrobiana",
+        "Pesquisa Científica",
+        "Produção Animal",
+        "Políticas Públicas",
+        "Inovação Regional"
+    ],
+    "anexos": []
+}

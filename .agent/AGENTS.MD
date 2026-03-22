@@ -18,9 +18,10 @@ Todo o código produzido neste repositório será regido pelas seguintes premiss
 
 ## Fluxo de Trabalho e Implementação (Obrigatório)
 Sempre que uma nova feature ou implementação for solicitada, o seguinte fluxo **deve ser seguido estritamente**:
+0. **Planejar e Pedir Aprovação**: Antes de executar qualquer alteração, implementação, comando relevante ou escrita de código, o agente deve primeiro exibir o planejamento, o design proposto, os impactos esperados e então **pedir aprovação explícita do usuário**. Nenhuma execução deve começar antes dessa aprovação.
 1. **Mostrar o Planejamento**: Exibir as etapas e o design planejado.
-2. **Criar a Issue**: Registrar a Issue no Github e lincá-la no `.md` de Backlog. A Issue deve conter a descrição e os **Critérios de Aceite** detalhados.
-3. **Criar a Branch (GitFlow)**: Não commitar na `main` ou `developing`. Sempre abrir ramificações como `feature/NOME` ou `fix/NOME`.
+2. **Criar a Branch (GitFlow)**: Sempre abrir uma branch nova **a partir de `development`** antes de iniciar uma nova issue. O fluxo obrigatório é: atualizar `development`, criar a branch (`feature/NOME` ou `fix/NOME`) e somente então seguir para o registro da issue.
+3. **Criar a Issue**: Registrar a Issue no Github e lincá-la no `.md` de Backlog. **Toda issue deve obrigatoriamente conter**: descrição, **Critérios de Aceite** detalhados e **Definition of Done (DoD)** explícita.
 4. **Escrever a Feature BDD/Gherkin**: Antes de qualquer código produtivo, escrever os cenários no padrão BDD (`docs/features/`). Isso servirá como nosso **Definition of Done (DoD)** e guiará a implementação.
-5. **Escrever Código**: Escrever o `.py` propriamente dito com testes que garantem as features.
+5. **Escrever Código**: Somente após branch + issue + critérios de aceite + DoD + BDD, escrever o `.py` propriamente dito com testes que garantem as features.
 6. **Mostrar Resultados**: Printar o passe limpo de testes ou linting e notificar a disponibilidade de mesclagem.

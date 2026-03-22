@@ -1,0 +1,53 @@
+{
+    "nome": "DIRETRIZES DA FUNDAÇÃO DE AMPARO À PESQUISA E INOVAÇÃO DO ESTADO DO ESPÍRITO SANTO - FAPES PARA A PREPARAÇÃO DE PROPOSTAS COM PARTICIPAÇÃO DE PESQUISADORES DO ESTADO DO ESPÍRITO SANTO EM COLABORAÇÃO COM CANDIDATURAS SUBMETIDAS AO HORIZONTE EUROPA",
+    "descrição": "O edital estabelece diretrizes para apoiar a participação de pesquisadores do estado do Espírito Santo em propostas colaborativas submetidas ao programa Horizonte Europa, da União Europeia. O objetivo é viabilizar a inclusão de co-pesquisadores principais (co-PIs) do Espírito Santo em consórcios internacionais, garantindo financiamento complementar da FAPES para projetos aprovados pelo Horizonte Europa, com foco no desenvolvimento científico, tecnológico e de inovação no estado.",
+    "orgão_fomento": "FAPES",
+    "categoria": "chamadas",
+    "status": "aberto",
+    "data_abertura": "2026-01-01",
+    "data_encerramento": "",
+    "link": "https://fapes.es.gov.br/Media/fapes/Editais/Diretrizes%20Fapes%20Horizon%20Europe%202021-2027-1.pdf",
+    "cronograma": [
+        {
+            "evento": "Consulta de elegibilidade à FAPES antes da submissão da proposta ao Horizonte Europa",
+            "data": ""
+        },
+        {
+            "evento": "Submissão da proposta ao Horizonte Europa conforme prazos específicos de cada chamada",
+            "data": ""
+        },
+        {
+            "evento": "Aprovação pela FAPES condicionada à aprovação prévia pelo Horizonte Europa",
+            "data": ""
+        }
+    ],
+    "tags": [
+        "Horizonte Europa",
+        "pesquisa colaborativa",
+        "financiamento internacional",
+        "Espírito Santo",
+        "inovação"
+    ],
+    "anexos": [
+        {
+            "titulo": "DIRETRIZES FAPES PARA HORIZON EUROPE 2021-2027 (1ª ALTERAÇÃO)",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/Diretrizes_Fapes_Horizon_Europe_2021-2027-DITEC_-_16-09-25.pdf",
+            "tipo": "alteração"
+        },
+        {
+            "titulo": "PUBLICAÇÃO CONFAP",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/Publicação%20CONFAP-12.pdf",
+            "tipo": "edital"
+        },
+        {
+            "titulo": "FICHA INFORMATIVA HORIZON EUROPE",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/Ficha%20Informativa%20%20Horizon%20Europe%20(Em%20inglês)-1.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "ARRANJO ADMINISTRATIVO",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/AA_EC_BRAZIL_PT-1.pdf",
+            "tipo": "anexo"
+        }
+    ]
+}

@@ -1,6 +1,6 @@
 {
     "nome": "EDITAL FAPES N° 25/2025 - PARTICIPAÇÃO DE EQUIPES DE ESTUDANTES EM MOSTRAS E COMPETIÇÕES TÉCNICO-CIENTÍFICAS",
-    "descrição": "Conceder apoio financeiro a equipes formadas por estudantes de nível médio, graduação e pós-graduação, coordenadas por um professor orientador, para participação em mostras e competições técnico-científicas de âmbito regional, nacional ou internacional. O objetivo é promover a divulgação e difusão de resultados obtidos por instituições de ensino localizadas no Espírito Santo, incentivando o intercâmbio de conhecimento, a solução de problemas cotidianos por meio de Ciência, Tecnologia e Inovação (CT&I), e o protagonismo estudantil.",
+    "descrição": "Conceder apoio financeiro a equipes formadas por estudantes de nível médio, graduação e pós-graduação, coordenadas por um professor orientador, selecionadas para participar de mostras e competições técnico-científicas em âmbito regional, nacional ou internacional. O objetivo é promover a divulgação e difusão de resultados obtidos por instituições de ensino do Espírito Santo, incentivando o intercâmbio de conhecimento, a solução de problemas cotidianos por meio da ciência e tecnologia, e o protagonismo estudantil em atividades de CT&I.",
     "orgão_fomento": "FAPES",
     "categoria": "divulgação de conhecimento",
     "status": "aberto",
@@ -63,8 +63,8 @@
     ],
     "tags": [
         "mostras técnico-científicas",
-        "competições estudantis",
-        "fomento à extensão",
+        "competição estudantil",
+        "apoio financeiro",
         "intercâmbio de conhecimento",
         "Espírito Santo"
     ],

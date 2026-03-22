@@ -1,0 +1,72 @@
+{
+    "nome": "EDITAL CONIF/DIRINTER 09, DE 19 DE DEZEMBRO DE 2025 - CHAMADA PÚBLICA PARA SELEÇÃO DE ESTUDANTES DE CURSOS DE ENSINO SUPERIOR DA REDE FEDERAL DE EDUCAÇÃO PROFISSIONAL, CIENTÍFICA E TECNOLÓGICA PARA BOLSA DE ESTUDO DE MESTRADO NA UNIVERSIDAD DE JAÉN",
+    "descrição": "Selecionar 4 estudantes de cursos de ensino superior (bacharelado, licenciatura ou graduação tecnológica) de instituições da Rede Federal de Educação Profissional, Científica e Tecnológica vinculadas ao Conif para receber bolsa de estudo de mestrado na Universidad de Jaén, na Espanha, em parceria com o Escritório de Educação da Embaixada da Espanha. O edital visa fomentar ações de internacionalização acadêmica e científica, além de contribuir para o desenvolvimento da educação profissional e formação de cidadãos globais.",
+    "orgão_fomento": "CONIF",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2025-12-19",
+    "data_encerramento": "2026-02-01",
+    "link": "https://portal.conif.org.br/editais/2026/edital-09-25-bolsa-mestrado-ujaen",
+    "cronograma": [
+        {
+            "evento": "Prazo final para envio da documentação completa",
+            "data": "2026-02-01"
+        },
+        {
+            "evento": "Divulgação do resultado provisório",
+            "data": "2026-02-04"
+        },
+        {
+            "evento": "Prazo para recursos",
+            "data": "24 horas após a divulgação do resultado provisório"
+        },
+        {
+            "evento": "Divulgação do resultado final",
+            "data": "2026-02-06"
+        }
+    ],
+    "tags": [
+        "bolsa de mestrado",
+        "internacionalização",
+        "educação profissional",
+        "Rede Federal",
+        "Universidad de Jaén"
+    ],
+    "anexos": [
+        {
+            "titulo": "EDITAL CONIF/AI 09, de 19 de dezembro de 2025",
+            "link": "https://portal.conif.org.br/images/Editais/2025/12_Dezembro/edital-09_2025--bolsas-ujaen-mestrado.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Anexo 1 - Convocatória del Concurso de Becas de Atracción de Talentos 2026",
+            "link": "https://portal.conif.org.br/images/Editais/2025/12_Dezembro/anexo-1---concurso-becas-ujaen-master-2026--1-.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Anexo 2 - Modelo de Declaração de Proficiência​",
+            "link": "https://portal.conif.org.br/images/Editais/2025/12_Dezembro/anexo-2---edital-09_2025---modelo-de-declaracao-de-proficiencia-docx.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Anexo 3 - Documento de Solicitud de Beca",
+            "link": "https://portal.conif.org.br/images/Editais/2025/12_Dezembro/anexo-3---solicitud-de-becas--1-.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Anexo 4 - Tabela de conversão DELE/SIELE",
+            "link": "https://portal.conif.org.br/images/Editais/2025/12_Dezembro/anexo-4---tabela-qcer--1-.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Resultado Provisório",
+            "link": "https://portal.conif.org.br/images/Editais/2026/JAN/edital-09_25---resultado-provisorio---ujaen-mestrado.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Resultado Final",
+            "link": "https://portal.conif.org.br/images/Editais/2026/JAN/edital-09_25---ujaen-mestrado---resultado-final--2-.pdf",
+            "tipo": "anexo"
+        }
+    ]
+}

@@ -29,7 +29,7 @@ jobs:
 
     - name: Run Scraper (Extract, Transform, Sink)
       run: |
-        python -m src.flows.ingest_fapes_flow
+        python scripts/run_all_flows.py
 
     - name: Commit and Push JSON Results
       if: always()

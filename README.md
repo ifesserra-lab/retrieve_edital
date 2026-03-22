@@ -18,6 +18,7 @@ Documentação detalhada: [docs/etl_architecture.md](docs/etl_architecture.md).
 |-------|--------|-----|--------|
 | **FAPES** | `FapesSource` | Editais FAPES (múltiplas seções), com PDF e Mistral OCR quando disponível | `data/output/*.json` |
 | **FINEP** | `FinepSource` | Chamadas públicas FINEP (abertas), uma página de detalhe por chamada; categorização Mistral pela descrição | `data/output/*.json` |
+| **CONIF** | `ConifSource` | Editais do portal CONIF, restritos ao ano corrente, com deduplicação por `registry/processed_editais.json` e leitura do PDF principal via Mistral OCR | `data/output/*.json` |
 
 ### Como rodar
 
@@ -36,6 +37,9 @@ python -m src.flows.ingest_finep_flow
 
 # FINEP — todas as páginas da listagem
 python -m src.flows.ingest_finep_flow --all
+
+# Pipeline CONIF (apenas editais do ano corrente)
+python -m src.flows.ingest_conif_flow
 ```
 
 Variável opcional para FINEP: **`REFERENCE_YEAR`** (ano de referência para filtrar por prazo de envio). Ver [docs/finep_source.md](docs/finep_source.md) e `.env.example`.
@@ -43,6 +47,7 @@ Variável opcional para FINEP: **`REFERENCE_YEAR`** (ano de referência para fil
 ## O que foi modificado / novidades
 
 - **Novo source FINEP** (`FinepSource`): listagem em [chamadas abertas](http://www.finep.gov.br/chamadas-publicas/chamadaspublicas?situacao=aberta), entrada em cada link de detalhe para extrair descrição, cronograma (data de publicação + prazo de envio), tags (Tema(s)) e anexos (tabela Documentos). Filtro por ano de prazo configurável (`REFERENCE_YEAR` ou construtor).
+- **Novo source CONIF** (`ConifSource`): leitura da listagem em `https://portal.conif.org.br/editais`, filtrando apenas URLs com o ano corrente, entrando na página de detalhe, baixando o PDF principal do edital para processamento via Mistral OCR e pulando URLs já registradas em `registry/processed_editais.json`.
 - **Configuração de ano** (`src.config`): `get_reference_year()` para uso no filtro de prazos (FINEP).
 - **Modelo de domínio** (`RawEdital`): campos opcionais `raw_cronograma`, `raw_tags`, `raw_anexos` para dados já estruturados na página de detalhe (ex.: FINEP).
 - **Normalizador**:
@@ -63,7 +68,7 @@ src/
 │   ├── sources/    # FapesSource, FinepSource
 │   ├── transforms/ # EditalNormalizer, date_utils, mistral_client
 │   └── sinks/      # LocalJSONSink
-└── flows/          # ingest_fapes_flow, ingest_finep_flow
+└── flows/          # ingest_fapes_flow, ingest_finep_flow, ingest_conif_flow
 docs/               # Arquitetura, backlog, features BDD, finep_source, agents_and_skills
 data/output/        # JSONs gerados (1 por edital)
 ```

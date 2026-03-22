@@ -19,6 +19,7 @@
     ],
     "tags": [
         "Bioeconomia",
+        "Bioeconomia",
         "Combustíveis",
         "Eficiência energética",
         "Energia",
@@ -30,13 +31,18 @@
     ],
     "anexos": [
         {
-            "titulo": "Apresentação",
-            "link": "http://www.finep.gov.br/images/chamadas-publicas/2026/26_02_2026_Apresentacao.pdf",
+            "titulo": "Regulamento",
+            "link": "http://www.finep.gov.br/images/chamadas-publicas/2026/09_02_2026_T_Energetica_Regulamento.pdf",
             "tipo": "Documentos"
         },
         {
-            "titulo": "Regulamento",
-            "link": "http://www.finep.gov.br/images/chamadas-publicas/2026/09_02_2026_T_Energetica_Regulamento.pdf",
+            "titulo": "FAQ - Perguntas Frequentes",
+            "link": "http://www.finep.gov.br/images/chamadas-publicas/2026/17_03_2026_FAQ_Transicao_Energetica.pdf",
+            "tipo": "Documentos"
+        },
+        {
+            "titulo": "Apresentação",
+            "link": "http://www.finep.gov.br/images/chamadas-publicas/2026/26_02_2026_Apresentacao.pdf",
             "tipo": "Documentos"
         },
         {

@@ -1,32 +1,34 @@
 {
   "fapes": [
+    "edital_fapes_nº_012026__tcc_empreendedor_inovador",
+    "edital_fapes_nº_062026_-_apoio_aos_clusters_de_inovação_capixaba",
     "chamada_confap__marie_skłodowska-curie_msca_2026_-_intercâmbio_de_pessoal_2026",
+    "diretrizes_da_fundação_de_amparo_à_pesquisa_e_inovação_do_estado_do_espírito_santo_-_fapes_para_a_preparação_de_propostas_com_participação_d_4a7500",
+    "chamada_confap__biodiversa_biodivconnect_2025-2026_-_diretrizes_específicas_da_fapes",
     "chamada_confap__water4all_-_water_and_health_2025",
+    "digitalisation_and_innovation_for_resilient_marine_ecosystems_businesses_and_communities_to_strengthen_the_eu_blue_economys_competitiveness",
+    "ocean_2_cra__towards_the_ocean_we_want_biodiversity_and_ecosystem_sustainability_for_nature_and_human_well-being",
+    "chamada_de_propostas_conjuntas_fapes_fapesp_anii_conacyt_e_conicet_2026_-_resistência_antimicrobiana_ram",
+    "edital_fapes_nº_042026_-_estágio_técnico_científico",
     "edital_fapes_052026__visita_técnico-científica",
     "edital_fapes_n_072026_espaços_científicos_culturais",
-    "edital_fapes_n_252025_-_participação_de_equipes_de_estudantes_em_mostras_e_competições_técnico-científicas",
-    "edital_fapes_nº_012026__tcc_empreendedor_inovador",
-    "edital_fapes_nº_042026_-_estágio_técnico_científico",
-    "edital_fapes_nº_062026_-_apoio_aos_clusters_de_inovação_capixaba",
-    "3ª_chamada_trsnacional_conjunta_-_parceria_economia_azul_sustentável",
-    "ocean_2_cra__towards_the_ocean_we_want_biodiversity_and_ecosystem_sustainability_for_nature_and_human_well-being"
+    "edital_fapes_n_252025_-_participação_de_equipes_de_estudantes_em_mostras_e_competições_técnico-científicas"
   ],
   "finep": [
+    "http://www.finep.gov.br/chamadas-publicas/chamadapublica/781",
+    "http://www.finep.gov.br/chamadas-publicas/chamadapublica/779",
+    "http://www.finep.gov.br/chamadas-publicas/chamadapublica/780",
+    "http://www.finep.gov.br/chamadas-publicas/chamadapublica/778",
+    "http://www.finep.gov.br/chamadas-publicas/chamadapublica/777",
     "http://www.finep.gov.br/chamadas-publicas/chamadapublica/771",
     "http://www.finep.gov.br/chamadas-publicas/chamadapublica/772",
     "http://www.finep.gov.br/chamadas-publicas/chamadapublica/773",
     "http://www.finep.gov.br/chamadas-publicas/chamadapublica/774",
-    "http://www.finep.gov.br/chamadas-publicas/chamadapublica/775",
-    "http://www.finep.gov.br/chamadas-publicas/chamadapublica/777",
-    "http://www.finep.gov.br/chamadas-publicas/chamadapublica/778",
-    "http://www.finep.gov.br/chamadas-publicas/chamadapublica/779",
-    "http://www.finep.gov.br/chamadas-publicas/chamadapublica/780",
-    "http://www.finep.gov.br/chamadas-publicas/chamadapublica/781",
-    "http://www.finep.gov.br/chamadas-publicas/chamadapublica/776",
-    "http://www.finep.gov.br/chamadas-publicas/chamadapublica/769",
-    "http://www.finep.gov.br/chamadas-publicas/chamadapublica/770",
-    "http://www.finep.gov.br/chamadas-publicas/chamadapublica/765",
-    "http://www.finep.gov.br/chamadas-publicas/chamadapublica/763",
-    "http://www.finep.gov.br/chamadas-publicas/chamadapublica/764"
+    "http://www.finep.gov.br/chamadas-publicas/chamadapublica/775"
+  ],
+  "conif": [
+    "https://portal.conif.org.br/editais/2026/edital-2-solucoes-e-inovacoes-para-o-desenvolvimento-sustentavel-com-uso-de-tecnologias-de-conectividade",
+    "https://portal.conif.org.br/editais/2026/edital-01-26-bolsa-grado-ujaen",
+    "https://portal.conif.org.br/editais/2026/edital-09-25-bolsa-mestrado-ujaen"
   ]
 }

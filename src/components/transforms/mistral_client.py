@@ -4,7 +4,7 @@ import base64
 import json
 import time
 from typing import Optional, Dict, Any, List, Callable, TypeVar
-from mistralai import Mistral
+from mistralai.client import Mistral
 from src.domain.models import EditalDomain
 
 logger = logging.getLogger(__name__)

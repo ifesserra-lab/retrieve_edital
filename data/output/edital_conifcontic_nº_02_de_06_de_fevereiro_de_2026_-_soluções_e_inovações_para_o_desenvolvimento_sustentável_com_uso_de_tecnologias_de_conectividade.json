@@ -1,0 +1,92 @@
+{
+    "nome": "EDITAL CONIF/CONTIC Nº 02, DE 06 DE FEVEREIRO DE 2026 - SOLUÇÕES E INOVAÇÕES PARA O DESENVOLVIMENTO SUSTENTÁVEL COM USO DE TECNOLOGIAS DE CONECTIVIDADE",
+    "descrição": "Selecionar protótipos de soluções e inovações desenvolvidos por projetos de extensão ou pesquisa nas Instituições da Rede Federal de Educação Profissional, Científica e Tecnológica (RFEPCT), que utilizem tecnologias de conectividade para contribuir com um ou mais Objetivos de Desenvolvimento Sustentável (ODS) das Nações Unidas. O edital visa promover a participação de servidores e estudantes no desenvolvimento de soluções inovadoras, fomentar parcerias e conscientizar sobre a importância dos ODS.",
+    "orgão_fomento": "CONIF E CONTIC",
+    "categoria": "inovação",
+    "status": "aberto",
+    "data_abertura": "2026-02-06",
+    "data_encerramento": "2026-03-20",
+    "link": "https://portal.conif.org.br/editais/2026/edital-2-solucoes-e-inovacoes-para-o-desenvolvimento-sustentavel-com-uso-de-tecnologias-de-conectividade",
+    "cronograma": [
+        {
+            "evento": "Publicação e divulgação do edital",
+            "data": "2026-02-06"
+        },
+        {
+            "evento": "Prazo de impugnação",
+            "data": "2026-02-12"
+        },
+        {
+            "evento": "Webinar de lançamento e para esclarecimentos sobre o edital",
+            "data": "a definir"
+        },
+        {
+            "evento": "Período de inscrições",
+            "data": "2026-03-20"
+        },
+        {
+            "evento": "Divulgação de Resultado Parcial da Etapa I",
+            "data": "2026-04-08"
+        },
+        {
+            "evento": "Período de apresentação de recurso",
+            "data": "2026-04-10"
+        },
+        {
+            "evento": "Divulgação do Resultado Final da Etapa I após análise dos recursos",
+            "data": "2026-04-17"
+        },
+        {
+            "evento": "Envio do Anexo V, pelas equipes classificadas para a Etapa II",
+            "data": "2026-04-22"
+        },
+        {
+            "evento": "Etapa II: Apresentação das propostas classificadas e premiações (Evento Painel Telebrasil Summit)",
+            "data": "Evento Painel Telebrasil Summit (19 e 20 de maio de 2026)"
+        }
+    ],
+    "tags": [
+        "inovação",
+        "desenvolvimento sustentável",
+        "tecnologias de conectividade",
+        "ODS",
+        "prototipagem"
+    ],
+    "anexos": [
+        {
+            "titulo": "Edital Conif/Contic nº 02, de 6 de fevereiro de 2026",
+            "link": "https://portal.conif.org.br/images/Editais/2026/2_Fevereiro/20260206_edital_conif_contic.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Anexo I – Modelo de Proposta",
+            "link": "https://portal.conif.org.br/images/Editais/2026/2_Fevereiro/anexo-i-edital-2-conif-contic.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Anexo II – Modelo de Termo de Anuência da Instituição",
+            "link": "https://portal.conif.org.br/images/Editais/2026/2_Fevereiro/anexo-ii-edital-2-conif-contic.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Anexo III – Termo de Consentimento – LGPD",
+            "link": "https://portal.conif.org.br/images/Editais/2026/2_Fevereiro/anexo-iii-edital-2-conif-contic.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Anexo IV – Critérios para Avaliação das Propostas",
+            "link": "https://portal.conif.org.br/images/Editais/2026/2_Fevereiro/anexo-iv-edital-2-conif-contic.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Retificação 1",
+            "link": "https://portal.conif.org.br/images/Editais/2026/2_Fevereiro/retificacao-edital-2_26-contic.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Retificação 2",
+            "link": "https://portal.conif.org.br/images/Editais/2026/3_Mar%C3%A7o/retificacao-2-edital-2_26-contic.pdf",
+            "tipo": "anexo"
+        }
+    ]
+}
