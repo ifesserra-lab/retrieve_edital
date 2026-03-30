@@ -1,0 +1,108 @@
+{
+    "nome": "EDITAL PRPPG N° 03/2026 - CADASTRO DE RESERVA PIBIC/PIVIC; PIBITI/PIVITI & PIBIC-JR/PIVIC-JR",
+    "descrição": "Este edital cria um cadastro de reserva para concessão de bolsas e cadastro de voluntários para estudantes do Ifes, visando a seleção de propostas para execução de projetos de pesquisa em iniciação científica e tecnológica. Os objetivos incluem despertar a vocação científica, incentivar novos talentos, apoiar a formação de recursos humanos para pesquisa, desenvolvimento tecnológico e inovação, fortalecer a capacidade inovadora das organizações, e estimular a integração entre pesquisadores e estudantes de diferentes níveis de ensino.",
+    "orgão_fomento": "PRPPG/IFES",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-03-23",
+    "data_encerramento": "2026-04-24",
+    "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=282",
+    "cronograma": [
+        {
+            "evento": "início do período do edital",
+            "data": "2026-03-23"
+        },
+        {
+            "evento": "fim do período do edital",
+            "data": "2026-04-24"
+        },
+        {
+            "evento": "Lançamento do Edital PRPPG 03/2026",
+            "data": "2026-03-23"
+        },
+        {
+            "evento": "Período de submissão das propostas (conforme item 6.2 deste Edital)",
+            "data": "2026-03-23"
+        },
+        {
+            "evento": "Período de avaliação e aprovação dos projetos submetidos a esse edital via Sigpesq pelos Diretores de Pesquisa dos Campi do IFES.",
+            "data": "2026-04-27"
+        },
+        {
+            "evento": "Avaliações das propostas pelo Cicti",
+            "data": "2026-05-01"
+        },
+        {
+            "evento": "Divulgação do resultado preliminar. A partir de",
+            "data": "2026-06-05"
+        },
+        {
+            "evento": "Pedidos de Recurso.",
+            "data": "2026-06-08"
+        },
+        {
+            "evento": "Avaliação dos Recursos, até dia",
+            "data": "2026-06-15"
+        },
+        {
+            "evento": "Divulgação da Classificação Final. A partir de",
+            "data": "2026-06-19"
+        },
+        {
+            "evento": "Divulgação da distribuição das bolsas. A partir de",
+            "data": "2026-07-31"
+        },
+        {
+            "evento": "Período de Contratação: Cadastramento do aluno bolsista ou voluntário; alimentação do sistema com os dados bancários para implementação da bolsa, quando contemplado; e aceite dos termos de compromisso no SIGPESq – Etapas de responsabilidade do proponente",
+            "data": "2026-08-01"
+        },
+        {
+            "evento": "Início de execução das bolsas",
+            "data": "2026-09-01"
+        },
+        {
+            "evento": "Data limite para envio, via SigFapes, do relatório técnico do bolsista Fapes (ver item 15.1).",
+            "data": "2027-08-31"
+        },
+        {
+            "evento": "Data limite para anexação no SIGPESq do Relatório Final",
+            "data": "2027-08-31"
+        },
+        {
+            "evento": "Envio do resumo/outros documentos e apresentação na Jornada de Iniciação Científica, Desenvolvimento Tecnológico e Inovação do Ifes. A partir de",
+            "data": "2027-09-01"
+        }
+    ],
+    "tags": [
+        "iniciação científica",
+        "bolsas de pesquisa",
+        "desenvolvimento tecnológico",
+        "inovação",
+        "ensino técnico",
+        "prppg",
+        "ifes",
+        "2026"
+    ],
+    "anexos": [
+        {
+            "titulo": "Modelo de Projeto de Pesquisa e Plano de Trabalho",
+            "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=282#downloadTarget=ctl00%24Conteudo%24Consulta_Arquivo%24rptArquivo%24ctl01%24Download",
+            "tipo": "docx"
+        },
+        {
+            "titulo": "Modelo de relatório final",
+            "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=282#downloadTarget=ctl00%24Conteudo%24Consulta_Arquivo%24rptArquivo%24ctl02%24Download",
+            "tipo": "docx"
+        },
+        {
+            "titulo": "Modelo de carta de parceria",
+            "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=282#downloadTarget=ctl00%24Conteudo%24Consulta_Arquivo%24rptArquivo%24ctl03%24Download",
+            "tipo": "docx"
+        },
+        {
+            "titulo": "Edital 03/2026",
+            "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=282#downloadTarget=ctl00%24Conteudo%24Consulta_Arquivo%24rptArquivo%24ctl04%24Download",
+            "tipo": "pdf"
+        }
+    ]
+}

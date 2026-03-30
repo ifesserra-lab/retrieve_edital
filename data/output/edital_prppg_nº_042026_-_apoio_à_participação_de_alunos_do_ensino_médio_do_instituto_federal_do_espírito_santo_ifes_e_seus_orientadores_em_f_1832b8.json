@@ -1,0 +1,66 @@
+{
+    "nome": "EDITAL PRPPG Nº 04/2026 - APOIO À PARTICIPAÇÃO DE ALUNOS DO ENSINO MÉDIO DO INSTITUTO FEDERAL DO ESPÍRITO SANTO (IFES) E SEUS ORIENTADORES EM FEIRAS DE CIÊNCIAS E OLIMPÍADAS CIENTÍFICAS DO CONHECIMENTO",
+    "descrição": "O edital tem como objetivo apoiar a participação de alunos do Ensino Médio do Instituto Federal do Espírito Santo (Ifes) e seus orientadores, em equipe, em Feiras de Ciências e Olimpíadas Científicas do Conhecimento, nacionais e internacionais. Visa estimular o interesse por carreiras científicas, tecnológicas e docentes, promover a divulgação e popularização da ciência, incentivar práticas interdisciplinares, e possibilitar intercâmbios culturais e acadêmicos.",
+    "orgão_fomento": "PRPPG/IFES",
+    "categoria": "extensão",
+    "status": "aberto",
+    "data_abertura": "2026-03-30",
+    "data_encerramento": "2026-11-01",
+    "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=290",
+    "cronograma": [
+        {
+            "evento": "início do período do edital",
+            "data": "2026-03-30"
+        },
+        {
+            "evento": "fim do período do edital",
+            "data": "2026-11-01"
+        },
+        {
+            "evento": "Inscrição no SIGPesq - fluxo contínuo",
+            "data": "2026-03-30"
+        }
+    ],
+    "tags": [
+        "feiras de ciências",
+        "olimpíadas científicas",
+        "ensino médio",
+        "popularização da ciência",
+        "extensão",
+        "prppg",
+        "ifes",
+        "2026"
+    ],
+    "anexos": [
+        {
+            "titulo": "Edital PRPPG 04/2026",
+            "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=290#downloadTarget=ctl00%24Conteudo%24Consulta_Arquivo%24rptArquivo%24ctl01%24Download",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "ANEXO I - INSCRIÇÃO",
+            "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=290#downloadTarget=ctl00%24Conteudo%24Consulta_Arquivo%24rptArquivo%24ctl02%24Download",
+            "tipo": "docx"
+        },
+        {
+            "titulo": "ANEXO II - TERMO DE RESPONSABILIDADE FINANCEIRA",
+            "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=290#downloadTarget=ctl00%24Conteudo%24Consulta_Arquivo%24rptArquivo%24ctl03%24Download",
+            "tipo": "docx"
+        },
+        {
+            "titulo": "ANEXO III - DECLARAÇÃO DE COMPROMISSO",
+            "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=290#downloadTarget=ctl00%24Conteudo%24Consulta_Arquivo%24rptArquivo%24ctl04%24Download",
+            "tipo": "docx"
+        },
+        {
+            "titulo": "ANEXO IV - TERMO DE AUTORIZAÇÃO E COMPROMISSO",
+            "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=290#downloadTarget=ctl00%24Conteudo%24Consulta_Arquivo%24rptArquivo%24ctl05%24Download",
+            "tipo": "docx"
+        },
+        {
+            "titulo": "ANEXO V - RELATÓRIO DE PARTICIPAÇÃO NO EVENTO",
+            "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=290#downloadTarget=ctl00%24Conteudo%24Consulta_Arquivo%24rptArquivo%24ctl06%24Download",
+            "tipo": "docx"
+        }
+    ]
+}

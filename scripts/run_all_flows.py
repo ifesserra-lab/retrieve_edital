@@ -10,6 +10,7 @@ FLOW_COMMANDS = (
     ("FAPES", [sys.executable, "-m", "src.flows.ingest_fapes_flow"]),
     ("FINEP", [sys.executable, "-m", "src.flows.ingest_finep_flow"]),
     ("CONIF", [sys.executable, "-m", "src.flows.ingest_conif_flow"]),
+    ("PRPPG_IFES", [sys.executable, "-m", "src.flows.ingest_prppg_ifes_flow"]),
     ("CAPES", [sys.executable, "-m", "src.flows.ingest_capes_flow"]),
     ("CNPQ", [sys.executable, "-m", "src.flows.ingest_cnpq_flow"]),
 )
@@ -17,6 +18,7 @@ REGISTRY_KEYS = {
     "FAPES": "fapes",
     "FINEP": "finep",
     "CONIF": "conif",
+    "PRPPG_IFES": "prppg_ifes",
     "CAPES": "capes",
     "CNPQ": "cnpq",
 }

@@ -13,6 +13,7 @@ class RawEdital:
     group_id: Optional[str] = None
     is_main: bool = True
     attachments: Optional[List['RawEdital']] = None  # Nested attachments
+    raw_status: Optional[str] = None
     # Optional structured data from detail pages (e.g. FINEP chamadapublica)
     raw_cronograma: Optional[List[Dict[str, str]]] = None  # [{"evento": "...", "data": "YYYY-MM-DD"}]
     raw_tags: Optional[List[str]] = None

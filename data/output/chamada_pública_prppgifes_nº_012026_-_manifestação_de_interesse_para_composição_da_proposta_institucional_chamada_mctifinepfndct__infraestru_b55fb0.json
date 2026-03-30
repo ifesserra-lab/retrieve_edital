@@ -1,0 +1,94 @@
+{
+    "nome": "CHAMADA PÚBLICA PRPPG/IFES Nº 01/2026 - MANIFESTAÇÃO DE INTERESSE PARA COMPOSIÇÃO DA PROPOSTA INSTITUCIONAL CHAMADA MCTI/FINEP/FNDCT – INFRAESTRUTURA DE PESQUISA PROINFRA 2025 – EXPANSÃO",
+    "descrição": "Esta chamada tem por objetivo mapear demandas internas de expansão de infraestrutura de pesquisa compatíveis com o edital Finep PROINFRA 2025 – Expansão, identificar possibilidades de integração entre subprojetos e subsidiar a construção de uma proposta institucional qualificada e alinhada às diretrizes do programa. O foco é apoiar projetos institucionais voltados à expansão e desenvolvimento da infraestrutura de pesquisa, permitindo a submissão de uma proposta institucional com até dois subprojetos.",
+    "orgão_fomento": "PRPPG/IFES",
+    "categoria": "pesquisa",
+    "status": "encerrado",
+    "data_abertura": "2026-02-24",
+    "data_encerramento": "2026-03-02",
+    "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=284",
+    "cronograma": [
+        {
+            "evento": "início do período do edital",
+            "data": "2026-02-24"
+        },
+        {
+            "evento": "fim do período do edital",
+            "data": "2026-03-02"
+        },
+        {
+            "evento": "Publicação da Chamada Interna PRPPG/Ifes",
+            "data": "2026-02-24"
+        },
+        {
+            "evento": "Período de Manifestação de Interesse (1ª Etapa - item 5.1)",
+            "data": "2026-02-24"
+        },
+        {
+            "evento": "Reunião de alinhamento com proponentes (2ª Etapa - item 5.2)",
+            "data": "2026-03-03"
+        },
+        {
+            "evento": "Publicação da Ata da reunião de alinhamento (site do Ifes)",
+            "data": "2026-03-04"
+        },
+        {
+            "evento": "Divulgação do Formulário 2 via e-mail (3ª Etapa - item 5.3)",
+            "data": "2026-03-04"
+        },
+        {
+            "evento": "Prazo para envio do Formulário 2 pelos participantes selecionados",
+            "data": "2026-03-04"
+        },
+        {
+            "evento": "Avaliação",
+            "data": "2026-03-10"
+        },
+        {
+            "evento": "Divulgação do resultado (site do Ifes)",
+            "data": "2026-03-13"
+        }
+    ],
+    "tags": [
+        "infraestrutura de pesquisa",
+        "PROINFRA",
+        "FINEP",
+        "manifestação de interesse",
+        "subprojetos institucionais",
+        "prppg",
+        "ifes",
+        "2026"
+    ],
+    "anexos": [
+        {
+            "titulo": "Chamada Pública",
+            "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=284#downloadTarget=ctl00%24Conteudo%24Consulta_Arquivo%24rptArquivo%24ctl01%24Download",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Ata da Reunião do dia 03/03/2026",
+            "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=284#downloadTarget=ctl00%24Conteudo%24Consulta_Arquivo%24rptArquivo%24ctl02%24Download",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Portaria da Comissão Interna de Avaliação",
+            "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=284#downloadTarget=ctl00%24Conteudo%24Consulta_Arquivo%24rptArquivo%24ctl03%24Download",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Etapa 1",
+            "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=284#downloadTarget=ctl00%24Conteudo%24Consulta_Arquivo%24rptArquivo%24ctl04%24Download",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Etapa 2",
+            "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=284#downloadTarget=ctl00%24Conteudo%24Consulta_Arquivo%24rptArquivo%24ctl05%24Download",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Etapa 3 - Resultado Final",
+            "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=284#downloadTarget=ctl00%24Conteudo%24Consulta_Arquivo%24rptArquivo%24ctl06%24Download",
+            "tipo": "pdf"
+        }
+    ]
+}

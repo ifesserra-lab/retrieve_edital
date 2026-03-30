@@ -1,0 +1,69 @@
+{
+    "nome": "EDITAL PRPPG 01/2026 - PROGRAMA DE ESTÁGIO DOCENTE (PED)",
+    "descrição": "O edital tem como objetivo ampliar as possibilidades de formação dos pós-graduandos do Instituto Federal do Espírito Santo (Ifes) por meio de experiências didático-pedagógicas nos cursos oferecidos na Educação Profissional e Tecnológica. Busca contribuir para a qualificação desses discentes da pós-graduação lato sensu e stricto sensu para o exercício da docência, proporcionando estágios em três etapas: Estágio à Docência I, II e III, com atividades que incluem auxílio no planejamento e acompanhamento de práticas pedagógicas, ministração de aulas complementares e supervisão em disciplinas de cursos técnicos e de graduação.",
+    "orgão_fomento": "PRPPG/IFES",
+    "categoria": "extensão",
+    "status": "encerrado",
+    "data_abertura": "2026-02-27",
+    "data_encerramento": "2026-03-10",
+    "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=280",
+    "cronograma": [
+        {
+            "evento": "início do período do edital",
+            "data": "2026-02-27"
+        },
+        {
+            "evento": "fim do período do edital",
+            "data": "2026-03-10"
+        },
+        {
+            "evento": "Lançamento do Edital",
+            "data": "2026-02-27"
+        },
+        {
+            "evento": "Inscrições pelo link:\r\nhttps://forms.gle/nVfuEACwpVACUswb7",
+            "data": "2026-02-27"
+        },
+        {
+            "evento": "Análise das Inscrições",
+            "data": "2026-03-11"
+        },
+        {
+            "evento": "Divulgação do Resultado Parcial",
+            "data": "2026-03-13"
+        },
+        {
+            "evento": "Recursos à Coordenadoria do PED",
+            "data": "2026-03-14"
+        },
+        {
+            "evento": "Divulgação do Resultado Final após Recursos",
+            "data": "2026-03-17"
+        }
+    ],
+    "tags": [
+        "estágio docente",
+        "formação pedagógica",
+        "pós-graduação",
+        "prppg",
+        "ifes",
+        "2026"
+    ],
+    "anexos": [
+        {
+            "titulo": "Edital retificado",
+            "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=280#downloadTarget=ctl00%24Conteudo%24Consulta_Arquivo%24rptArquivo%24ctl01%24Download",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Resultado Parcial",
+            "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=280#downloadTarget=ctl00%24Conteudo%24Consulta_Arquivo%24rptArquivo%24ctl02%24Download",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Resultado Final",
+            "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=280#downloadTarget=ctl00%24Conteudo%24Consulta_Arquivo%24rptArquivo%24ctl03%24Download",
+            "tipo": "pdf"
+        }
+    ]
+}

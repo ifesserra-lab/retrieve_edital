@@ -4,7 +4,12 @@ import base64
 import json
 import time
 from typing import Optional, Dict, Any, List, Callable, TypeVar
-from mistralai.client import Mistral
+
+try:
+    from mistralai import Mistral  # type: ignore[attr-defined]
+except ImportError:
+    from mistralai.client import MistralClient as Mistral
+
 from src.domain.models import EditalDomain
 
 logger = logging.getLogger(__name__)
