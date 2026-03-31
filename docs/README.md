@@ -1,14 +1,16 @@
 # Documentação do Projeto
 
-Este diretório contém a documentação do projeto `retrieve_edital`: extração e normalização de editais (FAPES e FINEP) com arquitetura ETL Source → Transform → Sink.
+Este diretório contém a documentação do projeto `retrieve_edital`: extração, normalização e carga incremental de editais com arquitetura ETL Source → Transform → Sink.
 
 ## Índice de Documentos
 
 ### Arquitetura e Fluxos
 - [Arquitetura ETL (System Design Document)](etl_architecture.md)
-  - Padrão T-Shape, fluxos **FAPES** e **FINEP**, componentes (Sources, EditalNormalizer, Sink), configuração (`REFERENCE_YEAR`), extensões do modelo (`raw_cronograma`, `raw_tags`, `raw_anexos`) e categorização Mistral para FINEP.
+  - Padrão T-Shape, fluxos **FAPES**, **FINEP**, **CONIF**, **PRPPG/IFES**, **PROEX/IFES**, **CAPES** e **CNPq**, com registry incremental, runner unificado e observabilidade operacional.
 - [Source FINEP](finep_source.md)
   - FinepSource: listagem, página de detalhe, descrição/cronograma/tags/anexos, variável de ano, uso via `ingest_finep_flow`, categorização Mistral.
+- [Source PROEX/IFES](proex_ifes_source.md)
+  - ProexIfesSource: leitura da página pública de editais, filtro pelo bloco do ano corrente, escolha do PDF principal, anexos documentais e fallback com `curl` em respostas `403`.
 
 ### Regras e Desenvolvimento
 - [Diretrizes de Desenvolvimento S.O.L.I.D](development_guidelines.md)
@@ -29,6 +31,12 @@ Features Gherkin como contrato e Definition of Done:
 
 ## Resumo das modificações recentes
 
+- Novo **Source PROEX/IFES** com leitura de `https://proex.ifes.edu.br/editais`, restrição a `Editais abertos` do ano corrente e deduplicação pela URL do PDF principal.
+- Novo **Fluxo** `ingest_proex_ifes_flow`.
+- **Registry**: nova chave `proex_ifes` em `registry/processed_editais.json`.
+- **Runner unificado**: `scripts/run_all_flows.py` agora inclui `PROEX_IFES`.
+- **Workflow**: o pipeline diário deve persistir `data/output/`, `registry/processed_editais.json` e `docs/flow_processing_log.md`.
+- **Log operacional**: execução do fluxo PROEX/IFES registrada em `docs/flow_processing_log.md`.
 - Novo **Source FINEP** com extração por página de detalhe (descrição, cronograma, Tema(s)→tags, tabela Documentos→anexos).
 - **Fluxo** `ingest_finep_flow` (primeira página por padrão; `--all` para todas).
 - **Config** `get_reference_year()` e variável `REFERENCE_YEAR` para filtro de prazo FINEP (dinâmico: ano atual por padrão).

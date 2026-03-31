@@ -7,6 +7,7 @@ def test_flow_commands_include_capes_and_cnpq_in_expected_order():
         "FINEP",
         "CONIF",
         "PRPPG_IFES",
+        "PROEX_IFES",
         "CAPES",
         "CNPQ",
     ]
@@ -18,6 +19,7 @@ def test_registry_keys_include_new_integrated_flows():
         "FINEP": "finep",
         "CONIF": "conif",
         "PRPPG_IFES": "prppg_ifes",
+        "PROEX_IFES": "proex_ifes",
         "CAPES": "capes",
         "CNPQ": "cnpq",
     }
@@ -39,6 +41,7 @@ def test_main_runs_all_flows_in_sequence(monkeypatch):
         ("FINEP", "src.flows.ingest_finep_flow"),
         ("CONIF", "src.flows.ingest_conif_flow"),
         ("PRPPG_IFES", "src.flows.ingest_prppg_ifes_flow"),
+        ("PROEX_IFES", "src.flows.ingest_proex_ifes_flow"),
         ("CAPES", "src.flows.ingest_capes_flow"),
         ("CNPQ", "src.flows.ingest_cnpq_flow"),
     ]
