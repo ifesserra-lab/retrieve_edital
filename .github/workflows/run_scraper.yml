@@ -6,6 +6,9 @@ on:
     - cron: '0 3 * * *'
   workflow_dispatch: # Permite disparo manual pela UI do GitHub
 
+permissions:
+  contents: write
+
 jobs:
   scrape-editais:
     runs-on: ubuntu-latest
@@ -32,7 +35,6 @@ jobs:
         python scripts/run_all_flows.py
 
     - name: Commit and Push JSON Results
-      if: always()
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"

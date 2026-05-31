@@ -8,7 +8,10 @@ from typing import Optional, Dict, Any, List, Callable, TypeVar
 try:
     from mistralai import Mistral  # type: ignore[attr-defined]
 except ImportError:
-    from mistralai.client import MistralClient as Mistral
+    try:
+        from mistralai.client import Mistral  # type: ignore[attr-defined]
+    except ImportError:
+        from mistralai.client import MistralClient as Mistral
 
 from src.domain.models import EditalDomain
 
