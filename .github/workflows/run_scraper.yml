@@ -31,6 +31,8 @@ jobs:
       run: playwright install chromium --with-deps
 
     - name: Run Scraper (Extract, Transform, Sink)
+      env:
+        MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
       run: |
         python scripts/run_all_flows.py
 
