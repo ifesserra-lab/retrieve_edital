@@ -1,0 +1,36 @@
+{
+    "nome": "EDITAL CONJUNTO Nº 4/2026 - PROGRAMA DE DESENVOLVIMENTO DA PÓS-GRADUAÇÃO (PDPG) FORMAÇÃO PROFISSIONAL DE NUTRICIONISTAS",
+    "descrição": "O edital tem por objeto apoiar a formação de recursos humanos altamente qualificados e o desenvolvimento de pesquisa tecnológica e inovação no âmbito dos Programas de Pós-Graduação (PPGs) stricto sensu, na modalidade mestrado profissional, recomendados pela CAPES, nas áreas de Nutrição e correlatas. O apoio visa fortalecer a atuação profissional da categoria e estimular o desenvolvimento de soluções técnico-científicas e tecnológicas voltadas às demandas do Sistema CFN/CRN, do Sistema Único de Saúde (SUS), Sistema Único de Assistência Social (SUAS) e às políticas públicas de alimentação e nutrição no país.",
+    "orgão_fomento": "CAPES",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-01-01",
+    "data_encerramento": "2026-07-22",
+    "link": "https://www.gov.br/capes/pt-br/acesso-a-informacao/acoes-e-programas/bolsas/programas-estrategicos/formacao-de-recursos-humanos-em-areas-estrategicas/programa-de-desenvolvimento-da-pos-graduacao-pdpg-formacao-profissional-de-nutricionistas",
+    "cronograma": [],
+    "tags": [
+        "nutrição",
+        "mestrado profissional",
+        "pesquisa aplicada",
+        "formação de recursos humanos",
+        "inovação tecnológica",
+        "capes"
+    ],
+    "anexos": [
+        {
+            "titulo": "Manual Cartão Pesquisador",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/documentos/09042024_manual-cartao-pesquisador-capes-2024-v04.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Extrato de Acordo de Cooperação",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/documentos/ACORDO_DE_COOPERACAO_CAPES_CFN1.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Edital Conjunto nº 4/2026, formato, pdf, 310kb",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/19052026_Edital_2823166_EDITAL_CONJUNTO_4_2026___CAPES_CFN.pdf",
+            "tipo": "anexo"
+        }
+    ]
+}

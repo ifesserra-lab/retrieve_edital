@@ -1,0 +1,114 @@
+{
+    "nome": "EDITAL PRPPG N° 07/2026 - PRODIF - APOIO À APRESENTAÇÃO DE TRABALHOS EM EVENTOS TÉCNICO-CIENTÍFICOS - ESTUDANTES DO ENSINO TÉCNICO E DA GRADUAÇÃO",
+    "descrição": "O edital tem por objetivo viabilizar a participação de estudantes do ensino técnico e graduação do Instituto Federal do Espírito Santo (Ifes) em eventos técnico-científicos de abrangência internacional e nacional, exclusivamente para apresentação oral ou pôster de trabalhos de sua autoria ou coautoria. O apoio visa contribuir para a difusão e acesso às informações científicas e tecnológicas desenvolvidas pelos projetos de pesquisa do Ifes, sendo obrigatória a coautoria de servidores da instituição.",
+    "orgão_fomento": "PRPPG/IFES",
+    "categoria": "pesquisa",
+    "status": "em andamento",
+    "data_abertura": "2026-03-31",
+    "data_encerramento": "2026-05-04",
+    "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=291",
+    "cronograma": [
+        {
+            "evento": "início do período do edital",
+            "data": "2026-03-31"
+        },
+        {
+            "evento": "fim do período do edital",
+            "data": "2026-05-04"
+        },
+        {
+            "evento": "Divulgação do Edital",
+            "data": "2026-03-30"
+        },
+        {
+            "evento": "[1° Período] Envio das inscrições pelo SIGPESq (http://sigpesq.ifes.edu.br)",
+            "data": "2026-03-31"
+        },
+        {
+            "evento": "[1° Período] Análise das solicitações recebidas",
+            "data": "2026-05-05"
+        },
+        {
+            "evento": "[1° Período] Divulgação do resultado parcial",
+            "data": "2026-05-11"
+        },
+        {
+            "evento": "[1° Período] Recursos à Diretoria de Pesquisa a partir de",
+            "data": "2026-05-12"
+        },
+        {
+            "evento": "[1° Período] Divulgação do Resultado Final após recurso a partir de",
+            "data": "2026-05-16"
+        },
+        {
+            "evento": "[1° Período] Envio do relatório de participação no evento, até 20 dias após o evento",
+            "data": "2026-05-17"
+        },
+        {
+            "evento": "2° Período] Envio das inscrições pelo SIGPESq (http://sigpesq.ifes.edu.br)",
+            "data": "2026-05-17"
+        },
+        {
+            "evento": "[2°] Análise das solicitações recebidas",
+            "data": "2026-07-05"
+        },
+        {
+            "evento": "[2° Período] Divulgação do resultado parcial",
+            "data": "2026-07-10"
+        },
+        {
+            "evento": "[2° Período] Recursos à Diretoria de Pesquisa a partir de",
+            "data": "2026-07-11"
+        },
+        {
+            "evento": "[2° Período] Divulgação do Resultado Final após recurso a partir de",
+            "data": "2026-07-15"
+        },
+        {
+            "evento": "[2° Período] Envio do relatório de participação no evento, até 20 dias após o evento",
+            "data": "2026-07-17"
+        }
+    ],
+    "tags": [
+        "difusão científica",
+        "eventos técnico-científicos",
+        "apoio estudantil",
+        "pesquisa",
+        "Ifes",
+        "prppg",
+        "ifes",
+        "2026"
+    ],
+    "anexos": [
+        {
+            "titulo": "EDITAL PRPPG No 07/2026 - Apoio à Apresentação de Trabalhos em Eventos Técni",
+            "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=291#downloadTarget=ctl00%24Conteudo%24Consulta_Arquivo%24rptArquivo%24ctl01%24Download",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "ANEXO VII – MODELO DE AUTORIZAÇÃO PARA MENOR DE IDADE",
+            "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=291#downloadTarget=ctl00%24Conteudo%24Consulta_Arquivo%24rptArquivo%24ctl02%24Download",
+            "tipo": "docx"
+        },
+        {
+            "titulo": "CRONOGRAMA RETIFICADO",
+            "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=291#downloadTarget=ctl00%24Conteudo%24Consulta_Arquivo%24rptArquivo%24ctl03%24Download",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "ANEXO VI – MODELO DE ANUÊNCIA PARA O EDITAL ESTUDANTE",
+            "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=291#downloadTarget=ctl00%24Conteudo%24Consulta_Arquivo%24rptArquivo%24ctl04%24Download",
+            "tipo": "docx"
+        },
+        {
+            "titulo": "Resultado parcial_ETAPA_1",
+            "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=291#downloadTarget=ctl00%24Conteudo%24Consulta_Arquivo%24rptArquivo%24ctl05%24Download",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Resultado final Etapa_1",
+            "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=291#downloadTarget=ctl00%24Conteudo%24Consulta_Arquivo%24rptArquivo%24ctl06%24Download",
+            "tipo": "pdf"
+        }
+    ]
+}

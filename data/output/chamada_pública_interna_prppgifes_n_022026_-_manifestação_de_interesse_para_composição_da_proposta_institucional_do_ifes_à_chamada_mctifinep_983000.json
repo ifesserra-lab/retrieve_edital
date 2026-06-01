@@ -1,0 +1,89 @@
+{
+    "nome": "CHAMADA PÚBLICA INTERNA PRPPG/IFES N° 02/2026 - MANIFESTAÇÃO DE INTERESSE PARA COMPOSIÇÃO DA PROPOSTA INSTITUCIONAL DO IFES À CHAMADA MCTI/FINEP/FNDCT – PESQUISA APLICADA EM CENTROS TEMÁTICOS 2025",
+    "descrição": "Esta chamada tem por objetivo identificar e selecionar uma proposta institucional com elevado potencial de mérito técnico-científico, inovação e impacto para subsidiar a construção da proposta do Ifes a ser submetida à Chamada Pública MCTI/FINEP/FNDCT – Pesquisa Aplicada em Centros Temáticos 2025. A finalidade é apoiar projetos de pesquisa aplicada que resultem em produtos e/ou processos inovadores em áreas estratégicas como cadeias agroindustriais sustentáveis, saúde, infraestrutura urbana, mobilidade sustentável, transformação digital, bioeconomia, transição energética e defesa.",
+    "orgão_fomento": "PRPPG/IFES",
+    "categoria": "pesquisa",
+    "status": "encerrado",
+    "data_abertura": "2026-04-17",
+    "data_encerramento": "2026-04-26",
+    "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=293",
+    "cronograma": [
+        {
+            "evento": "início do período do edital",
+            "data": "2026-04-17"
+        },
+        {
+            "evento": "fim do período do edital",
+            "data": "2026-04-26"
+        },
+        {
+            "evento": "Publicação da Chamada",
+            "data": "2026-04-17"
+        },
+        {
+            "evento": "Período de submissão das propostas",
+            "data": "2026-04-17"
+        },
+        {
+            "evento": "Avaliação das propostas",
+            "data": "2026-04-27"
+        },
+        {
+            "evento": "Divulgação do resultado preliminar",
+            "data": "2026-04-30"
+        },
+        {
+            "evento": "Prazo para interposição de recursos",
+            "data": "2026-05-01"
+        },
+        {
+            "evento": "Divulgação do resultado final",
+            "data": "2026-05-05"
+        },
+        {
+            "evento": "Contato inicial com a fundação de apoio para apresentação da proposta institucional selecionada",
+            "data": "2026-05-06"
+        },
+        {
+            "evento": "Consolidação e submissão da proposta institucional à FINEP",
+            "data": "2026-05-06"
+        }
+    ],
+    "tags": [
+        "pesquisa aplicada",
+        "inovação",
+        "centros temáticos",
+        "FINEP",
+        "IFES",
+        "prppg",
+        "ifes",
+        "2026"
+    ],
+    "anexos": [
+        {
+            "titulo": "Edital",
+            "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=293#downloadTarget=ctl00%24Conteudo%24Consulta_Arquivo%24rptArquivo%24ctl01%24Download",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Modelo do formulário",
+            "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=293#downloadTarget=ctl00%24Conteudo%24Consulta_Arquivo%24rptArquivo%24ctl02%24Download",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Comissão Avaliadora",
+            "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=293#downloadTarget=ctl00%24Conteudo%24Consulta_Arquivo%24rptArquivo%24ctl03%24Download",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Resultado Preliminar",
+            "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=293#downloadTarget=ctl00%24Conteudo%24Consulta_Arquivo%24rptArquivo%24ctl04%24Download",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Resultado Final",
+            "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=293#downloadTarget=ctl00%24Conteudo%24Consulta_Arquivo%24rptArquivo%24ctl05%24Download",
+            "tipo": "pdf"
+        }
+    ]
+}

@@ -12,6 +12,13 @@ Documento operacional para registrar a data de processamento dos fluxos do proje
 
 | Data/Hora | Fluxo | Resultado | Observações |
 | :-- | :-- | :-- | :-- |
+| 2026-06-01 07:57:10 -03:00 | `CNPQ` | Sucesso | Registry `cnpq`: 4 -> 5 (delta 1); `data/output/` com 89 JSONs; arquivos não-JSON: nenhum. |
+| 2026-06-01 07:57:08 -03:00 | `CAPES` | Sucesso | Registry `capes`: 8 -> 24 (delta 16); `data/output/` com 88 JSONs; arquivos não-JSON: nenhum. |
+| 2026-06-01 07:51:43 -03:00 | `PROEX_IFES` | Sucesso | Registry `proex_ifes`: 5 -> 7 (delta 2); `data/output/` com 73 JSONs; arquivos não-JSON: nenhum. |
+| 2026-06-01 07:50:25 -03:00 | `PRPPG_IFES` | Sucesso | Registry `prppg_ifes`: 5 -> 13 (delta 8); `data/output/` com 71 JSONs; arquivos não-JSON: nenhum. |
+| 2026-06-01 07:48:31 -03:00 | `CONIF` | Sucesso | Registry `conif`: 3 -> 5 (delta 2); `data/output/` com 63 JSONs; arquivos não-JSON: nenhum. |
+| 2026-06-01 07:48:10 -03:00 | `FINEP` | Sucesso | Registry `finep`: 10 -> 10 (delta 0); `data/output/` com 61 JSONs; arquivos não-JSON: nenhum. |
+| 2026-06-01 07:47:48 -03:00 | `FAPES` | Sucesso | Registry `fapes`: 13 -> 22 (delta 9); `data/output/` com 61 JSONs; arquivos não-JSON: nenhum. |
 | 2026-03-31 00:38:33 -03:00 | `PROEX_IFES` | Sucesso com observações | O fluxo processou 5 editais abertos da PROEX/IFES referentes a 2026, persistiu 5 JSONs em `data/output/`, atualizou a chave `proex_ifes` em `registry/processed_editais.json` com as 5 URLs dos PDFs principais e manteve `data/output/` apenas com arquivos `.json`. O portal `proex.ifes.edu.br` e arquivos hospedados na AGIFES responderam `403` para `requests`, então o source utilizou fallback com `curl` para baixar a listagem e os PDFs antes de concluir o OCR com Mistral. |
 | 2026-03-30 18:52:05 -03:00 | `PRPPG_IFES` | Sucesso com observações | O fluxo processou 5 editais PRPPG/IFES com data de início em 2026, persistiu 5 JSONs em `data/output/`, atualizou a chave `prppg_ifes` em `registry/processed_editais.json` com 5 URLs estáveis `?cod=...` e manteve `data/output/` apenas com arquivos `.json`. Houve retries automáticos por `429` do Mistral OCR, mas o pipeline concluiu com sucesso. |
 | 2026-03-22 18:39:33 -03:00 | `CAPES`/`CNPQ` | Limpeza validada | Após remover os 2 artefatos antigos de CAPES com `data_encerramento` inferior a 2026, a validação final da pasta `data/output/` retornou `0` casos inválidos para `CAPES` e `CNPQ`. A pasta continua contendo apenas arquivos `.json`. |

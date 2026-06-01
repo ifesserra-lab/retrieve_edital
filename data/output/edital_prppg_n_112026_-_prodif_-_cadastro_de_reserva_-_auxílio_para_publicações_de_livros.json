@@ -1,0 +1,53 @@
+{
+    "nome": "EDITAL PRPPG N° 11/2026 - PRODIF - CADASTRO DE RESERVA - AUXÍLIO PARA PUBLICAÇÕES DE LIVROS",
+    "descrição": "O edital visa apoiar financeiramente, por meio de ressarcimento, a publicação de livros impressos e e-books originais do Instituto Federal do Espírito Santo (Ifes). O objetivo é aumentar a produção qualificada dos pesquisadores, fortalecendo os Grupos de Pesquisa e a Pós-Graduação do Ifes. As propostas podem derivar de teses, dissertações, resultados de pesquisa, criações, inovações ou outras atividades acadêmicas desenvolvidas por servidores efetivos do Ifes.",
+    "orgão_fomento": "PRPPG/IFES",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-03-31",
+    "data_encerramento": "2026-11-30",
+    "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=285",
+    "cronograma": [
+        {
+            "evento": "início do período do edital",
+            "data": "2026-03-31"
+        },
+        {
+            "evento": "fim do período do edital",
+            "data": "2026-11-30"
+        },
+        {
+            "evento": "Lançamento do edital",
+            "data": "2026-03-30"
+        },
+        {
+            "evento": "Envio das inscrições pelo SIGPESq",
+            "data": "2026-03-31"
+        },
+        {
+            "evento": "Prestação de contas",
+            "data": "2026-04-01"
+        },
+        {
+            "evento": "Análise das solicitações recebidas - fluxo contínuo",
+            "data": "2026-04-01"
+        }
+    ],
+    "tags": [
+        "publicação de livros",
+        "pesquisa científica",
+        "fomento à produção acadêmica",
+        "Ifes",
+        "ressarcimento",
+        "prppg",
+        "ifes",
+        "2026"
+    ],
+    "anexos": [
+        {
+            "titulo": "Edital 11/2026 - Programa Institucional de Difusão Científica (Prodif) - Auxílio para Publicações de",
+            "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=285#downloadTarget=ctl00%24Conteudo%24Consulta_Arquivo%24rptArquivo%24ctl01%24Download",
+            "tipo": "pdf"
+        }
+    ]
+}
