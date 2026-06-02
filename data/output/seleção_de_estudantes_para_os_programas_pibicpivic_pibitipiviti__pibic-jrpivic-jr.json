@@ -1,0 +1,75 @@
+{
+    "nome": "SELEÇÃO DE ESTUDANTES PARA OS PROGRAMAS PIBIC/PIVIC; PIBITI/PIVITI & PIBIC-JR/PIVIC-JR",
+    "descrição": "Edital de seleção pública para criação de cadastro de reserva de bolsas e voluntários para estudantes do Ifes, visando a execução de projetos de pesquisa em iniciação científica e tecnológica. O objetivo é despertar a vocação científica, contribuir para a formação de recursos humanos, apoiar o engajamento em pesquisa, desenvolvimento tecnológico e inovação, além de fortalecer a capacidade inovadora das organizações e integrar estudantes em atividades científicas e tecnológicas.",
+    "orgão_fomento": "PRPPG/IFES",
+    "categoria": "pesquisa",
+    "status": "divulgação",
+    "data_abertura": "2026-08-07",
+    "data_encerramento": "2026-07-20",
+    "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=283",
+    "cronograma": [
+        {
+            "evento": "início do período do edital",
+            "data": "2026-06-15"
+        },
+        {
+            "evento": "fim do período do edital",
+            "data": "2026-07-20"
+        },
+        {
+            "evento": "Divulgação do Edital 12/2026 - Seleção de Estudantes para os Programas Pibic/Pivic; Pibiti/Piviti & Pibic-Jr / Pivic-Jr",
+            "data": "2026-06-01"
+        },
+        {
+            "evento": "Período de inscrição",
+            "data": "2026-06-15"
+        },
+        {
+            "evento": "Avaliações das inscrições da 1ª Etapa",
+            "data": "2026-07-21"
+        },
+        {
+            "evento": "Divulgação da 1ª Etapa. A partir de",
+            "data": "2026-07-27"
+        },
+        {
+            "evento": "Pedidos de Recurso da 1ª Etapa",
+            "data": "2026-08-03"
+        },
+        {
+            "evento": "Período de Contratação: Cadastramento do aluno\r\nbolsista ou voluntário; alimentação do sistema com\r\nos dados bancários para implementação da bolsa, quando contemplado; e aceite dos termos de compromisso no SIGPESq – Etapas de responsabilidade do orientador e estudante. Até",
+            "data": "2026-08-03"
+        },
+        {
+            "evento": "Avaliação e publicação dos Recursos da 1ª Etapa. Até",
+            "data": "2026-08-07"
+        },
+        {
+            "evento": "Período de Avaliações com os orientadores –\r\n2ª Etapa",
+            "data": "2026-08-08"
+        },
+        {
+            "evento": "Início  da iniciação científica (voluntários e bolsistas) e execução das bolsas, no caso de estudante bolsista",
+            "data": "2026-09-01"
+        }
+    ],
+    "tags": [
+        "iniciação científica",
+        "bolsas de pesquisa",
+        "ensino técnico",
+        "graduação",
+        "IFES",
+        "FAPES",
+        "CNPq",
+        "prppg",
+        "ifes",
+        "2026"
+    ],
+    "anexos": [
+        {
+            "titulo": "Edital 12/2026 - Seleção de estudantes",
+            "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=283#downloadTarget=ctl00%24Conteudo%24Consulta_Arquivo%24rptArquivo%24ctl01%24Download",
+            "tipo": "pdf"
+        }
+    ]
+}

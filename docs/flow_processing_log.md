@@ -12,6 +12,13 @@ Documento operacional para registrar a data de processamento dos fluxos do proje
 
 | Data/Hora | Fluxo | Resultado | Observações |
 | :-- | :-- | :-- | :-- |
+| 2026-06-02 04:30:33 -03:00 | `CNPQ` | Sucesso | Registry `cnpq`: 5 -> 5 (delta 0); `data/output/` com 94 JSONs; arquivos não-JSON: nenhum. |
+| 2026-06-02 04:30:31 -03:00 | `CAPES` | Sucesso | Registry `capes`: 24 -> 24 (delta 0); `data/output/` com 94 JSONs; arquivos não-JSON: nenhum. |
+| 2026-06-02 04:30:24 -03:00 | `PROEX_IFES` | Sucesso | Registry `proex_ifes`: 7 -> 7 (delta 0); `data/output/` com 94 JSONs; arquivos não-JSON: nenhum. |
+| 2026-06-02 04:30:22 -03:00 | `PRPPG_IFES` | Sucesso | Registry `prppg_ifes`: 13 -> 15 (delta 2); `data/output/` com 94 JSONs; arquivos não-JSON: nenhum. |
+| 2026-06-02 04:29:17 -03:00 | `CONIF` | Sucesso | Registry `conif`: 5 -> 5 (delta 0); `data/output/` com 92 JSONs; arquivos não-JSON: nenhum. |
+| 2026-06-02 04:29:12 -03:00 | `FINEP` | Sucesso | Registry `finep`: 10 -> 10 (delta 0); `data/output/` com 92 JSONs; arquivos não-JSON: nenhum. |
+| 2026-06-02 04:28:51 -03:00 | `FAPES` | Sucesso | Registry `fapes`: 22 -> 25 (delta 3); `data/output/` com 92 JSONs; arquivos não-JSON: nenhum. |
 | 2026-06-01 07:57:10 -03:00 | `CNPQ` | Sucesso | Registry `cnpq`: 4 -> 5 (delta 1); `data/output/` com 89 JSONs; arquivos não-JSON: nenhum. |
 | 2026-06-01 07:57:08 -03:00 | `CAPES` | Sucesso | Registry `capes`: 8 -> 24 (delta 16); `data/output/` com 88 JSONs; arquivos não-JSON: nenhum. |
 | 2026-06-01 07:51:43 -03:00 | `PROEX_IFES` | Sucesso | Registry `proex_ifes`: 5 -> 7 (delta 2); `data/output/` com 73 JSONs; arquivos não-JSON: nenhum. |

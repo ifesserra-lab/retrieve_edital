@@ -1,0 +1,96 @@
+{
+    "nome": "PROGRAMA PESQUISADOR DE PRODUTIVIDADE DO IFES - PPP (EDITAL PRPPG N° 13/2026)",
+    "descrição": "O edital visa selecionar pesquisadores para o Programa Pesquisador de Produtividade do IFES (PPP), com o objetivo de ampliar a capacidade produtiva e inovadora da instituição, promover a geração de produtos e processos inovadores, disseminar atividades de pesquisa aplicada, estimular a criação de novos programas de pós-graduação, incentivar pesquisadores com relevante produção científica e tecnológica, e contribuir para a consolidação do IFES como centro de referência em pesquisa e inovação. O programa abrange grandes áreas do conhecimento definidas pelo CNPq e oferece três modalidades de participação (PQ-1, PQ-2 e PQ-3), com requisitos específicos de entrega e carga horária dedicada à pesquisa.",
+    "orgão_fomento": "PRPPG/IFES",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-06-01",
+    "data_encerramento": "2026-06-14",
+    "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=294",
+    "cronograma": [
+        {
+            "evento": "início do período do edital",
+            "data": "2026-06-01"
+        },
+        {
+            "evento": "fim do período do edital",
+            "data": "2026-06-14"
+        },
+        {
+            "evento": "Lançamento do edital",
+            "data": "2026-06-01"
+        },
+        {
+            "evento": "Período de submissão das propostas",
+            "data": "2026-06-01"
+        },
+        {
+            "evento": "Avaliações das propostas",
+            "data": "2026-06-15"
+        },
+        {
+            "evento": "Divulgação do resultado preliminar",
+            "data": "2026-06-29"
+        },
+        {
+            "evento": "Pedido de recurso",
+            "data": "2026-06-30"
+        },
+        {
+            "evento": "Avaliação dos recursos",
+            "data": "2026-07-01"
+        },
+        {
+            "evento": "Divulgação do resultado final - a partir de",
+            "data": "2026-07-06"
+        },
+        {
+            "evento": "Designação dos pesquisadores do PPP - até",
+            "data": "2026-07-31"
+        },
+        {
+            "evento": "Entrega do relatório parcial #1 - até",
+            "data": "2026-08-01"
+        },
+        {
+            "evento": "Entrega do relatório parcial #2 - até",
+            "data": "2027-08-01"
+        },
+        {
+            "evento": "Entrega do relatório final - até",
+            "data": "2028-08-01"
+        }
+    ],
+    "tags": [
+        "pesquisa aplicada",
+        "produtividade científica",
+        "inovação tecnológica",
+        "pós-graduação",
+        "IFES",
+        "prppg",
+        "ifes",
+        "2026"
+    ],
+    "anexos": [
+        {
+            "titulo": "Edital PPP 13/2026",
+            "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=294#downloadTarget=ctl00%24Conteudo%24Consulta_Arquivo%24rptArquivo%24ctl01%24Download",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo I - formato editável",
+            "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=294#downloadTarget=ctl00%24Conteudo%24Consulta_Arquivo%24rptArquivo%24ctl02%24Download",
+            "tipo": "docx"
+        },
+        {
+            "titulo": "Anexo II - formato editável",
+            "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=294#downloadTarget=ctl00%24Conteudo%24Consulta_Arquivo%24rptArquivo%24ctl03%24Download",
+            "tipo": "docx"
+        },
+        {
+            "titulo": "Projeto de Pesquisa - Estrutura de Referência - formato editável",
+            "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=294#downloadTarget=ctl00%24Conteudo%24Consulta_Arquivo%24rptArquivo%24ctl04%24Download",
+            "tipo": "docx"
+        }
+    ]
+}

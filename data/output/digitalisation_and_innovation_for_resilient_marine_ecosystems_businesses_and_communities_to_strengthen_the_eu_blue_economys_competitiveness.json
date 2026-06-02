@@ -1,6 +1,6 @@
 {
     "nome": "DIGITALISATION AND INNOVATION FOR RESILIENT MARINE ECOSYSTEMS, BUSINESSES, AND COMMUNITIES TO STRENGTHEN THE EU BLUE ECONOMY'S COMPETITIVENESS",
-    "descrição": "O edital visa fomentar projetos de pesquisa e inovação transnacionais que contribuam para a transição para uma economia azul regenerativa, resiliente e sustentável na União Europeia. Os projetos devem focar em cinco áreas prioritárias: (1) Gêmeos Digitais do Oceano (DTOs) em escala de sub-bacia; (2) Transição dos setores da economia azul e desenvolvimento de infraestruturas marinhas de múltiplos usos; (3) Planejamento e gestão climático-inteligente do uso do mar em escala regional; (4) Biorrecursos azuis: pesca e aquicultura sustentáveis e novos produtos biobaseados; e (5) Comunidades e negócios costeiros resilientes. Os projetos devem ser orientados por impacto, adotar abordagens interdisciplinares e multissetoriais, envolver múltiplos stakeholders (quadruple-helix), e alinhar-se com políticas da UE como o Pacto Europeu do Oceano, o Acordo Verde Europeu e a Década das Nações Unidas da Ciência Oceânica para o Desenvolvimento Sustentável.",
+    "descrição": "O edital visa fomentar projetos de pesquisa e inovação transnacionais que contribuam para a transição para uma economia azul sustentável, resiliente e competitiva na União Europeia. O foco está no desenvolvimento de soluções inovadoras e digitalização para ecossistemas marinhos resilientes, setores econômicos azuis e comunidades costeiras, alinhando-se com as prioridades da UE em neutralidade climática, biodiversidade e transformação digital. Os projetos devem abordar cinco áreas prioritárias: Gêmeos Digitais do Oceano (DTOs) em escala sub-bacias, transição dos setores da economia azul e desenvolvimento de infraestruturas marinhas multiuso, planejamento e gestão climática inteligente do uso do mar em escala regional, biorrecursos azuis (pesca e aquicultura sustentáveis e novos produtos biobaseados), e comunidades e negócios costeiros resilientes.",
     "orgão_fomento": "FAPES",
     "categoria": "chamadas",
     "status": "aberto",
@@ -10,10 +10,11 @@
     "cronograma": [],
     "tags": [
         "economia azul",
-        "inovação digital",
-        "sustentabilidade marinha",
+        "inovação marinha",
+        "sustentabilidade",
+        "digitalização",
         "resiliência climática",
-        "pesquisa transnacional"
+        "comunidades costeiras"
     ],
     "anexos": [
         {
