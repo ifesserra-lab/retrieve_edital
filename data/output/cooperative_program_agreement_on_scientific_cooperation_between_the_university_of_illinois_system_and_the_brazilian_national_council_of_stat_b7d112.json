@@ -1,6 +1,6 @@
 {
     "nome": "COOPERATIVE PROGRAM AGREEMENT ON SCIENTIFIC COOPERATION BETWEEN THE UNIVERSITY OF ILLINOIS SYSTEM AND THE BRAZILIAN NATIONAL COUNCIL OF STATE FUNDING AGENCIES (CONFAP)",
-    "descrição": "Edital para seleção de projetos de pesquisa conjuntos visando promover e fortalecer a colaboração entre pesquisadores e instituições brasileiras (vinculadas ao CONFAP) e pesquisadores do University of Illinois System. O programa apoia projetos nas áreas de Clima, Sustentabilidade e Agricultura; Saúde Pública e Medicina; e Democracia e Inclusão, com foco em mobilidade, intercâmbio de pesquisadores e financiamento inicial ('seed fund').",
+    "descrição": "Edital para seleção de projetos de pesquisa conjunta visando promover e fortalecer a colaboração entre pesquisadores e instituições brasileiras (vinculadas ao CONFAP) e da Universidade de Illinois. O programa apoia projetos nas áreas de Clima, Sustentabilidade e Agricultura; Saúde Pública e Medicina; e Democracia e Inclusão, com foco em mobilidade, intercâmbio de pesquisadores e financiamento inicial ('seed fund').",
     "orgão_fomento": "FAPES",
     "categoria": "chamadas",
     "status": "aberto",
@@ -9,11 +9,12 @@
     "link": "https://fapes.es.gov.br/Media/fapes/Editais/Cooperative%20Program%20-U%20of%20I%20and%20Confap%20v%205%2024-03.docx.pdf",
     "cronograma": [],
     "tags": [
-        "colaboração internacional",
         "pesquisa conjunta",
+        "colaboração internacional",
         "mobilidade acadêmica",
         "financiamento de pesquisa",
-        "sustentabilidade"
+        "sustentabilidade",
+        "saúde pública"
     ],
     "anexos": [
         {

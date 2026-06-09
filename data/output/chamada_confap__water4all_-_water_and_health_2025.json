@@ -1,6 +1,6 @@
 {
     "nome": "CHAMADA CONFAP & WATER4ALL - WATER AND HEALTH 2025",
-    "descrição": "Apoiar projetos colaborativos de pesquisa e inovação voltados aos desafios da interconexão entre água e saúde humana, abordando temas como contaminantes transmitidos pela água, tecnologias de monitoramento, tratamento de água e governança integrada de políticas.",
+    "descrição": "Apoiar projetos colaborativos de pesquisa e inovação voltados aos desafios da interconexão entre água e saúde humana, incluindo qualidade da água, contaminantes, tecnologias de tratamento, monitoramento inovador, governança e políticas integradas. Os projetos devem abordar pelo menos um dos seguintes temas: contaminantes transmitidos pela água e riscos à saúde, ferramentas e tecnologias de monitoramento, tratamento de água e redução de exposição, ou governança e inovação socioeconômica.",
     "orgão_fomento": "FAPES",
     "categoria": "chamadas",
     "status": "aberto",
@@ -12,8 +12,8 @@
         "água e saúde",
         "pesquisa colaborativa",
         "inovação tecnológica",
-        "governança",
-        "contaminantes"
+        "contaminantes",
+        "governança"
     ],
     "anexos": [
         {
