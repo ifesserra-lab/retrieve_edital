@@ -1,6 +1,6 @@
 {
     "nome": "DIRETRIZES DA FUNDAÇÃO DE AMPARO À PESQUISA E INOVAÇÃO DO ESTADO DO ESPÍRITO SANTO - FAPES PARA APOIO À PARTICIPAÇÃO DE PESQUISADORES DO ESPÍRITO SANTO EM PROPOSTAS DO HORIZONTE EUROPA",
-    "descrição": "O edital estabelece diretrizes para que pesquisadores do estado do Espírito Santo acessem formas de fomento oferecidas pela FAPES, visando apoiar sua participação em propostas colaborativas submetidas ao programa Horizonte Europa da União Europeia. O objetivo é promover a integração de co-pesquisadores principais (co-PIs) do Espírito Santo em consórcios internacionais, garantindo contribuições relevantes para o desenvolvimento científico, tecnológico e de inovação no estado, mesmo que esses pesquisadores não sejam automaticamente elegíveis para financiamento direto da UE.",
+    "descrição": "O edital estabelece diretrizes para que pesquisadores do estado do Espírito Santo acessem formas de fomento oferecidas pela FAPES, visando apoiar sua participação em propostas colaborativas submetidas ao programa Horizonte Europa da União Europeia. O objetivo é promover a integração de pesquisadores capixabas em consórcios internacionais, garantindo contribuições relevantes para o desenvolvimento científico, tecnológico e de inovação no estado, mesmo que não haja financiamento automático da UE para parceiros brasileiros.",
     "orgão_fomento": "FAPES",
     "categoria": "chamadas",
     "status": "aberto",
@@ -12,8 +12,8 @@
         "Horizonte Europa",
         "pesquisa colaborativa",
         "internacionalização",
-        "financiamento à pesquisa",
-        "Espírito Santo"
+        "inovação",
+        "financiamento"
     ],
     "anexos": [
         {

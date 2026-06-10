@@ -1,6 +1,6 @@
 {
     "nome": "EDITAL FAPES 08/2026 - NOVA ECONOMIA CAPIXABA – 2ª EDIÇÃO",
-    "descrição": "Chamada pública para seleção e apoio a projetos de inovação desenvolvidos por empresas do Espírito Santo, em colaboração com Instituições de Ciência e Tecnologia (ICT) ou Instituições de Ensino Superior (IES) capixabas, públicas ou privadas. O objetivo principal é promover um significativo aumento de competitividade dos setores econômicos capixabas no cenário nacional e internacional, alinhando-se aos setores econômicos do Plano de Desenvolvimento de Longo Prazo (PDLP) ES 500 Anos e ao Plano Estadual de Ciência, Tecnologia e Inovação do Espírito Santo (PCTI-ES).",
+    "descrição": "Chamada pública para seleção e apoio a projetos de inovação desenvolvidos por empresas do Espírito Santo, em colaboração com Instituições de Ciência e Tecnologia (ICT) ou Instituições de Ensino Superior (IES) capixabas, públicas ou privadas. O objetivo principal é promover um significativo aumento de competitividade dos setores econômicos capixabas no cenário nacional e internacional, por meio de projetos alinhados aos setores econômicos do Plano de Desenvolvimento de Longo Prazo (PDLP) ES 500 Anos e ao Plano Estadual de Ciência, Tecnologia e Inovação do Espírito Santo (PCTI-ES).",
     "orgão_fomento": "FAPES",
     "categoria": "inovação",
     "status": "aberto",
@@ -9,11 +9,17 @@
     "link": "https://fapes.es.gov.br/Media/fapes/Editais/Edital_08-2026_-_Nova_Economia_Capixaba_-_2_Edição_-_Lançamento.pdf",
     "cronograma": [],
     "tags": [
-        "inovação tecnológica",
-        "competitividade empresarial",
+        "inovação",
         "subvenção econômica",
-        "ES 500 Anos",
-        "PCTI-ES"
+        "competitividade",
+        "Espírito Santo",
+        "colaboração ICT/IES"
     ],
-    "anexos": []
+    "anexos": [
+        {
+            "titulo": "NOTA TÉCNICA – EDITAL FAPES nº 10/2025 – NOVA ECONOMIA CAPIXABA",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/Nota_Técnica_Prorrogação_Prazo_NEC_I.pdf",
+            "tipo": "anexo"
+        }
+    ]
 }
