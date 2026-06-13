@@ -1,6 +1,6 @@
 {
     "nome": "EDITAL FAPES Nº 16/2026 - UNIVERSAL - EXTENSÃO",
-    "descrição": "Apoiar financeiramente projetos de extensão em diferentes áreas temáticas, coordenados por profissionais vinculados a Instituições de Ensino Superior e/ou Pesquisa (IES/P) no Espírito Santo. As ações devem contribuir para a redução das desigualdades ou vulnerabilidades sociais, promovendo o desenvolvimento socioambiental e econômico nas microrregiões do estado, com foco na formação de recursos humanos, interação com a sociedade, integração entre extensão e pesquisa, e estímulo à inovação tecnológica e interdisciplinaridade.",
+    "descrição": "Apoiar financeiramente projetos de extensão, em diferentes áreas temáticas, coordenados por profissionais vinculados a Instituições de Ensino Superior e/ou Pesquisa (IES/P) localizadas no Espírito Santo. As ações dos projetos devem contribuir para a redução das desigualdades ou vulnerabilidades sociais, promovendo o desenvolvimento socioambiental e/ou econômico nas diferentes microrregiões do Estado do Espírito Santo.",
     "orgão_fomento": "FAPES",
     "categoria": "extensão",
     "status": "aberto",
@@ -11,9 +11,9 @@
     "tags": [
         "extensão universitária",
         "desenvolvimento socioambiental",
-        "inovação tecnológica",
-        "interdisciplinaridade",
-        "Espírito Santo"
+        "redução de desigualdades",
+        "Espírito Santo",
+        "fomento à pesquisa"
     ],
     "anexos": [
         {
