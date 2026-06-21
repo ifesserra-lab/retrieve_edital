@@ -1,6 +1,6 @@
 {
     "nome": "EDITAL FAPES Nº 16/2026 - UNIVERSAL - EXTENSÃO",
-    "descrição": "Chamada pública para seleção de projetos de extensão, coordenados por profissionais vinculados a Instituições de Ensino Superior e/ou Pesquisa no Espírito Santo. O edital visa apoiar financeiramente projetos que contribuam para a redução das desigualdades ou vulnerabilidades sociais, promovendo o desenvolvimento socioambiental e econômico nas microrregiões do estado. Os objetivos incluem a formação de recursos humanos em ambientes extensionistas, a interação da comunidade acadêmica com a sociedade, a integração entre extensão e pesquisa, e o estímulo a atividades multi, inter e transdisciplinares.",
+    "descrição": "Apoiar financeiramente projetos de extensão, em diferentes áreas temáticas, coordenados por profissionais vinculados a Instituições de Ensino Superior e/ou Pesquisa (IES/P) localizadas no Espírito Santo. O objetivo é contribuir para a redução das desigualdades ou vulnerabilidades sociais, promovendo o desenvolvimento socioambiental e econômico nas microrregiões do estado, além de estimular a interação entre a comunidade acadêmica e a sociedade.",
     "orgão_fomento": "FAPES",
     "categoria": "extensão",
     "status": "aberto",
@@ -11,9 +11,9 @@
     "tags": [
         "extensão universitária",
         "desenvolvimento socioambiental",
-        "redução de desigualdades",
         "Espírito Santo",
-        "fomento à pesquisa"
+        "FAPES",
+        "projetos comunitários"
     ],
     "anexos": [
         {
