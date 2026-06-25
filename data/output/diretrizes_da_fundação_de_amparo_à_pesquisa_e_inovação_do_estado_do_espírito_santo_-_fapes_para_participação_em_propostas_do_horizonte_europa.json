@@ -1,6 +1,6 @@
 {
     "nome": "DIRETRIZES DA FUNDAÇÃO DE AMPARO À PESQUISA E INOVAÇÃO DO ESTADO DO ESPÍRITO SANTO - FAPES PARA PARTICIPAÇÃO EM PROPOSTAS DO HORIZONTE EUROPA",
-    "descrição": "Este edital estabelece diretrizes para apoiar a participação de pesquisadores do estado do Espírito Santo em propostas colaborativas submetidas ao programa Horizonte Europa, da União Europeia. O objetivo é fomentar a colaboração internacional, garantindo que pesquisadores capixabas tenham participação relevante em projetos de pesquisa e inovação, contribuindo para o desenvolvimento científico e tecnológico do estado.",
+    "descrição": "Edital que estabelece diretrizes para apoiar a participação de pesquisadores do estado do Espírito Santo em propostas colaborativas submetidas ao programa Horizonte Europa, da União Europeia. O objetivo é fomentar a integração de co-pesquisadores principais (co-PIs) do Espírito Santo em consórcios internacionais, garantindo financiamento complementar da FAPES para projetos aprovados pelo Horizonte Europa, visando o desenvolvimento científico, tecnológico e de inovação no estado.",
     "orgão_fomento": "FAPES",
     "categoria": "chamadas",
     "status": "aberto",
@@ -10,10 +10,10 @@
     "cronograma": [],
     "tags": [
         "Horizonte Europa",
-        "colaboração internacional",
-        "pesquisa e inovação",
-        "FAPES",
-        "Espírito Santo"
+        "pesquisa colaborativa",
+        "financiamento internacional",
+        "Espírito Santo",
+        "inovação tecnológica"
     ],
     "anexos": [
         {
@@ -24,7 +24,7 @@
         {
             "titulo": "PUBLICAÇÃO CONFAP",
             "link": "https://fapes.es.gov.br/Media/fapes/Editais/Publicação%20CONFAP-12.pdf",
-            "tipo": "edital"
+            "tipo": "anexo"
         },
         {
             "titulo": "FICHA INFORMATIVA HORIZON EUROPE",
