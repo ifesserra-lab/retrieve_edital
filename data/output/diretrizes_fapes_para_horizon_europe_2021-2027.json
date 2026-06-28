@@ -1,0 +1,37 @@
+{
+    "nome": "DIRETRIZES FAPES PARA HORIZON EUROPE 2021-2027",
+    "descrição": "Edital de fomento FAPES: DIRETRIZES FAPES PARA HORIZON EUROPE 2021-2027",
+    "orgão_fomento": "FAPES",
+    "categoria": "chamadas",
+    "status": "aberto",
+    "data_abertura": "2026-01-01",
+    "data_encerramento": "",
+    "link": "https://fapes.es.gov.br/Media/fapes/Editais/Diretrizes%20Fapes%20Horizon%20Europe%202021-2027-1.pdf",
+    "cronograma": [],
+    "tags": [
+        "fapes",
+        "documento"
+    ],
+    "anexos": [
+        {
+            "titulo": "DIRETRIZES FAPES PARA HORIZON EUROPE 2021-2027 (1ª ALTERAÇÃO)",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/Diretrizes_Fapes_Horizon_Europe_2021-2027-DITEC_-_16-09-25.pdf",
+            "tipo": "alteração"
+        },
+        {
+            "titulo": "PUBLICAÇÃO CONFAP",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/Publicação%20CONFAP-12.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "FICHA INFORMATIVA HORIZON EUROPE",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/Ficha%20Informativa%20%20Horizon%20Europe%20(Em%20inglês)-1.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "ARRANJO ADMINISTRATIVO",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/AA_EC_BRAZIL_PT-1.pdf",
+            "tipo": "anexo"
+        }
+    ]
+}

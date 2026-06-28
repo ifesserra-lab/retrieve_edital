@@ -1,6 +1,6 @@
 {
     "nome": "EDITAL FAPES 08/2026 - NOVA ECONOMIA CAPIXABA – 2ª EDIÇÃO",
-    "descrição": "Chamada pública para seleção e apoio a projetos de inovação, desenvolvidos por empresas do Espírito Santo em colaboração com Instituições de Ciência e Tecnologia (ICT) ou Instituições de Ensino Superior (IES) capixabas, públicas ou privadas. O objetivo principal é promover um significativo aumento de competitividade dos setores econômicos capixabas no cenário nacional e internacional, alinhando-se aos setores econômicos elencados no Plano de Desenvolvimento de Longo Prazo (PDLP) ES 500 Anos e ao Plano Estadual de Ciência, Tecnologia e Inovação do Espírito Santo (PCTI-ES). O apoio será realizado por meio de um modelo de coinvestimento tripartite entre a FAPES, a empresa proponente e a ICT/IES.",
+    "descrição": "Promover um significativo aumento de competitividade dos setores econômicos capixabas no cenário nacional por meio de projetos de inovação a partir de demandas das empresas, em colaboração com Instituições de Ciência e Tecnologia (ICT) ou Instituições de Ensino Superior (IES) capixabas, públicas ou privadas. Os projetos devem apresentar aderência aos setores econômicos elencados no Plano de Desenvolvimento de Longo Prazo (PDLP), intitulado ES 500 Anos, e podem estar alinhados com o Plano Estadual de Ciência, Tecnologia e Inovação do Espírito Santo (PCTI-ES). O apoio será realizado através de um modelo de coinvestimento tripartite entre a FAPES, a empresa proponente e a ICT/IES.",
     "orgão_fomento": "FAPES",
     "categoria": "inovação",
     "status": "aberto",
@@ -13,7 +13,7 @@
         "competitividade empresarial",
         "subvenção econômica",
         "ES 500 Anos",
-        "PCTI-ES"
+        "coinvestimento"
     ],
     "anexos": []
 }
