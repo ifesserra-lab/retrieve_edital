@@ -1,0 +1,35 @@
+{
+    "nome": "ARRANJO ADMINISTRATIVO UNIÃO EUROPEIA-BRASIL PARA COOPERAÇÃO EM PESQUISA & INOVAÇÃO NO CONTEXTO DO PROGRAMA HORIZON EUROPE",
+    "descrição": "O edital estabelece mecanismos de apoio à cooperação entre a União Europeia e o Brasil em Pesquisa, Desenvolvimento e Inovação, no âmbito do programa Horizon Europe (2021-2027). O objetivo é fortalecer a base de conhecimento, estimular inovações, apoiar soluções inovadoras e enfrentar desafios como a pandemia de coronavírus e as mudanças climáticas, promovendo colaboração internacional entre instituições de pesquisa e inovação.",
+    "orgão_fomento": "FAPES",
+    "categoria": "chamadas",
+    "status": "aberto",
+    "data_abertura": "2026-01-01",
+    "data_encerramento": "2027-12-31",
+    "link": "https://fapes.es.gov.br/Media/fapes/Editais/Publicação%20CONFAP-12.pdf",
+    "cronograma": [],
+    "tags": [
+        "Horizon Europe",
+        "cooperação internacional",
+        "pesquisa e inovação",
+        "União Europeia",
+        "Brasil"
+    ],
+    "anexos": [
+        {
+            "titulo": "DIRETRIZES FAPES PARA HORIZON EUROPE 2021-2027 (1ª ALTERAÇÃO)",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/Diretrizes_Fapes_Horizon_Europe_2021-2027-DITEC_-_16-09-25.pdf",
+            "tipo": "alteração"
+        },
+        {
+            "titulo": "FICHA INFORMATIVA HORIZON EUROPE",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/Ficha%20Informativa%20%20Horizon%20Europe%20(Em%20inglês)-1.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "ARRANJO ADMINISTRATIVO",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/AA_EC_BRAZIL_PT-1.pdf",
+            "tipo": "anexo"
+        }
+    ]
+}

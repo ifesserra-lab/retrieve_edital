@@ -1,6 +1,6 @@
 {
     "nome": "EDITAL FAPES Nº 17/2026 - PRÊMIO FAPES DE CIÊNCIA, TECNOLOGIA, INOVAÇÃO E JORNALISMO – EDIÇÃO 2026",
-    "descrição": "O Prêmio FAPES tem como objetivo reconhecer e premiar projetos de destaque e trajetórias profissionais nas áreas de pesquisa, extensão e inovação, bem como premiar matérias jornalísticas sobre a FAPES ou programas e projetos fomentados pela Fundação. Os objetivos específicos incluem valorizar a relevância, impacto e aplicabilidade da pesquisa, extensão e inovação para o desenvolvimento do Espírito Santo; reconhecer a excelência de profissionais apoiados pela FAPES; ampliar a divulgação e popularização da ciência, extensão e inovação no estado; e fortalecer a visibilidade institucional da FAPES e de suas ações de fomento.",
+    "descrição": "O Prêmio FAPES tem como objetivo reconhecer e premiar projetos de destaque e trajetórias profissionais nas áreas de pesquisa, extensão e inovação, bem como matérias jornalísticas sobre a FAPES ou programas e projetos fomentados pela Fundação. Objetiva valorizar a relevância, impacto e aplicabilidade da pesquisa, extensão e inovação para o desenvolvimento do Espírito Santo, reconhecer a excelência de profissionais apoiados pela FAPES, ampliar a divulgação e popularização da ciência e fortalecer a visibilidade institucional da FAPES.",
     "orgão_fomento": "FAPES",
     "categoria": "divulgação de conhecimento",
     "status": "aberto",
@@ -10,8 +10,8 @@
     "cronograma": [],
     "tags": [
         "prêmio",
-        "pesquisa",
         "inovação",
+        "pesquisa",
         "extensão",
         "jornalismo científico"
     ],

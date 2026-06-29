@@ -1,6 +1,6 @@
 {
     "nome": "ERC – CONFAP 2026 CALL - RESEARCH OPPORTUNITIES IN EUROPE FOR ACTIVE PHD RESEARCHERS FROM BRAZIL",
-    "descrição": "O edital convida pesquisadores brasileiros com título de doutor a estabelecer colaborações de pesquisa com Investigadores Principais já apoiados por bolsas do European Research Council (ERC). O objetivo é promover intercâmbios científicos de curta ou longa duração (até 12 meses) em projetos financiados pelo ERC, abrangendo diversas áreas do conhecimento, como biologia, física, engenharia, ciências sociais e humanas, entre outras.",
+    "descrição": "O edital convida pesquisadores brasileiros com doutorado a estabelecer colaborações de pesquisa com Investigadores Principais já apoiados por bolsas do European Research Council (ERC). O objetivo é promover intercâmbios científicos de curta ou longa duração (até 12 meses) em projetos financiados pelo ERC, abrangendo diversas áreas do conhecimento, com foco em excelência científica e impacto para o contexto brasileiro.",
     "orgão_fomento": "FAPES",
     "categoria": "chamadas",
     "status": "aberto",
@@ -9,11 +9,11 @@
     "link": "https://fapes.es.gov.br/Media/fapes/Editais/Chamada-ERC-CONFAP-2026.pdf",
     "cronograma": [],
     "tags": [
-        "pesquisa internacional",
-        "colaboração científica",
+        "colaboração internacional",
+        "pesquisa científica",
         "ERC",
-        "intercâmbio de pesquisadores",
-        "financiamento à pesquisa"
+        "intercâmbio acadêmico",
+        "excelência científica"
     ],
     "anexos": [
         {
