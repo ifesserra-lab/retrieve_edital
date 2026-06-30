@@ -1,6 +1,6 @@
 {
     "nome": "[ALTERAÇÃO] EDITAL FAPES Nº 12/2026 - EXTENSÃO TECNOLÓGICA",
-    "descrição": "Apoiar financeiramente projetos de extensão tecnológica, em diferentes áreas temáticas, coordenados por profissionais vinculados a Instituições de Ensino Superior, de Pesquisa ou de Tecnologia (IES/P/T) no Espírito Santo. O edital visa estimular parcerias com empresas, cooperativas ou organizações sem fins lucrativos para promover inovação conjunta, desenvolvimento tecnológico (incluindo tecnologias sociais), cultura científica e tecnológica, integração de laboratórios e centros de pesquisa, geração de novos conhecimentos e sua aplicação no mercado, além de estimular a interiorização da extensão tecnológica no estado.",
+    "descrição": "Apoiar financeiramente projetos de extensão tecnológica, em diferentes áreas temáticas, coordenados por profissionais vinculados a Instituições de Ensino Superior, de Pesquisa ou de Tecnologia (IES/P/T) no Espírito Santo. O edital visa estimular parcerias entre IES/P/T e organizações públicas, privadas, cooperativas ou sem fins lucrativos para promover o desenvolvimento tecnológico, a cultura científica e tecnológica, e a inclusão social e produtiva nas microrregiões do estado.",
     "orgão_fomento": "FAPES",
     "categoria": "extensão",
     "status": "aberto",
@@ -10,9 +10,9 @@
     "cronograma": [],
     "tags": [
         "extensão tecnológica",
-        "inovação",
         "desenvolvimento socioeconômico",
-        "tecnologias sociais",
+        "inclusão social",
+        "inovação",
         "Espírito Santo",
         "alteração"
     ],
