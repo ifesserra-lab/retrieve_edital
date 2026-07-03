@@ -1,0 +1,43 @@
+{
+    "nome": "[ALTERAÇÃO] EDITAL FAPES N° 11/2026 – PROGRAMA GÊNESIS (1ª ALTERAÇÃO)",
+    "descrição": "Edital de fomento FAPES: [ALTERAÇÃO] EDITAL FAPES N° 11/2026 – PROGRAMA GÊNESIS (1ª ALTERAÇÃO)",
+    "orgão_fomento": "FAPES",
+    "categoria": "inovação",
+    "status": "aberto",
+    "data_abertura": "2026-01-01",
+    "data_encerramento": "",
+    "link": "https://fapes.es.gov.br/Media/fapes/Editais/Gênesis%20-%20Assinado.pdf",
+    "cronograma": [],
+    "tags": [
+        "fapes",
+        "documento",
+        "alteração"
+    ],
+    "anexos": [
+        {
+            "titulo": "ANEXO I - FORMULÁRIO DE SUBMISSÃO DA PROPOSTA – FASE 1 - GÊNESIS 2026",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/ANEXO%20I%20-%20FORMULÁRIO%20DE%20SUBMISSÃO%20DA%20PROPOSTA%20–%20FASE%201%20-%20GÊNESIS%202026.docx",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "ANEXO II - FORMULÁRIO DE SUBMISSÃO DA PROPOSTA – FASE 2 - GÊNESIS 2026",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/ANEXO%20II%20-%20FORMULÁRIO%20DE%20SUBMISSÃO%20DA%20PROPOSTA%20–%20FASE%202%20-%20GÊNESIS%202026.docx",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "ANEXO IV - DECLARAÇÃO DE PARTICIPAÇÃO NO PROGRAMA GÊNESIS - GÊNESIS 2026",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/ANEXO%20IV%20-%20DECLARAÇÃO%20DE%20PARTICIPAÇÃO%20NO%20PROGRAMA%20GÊNESIS%20-%20GÊNESIS%202026.docx",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "ANEXO V - DECLARAÇÃO DE CONFORMIDADE DA EQUIPE DO PROJETO - GÊNESIS 2026",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/ANEXO%20V%20-%20DECLARAÇÃO%20DE%20CONFORMIDADE%20DA%20EQUIPE%20DO%20PROJETO%20-%20GÊNESIS%202026.docx",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "ANEXO VI - DECLARAÇÃO DE CIÊNCIA DE CONTEÚDO DO PROJETO E AUTORIZAÇÃO DE EXECUÇÃO - GÊNESIS 2026",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/ANEXO%20VI%20-%20DECLARAÇÃO%20DE%20CIÊNCIA%20DE%20CONTEÚDO%20DO%20PROJETO%20E%20AUTORIZAÇÃO%20DE%20EXECUÇÃO%20-%20GÊNESIS%202026.docx",
+            "tipo": "anexo"
+        }
+    ]
+}
