@@ -1,0 +1,23 @@
+{
+    "nome": "[ANEXO] ANEXO I - FORMULÁRIO FAPES DE SUBMISSÃO",
+    "descrição": "Edital de fomento FAPES: [ANEXO] ANEXO I - FORMULÁRIO FAPES DE SUBMISSÃO",
+    "orgão_fomento": "FAPES",
+    "categoria": "chamadas",
+    "status": "aberto",
+    "data_abertura": "2026-01-01",
+    "data_encerramento": "",
+    "link": "https://fapes.es.gov.br/Media/fapes/Editais/Anexo%20I%20-%20Fapes%20Mobility%20Italy%20-2026.docx",
+    "cronograma": [],
+    "tags": [
+        "fapes",
+        "documento",
+        "anexo"
+    ],
+    "anexos": [
+        {
+            "titulo": "ANEXO II – CATEGORIA ALUNO - DECLARAÇÃO DE VÍNCULO ACADÊMICO E AUTORIZAÇÃO PARA ESTÁGIO",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/Anexo%20II%20-Fapes%20Mobility%20Italy%20-2026.docx",
+            "tipo": "anexo"
+        }
+    ]
+}
