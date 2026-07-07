@@ -1,6 +1,6 @@
 {
     "nome": "[ALTERAÇÃO] DIRETRIZES FAPES PARA APOIO À PARTICIPAÇÃO DE PROPONENTE DO ESTADO DO ESPÍRITO SANTO COMO CO-PI EM PROJETOS DE PESQUISA E INOVAÇÃO NO ÂMBITO DO PROGRAMA HORIZONTE EUROPA 2021-2027",
-    "descrição": "O edital estabelece diretrizes para apoiar a participação de pesquisadores do estado do Espírito Santo como co-Principal Investigators (co-PIs) em projetos colaborativos de pesquisa e inovação no âmbito do Programa Horizonte Europa (2021-2027). O foco é em projetos da categoria 'C - Projetos Colaborativos (Pilar II)', que reúnem consórcios de parceiros europeus e associados para desenvolver soluções inovadoras para desafios globais, como mudanças climáticas e saúde, promovendo competitividade e troca de conhecimento.",
+    "descrição": "O edital tem como objetivo apoiar a participação de pesquisadores do estado do Espírito Santo como co-Principal Investigators (co-PIs) em projetos colaborativos de pesquisa e inovação executados por consórcios de parceiros europeus e associados no âmbito do Programa Horizonte Europa (Pilar II - Projetos Colaborativos). O foco é em projetos de grande escala que abordam desafios globais, como mudanças climáticas e saúde, promovendo competitividade, troca de conhecimento e desenvolvimento científico e tecnológico no Espírito Santo.",
     "orgão_fomento": "FAPES",
     "categoria": "chamadas",
     "status": "aberto",
@@ -16,21 +16,5 @@
         "consórcios internacionais",
         "alteração"
     ],
-    "anexos": [
-        {
-            "titulo": "PUBLICAÇÃO CONFAP",
-            "link": "https://fapes.es.gov.br/Media/fapes/Editais/Publicação%20CONFAP-12.pdf",
-            "tipo": "anexo"
-        },
-        {
-            "titulo": "FICHA INFORMATIVA HORIZON EUROPE",
-            "link": "https://fapes.es.gov.br/Media/fapes/Editais/Ficha%20Informativa%20%20Horizon%20Europe%20(Em%20inglês)-1.pdf",
-            "tipo": "anexo"
-        },
-        {
-            "titulo": "ARRANJO ADMINISTRATIVO",
-            "link": "https://fapes.es.gov.br/Media/fapes/Editais/AA_EC_BRAZIL_PT-1.pdf",
-            "tipo": "anexo"
-        }
-    ]
+    "anexos": []
 }
