@@ -1,19 +1,19 @@
 {
     "nome": "EDITAL FAPES 05/2026 – VISITA TÉCNICO-CIENTÍFICA",
-    "descrição": "Selecionar propostas para concessão de auxílio financeiro à realização de Visita Técnico-Científica em laboratório ou centro de pesquisa, desenvolvimento ou inovação (PD&I), no país ou no exterior. O objetivo é aprimorar e desenvolver técnicas ou processos e adquirir conhecimentos específicos vinculados a projetos de PD&I desenvolvidos em Instituições de Ensino e/ou Pesquisa (IES/P), públicas ou privadas, localizadas no estado do Espírito Santo.",
+    "descrição": "Selecionar propostas para concessão de auxílio financeiro à realização de Visita Técnico-Científica em laboratório ou centro de pesquisa, desenvolvimento ou inovação (PD&I), no país ou no exterior. O objetivo é aprimorar e desenvolver técnicas ou processos e adquirir conhecimentos específicos vinculados a projetos de PD&I desenvolvidos em Instituições de Ensino e/ou Pesquisa (IES/P), públicas ou privadas, localizadas no estado do Espírito Santo. Os objetivos específicos incluem estimular o intercâmbio e a atualização de conhecimentos entre pesquisadores e alunos nas áreas de Ciência, Tecnologia e Inovação (CT&I), apoiar a formação de alunos de pós-graduação e fortalecer os Programas de Pós-Graduação do Espírito Santo.",
     "orgão_fomento": "FAPES",
     "categoria": "divulgação de conhecimento",
     "status": "aberto",
     "data_abertura": "2026-01-01",
-    "data_encerramento": "",
+    "data_encerramento": "2026-08-20",
     "link": "https://fapes.es.gov.br/Media/fapes/Editais/Edital%20Fapes%2005_2026%20-%20Visita%20Técnico%20Cientifica%20(1).pdf",
     "cronograma": [],
     "tags": [
         "visita técnico-científica",
         "pesquisa e desenvolvimento",
         "intercâmbio acadêmico",
-        "inovação",
-        "fomento à pesquisa"
+        "pós-graduação",
+        "inovação"
     ],
     "anexos": []
 }
