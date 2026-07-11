@@ -1,6 +1,6 @@
 {
     "nome": "[ALTERAÇÃO] CHAMADA ERC – CONFAP – 2026",
-    "descrição": "A chamada tem como objetivo apoiar a mobilidade de pesquisadores do estado do Espírito Santo para integrarem equipes de pesquisa na Europa, em projetos financiados pelo Conselho Europeu de Pesquisa (ERC). Visa promover colaborações internacionais, possibilitando que pesquisadores capixabas desenvolvam atividades em equipes de excelência vinculadas a projetos ERC, fortalecendo a internacionalização da ciência, tecnologia e inovação no Espírito Santo. As missões científicas podem durar de 6 a 12 meses ou serem divididas em visitas curtas.",
+    "descrição": "A chamada tem como objetivo apoiar a mobilidade de pesquisadores do estado do Espírito Santo para integrarem equipes de pesquisa na Europa, em projetos financiados pelo Conselho Europeu de Pesquisa (ERC). Visa possibilitar colaborações de pesquisa com equipes já apoiadas pelo ERC, promovendo oportunidades em projetos multidisciplinares na fronteira do conhecimento e fortalecendo a internacionalização da ciência, tecnologia e inovação no Espírito Santo.",
     "orgão_fomento": "FAPES",
     "categoria": "chamadas",
     "status": "aberto",
@@ -10,9 +10,9 @@
     "cronograma": [],
     "tags": [
         "mobilidade internacional",
-        "pesquisa científica",
+        "pesquisa colaborativa",
         "ERC",
-        "colaboração internacional",
+        "internacionalização",
         "Espírito Santo",
         "alteração"
     ],
