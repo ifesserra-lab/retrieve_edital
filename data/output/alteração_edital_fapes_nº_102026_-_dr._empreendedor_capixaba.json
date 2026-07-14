@@ -1,6 +1,6 @@
 {
     "nome": "[ALTERAÇÃO] EDITAL FAPES Nº 10/2026 - DR. EMPREENDEDOR CAPIXABA",
-    "descrição": "Chamada pública para fomentar o empreendedorismo inovador por meio de projetos de pesquisa e desenvolvimento de produtos (bens e serviços) ou de processos inovadores, realizados por doutores em qualquer área de desenvolvimento. O edital visa apoiar doutores empreendedores, com ou sem empresa previamente constituída, sediados no Espírito Santo, para transformar ideias inovadoras em empreendimentos potencialmente sustentáveis, promovendo a transferência de conhecimento e tecnologias geradas nas universidades e centros de pesquisa para o mercado, impulsionando a criação ou fortalecimento de micro e pequenas empresas de base tecnológica.",
+    "descrição": "Chamada pública para fomentar o empreendedorismo inovador por meio de projetos de pesquisa e desenvolvimento de produtos (bens e serviços) ou de processos inovadores, realizados por doutores, em qualquer área de desenvolvimento. O objetivo é transformar ideias inovadoras em empreendimentos potencialmente sustentáveis, promovendo a transferência de conhecimento e tecnologias geradas nas universidades e centros de pesquisa para o mercado, impulsionando a criação ou fortalecimento de micro e pequenas empresas de base tecnológica no Espírito Santo.",
     "orgão_fomento": "FAPES",
     "categoria": "inovação",
     "status": "aberto",
@@ -11,9 +11,9 @@
     "tags": [
         "empreendedorismo inovador",
         "pesquisa e desenvolvimento",
-        "startups de base tecnológica",
-        "subvenção econômica",
+        "micro e pequenas empresas",
         "Espírito Santo",
+        "subvenção econômica",
         "alteração"
     ],
     "anexos": []

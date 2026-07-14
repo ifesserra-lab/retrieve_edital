@@ -1,0 +1,30 @@
+{
+    "nome": "PROGRAMA DE AUXÍLIO PARA DOUTORANDOS BRASILEIROS COM BOLSA NACIONAL (DAAD 2026)",
+    "descrição": "O edital oferece financiamento complementar a doutorandos brasileiros que já possuam bolsa de estudos concedida pela CAPES ou por uma Fundação Estadual de Amparo à Pesquisa (FAP) participante, com o objetivo de viabilizar parte da pesquisa de tese na Alemanha. O programa permite estadias de pesquisa de dois a seis meses em universidades, institutos de pesquisa, laboratórios ou bibliotecas alemãs, sem interrupção da bolsa nacional.",
+    "orgão_fomento": "FAPES",
+    "categoria": "chamadas",
+    "status": "aberto",
+    "data_abertura": "2026-01-01",
+    "data_encerramento": "2026-09-03",
+    "link": "https://fapes.es.gov.br/Media/fapes/Editais/Divulgação%20CONFAP%20DAAD%202026.pdf",
+    "cronograma": [],
+    "tags": [
+        "doutorado",
+        "pesquisa internacional",
+        "bolsa de estudos",
+        "Alemanha",
+        "CONFAP"
+    ],
+    "anexos": [
+        {
+            "titulo": "DIRETRIZES FAPES - CHAMADA DAAD 2026",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/Diretrizes%20-%20FAPES%202026-1.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "CHAMADA CONFAP DAAD - 1º Termo Aditivo e Declaração",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/CONFAP-DAAD_1º_Termo_Aditivo_e_Declaração.pdf",
+            "tipo": "alteração"
+        }
+    ]
+}

@@ -1,0 +1,50 @@
+{
+    "nome": "JOINT TRANSNATIONAL CALL 2026 - RAW MATERIALS PARTNERSHIP FOR THE GREEN AND DIGITAL TRANSITION (RAMP)",
+    "descrição": "Este edital visa financiar projetos de pesquisa e/ou inovação ao longo de toda a cadeia de valor de matérias-primas. Os projetos devem focar em melhorar o acesso a matérias-primas, promovendo práticas de economia circular, alcançando sustentabilidade e minimizando custos sociais e ambientais. Eles devem agregar valor, inovar e contribuir para o desenvolvimento industrial. O escopo temático do edital baseia-se na Agenda Estratégica de Pesquisa e Inovação (SRIA) da RAMP e inclui suprimento primário e secundário, design e produção, uso e reutilização de produtos e componentes.",
+    "orgão_fomento": "FAPES",
+    "categoria": "chamadas",
+    "status": "aberto",
+    "data_abertura": "2026-01-01",
+    "data_encerramento": "2026-09-22",
+    "link": "https://fapes.es.gov.br/Media/fapes/Editais/Edital%20-%20Chamada%20RAMP%202026.pdf",
+    "cronograma": [],
+    "tags": [
+        "matérias-primas",
+        "economia circular",
+        "transição verde e digital",
+        "inovação tecnológica",
+        "sustentabilidade"
+    ],
+    "anexos": [
+        {
+            "titulo": "DIRETRIZES DA FAPES (RAMP)",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/Diretrizes_Chamada_Internacional_RAMP-2026.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "ANEXO I",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/Anexo%20I%20-%20Modelo%20pre_proposta_Chamada%20RAMP.2026.docx",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "ANEXO II",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/Anexo%20II%20-%20Modelo%20CV%20-%20Chamada%20RAMP.2026.docx",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "PUBLICAÇÃO RAMP - 1ª CHAMADA RAMP 2026",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/RAMP%20Joint%20Call%202026.pdf",
+            "tipo": "edital"
+        },
+        {
+            "titulo": "PUBLICAÇÃO CONFAP - 1ª CHAMADA RAMP 2026",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/Editais%20-%20CONFAP%20—%20Conselho%20Nacional%20das%20Fundações%20Estaduais%20de%20Amparo%20à%20Pesquisa-2.pdf",
+            "tipo": "edital"
+        },
+        {
+            "titulo": "TERMO DE ADESÃO",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/RAMP_Termo_de_Adesão_-_2026.pdf",
+            "tipo": "anexo"
+        }
+    ]
+}

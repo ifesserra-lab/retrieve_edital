@@ -1,12 +1,12 @@
 {
     "nome": "EDITAL CONIF Nº 07/2026 - CONCURSO PARA CRIAÇÃO DA MASCOTE OFICIAL DOS JOGOS DAS INSTITUIÇÕES FEDERAIS (JIF)",
-    "descrição": "Selecionar a proposta de mascote oficial dos Jogos das Instituições Federais (JIF), símbolo que representará os valores do esporte, educação, inclusão, diversidade, sustentabilidade, inovação e integração promovidos pela Rede Federal de Educação Profissional, Científica e Tecnológica. A proposta vencedora integrará o patrimônio institucional do Conif e dos JIF, podendo ser utilizada em materiais impressos, digitais, audiovisuais, promocionais e institucionais.",
+    "descrição": "O edital tem por objetivo selecionar a proposta de uma Mascote Oficial para os Jogos das Instituições Federais (JIF), que representará valores como esporte, educação, inclusão, diversidade, sustentabilidade, inovação e integração promovidos pela Rede Federal de Educação Profissional, Científica e Tecnológica. A mascote vencedora integrará o patrimônio institucional do Conif e dos JIF, sendo utilizada em materiais impressos, digitais, audiovisuais, promocionais e institucionais.",
     "orgão_fomento": "CONIF",
     "categoria": "outros",
     "status": "aberto",
     "data_abertura": "2026-07-08",
     "data_encerramento": "2026-07-27",
-    "link": "https://portal.conif.org.br/editais/2026/edital-7---selecao-da-mascote-oficial-dos-jifs",
+    "link": "https://portal.conif.org.br/editais/2026/edital-7-selecao-da-mascote-oficial-dos-jifs",
     "cronograma": [
         {
             "evento": "data de publicação",
@@ -16,8 +16,8 @@
     "tags": [
         "mascote",
         "JIF",
-        "design",
         "concurso",
+        "design",
         "Rede Federal",
         "conif",
         "2026"
@@ -36,6 +36,16 @@
         {
             "titulo": "ANEXO II",
             "link": "https://portal.conif.org.br/images/Editais/2026/7_Julho/anexo-ii---declaracao-de-autoria-e-originalidade.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "ANEXO III",
+            "link": "https://portal.conif.org.br/images/Editais/2026/7_Julho/anexo-iii---declaracao-do-representante-legal.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "RETIFICAÇÃO I",
+            "link": "https://portal.conif.org.br/images/Editais/2026/7_Julho/retificacao-i---edital_7_26.pdf",
             "tipo": "anexo"
         }
     ]
