@@ -1,0 +1,37 @@
+{
+    "nome": "PUBLICAÇÃO RAMP - 1ª CHAMADA RAMP 2026",
+    "descrição": "Edital de fomento FAPES: PUBLICAÇÃO RAMP - 1ª CHAMADA RAMP 2026",
+    "orgão_fomento": "FAPES",
+    "categoria": "chamadas",
+    "status": "aberto",
+    "data_abertura": "2026-01-01",
+    "data_encerramento": "",
+    "link": "https://fapes.es.gov.br/Media/fapes/Editais/RAMP%20Joint%20Call%202026.pdf",
+    "cronograma": [],
+    "tags": [
+        "fapes",
+        "documento"
+    ],
+    "anexos": [
+        {
+            "titulo": "ANEXO I",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/Anexo%20I%20-%20Modelo%20pre_proposta_Chamada%20RAMP.2026.docx",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "ANEXO II",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/Anexo%20II%20-%20Modelo%20CV%20-%20Chamada%20RAMP.2026.docx",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "PUBLICAÇÃO CONFAP - 1ª CHAMADA RAMP 2026",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/Editais%20-%20CONFAP%20—%20Conselho%20Nacional%20das%20Fundações%20Estaduais%20de%20Amparo%20à%20Pesquisa-2.pdf",
+            "tipo": "edital"
+        },
+        {
+            "titulo": "TERMO DE ADESÃO",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/RAMP_Termo_de_Adesão_-_2026.pdf",
+            "tipo": "edital"
+        }
+    ]
+}
