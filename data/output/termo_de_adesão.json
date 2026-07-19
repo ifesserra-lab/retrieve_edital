@@ -1,0 +1,27 @@
+{
+    "nome": "TERMO DE ADESÃO",
+    "descrição": "Edital de fomento FAPES: TERMO DE ADESÃO",
+    "orgão_fomento": "FAPES",
+    "categoria": "chamadas",
+    "status": "aberto",
+    "data_abertura": "2026-01-01",
+    "data_encerramento": "",
+    "link": "https://fapes.es.gov.br/Media/fapes/Editais/RAMP_Termo_de_Adesão_-_2026.pdf",
+    "cronograma": [],
+    "tags": [
+        "fapes",
+        "documento"
+    ],
+    "anexos": [
+        {
+            "titulo": "ANEXO I",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/Anexo%20I%20-%20Modelo%20pre_proposta_Chamada%20RAMP.2026.docx",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "ANEXO II",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/Anexo%20II%20-%20Modelo%20CV%20-%20Chamada%20RAMP.2026.docx",
+            "tipo": "anexo"
+        }
+    ]
+}
