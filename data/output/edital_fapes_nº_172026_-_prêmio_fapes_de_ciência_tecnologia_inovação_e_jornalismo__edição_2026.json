@@ -13,5 +13,11 @@
         "documento",
         "inovação"
     ],
-    "anexos": []
+    "anexos": [
+        {
+            "titulo": "EDITAL FAPES Nº 17/2026 - PRÊMIO FAPES DE CIÊNCIA,  TECNOLOGIA, INOVAÇÃO E JORNALISMO – EDIÇÃO 2026  (1ª ALTERAÇÃO)",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/Edital_17.2026_Prêmio_Fapes_Edição_2026_-_Professora_Jurema_José_de_Oliveira_1ª_alteração.pdf",
+            "tipo": "alteração"
+        }
+    ]
 }
