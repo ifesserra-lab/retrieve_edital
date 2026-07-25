@@ -1,0 +1,38 @@
+{
+    "nome": "EDITAL 8 - CAPTAÇÃO DE PATROCÍNIO E APOIO AO EVENTO REDITEC 2026",
+    "descrição": "CONIF REDE FEDERAL REDITEC Pesquisar Menu",
+    "orgão_fomento": "CONIF",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-07-24",
+    "data_encerramento": "",
+    "link": "https://portal.conif.org.br/index.php/editais/2026/edital-8-captacao-de-patrocinio-e-apoio-ao-evento-reditec-2026",
+    "cronograma": [
+        {
+            "evento": "data de publicação",
+            "data": "2026-07-24"
+        }
+    ],
+    "tags": [
+        "conif",
+        "2026",
+        "pesquisa"
+    ],
+    "anexos": [
+        {
+            "titulo": "EDITAL CONIF Nº 08/2026, de 24 de julho de 2026",
+            "link": "https://portal.conif.org.br/images/Editais/2026/7_Julho/edital-9---reditec-2026.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "ANEXO I – Mapa da feira",
+            "link": "https://portal.conif.org.br/images/Editais/2026/7_Julho/edital-9---mapa-da-feira_2026.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "ANEXO II – Proposta de patrocínio",
+            "link": "https://portal.conif.org.br/images/Editais/2026/7_Julho/edital-9---ficha-de-inscricao-reditec_2026.pdf",
+            "tipo": "anexo"
+        }
+    ]
+}

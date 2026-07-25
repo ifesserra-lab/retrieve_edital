@@ -6,7 +6,7 @@
     "status": "aberto",
     "data_abertura": "2026-04-30",
     "data_encerramento": "",
-    "link": "https://portal.conif.org.br/editais/2026/edital-3-adesao-ao-programa-de-assistentes-de-espanhol",
+    "link": "https://portal.conif.org.br/index.php/editais/2026/edital-3-adesao-ao-programa-de-assistentes-de-espanhol",
     "cronograma": [
         {
             "evento": "data de publicação",
@@ -32,6 +32,16 @@
         {
             "titulo": "RETIFICAÇÃO 1 - LINK DO FORMULÁRIO DE INSCRIÇÃO",
             "link": "https://portal.conif.org.br/images/Editais/2026/4_Abril/edital-03_26---retificacao-1---link-formulario-docx.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "LISTA DE HOMOLOGAÇÃO - PUBLICADA EM 1/6/26, 10h00",
+            "link": "https://portal.conif.org.br/images/Editais/2026/6_Junho/edital-03_2026---homologacao-docx.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "NUMERAÇÃO DO SORTEIO",
+            "link": "https://portal.conif.org.br/images/Editais/2026/6_Junho/edital-03_2026---numero-sorteio-docx.pdf",
             "tipo": "anexo"
         }
     ]
