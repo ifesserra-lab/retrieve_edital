@@ -4,13 +4,13 @@
     "orgão_fomento": "CONIF",
     "categoria": "pesquisa",
     "status": "aberto",
-    "data_abertura": "2026-07-24",
+    "data_abertura": "2026-07-25",
     "data_encerramento": "",
-    "link": "https://portal.conif.org.br/index.php/editais/2026/edital-8-captacao-de-patrocinio-e-apoio-ao-evento-reditec-2026",
+    "link": "https://portal.conif.org.br/editais/2026/edital-8-captacao-de-patrocinio-e-apoio-ao-evento-reditec-2026",
     "cronograma": [
         {
             "evento": "data de publicação",
-            "data": "2026-07-24"
+            "data": "2026-07-25"
         }
     ],
     "tags": [
@@ -32,6 +32,11 @@
         {
             "titulo": "ANEXO II – Proposta de patrocínio",
             "link": "https://portal.conif.org.br/images/Editais/2026/7_Julho/edital-9---ficha-de-inscricao-reditec_2026.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Documento",
+            "link": "https://portal.conif.org.br/images/Editais/2026/7_Julho/anexo-ii---declaracao-de-autoria-e-originalidade.pdf",
             "tipo": "anexo"
         }
     ]
