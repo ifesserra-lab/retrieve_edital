@@ -1,7 +1,7 @@
 """
 Índice JSON de editais já baixados e processados.
 Evita reprocessar os mesmos itens nos fluxos FAPES, FINEP, CONIF, PRPPG/IFES,
-PROEX/IFES, CAPES e CNPq.
+PROEX/IFES, CAPES, CNPq e Horizon Europe.
 """
 
 import json
@@ -12,7 +12,16 @@ from typing import Set, List
 logger = logging.getLogger(__name__)
 
 DEFAULT_PATH = "registry/processed_editais.json"
-SOURCES = ("fapes", "finep", "conif", "prppg_ifes", "proex_ifes", "capes", "cnpq")
+SOURCES = (
+    "fapes",
+    "finep",
+    "conif",
+    "prppg_ifes",
+    "proex_ifes",
+    "capes",
+    "cnpq",
+    "horizon",
+)
 
 
 def _load_raw(path: str) -> dict:
