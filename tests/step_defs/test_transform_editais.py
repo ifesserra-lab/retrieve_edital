@@ -21,7 +21,11 @@ def raw_edital_record(context, raw_title, raw_agency):
     context["raw_data"] = RawEdital(
         title=raw_title,
         url="http://mock.com",
-        raw_agency=raw_agency
+        raw_agency=raw_agency,
+        # Uma descrição real é o que distingue um edital de uma "casca vazia",
+        # que as regras de publicação descartam. Este cenário verifica a
+        # normalização de título e órgão, não a publicabilidade.
+        raw_description="Apoio a projetos de pesquisa e desenvolvimento.",
     )
 
 @when('the Transform component processes the record')

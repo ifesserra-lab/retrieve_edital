@@ -25,6 +25,8 @@ Este diretório contém a documentação do projeto `retrieve_edital`: extraçã
 ### Specs de Expansão de Fontes
 - 🟢 [Spec e Plano: FINEP, CNPq e Horizon Europe](spec_finep_cnpq_horizon.md)
   - FINEP e CNPq corrigidos, mais o canário anti-falha-silenciosa no runner. Resta **US-HORIZON**, com o dataset bulk do Horizon Europe já mapeado.
+- [Source Horizon Europe](horizon_source.md)
+  - HorizonSource: dataset bulk público (a search-api do SEDIA responde 500), filtro temático obrigatório por divisão, EIC Accelerator incluído, cadência semanal.
 - [Source CNPq](cnpq_source.md)
   - CnpqSource: listagem `abertas-para-submissao` no gov.br, período de inscrições com rótulos variáveis, anexos filtrados por caminho e OCR do documento principal.
 - [Plano de Execução: Fomento Empresarial](plan_fomento_empresarial.md)

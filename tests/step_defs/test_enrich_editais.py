@@ -103,8 +103,10 @@ def pdf_with_anomalies(context):
         pdf_content=b"%PDF-1.4 mock content"
     )
 
-@then('the engine should gracefully fallback to empty descriptions or empty schedule lists without aborting')
-def graceful_fallback(context):
-    # Description might contain the random text now in the no-llm fallback
-    assert context["result"].descrição != "" 
-    assert getattr(context["result"], 'cronograma', []) == []
+@then('the engine should discard the record without aborting the pipeline')
+def discard_without_aborting(context):
+    # A extração não produziu descrição, cronograma nem prazo: publicar isso
+    # gerava um card só com título. As regras de publicação descartam o
+    # registro, e o pipeline segue — sem exceção.
+    assert context["result"] is None
+    assert context.get("error") is None

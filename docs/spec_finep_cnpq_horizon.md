@@ -2,7 +2,7 @@
 
 **Autor**: Horizon Project Agent
 **Data**: 2026-07-27
-**Status**: 🟢 Quebras corrigidas. INF-04, FIX-FINEP (2026-07-27) e FIX-CNPQ (2026-07-29) concluídos. Resta **US-HORIZON**.
+**Status**: 🟢 Concluída. INF-04, FIX-FINEP (2026-07-27), FIX-CNPQ e US-HORIZON (2026-07-29).
 **Recon**: executado em 2026-07-27, dados medidos nos portais
 
 > **Como processar**: §1 é diagnóstico, §5 é a lista de tarefas executáveis com checkbox. As tarefas FIX-FINEP e FIX-CNPQ corrigem coleta hoje quebrada e têm precedência sobre o backlog de expansão em [plan_fomento_empresarial.md](plan_fomento_empresarial.md).
@@ -263,7 +263,14 @@ Verificar: chave `cnpq` do registry ≥ 40 e nenhum JSON CNPq com `data_encerram
 
 ### Onda 1 — Horizon Europe · 12h
 
-#### [ ] US-HORIZON · Source e flow Horizon Europe (+ EIC) · 12h
+#### [x] US-HORIZON · Source e flow Horizon Europe (+ EIC) · 12h — **concluído em 2026-07-29**
+
+Verificado contra o dataset real: **192 chamadas relevantes** nas três divisões sugeridas, **185 publicáveis** após as regras de publicação, 12 delas do EIC.
+
+**Decisão pendente nº 1 resolvida por default seguro**: como 185 chamadas superam o portal inteiro (153 editais), o filtro temático tem **default vazio** — sem `HORIZON_DIVISIONS` configurado o source não devolve nada e nem baixa o dataset. Habilitar continua sendo decisão da PRPPG, mas agora sem risco de afogar o portal por omissão.
+
+**Descrição**: adotada a opção (a) do §4.4 — composta de `callTitle` e das divisões. A categoria é derivada da divisão (EIC → `inovação`, demais → `pesquisa`), dentro do vocabulário que o portal já usa.
+
 
 **Depende de**: INF-04 (para não repetir falha silenciosa numa fonte de 126 MB).
 **Criar**: `src/components/sources/horizon_source.py`, `src/flows/ingest_horizon_flow.py`, `docs/features/ingest_horizon.feature`, `tests/step_defs/test_horizon_source.py`

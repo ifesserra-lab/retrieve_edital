@@ -48,6 +48,7 @@ graph TB
 | PRPPG_IFES | `src/flows/ingest_prppg_ifes_flow.py` | `PrppgIfesSource` | Editais do SIGPesq/Ifes com paginação ASP.NET, URL estável `?cod=` e download do anexo principal. |
 | PROEX_IFES | `src/flows/ingest_proex_ifes_flow.py` | `ProexIfesSource` | Editais abertos da PROEX/IFES, limitados ao ano corrente, com deduplicação pela URL do PDF principal e fallback para `curl` quando o portal retorna `403` a `requests`. |
 | CAPES | `src/flows/ingest_capes_flow.py` | `CapesSource` | Editais e resultados da CAPES, com anexos em PDF e filtro por ano corrente/futuro. |
+| HORIZON | `src/flows/ingest_horizon_flow.py` | `HorizonSource` | Chamadas abertas do Horizon Europe (inclui o EIC) a partir do dataset bulk público, com filtro temático obrigatório por divisão. Cadência semanal, fora do runner diário. |
 | CNPQ | `src/flows/ingest_cnpq_flow.py` | `CnpqSource` | Chamadas abertas para submissão no **portal do gov.br** (Plone estático), com página de detalhe, período de inscrições, anexos e OCR do documento principal. |
 
 ## Configuração global
@@ -55,7 +56,9 @@ graph TB
 - `src/config.py`: `get_reference_year(override)` para fontes que filtram por ano de referência.
 - `src/flow_health.py`: sinais de saúde dos fluxos — os fluxos publicam a contagem bruta pelo stdout (`[flow-stats] raw=N new=M`) e o runner usa esse número para distinguir **"o portal não publicou nada"** de **"o source quebrou"**. Antes disso, as duas situações apareciam no log como `Sucesso, delta 0`, o que manteve as quedas da FINEP e do CNPq invisíveis por meses.
 - `.env`: `MISTRAL_API_KEY` para OCR e extrações estruturadas via Mistral.
-- `registry/processed_editais.json`: índice de editais já processados por source (`fapes`, `finep`, `conif`, `prppg_ifes`, `proex_ifes`, `capes`, `cnpq`).
+- `registry/processed_editais.json`: índice de editais já processados por source (`fapes`, `finep`, `conif`, `prppg_ifes`, `proex_ifes`, `capes`, `cnpq`, `horizon`).
+- `src/components/transforms/publication_rules.py`: decide o que é oportunidade publicável. Descarta anexo/alteração solto, registro sem conteúdo extraído e prazo já encerrado, e canoniza `status` em `aberto`/`encerrado`.
+- `scripts/curate_output.py`: cuida do acervo já gravado — realinha `status` ao prazo (o runner chama a cada execução) e, com `--apply`, remove o que não é edital.
 - `docs/flow_processing_log.md`: log operacional da última execução de cada fluxo.
 - `scripts/run_all_flows.py`: runner unificado para todos os fluxos.
 
