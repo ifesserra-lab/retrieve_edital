@@ -1,434 +1,528 @@
 """
-FINEP Chamadas Públicas Source.
+FINEP Chamadas Públicas Source (API Liferay).
 
-Extracts open chamadas from the list page, then visits each detail page
-(e.g. http://www.finep.gov.br/chamadas-publicas/chamadapublica/777) to extract:
-- Description: initial text block ("Esta Seleção Pública tem por objetivo...")
-- Cronograma: Data de Publicação and Prazo para envio de propostas até
-- Tags: from Tema(s)
-- Anexos: links from the Documentos table
+O portal antigo (`finep.gov.br/chamadas-publicas/chamadaspublicas?situacao=aberta`)
+foi descontinuado: passou a responder 301 para `/oportunidades`, uma SPA cujo HTML
+não contém edital algum. O scraper baseado em Playwright seguiu rodando contra a
+página nova e extraindo zero itens durante meses. Ver `docs/spec_finep_cnpq_horizon.md`.
 
-Filters by deadline: only chamadas whose "Prazo para envio de propostas"
-falls in the reference year or the next year.
+Este source consome a mesma API que o widget oficial do portal usa:
+
+    POST /o/oauth2/token                        -> client_credentials
+    GET  /o/c/chamadapublicas                   -> listagem (filtro por situação)
+    GET  /o/c/chamadapublicas/{id}/documentos   -> anexos
+
+As credenciais são de cliente público — o Liferay as embute no bundle JS servido a
+qualquer visitante anônimo. São descobertas em tempo de execução a partir do bundle,
+com um par conhecido como fallback, para que uma rotação no portal não volte a
+derrubar a coleta em silêncio.
+
+Sem Playwright: a API devolve título, descrição, datas e anexos já estruturados.
 """
 
+import html
 import logging
 import re
+from dataclasses import dataclass
 from datetime import datetime
-from typing import List, Optional, Set, Tuple
-from urllib.parse import urljoin
+from typing import Any, Dict, Iterator, List, Optional, Set
 
-from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout
+import requests
 
 from src.config import get_reference_year
 from src.core.interfaces import ISource
 from src.domain.models import RawEdital
+from src.flow_health import warn_on_redirect
 
 logger = logging.getLogger(__name__)
 
-FINEP_BASE_URL = "http://www.finep.gov.br"
-FINEP_CHAMADAS_ABERTAS_URL = (
-    f"{FINEP_BASE_URL}/chamadas-publicas/chamadaspublicas?situacao=aberta"
+FINEP_BASE_URL = "https://www.finep.gov.br"
+FINEP_OPORTUNIDADES_URL = f"{FINEP_BASE_URL}/oportunidades"
+
+TOKEN_PATH = "/o/oauth2/token"
+CHAMADAS_PATH = "/o/c/chamadapublicas"
+DOCUMENTOS_PATH_TEMPLATE = "/o/c/chamadapublicas/{chamada_id}/documentos"
+
+# Página pública da chamada no portal novo. O segmento 222684 é o id do layout
+# da página de detalhe e se mostrou estável em todas as chamadas verificadas.
+PUBLIC_DETAIL_TEMPLATE = f"{FINEP_BASE_URL}/e/chamada-publica/222684/{{chamada_id}}"
+# Chave usada pelo portal antigo. Mantida apenas para reconhecer chamadas já
+# registradas em registry/processed_editais.json antes desta migração.
+LEGACY_DETAIL_TEMPLATE = (
+    "http://www.finep.gov.br/chamadas-publicas/chamadapublica/{database_id}"
 )
 
-# "Prazo para envio de propostas até: 04/05/2026"
-PRAZO_REGEX = re.compile(
-    r"Prazo\s+para\s+envio\s+de\s+propostas\s+até\s*:\s*(\d{2}/\d{2}/\d{4})",
-    re.IGNORECASE,
-)
+OPEN_SITUATION_KEY = "aberta"
+OPEN_SITUATION_FILTER = f"situacao eq '{OPEN_SITUATION_KEY}'"
+DEFAULT_PAGE_SIZE = 100
+DEFAULT_TIMEOUT = 30
+# Trava de segurança: se a API parar de informar `totalCount`, a paginação não
+# pode virar laço infinito dentro do job diário.
+MAX_PAGES_HARD_LIMIT = 50
 
-# Detail page: "Data de Publicação:\s*13/02/2026" and "Prazo para envio de propostas até:\s*31/08/2026"
-DATA_PUBLICACAO_REGEX = re.compile(
-    r"Data\s+de\s+[Pp]ublica[cç][aã]o\s*:\s*(\d{2}/\d{2}/\d{4})",
-    re.IGNORECASE,
-)
-PRAZO_DETAIL_REGEX = re.compile(
-    r"Prazo\s+para\s+envio\s+de\s+propostas\s+até\s*:\s*(\d{2}/\d{2}/\d{4})",
-    re.IGNORECASE,
-)
+FALLBACK_CLIENT_ID = "idClientPRD"
+FALLBACK_CLIENT_SECRET = "secretClientPRD"
 
-# "Tema(s):" seguido da lista de temas separados por ; (parar em Situacão ou Documentos)
-# Procurar apenas após "Prazo para envio" ou "Data de Publicação" para evitar o menu lateral (Tema 5G...)
-TEMAS_REGEX = re.compile(
-    r"Tema\s*\(s\)\s*:\s*(.+?)(?=\s*Situacão|\s*Documentos|\n\s*\n[A-Z]|$)",
-    re.IGNORECASE | re.DOTALL,
+_BUNDLE_PATH_REGEX = re.compile(
+    r"/o/finep-busca-chamadas-publicas/assets/[\w.-]+\.js"
 )
+# No bundle minificado: btoa(`${oh}:${dh}`) — os nomes das variáveis mudam a cada
+# build, então localizamos o par pelo uso e só depois resolvemos os literais.
+_BTOA_PAIR_REGEX = re.compile(r"btoa\(`\$\{(\w+)\}:\$\{(\w+)\}`\)")
+_HTML_TAG_REGEX = re.compile(r"<[^>]+>")
+
+# Rótulos reconhecidos pelo EditalNormalizer ao derivar data_abertura/data_encerramento.
+PUBLICATION_EVENT = "Data de publicação"
+DEADLINE_EVENT = "Prazo para envio de propostas"
 
 
-def _parse_deadline_year(text: str) -> Optional[int]:
-    """Extract deadline date from block text and return its year, or None."""
-    match = PRAZO_REGEX.search(text)
-    if not match:
+@dataclass(frozen=True)
+class FinepCredentials:
+    """Par de credenciais do cliente público OAuth2 do portal."""
+
+    client_id: str
+    client_secret: str
+
+
+def _iso_date(value: Optional[str]) -> str:
+    """Converte '2026-08-31T17:00:00.000Z' em '2026-08-31'."""
+    if not value:
+        return ""
+    text = str(value).strip()
+    match = re.match(r"(\d{4}-\d{2}-\d{2})", text)
+    return match.group(1) if match else ""
+
+
+def _year_of(iso_date: str) -> Optional[int]:
+    if not iso_date:
         return None
-    date_str = match.group(1)
     try:
-        dt = datetime.strptime(date_str, "%d/%m/%Y")
-        return dt.year
+        return datetime.strptime(iso_date, "%Y-%m-%d").year
     except ValueError:
         return None
 
 
-def _dd_mm_yyyy_to_iso(date_str: str) -> str:
-    """Convert DD/MM/YYYY to YYYY-MM-DD."""
-    try:
-        dt = datetime.strptime(date_str.strip(), "%d/%m/%Y")
-        return dt.strftime("%Y-%m-%d")
-    except ValueError:
-        return date_str
+def _strip_html(raw_html: Optional[str]) -> str:
+    if not raw_html:
+        return ""
+    text = _HTML_TAG_REGEX.sub(" ", raw_html)
+    return re.sub(r"\s+", " ", html.unescape(text)).strip()
 
 
-def _deadline_in_range(year: Optional[int], ref_year: int) -> bool:
-    """True if deadline year is ref_year or ref_year + 1."""
-    if year is None:
-        return False
-    return year in (ref_year, ref_year + 1)
+def _name_of(value: Any) -> str:
+    """Extrai o rótulo legível de um campo do tipo {'key': ..., 'name': ...}."""
+    if isinstance(value, dict):
+        return (value.get("name") or "").strip()
+    if isinstance(value, str):
+        return value.strip()
+    return ""
 
 
-def _normalize_finep_url(href: str) -> str:
+def _names_of(values: Any) -> List[str]:
+    if not isinstance(values, list):
+        return []
+    return [name for name in (_name_of(item) for item in values) if name]
+
+
+def _absolute_url(href: str, base_url: str) -> str:
     if not href:
-        return FINEP_CHAMADAS_ABERTAS_URL
+        return ""
     if href.startswith("http"):
         return href
-    return urljoin(FINEP_BASE_URL, href.lstrip("/"))
+    return f"{base_url.rstrip('/')}/{href.lstrip('/')}"
 
 
-class FinepSource(ISource[RawEdital]):
+class FinepCredentialResolver:
     """
-    Playwright-based extractor for FINEP chamadas públicas.
-    Visits each chamada detail page to extract description, cronograma, tags and anexos.
+    Descobre as credenciais do cliente público OAuth2 no bundle JS do portal.
+
+    Isolado do cliente HTTP para respeitar o SRP: aqui só se resolve *qual* par
+    usar; a autenticação em si é responsabilidade do `FinepApiClient`.
     """
 
     def __init__(
         self,
-        start_url: str = FINEP_CHAMADAS_ABERTAS_URL,
+        base_url: str = FINEP_BASE_URL,
+        listing_url: str = FINEP_OPORTUNIDADES_URL,
+        timeout: int = DEFAULT_TIMEOUT,
+        fallback: Optional[FinepCredentials] = None,
+        session: Optional[requests.Session] = None,
+    ) -> None:
+        self.base_url = base_url
+        self.listing_url = listing_url
+        self.timeout = timeout
+        self.fallback = fallback or FinepCredentials(
+            client_id=FALLBACK_CLIENT_ID,
+            client_secret=FALLBACK_CLIENT_SECRET,
+        )
+        self.session = session or requests.Session()
+
+    def resolve(self) -> FinepCredentials:
+        """Retorna as credenciais do bundle; cai no fallback quando não as encontra."""
+        try:
+            bundle = self._download_bundle()
+        except requests.RequestException as exc:
+            logger.warning(
+                "Não foi possível baixar o bundle do portal FINEP (%s). "
+                "Usando credenciais de fallback.",
+                exc,
+            )
+            return self.fallback
+
+        credentials = self._extract_credentials(bundle)
+        if credentials is None:
+            logger.warning(
+                "Padrão de credenciais não encontrado no bundle FINEP. "
+                "Usando credenciais de fallback."
+            )
+            return self.fallback
+
+        if credentials != self.fallback:
+            logger.info(
+                "Credenciais do portal FINEP mudaram em relação ao fallback; "
+                "usando as descobertas no bundle."
+            )
+        return credentials
+
+    def _download_bundle(self) -> str:
+        response = self.session.get(self.listing_url, timeout=self.timeout)
+        response.raise_for_status()
+        warn_on_redirect(self.listing_url, response.url)
+
+        match = _BUNDLE_PATH_REGEX.search(response.text)
+        if not match:
+            return ""
+        bundle_url = _absolute_url(match.group(0), self.base_url)
+        bundle_response = self.session.get(bundle_url, timeout=self.timeout)
+        bundle_response.raise_for_status()
+        return bundle_response.text
+
+    @staticmethod
+    def _extract_credentials(bundle: str) -> Optional[FinepCredentials]:
+        if not bundle:
+            return None
+        pair_match = _BTOA_PAIR_REGEX.search(bundle)
+        if not pair_match:
+            return None
+        values = []
+        for variable_name in pair_match.groups():
+            literal = re.search(
+                rf"\b{re.escape(variable_name)}\s*=\s*\"([^\"]+)\"", bundle
+            )
+            if literal is None:
+                return None
+            values.append(literal.group(1))
+        return FinepCredentials(client_id=values[0], client_secret=values[1])
+
+
+class FinepApiClient:
+    """Cliente HTTP autenticado da API Liferay da FINEP."""
+
+    def __init__(
+        self,
+        base_url: str = FINEP_BASE_URL,
+        credential_resolver: Optional[FinepCredentialResolver] = None,
+        timeout: int = DEFAULT_TIMEOUT,
+        session: Optional[requests.Session] = None,
+    ) -> None:
+        self.base_url = base_url.rstrip("/")
+        self.timeout = timeout
+        self.session = session or requests.Session()
+        self.credential_resolver = credential_resolver or FinepCredentialResolver(
+            base_url=base_url, timeout=timeout, session=self.session
+        )
+        self._access_token: Optional[str] = None
+
+    def get_json(self, path: str, params: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+        """GET autenticado; renova o token uma vez em caso de 401."""
+        response = self._authenticated_get(path, params)
+        if response.status_code == 401:
+            logger.info("Token FINEP expirado ou inválido; renovando.")
+            self._access_token = None
+            response = self._authenticated_get(path, params)
+        response.raise_for_status()
+        return response.json()
+
+    def iter_items(
+        self,
+        path: str,
+        params: Optional[Dict[str, Any]] = None,
+        page_size: int = DEFAULT_PAGE_SIZE,
+        max_pages: Optional[int] = None,
+    ) -> Iterator[Dict[str, Any]]:
+        """Itera os itens de um endpoint paginado da API."""
+        page_limit = min(max_pages, MAX_PAGES_HARD_LIMIT) if max_pages else MAX_PAGES_HARD_LIMIT
+        collected = 0
+        for page_number in range(1, page_limit + 1):
+            page_params = dict(params or {})
+            page_params.update({"page": page_number, "pageSize": page_size})
+            payload = self.get_json(path, page_params)
+            items = payload.get("items") or []
+            if not items:
+                return
+            for item in items:
+                yield item
+            collected += len(items)
+            total_count = payload.get("totalCount")
+            if total_count is not None and collected >= total_count:
+                return
+        logger.warning(
+            "Paginação da API FINEP interrompida no limite de %s páginas.", page_limit
+        )
+
+    def _authenticated_get(
+        self, path: str, params: Optional[Dict[str, Any]]
+    ) -> requests.Response:
+        headers = {
+            "Accept": "application/json",
+            "Authorization": f"Bearer {self._token()}",
+        }
+        return self.session.get(
+            f"{self.base_url}{path}",
+            params=params,
+            headers=headers,
+            timeout=self.timeout,
+        )
+
+    def _token(self) -> str:
+        if self._access_token:
+            return self._access_token
+        credentials = self.credential_resolver.resolve()
+        response = self.session.post(
+            f"{self.base_url}{TOKEN_PATH}",
+            data={"grant_type": "client_credentials"},
+            auth=(credentials.client_id, credentials.client_secret),
+            headers={"Content-Type": "application/x-www-form-urlencoded"},
+            timeout=self.timeout,
+        )
+        response.raise_for_status()
+        token = response.json().get("access_token")
+        if not token:
+            raise ValueError("Resposta de token da FINEP não contém access_token.")
+        self._access_token = token
+        return token
+
+
+class FinepSource(ISource[RawEdital]):
+    """
+    Extrai as chamadas públicas abertas da FINEP pela API oficial do portal.
+
+    Mantém o filtro por ano de referência dos prazos e a deduplicação por URL,
+    reconhecendo também as chaves no formato do portal antigo para não
+    reprocessar o que já está em `registry/processed_editais.json`.
+    """
+
+    def __init__(
+        self,
         reference_year: Optional[int] = None,
         max_pages: Optional[int] = None,
         processed_urls: Optional[Set[str]] = None,
-    ):
-        self.start_url = start_url
+        api_client: Optional[FinepApiClient] = None,
+        page_size: int = DEFAULT_PAGE_SIZE,
+        base_url: str = FINEP_BASE_URL,
+    ) -> None:
         self.reference_year = (
             reference_year if reference_year is not None else get_reference_year()
         )
-        self.max_pages = max_pages  # None = all pages; 1 = only first page (e.g. for quick test)
+        self.max_pages = max_pages
         self.processed_urls = processed_urls or set()
+        self.page_size = page_size
+        self.base_url = base_url.rstrip("/")
+        self.api_client = api_client or FinepApiClient(base_url=base_url)
+        # Quantas chamadas a origem devolveu na última leitura, antes da
+        # deduplicação. O runner usa esse número para distinguir "nada novo"
+        # de "o source quebrou". Ver src/flow_health.py.
+        self.last_listing_count = 0
         logger.info(
-            "FinepSource using reference_year=%s (deadline filter: %s or %s)%s",
+            "FinepSource usando a API do portal (reference_year=%s, prazos a partir de %s)%s.",
             self.reference_year,
             self.reference_year,
-            self.reference_year + 1,
             f", max_pages={max_pages}" if max_pages else "",
         )
 
     def read(self) -> List[RawEdital]:
-        detail_links: List[Tuple[str, str]] = []  # (detail_url, title)
         try:
-            with sync_playwright() as p:
-                browser = p.chromium.launch(headless=True)
-                page = browser.new_page()
-
-                page_num = 1
-                while True:
-                    if page_num == 1:
-                        url = self.start_url
-                        logger.info(
-                            "Navigating to FINEP chamadas abertas (page 1): %s",
-                            url,
-                        )
-                        try:
-                            page.goto(url, timeout=60000, wait_until="domcontentloaded")
-                            page.wait_for_load_state("networkidle", timeout=20000)
-                        except Exception as e:
-                            logger.error("Error navigating to FINEP: %s", e)
-                            break
-                    else:
-                        logger.info(
-                            "On page %s (navigated via pagination click).",
-                            page_num,
-                        )
-
-                    try:
-                        page.wait_for_selector(
-                            "a[href*='chamadapublica/'], h3",
-                            timeout=15000,
-                        )
-                    except PlaywrightTimeout:
-                        logger.warning("Timeout waiting for results on page %s.", page_num)
-                        break
-
-                    # Collect links to detail pages (chamadapublica/ID)
-                    link_els = page.locator("a[href*='chamadapublica/']").all()
-                    seen_urls = set()
-                    added_this_page = 0
-                    skipped_previous_year_this_page = 0
-                    for link_el in link_els:
-                        href = link_el.get_attribute("href")
-                        if not href or "chamadapublica/" not in href:
-                            continue
-                        detail_url = _normalize_finep_url(href)
-                        if detail_url in seen_urls:
-                            continue
-                        seen_urls.add(detail_url)
-                        title = link_el.inner_text().strip() or "Chamada FINEP"
-                        if not title or len(title) < 5:
-                            continue
-                        block = link_el.locator("xpath=..")
-                        block_text = ""
-                        for _ in range(3):
-                            try:
-                                block_text = block.inner_text()
-                                if "Prazo" in block_text or "Data de" in block_text:
-                                    break
-                            except Exception:
-                                pass
-                            block = block.locator("xpath=..")
-                        deadline_year = _parse_deadline_year(block_text)
-                        if not _deadline_in_range(
-                            deadline_year, self.reference_year
-                        ):
-                            skipped_previous_year_this_page += 1
-                            logger.debug(
-                                "Skipping '%s' (deadline year %s not in %s/%s).",
-                                title[:50],
-                                deadline_year,
-                                self.reference_year,
-                                self.reference_year + 1,
-                            )
-                            continue
-                        if detail_url in self.processed_urls:
-                            logger.debug("Skipping already processed: %s", detail_url)
-                            continue
-                        detail_links.append((detail_url, title))
-                        added_this_page += 1
-
-                    # Parar se todos os editais da página forem do ano anterior
-                    if skipped_previous_year_this_page > 0 and added_this_page == 0:
-                        logger.info(
-                            "All chamadas on page %s are from previous years. Stopping pagination.",
-                            page_num,
-                        )
-                        break
-
-                    # Próxima página: clicar no número da página (2, 3, 4, ...) na paginação
-                    next_page_num = page_num + 1
-                    if self.max_pages is not None and next_page_num > self.max_pages:
-                        break
-                    pagination = page.locator(
-                        ".pagination, .pager, nav[aria-label*='pagina'], [class*='pagination']"
-                    )
-                    next_page_link = pagination.get_by_text(
-                        str(next_page_num), exact=True
-                    ).first
-                    clicked = False
-                    try:
-                        if next_page_link.count() and next_page_link.is_visible():
-                            next_page_link.click()
-                            page.wait_for_load_state("networkidle", timeout=20000)
-                            page_num = next_page_num
-                            clicked = True
-                    except Exception as e:
-                        logger.debug(
-                            "Could not click page number %s: %s",
-                            next_page_num,
-                            e,
-                        )
-                    if not clicked:
-                        # Fallback: navegar pela URL (limitstart) se o site não tiver link numérico
-                        url_next = f"{self.start_url}&limitstart={(next_page_num - 1) * 10}"
-                        try:
-                            page.goto(url_next, timeout=60000, wait_until="domcontentloaded")
-                            page.wait_for_load_state("networkidle", timeout=20000)
-                            page_num = next_page_num
-                        except Exception as e:
-                            logger.debug("Fallback goto next page failed: %s", e)
-                            break
-
-                raw_editais: List[RawEdital] = []
-                for detail_url, list_title in detail_links:
-                    try:
-                        raw = self._extract_detail_page(
-                            browser, detail_url, list_title
-                        )
-                        if raw:
-                            raw_editais.append(raw)
-                    except Exception as e:
-                        logger.error(
-                            "Error extracting detail page %s: %s", detail_url, e
-                        )
-
-                browser.close()
-                logger.info(
-                    "FinepSource extracted %s chamadas (deadline in %s or %s).",
-                    len(raw_editais),
-                    self.reference_year,
-                    self.reference_year + 1,
+            items = list(
+                self.api_client.iter_items(
+                    CHAMADAS_PATH,
+                    params={
+                        "filter": OPEN_SITUATION_FILTER,
+                        "sort": "dataDePublicacao:desc",
+                    },
+                    page_size=self.page_size,
+                    max_pages=self.max_pages,
                 )
-                return raw_editais
-
-        except Exception as e:
-            logger.error("Error during FINEP extraction: %s", e)
+            )
+        except (requests.RequestException, ValueError) as exc:
+            logger.error("Erro ao consultar a API de chamadas da FINEP: %s", exc)
+            self.last_listing_count = 0
             return []
 
-    def _extract_documentos_table(self, page, content) -> List[dict]:
-        """Extrai anexos da tabela 'Documentos' (Nome do documento + link)."""
-        anexos: List[dict] = []
-        # Padrão de data na 1ª coluna para pular cabeçalho
-        date_cell_re = re.compile(r"^\d{2}/\d{2}/\d{4}$")
-        for container in [content, page]:
-            tables = container.locator("table").all()
-            for table in tables:
-                try:
-                    full_header = table.locator("thead, tr").first.inner_text()
-                except Exception:
-                    full_header = ""
-                if "nome do documento" not in full_header.lower() and "documento" not in full_header.lower():
-                    continue
-                rows = table.locator("tbody tr, tr").all()
-                for row in rows:
-                    cells = row.locator("td").all()
-                    if len(cells) < 2:
-                        continue
-                    try:
-                        cell0_text = cells[0].inner_text().strip()
-                        doc_name = cells[1].inner_text().strip()
-                    except Exception:
-                        continue
-                    if not doc_name or len(doc_name) < 2:
-                        continue
-                    if date_cell_re.match(cell0_text) is None and date_cell_re.match(doc_name):
-                        continue
-                    links = row.locator("a[href]").all()
-                    doc_url = ""
-                    for link in links:
-                        href = link.get_attribute("href")
-                        if not href:
-                            continue
-                        h = href.lower()
-                        is_doc = (
-                            ".pdf" in h or ".odt" in h or ".doc" in h or ".pptx" in h or ".odp" in h
-                            or "/images/" in href or "chamadas-publicas" in h
-                        )
-                        if is_doc:
-                            doc_url = _normalize_finep_url(href)
-                            break
-                    if not doc_url and links:
-                        doc_url = _normalize_finep_url(links[0].get_attribute("href") or "")
-                    if doc_url:
-                        anexos.append({
-                            "titulo": doc_name,
-                            "link": doc_url,
-                            "tipo": "Documentos",
-                        })
-                if anexos:
-                    return anexos
+        self.last_listing_count = len(items)
+        logger.info("API FINEP devolveu %s chamadas abertas.", len(items))
+
+        raw_editais: List[RawEdital] = []
+        for item in items:
+            # Um item malformado não pode derrubar a coleta das outras chamadas.
+            try:
+                raw_edital = self._build_raw_edital(item)
+            except (AttributeError, TypeError, ValueError) as exc:
+                logger.error(
+                    "Chamada FINEP %s ignorada por erro de mapeamento: %s",
+                    item.get("id") if isinstance(item, dict) else item,
+                    exc,
+                )
+                continue
+            if raw_edital is not None:
+                raw_editais.append(raw_edital)
+
+        logger.info(
+            "FinepSource selecionou %s chamadas novas de %s abertas.",
+            len(raw_editais),
+            len(items),
+        )
+        return raw_editais
+
+    def _build_raw_edital(self, item: Dict[str, Any]) -> Optional[RawEdital]:
+        chamada_id = item.get("id")
+        title = (item.get("titulo") or "").strip()
+        if not chamada_id or not title:
+            logger.debug("Chamada FINEP sem id ou título; ignorando: %s", item.get("id"))
+            return None
+
+        deadline = _iso_date(item.get("prazoProposto"))
+        if not self._deadline_is_relevant(deadline):
+            logger.debug(
+                "Chamada '%s' descartada: prazo %s anterior a %s.",
+                title[:60],
+                deadline,
+                self.reference_year,
+            )
+            return None
+
+        public_url = PUBLIC_DETAIL_TEMPLATE.format(chamada_id=chamada_id)
+        if self._already_processed(public_url, item.get("databaseId")):
+            logger.debug("Chamada já processada; ignorando: %s", public_url)
+            return None
+
+        description = (item.get("descricaoRawText") or "").strip() or _strip_html(
+            item.get("descricao")
+        )
+
+        return RawEdital(
+            title=title,
+            url=public_url,
+            source_category="chamada pública",
+            raw_agency="FINEP",
+            raw_description=description,
+            document_type="edital",
+            raw_status=_name_of(item.get("situacao")).lower() or "aberta",
+            raw_cronograma=self._build_cronograma(item, deadline) or None,
+            raw_tags=self._build_tags(item) or None,
+            raw_anexos=self._fetch_anexos(chamada_id) or None,
+        )
+
+    def _deadline_is_relevant(self, deadline: str) -> bool:
+        """
+        Aceita chamadas cujo prazo caia no ano de referência ou depois.
+
+        A API já filtra por `situacao = aberta`, então uma chamada aberta com
+        prazo distante continua válida — diferente do parser antigo, que só
+        aceitava o ano de referência e o seguinte.
+        """
+        year = _year_of(deadline)
+        if year is None:
+            return True
+        return year >= self.reference_year
+
+    def _already_processed(self, public_url: str, database_id: Any) -> bool:
+        if public_url in self.processed_urls:
+            return True
+        if database_id is None:
+            return False
+        legacy_url = LEGACY_DETAIL_TEMPLATE.format(database_id=database_id)
+        return legacy_url in self.processed_urls
+
+    @staticmethod
+    def _build_cronograma(item: Dict[str, Any], deadline: str) -> List[Dict[str, str]]:
+        cronograma: List[Dict[str, str]] = []
+        publication = _iso_date(item.get("dataDePublicacao")) or _iso_date(
+            item.get("vigenciaInicio")
+        )
+        if publication:
+            cronograma.append({"evento": PUBLICATION_EVENT, "data": publication})
+        if deadline:
+            cronograma.append({"evento": DEADLINE_EVENT, "data": deadline})
+        return cronograma
+
+    @staticmethod
+    def _build_tags(item: Dict[str, Any]) -> List[str]:
+        """
+        Monta as tags a partir dos metadados nativos da API.
+
+        `publicoAlvo` e `tipoDeOportunidade` entram aqui por ora; a tarefa INF-02
+        os promove a campos próprios do domínio (`publico_alvo`, `modalidade`).
+        """
+        candidates: List[str] = []
+        candidates.append(_name_of(item.get("temaPrincipal")))
+        candidates.extend(
+            (brief.get("taxonomyCategoryName") or "").strip()
+            for brief in item.get("taxonomyCategoryBriefs") or []
+            if isinstance(brief, dict)
+        )
+        candidates.extend(_names_of(item.get("publicoAlvo")))
+        candidates.append(_name_of(item.get("tipoDeOportunidade")))
+        candidates.append(_name_of(item.get("regiao")))
+
+        tags: List[str] = []
+        for candidate in candidates:
+            if candidate and candidate not in tags:
+                tags.append(candidate)
+        return tags
+
+    def _fetch_anexos(self, chamada_id: Any) -> List[Dict[str, str]]:
+        """Busca os documentos da chamada; falha aqui não invalida o edital."""
+        path = DOCUMENTOS_PATH_TEMPLATE.format(chamada_id=chamada_id)
+        try:
+            payload = self.api_client.get_json(path, {"pageSize": 500})
+        except (requests.RequestException, ValueError) as exc:
+            logger.warning(
+                "Não foi possível obter os documentos da chamada %s: %s",
+                chamada_id,
+                exc,
+            )
+            return []
+
+        anexos: List[Dict[str, str]] = []
+        for documento in payload.get("items") or []:
+            anexo = self._build_anexo(documento)
+            if anexo:
+                anexos.append(anexo)
         return anexos
 
-    def _extract_detail_page(
-        self, browser, detail_url: str, list_title: str
-    ) -> Optional[RawEdital]:
-        page = browser.new_page()
-        try:
-            page.goto(detail_url, timeout=60000, wait_until="domcontentloaded")
-            page.wait_for_load_state("networkidle", timeout=20000)
+    def _build_anexo(self, documento: Dict[str, Any]) -> Optional[Dict[str, str]]:
+        titulo = (documento.get("legenda") or "").strip() or "Documento"
+        # O formato proprietário é o PDF do edital; o aberto (ODT) é o espelho legal.
+        for field, tipo in (
+            ("documentoProprietario", "pdf"),
+            ("documentoAberto", "formato aberto"),
+        ):
+            href = self._document_href(documento.get(field))
+            if href:
+                return {
+                    "titulo": titulo,
+                    "link": _absolute_url(href, self.base_url),
+                    "tipo": tipo,
+                }
+        return None
 
-            # Conteúdo principal: bloco que contém "Data de Publicação" (área do edital, não menu/lateral)
-            content = page.locator(
-                "div.item-page, main, article, [id='content'], .content"
-            ).filter(has_text="Data de Publicação").first
-            try:
-                content.wait_for(state="visible", timeout=10000)
-            except Exception:
-                content = page.locator("body")
-
-            full_text = ""
-            try:
-                full_text = content.inner_text()
-            except Exception:
-                full_text = page.inner_text("body")
-
-            # Se pegou o body e não tem a descrição, tentar div que contém "Esta Seleção Pública"
-            if not full_text.strip().startswith(("Esta Seleção", "Esta seleção")) and "Esta Seleção Pública" not in full_text:
-                try:
-                    alt = page.locator("div").filter(has_text="Esta Seleção Pública").first
-                    if alt.count() > 0:
-                        full_text = alt.inner_text()
-                        content = alt
-                except Exception:
-                    pass
-
-            # Título: primeiro h2 que não é "Chamadas Públicas"
-            title = list_title
-            for h2 in content.locator("h2").all():
-                t = h2.inner_text().strip()
-                if t and "Chamadas Públicas" not in t and len(t) > 15:
-                    title = t
-                    break
-
-            # Descrição: bloco que começa com "Esta Seleção Pública" até Orçamento/Disponibilização/Data de Publicação
-            description = ""
-            for start_phrase in ("Esta Seleção Pública", "Esta seleção pública"):
-                if start_phrase in full_text:
-                    start = full_text.find(start_phrase)
-                    end = len(full_text)
-                    for stop in (
-                        "Orçamento:",
-                        "**Orçamento**",
-                        "Disponibilização do sistema",
-                        "Data de Publicação:",
-                        "Data de publicação:",
-                    ):
-                        idx = full_text.find(stop, start)
-                        if idx != -1 and idx < end:
-                            end = idx
-                    description = full_text[start:end].strip()
-                    description = re.sub(r"\s+", " ", description)
-                    break
-
-            # Cronograma: Data de Publicação → data_abertura; Prazo para envio → data_encerramento
-            cronograma: List[dict] = []
-            m1 = DATA_PUBLICACAO_REGEX.search(full_text)
-            if m1:
-                cronograma.append({
-                    "evento": "Data de publicação",
-                    "data": _dd_mm_yyyy_to_iso(m1.group(1)),
-                })
-            m2 = PRAZO_DETAIL_REGEX.search(full_text)
-            if m2:
-                cronograma.append({
-                    "evento": "Prazo de envio da proposta",
-                    "data": _dd_mm_yyyy_to_iso(m2.group(1)),
-                })
-
-            # Tags: do campo Tema(s): (separado por ;) — só no bloco de metadados (após Prazo/Data de Publicação)
-            tags: List[str] = []
-            meta_start = full_text.find("Prazo para envio")
-            if meta_start == -1:
-                meta_start = full_text.find("Data de Publicação")
-            search_text = full_text[meta_start:] if meta_start >= 0 else full_text
-            tm = TEMAS_REGEX.search(search_text)
-            if tm:
-                tema_str = tm.group(1).strip()
-                for part in re.split(r"\s*;\s*", tema_str):
-                    t = part.strip()
-                    if t and len(t) > 1:
-                        tags.append(t)
-
-            # Anexos: tabela "Documentos" — coluna "Nome do documento" + links (Formatos proprietários/abertos)
-            # Estrutura: Data de publicação | Nome do documento | Formatos proprietários | Formatos abertos
-            anexos = self._extract_documentos_table(page, content)
-
-            return RawEdital(
-                title=title,
-                url=detail_url,
-                source_category="chamada pública",
-                raw_agency="FINEP",
-                raw_description=description or full_text[:2000],
-                document_type="edital",
-                group_id=None,
-                is_main=True,
-                attachments=None,
-                raw_cronograma=cronograma if cronograma else None,
-                raw_tags=tags if tags else None,
-                raw_anexos=anexos if anexos else None,
-            )
-        finally:
-            page.close()
+    @staticmethod
+    def _document_href(document_field: Any) -> str:
+        if not isinstance(document_field, dict):
+            return ""
+        link = document_field.get("link")
+        if isinstance(link, dict):
+            return (link.get("href") or "").strip()
+        if isinstance(link, str):
+            return link.strip()
+        return ""

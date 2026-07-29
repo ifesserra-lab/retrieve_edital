@@ -2,9 +2,9 @@ name: BDD Tests
 
 on:
   push:
-    branches: [ "main", "developing" ]
+    branches: [ "main", "development" ]
   pull_request:
-    branches: [ "main", "developing" ]
+    branches: [ "main", "development" ]
 
 jobs:
   test:

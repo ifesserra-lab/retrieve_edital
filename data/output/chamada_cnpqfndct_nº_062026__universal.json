@@ -1,0 +1,46 @@
+{
+    "nome": "CHAMADA CNPQ/FNDCT Nº 06/2026 – UNIVERSAL",
+    "descrição": "Apoiar projetos de pesquisa que visem contribuir significativamente para o desenvolvimento científico e tecnológico e a inovação do País, em qualquer área do conhecimento. O edital é dividido em três faixas: Faixa A (grupos liderados por pesquisadores com doutorado recente e sem vínculo empregatício com a instituição executora), Faixa B (grupos liderados por pesquisadores com doutorado recente e vínculo empregatício) e Faixa C (grupos liderados por pesquisadores consolidados com vínculo empregatício).",
+    "orgão_fomento": "CNPQ",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-06-17",
+    "data_encerramento": "2026-08-03",
+    "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-06-2026/chamada-publica-cnpq-N-06-2026",
+    "cronograma": [
+        {
+            "evento": "Abertura das inscrições",
+            "data": "2026-06-17"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2026-08-03"
+        }
+    ],
+    "tags": [
+        "pesquisa científica",
+        "inovação tecnológica",
+        "fomento à pesquisa",
+        "desenvolvimento científico",
+        "bolsas de pesquisa",
+        "cnpq",
+        "chamada pública"
+    ],
+    "anexos": [
+        {
+            "titulo": "Chamada",
+            "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-06-2026/ChamadaUniversal062026.pdf",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Chamada - versão atualizada em 24/07/2026",
+            "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-06-2026/Chamada_Universal_06_2026_corrigida_24julho2026.pdf",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "FAQ",
+            "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-06-2026/FAQ_Chamada_Universal_06_2026_atualizado_23_07.pdf",
+            "tipo": "pdf"
+        }
+    ]
+}

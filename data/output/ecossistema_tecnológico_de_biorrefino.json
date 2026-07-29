@@ -1,0 +1,103 @@
+{
+    "nome": "ECOSSISTEMA TECNOLÓGICO DE BIORREFINO",
+    "descrição": "SELEÇÃO PÚBLICA FINEP/PETROBRAS EIXO TECNOLÓGICO - ROTAS BIOTECNOLÓGICAS PARA PRODUÇÃO DE COMBUSTÍVEIS RENOVÁVEIS E PRODUTOS DE BAIXO CARBONO A Financiadora de Estudos e Projetos – Finep e a Petrobras tornam pública a presente Seleção Pública, inciativa que faz parte da criação de um Ecossistema Tecnológico de Biorrefino, por meio do apoio a projetos de inovação voltados ao desenvolvimento de tecnologias nacionais e produtos sustentáveis inovadores, abordando diversos eixos tecnológicos da cadeia de valor do biorrefino. Neste Edital serão apoiados projetos que atendam a ambos os desafios tecnológicos listados abaixo: Desafio Tecnológico 1: Desenvolvimento de insumos para a produção de SAF, outros biocombustíveis ou produtos de baixo carbono: Desenvolvimento experimental de insumos adequados à produção de SAF, outros biocombustíveis ou produtos de baixo carbono, com foco na obtenção de hidrocarbonetos e outras matérias-primas para a produção de SAF, como óleos microbianos. As propostas deverão contemplar a utilização de açúcares fermentescíveis e correntes residuais oriundas da indústria, resíduos sólidos urbanos, resíduos agroflorestais, tais como correntes ricas em Compostos Orgânicos Voláteis (VOCs), ácidos orgânicos, açúcares de difícil fermentação e ácidos graxos de baixa qualidade. Desafio Tecnológico 2: Desenvolvimento de enzimas e micro-organismos para conversão de biomassa em SAF de baixa intensidade de carbono: Desenvolvimento e produção de enzimas e micro-organismos, com tecnologia preferencialmente nacional, adequados à produção em escala protótipo de correntes para a produção de SAF de baixa intensidade de carbono. A executora líder do projeto deverá ser necessariamente uma ICT Pública ou Privada, com participação de no mínimo duas coexecutoras. Os Projetos de PD&I deverão atender à Resolução nº 918/2023 da ANP. O valor solicitado deverá ser, obrigatoriamente, de no mínimo R$ 10.000.000,00 (dez milhões de reais) e de, no máximo, R$ 30.000.000,00 (trinta milhões de reais).   Conforme previsto no Edital Seleção Pública FINEP/Petrobras – Ecossistema Tecnológico de Biorrefino, a Finep e a Petrobras realizarão workshop de orientação de projetos, com o objetivo de apresentar a chamada pública e esclarecer dúvidas relacionadas à submissão de propostas. O evento ocorrerá no Centro de Pesquisas da Petrobras (CENPES), no dia 27/04/2026, a partir das 13h. As inscrições poderão ser realizadas  aqui. Ressalta-se que o espaço possui capacidade limitada, estando sujeito à lotação. A inscrição prévia é obrigatória.   Para os participantes que preferirem acompanhar de forma remota, o link para participação será  Workshop de Biorrefino - Participação Remota .   Dúvidas a respeito do Edital deverão ser dirigidas exclusivamente para o endereço eletrônico cp_biorrefino@finep.gov.br.",
+    "orgão_fomento": "FINEP",
+    "categoria": "inovação",
+    "status": "aberta",
+    "data_abertura": "2026-03-25",
+    "data_encerramento": "2026-06-08",
+    "link": "https://www.finep.gov.br/e/chamada-publica/222684/755795",
+    "cronograma": [
+        {
+            "evento": "Data de publicação",
+            "data": "2026-03-25"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2026-06-08"
+        }
+    ],
+    "tags": [
+        "Agro - Bioeconomia e Alimentos",
+        "Energia e Transição Sustentável",
+        "Saúde e Ciências da Vida",
+        "Financiamento não reembolsável a ICTs",
+        "Startup",
+        "Receita: até R$ 4,8 Mi",
+        "Receita: R$ 4,8 Mi - R$ 16,0 Mi",
+        "Receita: R$ 16,0 Mi - R$ 90,0 Mi",
+        "Receita: R$ 90,0 Mi - R$ 300,0 Mi",
+        "Receita: maior que R$ 300,0 Mi",
+        "ICT",
+        "Não reembolsável",
+        "Todo Brasil",
+        "inovação"
+    ],
+    "anexos": [
+        {
+            "titulo": "Edital",
+            "link": "https://www.finep.gov.br/documents/20117/206285/25_03_2026._Biorrefino_Edital.pdf/6dc31099-15bb-04c3-695f-6e61616445d7?version=1.0&t=1778033663993&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=4d6705ee-e97b-3fef-c155-bc5430d2875b",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo 1: Estrutura de Governança do Ecossistema Tecnológico de Biorrefino",
+            "link": "https://www.finep.gov.br/documents/20117/206285/25_03_2026._Biorrefino_Anexo1.pdf/3f947a27-ee69-8e68-29c8-f22ead6468df?version=1.0&t=1778033665484&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=a8e2d6be-eb9a-d14d-f8e0-b8456ef23925",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo 2: Minuta de Contrato de Execução de Projeto",
+            "link": "https://www.finep.gov.br/documents/20117/206285/25_03_2026._Biorrefino_Anexo2.pdf/5386702d-83e3-fbf3-5174-2e306180f511?version=1.0&t=1778033666888&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=ead53311-1e23-e754-7231-e24ffa9730f4",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo 3: Ofício de Apresentação para reconhecimento institucional da Proposta",
+            "link": "https://www.finep.gov.br/documents/20117/206285/25_03_2026._Biorrefino_Anexo3.pdf/c69a883d-f692-69f4-0cb8-782c03280cb1?version=1.0&t=1778033668288&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=d06e86ff-47bc-32ae-2db9-7f2d6b517ea1",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo 4: Definição do Nível de Maturidade Tecnológica",
+            "link": "https://www.finep.gov.br/documents/20117/206285/25_03_2026._Biorrefino_Anexo4.pdf/ffa95ff5-d6fe-9938-2f88-7cd725189db1?version=1.0&t=1778033669708&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=1838b682-8f2a-f95b-8822-e397d63bd871",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "FAQ - Perguntas Frequentes",
+            "link": "https://www.finep.gov.br/documents/20117/206285/27_04_2026_Biorrefino_FAQ.pdf/9f280990-b895-1555-84fd-a811d33d3011?version=1.0&t=1778033671066&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=ba756f84-c273-f0d4-665d-c9b9e89d8a0b",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Rerratificação - Edital rerratificado",
+            "link": "https://www.finep.gov.br/documents/20120/758476/1a+Rerratificacao+do+Edital+-+Ecossistema+Tecnologico+de+Biorrefino.pdf/9eab6733-c59a-f324-0674-0a01a94f7b7a?version=1.0&t=1780003703491&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=ee4df86b-8ce7-31c4-1477-bb26f63bd737",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Aviso sobre a 1a Rerratificação - Ecossistema Tecnológico de Biorrefino",
+            "link": "https://www.finep.gov.br/documents/20120/758476/AVISO+sobre+a+1+rerratificacao+-+Ecossistema+Tecnologico+de+Biorrefino.pdf/4227aa73-ec94-82f5-bf11-46acc30cb143?version=1.0&t=1780003871639&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=1c2b81dc-49a9-d6e2-bb42-9fe050a7a5d4",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Rerratificação do Anexo 2: Minuta do contrato de Execução de Projeto",
+            "link": "https://www.finep.gov.br/documents/20120/758476/Anexo+2+-+MINUTA+DE+CONTRATO+DE+EXECUCAO+DE+PROJETO.pdf/e414923a-8346-f568-0052-a9f1c23dcea9?version=1.0&t=1780004053580&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=402fa4f8-f2bb-681a-65be-c7e44a7c1b42",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo 5: Diretrizes sobre A Propriedade Intelectual",
+            "link": "https://www.finep.gov.br/documents/20120/758476/Anexo+5+%E2%80%93+Diretrizes+a+respeito+de+Propriedade+Intelectual.pdf/5515899d-dfe0-d8a3-afaf-4d88f24f2feb?version=1.0&t=1780010653526&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=cebc2823-1fc9-7411-9170-0b54dffa7b65",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "FAQ atualizado",
+            "link": "https://www.finep.gov.br/documents/20120/758476/01_06_2026_Biorrefino_FAQ-v02.pdf/98e57f9d-0844-1574-2ea2-0bbe99044eb4?version=1.0&t=1780323295925&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=bcfe8b5e-ab60-9883-cebe-4db1099fd99d",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Resultado preliminar da etapa de habilitação",
+            "link": "https://www.finep.gov.br/documents/20120/758476/Anexo_Resultado_Parcial_Biorrefino.pdf/cd677c44-a70a-36dd-cc84-cbd3899cd89a?version=1.0&t=1782248218157&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=ac2a908f-6bd2-7894-a58a-d7bc56ab499b",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Resultado final da etapa de habilitação",
+            "link": "https://www.finep.gov.br/documents/20120/758476/Resultado_Final_Habilita%C3%A7%C3%A3o_Biorrefino.pdf/d62377f4-b57d-af60-7995-919f13944c69?version=1.0&t=1783977042397&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=ad3d662d-1037-760b-5d7d-8e899490920b",
+            "tipo": "pdf"
+        }
+    ]
+}

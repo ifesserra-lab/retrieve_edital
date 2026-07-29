@@ -8,7 +8,7 @@ Este diretório contém a documentação do projeto `retrieve_edital`: extraçã
 - [Arquitetura ETL (System Design Document)](etl_architecture.md)
   - Padrão T-Shape, fluxos **FAPES**, **FINEP**, **CONIF**, **PRPPG/IFES**, **PROEX/IFES**, **CAPES** e **CNPq**, com registry incremental, runner unificado e observabilidade operacional.
 - [Source FINEP](finep_source.md)
-  - FinepSource: listagem, página de detalhe, descrição/cronograma/tags/anexos, variável de ano, uso via `ingest_finep_flow`, categorização Mistral.
+  - FinepSource: **API Liferay do portal** (OAuth2 + `/o/c/chamadapublicas`), descrição/cronograma/tags/anexos nativos, variável de ano, deduplicação com as chaves do portal antigo, uso via `ingest_finep_flow`. Sem Playwright.
 - [Source PROEX/IFES](proex_ifes_source.md)
   - ProexIfesSource: leitura da página pública de editais, filtro pelo bloco do ano corrente, escolha do PDF principal, anexos documentais e fallback com `curl` em respostas `403`.
 
@@ -21,6 +21,18 @@ Este diretório contém a documentação do projeto `retrieve_edital`: extraçã
 ### Ágil e Produto
 - [Product Backlog](backlog.md)
   - Epics, User Stories e Tasks; link para Issues no GitHub.
+
+### Specs de Expansão de Fontes
+- 🟢 [Spec e Plano: FINEP, CNPq e Horizon Europe](spec_finep_cnpq_horizon.md)
+  - FINEP e CNPq corrigidos, mais o canário anti-falha-silenciosa no runner. Resta **US-HORIZON**, com o dataset bulk do Horizon Europe já mapeado.
+- [Source CNPq](cnpq_source.md)
+  - CnpqSource: listagem `abertas-para-submissao` no gov.br, período de inscrições com rótulos variáveis, anexos filtrados por caminho e OCR do documento principal.
+- [Plano de Execução: Fomento Empresarial](plan_fomento_empresarial.md)
+  - Lista de tarefas com checkbox, dependências e critérios de aceite para EMBRAPII, ANEEL, SENAI e BNDES.
+- [Spec: Expansão de Fontes de Fomento](spec_expansao_fontes.md)
+  - Plano geral derivado da análise de lacunas do Portal IFES Serra: 26 FAPs/CONFAP, fomento empresarial e internacionais; source declarativo por YAML, runner resiliente e novos campos de domínio.
+- [Spec: Fomento Empresarial (EMBRAPII, BNDES, ANEEL, ANP, SENAI)](spec_fomento_empresarial.md)
+  - Recorte Tier B com **reconhecimento real dos portais em 2026-07-27**: EMBRAPII via RSS, BNDES em WebSphere com portlet instável, ANEEL de baixo volume, ANP descartada como fonte de editais, SENAI em HTML estático.
 
 ### Testes (BDD)
 Features Gherkin como contrato e Definition of Done:
@@ -44,7 +56,8 @@ Features Gherkin como contrato e Definition of Done:
 - **EditalNormalizer**: mapeamento data publicação → `data_abertura`, prazo envio → `data_encerramento`; para FINEP, categorização via **Mistral** (divulgação de conhecimento / extensão / inovação).
 - **MistralExtractionService**: método `categorize_finep_by_description(description)`.
 - **Registry (índice de processados)**: `registry/processed_editais.json` com chaves FAPES e FINEP para não reprocessar editais já baixados; `src/processed_store.py` (get_keys_set, add_many, build_index_from_output_dir); fluxos FAPES e FINEP usam o índice e atualizam após o sink.
-- **FinepSource**: para de navegar quando todos os editais da página têm prazo em ano anterior ao de referência; suporte a `processed_urls` para pular chamadas já processadas. **Paginação** por clique nos números das páginas (1, 2, 3, …), com fallback por URL (`limitstart`) se não houver link numérico.
+- **FinepSource** *(reescrito em 2026-07-27)*: consome a **API Liferay do portal** em vez de raspar HTML. O portal antigo passou a redirecionar para uma SPA e o source extraía zero itens desde 2026-03-15. Paginação pela própria API (`page`/`pageSize`, teto de segurança de 50 páginas), filtro de prazo a partir do ano de referência, e `processed_urls` reconhecendo tanto a URL nova quanto a chave do portal antigo. Sem Playwright. Ver [finep_source.md](finep_source.md).
+- **Canário anti-falha-silenciosa** (`src/flow_health.py`): fluxos publicam `[flow-stats] raw=N new=M` e o runner passa a distinguir `Sucesso`, `Atenção` (origem devolveu 0 itens brutos, ou 7 execuções seguidas sem novidade) e `Falha`.
 - **Mistral**: retry com backoff exponencial em caso de 429 (rate limit); todas as chamadas (upload, OCR, chat) e classificadores envolvidos em `_call_with_rate_limit_retry`.
 - **Convenção**: anexos e diretrizes não são considerados editais (não persistem em `data/output`).
 - **Testes**: `tests/step_defs/test_finep_source.py` valida filtro por prazo e parada de paginação quando não há editais com prazo ≥ ano corrente.

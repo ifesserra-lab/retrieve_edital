@@ -1,0 +1,41 @@
+{
+    "nome": "CHAMADA PÚBLICA CNPQ/MCTI Nº 15/2026 - PROGRAMA DE COOPERAÇÃO AFRO-BRASILEIRA EM CIÊNCIA E TECNOLOGIA - PROAFRICA",
+    "descrição": "Apoiar projetos de pesquisa colaborativa que visem fortalecer a cooperação científica, tecnológica e de inovação entre o Brasil e países africanos. Os projetos devem abordar eixos temáticos como Ambiental e Sustentabilidade, Alimentar e Agricultura, Energia e Recursos Naturais, Saúde, Tecnológico, e Social e Cultural, com objetivos que incluem estabelecer redes temáticas de pesquisa, facilitar a mobilidade de pesquisadores, promover desenvolvimento conjunto de projetos estratégicos, fortalecer infraestrutura científica, estimular a formação de recursos humanos e fomentar inovação tecnológica.",
+    "orgão_fomento": "CNPQ",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-05-25",
+    "data_encerramento": "2026-08-31",
+    "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-15-2026/chamada-publica-cnpq-N-15-2026",
+    "cronograma": [
+        {
+            "evento": "Abertura das inscrições",
+            "data": "2026-05-25"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2026-08-31"
+        }
+    ],
+    "tags": [
+        "cooperação internacional",
+        "pesquisa colaborativa",
+        "África-Brasil",
+        "inovação tecnológica",
+        "sustentabilidade",
+        "cnpq",
+        "chamada pública"
+    ],
+    "anexos": [
+        {
+            "titulo": "Chamada",
+            "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-15-2026/CHAMADA152026PROAFRICASEI2679821.pdf",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "FAQ",
+            "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-15-2026/FAQPROAFRICACHAMADA152026SEI_CNPq2687944Anexo.pdf",
+            "tipo": "pdf"
+        }
+    ]
+}

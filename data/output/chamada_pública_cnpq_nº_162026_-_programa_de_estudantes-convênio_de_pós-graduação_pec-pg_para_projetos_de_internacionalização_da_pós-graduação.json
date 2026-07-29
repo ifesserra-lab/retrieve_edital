@@ -1,0 +1,46 @@
+{
+    "nome": "CHAMADA PÚBLICA CNPQ Nº 16/2026 - PROGRAMA DE ESTUDANTES-CONVÊNIO DE PÓS-GRADUAÇÃO (PEC-PG) PARA PROJETOS DE INTERNACIONALIZAÇÃO DA PÓS-GRADUAÇÃO",
+    "descrição": "Esta Chamada visa à concessão de bolsas de mestrado e doutorado no Brasil para apoiar Projetos de Internacionalização da Pós-Graduação em Instituições de Educação Superior (IES) e Instituições Científicas, Tecnológicas e de Inovação (ICT) brasileiras. O objetivo é promover a internacionalização das instituições por meio da formação de estudantes estrangeiros, estimulando o intercâmbio de conhecimento, a diversidade cultural e o fortalecimento das relações bilaterais entre o Brasil e países participantes do programa PEC-PG.",
+    "orgão_fomento": "CNPQ",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-06-29",
+    "data_encerramento": "2026-08-13",
+    "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-16-2026/chamada-publica-cnpq-N-16-2026",
+    "cronograma": [
+        {
+            "evento": "Abertura das inscrições",
+            "data": "2026-06-29"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2026-08-13"
+        }
+    ],
+    "tags": [
+        "internacionalização",
+        "pós-graduação",
+        "bolsas",
+        "intercâmbio acadêmico",
+        "cooperação internacional",
+        "cnpq",
+        "chamada pública"
+    ],
+    "anexos": [
+        {
+            "titulo": "Chamada",
+            "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-16-2026/copy_of_ChamadaPblica_CNPq_CAPES_MRE_16_2026_2717524.pdf",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo I",
+            "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-16-2026/ANEXO_I___Chamada_PEC_PG_16_2026.xls",
+            "tipo": "xls"
+        },
+        {
+            "titulo": "Anexo II",
+            "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-16-2026/ANEXO_II_Chamada_CNPq_PEC_PG_16_2026.docx",
+            "tipo": "docx"
+        }
+    ]
+}

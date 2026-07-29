@@ -1,0 +1,46 @@
+{
+    "nome": "CHAMADA CNPQ/MCTI Nº 25/2026 - ENDOMETRIOSE E SAÚDE MENSTRUAL",
+    "descrição": "Apoio à pesquisa científica e ao desenvolvimento de tecnologias e produtos inovadores para o enfrentamento da endometriose e promoção da saúde menstrual, com foco em soluções aplicáveis no contexto do Sistema Único de Saúde (SUS). Os projetos devem avançar no conhecimento das causas, prevenção e tratamento da endometriose, desenvolver métodos diagnósticos precoces e acessíveis, terapias personalizadas e menos invasivas, além de infraestruturas estratégicas para pesquisa e mitigação dos impactos sociais, econômicos e psicossociais da doença.",
+    "orgão_fomento": "CNPQ",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-07-10",
+    "data_encerramento": "2026-08-12",
+    "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-25-2026/chamada-publica-cnpq-N-25-2026",
+    "cronograma": [
+        {
+            "evento": "Abertura das inscrições",
+            "data": "2026-07-10"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2026-08-12"
+        }
+    ],
+    "tags": [
+        "endometriose",
+        "saúde menstrual",
+        "pesquisa científica",
+        "inovação em saúde",
+        "SUS",
+        "cnpq",
+        "chamada pública"
+    ],
+    "anexos": [
+        {
+            "titulo": "Chamada",
+            "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-25-2026/Chamada252026EndometrioseeSadeMenstrual.pdf",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo I - Modelo de Projeto (Word)",
+            "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-25-2026/AnexoIProjetodePesquisaChamadaEndometrioseeSadeMenstrual.docx",
+            "tipo": "docx"
+        },
+        {
+            "titulo": "Anexo I - Modelo de Projeto (PDF)",
+            "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-25-2026/AnexoIProjetodePesquisaChamada252026.pdf",
+            "tipo": "pdf"
+        }
+    ]
+}
