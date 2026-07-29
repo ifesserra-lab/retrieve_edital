@@ -23,8 +23,10 @@ Este diretório contém a documentação do projeto `retrieve_edital`: extraçã
   - Epics, User Stories e Tasks; link para Issues no GitHub.
 
 ### Specs de Expansão de Fontes
-- 🟡 [Spec e Plano: FINEP, CNPq e Horizon Europe](spec_finep_cnpq_horizon.md)
-  - FINEP corrigida em 2026-07-27 (API Liferay) e canário anti-falha-silenciosa no runner. **CNPq segue apontando para o portal descontinuado `memoria2.cnpq.br`**. Inclui também o dataset bulk do Horizon Europe.
+- 🟢 [Spec e Plano: FINEP, CNPq e Horizon Europe](spec_finep_cnpq_horizon.md)
+  - FINEP e CNPq corrigidos, mais o canário anti-falha-silenciosa no runner. Resta **US-HORIZON**, com o dataset bulk do Horizon Europe já mapeado.
+- [Source CNPq](cnpq_source.md)
+  - CnpqSource: listagem `abertas-para-submissao` no gov.br, período de inscrições com rótulos variáveis, anexos filtrados por caminho e OCR do documento principal.
 - [Plano de Execução: Fomento Empresarial](plan_fomento_empresarial.md)
   - Lista de tarefas com checkbox, dependências e critérios de aceite para EMBRAPII, ANEEL, SENAI e BNDES.
 - [Spec: Expansão de Fontes de Fomento](spec_expansao_fontes.md)

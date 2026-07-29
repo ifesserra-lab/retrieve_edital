@@ -2,7 +2,7 @@
 
 **Autor**: Horizon Project Agent
 **Data**: 2026-07-27
-**Status**: 🟡 FINEP corrigida em 2026-07-27 (INF-04 + FIX-FINEP concluídos). **CNPq segue quebrado** — FIX-CNPQ pendente.
+**Status**: 🟢 Quebras corrigidas. INF-04, FIX-FINEP (2026-07-27) e FIX-CNPQ (2026-07-29) concluídos. Resta **US-HORIZON**.
 **Recon**: executado em 2026-07-27, dados medidos nos portais
 
 > **Como processar**: §1 é diagnóstico, §5 é a lista de tarefas executáveis com checkbox. As tarefas FIX-FINEP e FIX-CNPQ corrigem coleta hoje quebrada e têm precedência sobre o backlog de expansão em [plan_fomento_empresarial.md](plan_fomento_empresarial.md).
@@ -236,7 +236,14 @@ Verificar: `python -m src.flows.ingest_finep_flow && python -c "import json;prin
 
 ---
 
-#### [ ] FIX-CNPQ · Reapontar CnpqSource para o gov.br · 8h
+#### [x] FIX-CNPQ · Reapontar CnpqSource para o gov.br · 8h — **concluído em 2026-07-29**
+
+Reescrito sobre `abertas-para-submissao`. Resultado: **10 chamadas, todas as 10 com `data_encerramento`** e com anexos.
+
+**Correção da estimativa de volume desta spec**: o número de 73 chamadas registrado abaixo estava errado — veio de contar `href` sem filtrar as URLs de compartilhamento social, que embutem o endereço da chamada como parâmetro. O total real de chamadas abertas é **10**, confirmado por dois caminhos independentes (a listagem curada e a busca `Busca_abertas` paginada, que devolvem o mesmo conjunto). O ganho é de 4 para 10, não de 4 para 73.
+
+**Pendência**: os 4 registros do portal antigo continuam em `data/output/` como órfãos, apontando para `memoria2.cnpq.br`. Remover é decisão pendente — ver §7.6.
+
 
 **Depende de**: nada.
 **Alterar**: [src/components/sources/cnpq_source.py](../src/components/sources/cnpq_source.py), `tests/step_defs/test_cnpq_source.py`, `docs/features/ingest_cnpq.feature`
@@ -305,7 +312,8 @@ Critérios de aceite:
 2. **Descrição do Horizon**: opção (a) barata, (b) 200 requisições ou (c) Mistral?
 3. **MIB Rodada 2**: a lacuna apontada no PDF é de coleta ou de exibição? O repo tem 9 dos editais desde março — confirmar com o time do portal.
 4. **Precedência**: executar estas 34h antes das 60h de [plan_fomento_empresarial.md](plan_fomento_empresarial.md)? (Recomendado.)
-5. **Recoleta CNPq**: limpar a chave `cnpq` do registry apaga o histórico de processados — confirmar que é aceitável (os 4 JSONs atuais serão reescritos com dados corrigidos).
+5. ~~**Recoleta CNPq**: limpar a chave `cnpq` do registry apaga o histórico de processados.~~ Feito em 2026-07-29.
+6. **Órfãos do CNPq**: os 4 registros coletados do portal antigo permaneceram em `data/output/` — apontam para `memoria2.cnpq.br`, três sem `data_encerramento`, e um (`PROAFRICA`) é a mesma chamada que voltou como `nº 15/2026`. Nenhum título coincide com os 10 novos, então não foram sobrescritos. Remover exige decisão: são registros obsoletos, mas apagá-los é exclusão de dado publicado no portal.
 
 ---
 
