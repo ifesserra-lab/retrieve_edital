@@ -36,6 +36,21 @@ STATUS_OPEN = "aberto"
 STATUS_CLOSED = "encerrado"
 CLOSED_SYNONYMS = ("encerrado", "encerrada", "fechado", "fechada", "finalizado")
 
+# Vocabulário canônico de `categoria`. O campo é filtro no portal, e havia nove
+# valores distintos em `data/output/` — incluindo `chamadas` (vazamento do slug
+# da URL da FAPES), combinações livres devolvidas pelo Mistral como
+# `pesquisa e inovação`, e `internacional`, que é âmbito e não tema.
+#
+# A ordem importa: ao procurar um termo dentro de texto livre, vale o que
+# aparecer primeiro, que é como o Mistral escreve o tema principal.
+CANONICAL_CATEGORIES = (
+    "divulgação de conhecimento",
+    "extensão",
+    "inovação",
+    "pesquisa",
+)
+CATEGORY_FALLBACK = "outros"
+
 
 @dataclass(frozen=True)
 class PublicationVerdict:
@@ -112,6 +127,52 @@ def evaluate(
             False, f"prazo encerrado em {edital.data_encerramento}"
         )
     return PublicationVerdict(True)
+
+
+def _first_canonical_term(text: str) -> str:
+    """Primeiro termo canônico que aparece no texto, por posição."""
+    lowered = (text or "").lower()
+    positions = [
+        (lowered.find(category), category)
+        for category in CANONICAL_CATEGORIES
+        if lowered.find(category) >= 0
+    ]
+    if not positions:
+        return ""
+    return min(positions)[1]
+
+
+def canonical_category(value: Optional[str], hint_text: str = "") -> str:
+    """
+    Reduz `categoria` ao vocabulário canônico.
+
+    Três tentativas, em ordem: o valor já é canônico; o valor contém um termo
+    canônico (`pesquisa e inovação` → `pesquisa`); ou o tema aparece no texto do
+    edital (`hint_text`, com título, descrição e tags). Só então cai em
+    `outros` — assim valores que descrevem o instrumento em vez do tema, como
+    `chamadas` ou `internacional`, ainda podem ser recuperados pelo conteúdo.
+    """
+    normalized = (value or "").strip().lower()
+    if normalized in CANONICAL_CATEGORIES:
+        return normalized
+    from_value = _first_canonical_term(normalized)
+    if from_value:
+        return from_value
+    from_hint = _first_canonical_term(hint_text)
+    if from_hint:
+        return from_hint
+    return CATEGORY_FALLBACK
+
+
+def category_hint_text(edital: EditalDomain) -> str:
+    """Texto onde procurar o tema quando `categoria` não é conclusiva."""
+    return " ".join(
+        [
+            edital.nome or "",
+            edital.descrição or "",
+            " ".join(edital.tags or []),
+        ]
+    )
 
 
 def resolve_status(edital: EditalDomain, today: Optional[date] = None) -> str:

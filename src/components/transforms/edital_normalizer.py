@@ -295,4 +295,7 @@ class EditalNormalizer(ITransform[RawEdital, EditalDomain]):
             )
             return None
         edital.status = publication_rules.resolve_status(edital)
+        edital.categoria = publication_rules.canonical_category(
+            edital.categoria, publication_rules.category_hint_text(edital)
+        )
         return edital

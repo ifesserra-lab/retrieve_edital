@@ -165,3 +165,60 @@ def test_today_defaults_to_the_current_date():
     verdict = evaluate(build_edital(data_encerramento="1999-01-01"), build_raw())
     assert verdict.publishable is False
     assert publication_rules.FALLBACK_DESCRIPTION_PREFIX == "Edital de fomento"
+
+
+class TestCanonicalCategory:
+    """
+    Havia nove valores de `categoria` em data/output/, e o campo é filtro no
+    portal. As origens: `chamadas` vazava do slug da URL da FAPES, o Mistral
+    devolvia combinações livres como `pesquisa e inovação`, e `internacional`
+    descrevia âmbito em vez de tema.
+    """
+
+    @pytest.mark.parametrize("value", publication_rules.CANONICAL_CATEGORIES)
+    def test_canonical_value_is_preserved(self, value):
+        assert publication_rules.canonical_category(value) == value
+
+    def test_case_and_whitespace_are_tolerated(self):
+        assert publication_rules.canonical_category("  Pesquisa ") == "pesquisa"
+
+    @pytest.mark.parametrize(
+        "value, expected",
+        [
+            ("pesquisa e inovação", "pesquisa"),
+            ("inovação e pesquisa", "inovação"),
+            ("formação e extensão", "extensão"),
+            ("pesquisa, extensão", "pesquisa"),
+        ],
+    )
+    def test_combined_value_keeps_the_first_term_mentioned(self, value, expected):
+        """O Mistral escreve o tema principal primeiro."""
+        assert publication_rules.canonical_category(value) == expected
+
+    def test_non_theme_value_is_recovered_from_the_edital_text(self):
+        """`chamadas` descreve o instrumento; o tema está no conteúdo."""
+        assert (
+            publication_rules.canonical_category(
+                "chamadas", "CHAMADA CONFAP & WBI - projetos conjuntos de pesquisa"
+            )
+            == "pesquisa"
+        )
+
+    def test_falls_back_to_outros_without_any_evidence(self):
+        assert publication_rules.canonical_category("chamadas") == "outros"
+        assert publication_rules.canonical_category("") == "outros"
+        assert publication_rules.canonical_category(None) == "outros"
+
+    def test_hint_text_gathers_name_description_and_tags(self):
+        edital = build_edital(
+            nome="EDITAL X", descrição="Fomento a", tags=["inovação tecnológica"]
+        )
+        hint = publication_rules.category_hint_text(edital)
+        assert "EDITAL X" in hint and "inovação tecnológica" in hint
+
+    def test_result_is_always_inside_the_vocabulary(self):
+        vocabulary = set(publication_rules.CANONICAL_CATEGORIES) | {
+            publication_rules.CATEGORY_FALLBACK
+        }
+        for value in ["chamadas", "internacional", "qualquer coisa", "", None]:
+            assert publication_rules.canonical_category(value) in vocabulary
