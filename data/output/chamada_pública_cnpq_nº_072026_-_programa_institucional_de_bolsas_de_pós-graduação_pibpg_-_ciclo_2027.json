@@ -1,0 +1,47 @@
+{
+    "nome": "CHAMADA PÚBLICA CNPQ Nº 07/2026 - PROGRAMA INSTITUCIONAL DE BOLSAS DE PÓS-GRADUAÇÃO (PIBPG) - CICLO 2027",
+    "descrição": "A Chamada visa apoiar Projetos Institucionais para pesquisa científica, tecnológica e de inovação em Instituições de Ensino Superior (IES) e Instituições Científicas, Tecnológicas e de Inovação (ICT), por meio da concessão de bolsas de mestrado e doutorado no País. O objetivo é promover a capacitação de recursos humanos para pesquisa, fomentar o desenvolvimento de pesquisas com impacto socioambiental, econômico e cultural, e incentivar o avanço científico e tecnológico em temas estratégicos das instituições.",
+    "orgão_fomento": "CNPQ",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-05-28",
+    "data_encerramento": "2026-08-05",
+    "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-07-2026/chamada-publica-cnpq-N-07-2026",
+    "cronograma": [
+        {
+            "evento": "Abertura das inscrições",
+            "data": "2026-05-28"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2026-08-05"
+        }
+    ],
+    "tags": [
+        "bolsas de pós-graduação",
+        "pesquisa científica",
+        "inovação tecnológica",
+        "mestrado",
+        "doutorado",
+        "fomento à pesquisa",
+        "cnpq",
+        "chamada pública"
+    ],
+    "anexos": [
+        {
+            "titulo": "Chamada",
+            "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-07-2026/chamada_07_2026_PIBPG_2699238.pdf",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo I",
+            "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-07-2026/Chamada_CNPq_n__07_2026___Formulario_de_Proposta___Anexo_I.xls",
+            "tipo": "xls"
+        },
+        {
+            "titulo": "Anexo II",
+            "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-07-2026/Anexo_II_Chamada_CNPq_n__07_2026_Oficio_de_Indicacao_de_Representante_Institucional._15.5.26_2.docx",
+            "tipo": "docx"
+        }
+    ]
+}

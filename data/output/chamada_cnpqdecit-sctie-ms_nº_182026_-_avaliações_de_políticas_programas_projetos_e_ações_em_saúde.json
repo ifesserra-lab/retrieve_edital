@@ -1,0 +1,66 @@
+{
+    "nome": "CHAMADA CNPQ/DECIT-SCTIE-MS Nº 18/2026 - AVALIAÇÕES DE POLÍTICAS, PROGRAMAS, PROJETOS E AÇÕES EM SAÚDE",
+    "descrição": "Apoiar projetos de pesquisa que visem contribuir para o desenvolvimento científico, tecnológico e de inovação do país por meio do fomento de avaliações de políticas, programas e ações em saúde. O objetivo é subsidiar a tomada de decisão por gestores do Ministério da Saúde, especialmente nas áreas de vigilância em saúde, saúde do trabalhador, inovação em equipamentos e materiais de uso em saúde, morbimortalidade por acidentes e violências, saúde da mulher e transplantes. Além disso, busca promover a disseminação do conhecimento científico para o aprimoramento de políticas de saúde em consonância com a Política Nacional de Ciência, Tecnologia e Inovação em Saúde (PNCTIS).",
+    "orgão_fomento": "CNPQ",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-06-30",
+    "data_encerramento": "2026-07-29",
+    "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-18-2026/chamada-publica-cnpq-N-18-2026",
+    "cronograma": [
+        {
+            "evento": "Abertura das inscrições",
+            "data": "2026-06-30"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2026-07-29"
+        }
+    ],
+    "tags": [
+        "saúde pública",
+        "avaliação de políticas",
+        "pesquisa científica",
+        "SUS",
+        "inovação em saúde",
+        "cnpq",
+        "chamada pública"
+    ],
+    "anexos": [
+        {
+            "titulo": "Chamada",
+            "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-18-2026/chamada_18_2026_avaliacoes_de_politicas__programas__projetos_e_acoes_em_saude.pdf",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "FAQ",
+            "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-18-2026/FAQ_Chamada_18_2026_Avaliacoes_de_Politicas__Programas__Projetos_e_Acoes_em_Saude.docx",
+            "tipo": "docx"
+        },
+        {
+            "titulo": "Anexo I - Declaração de Conflito de Interesse",
+            "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-18-2026/anexo-i-declaracao-de-conflito-de-interesse.docx",
+            "tipo": "docx"
+        },
+        {
+            "titulo": "Anexo II - Plano de Ações Afirmativas",
+            "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-18-2026/anexo-ii-plano-de-acoes-afirmativas.docx",
+            "tipo": "docx"
+        },
+        {
+            "titulo": "Anexo III - Autodeclaração",
+            "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-18-2026/anexo-iii-autodeclaracao.docx",
+            "tipo": "docx"
+        },
+        {
+            "titulo": "Anexo IV - Modelo Estruturado da Proposta",
+            "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-18-2026/anexo-iv-modelo-estruturado-da-proposta.docx",
+            "tipo": "docx"
+        },
+        {
+            "titulo": "Anexo V - Diretrizes Metodologicas das avaliacoes de politicas púublicas nacionais de saúde",
+            "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-18-2026/anexo-v-diretrizes-metodologicas-das-avaliacoes-de-politicas-puublicas-nacionais-de-saude.docx",
+            "tipo": "docx"
+        }
+    ]
+}
