@@ -2,12 +2,13 @@ import json
 import re
 import subprocess
 import sys
-from datetime import datetime
+from datetime import date, datetime
 from pathlib import Path
 from typing import Optional, Tuple
 from zoneinfo import ZoneInfo
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from src.flow_health import FlowStats, parse_flow_stats  # noqa: E402
 
@@ -267,10 +268,25 @@ def run_flow(name: str, command: list[str], workdir: Path) -> None:
     print(f"[run_all_flows] {name} flow completed successfully.")
 
 
+def refresh_edital_status(workdir: Path) -> None:
+    """
+    Realinha o `status` dos editais já gravados ao respectivo prazo.
+
+    Um edital coletado como `aberto` não se corrige sozinho quando o prazo passa,
+    então isso precisa rodar em toda execução — sem isso, o portal exibe
+    oportunidade encerrada como vigente. Não remove arquivo algum.
+    """
+    from curate_output import curate  # import local: evita ciclo na importação
+
+    print("[run_all_flows] Realinhando o status dos editais ao prazo...")
+    curate(workdir=workdir, apply=True, refresh_status_only=True, today=date.today())
+
+
 def main() -> int:
     repo_root = Path(__file__).resolve().parents[1]
     for name, command in FLOW_COMMANDS:
         run_flow(name, command, repo_root)
+    refresh_edital_status(repo_root)
     print("[run_all_flows] All flows completed successfully.")
     return 0
 
