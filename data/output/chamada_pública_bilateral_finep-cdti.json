@@ -1,0 +1,42 @@
+{
+    "nome": "CHAMADA PÚBLICA BILATERAL FINEP-CDTI",
+    "descrição": "Chamada Pública Bilateral Finep-CDTI para projetos de Inovação Tecnológica entre Empresas do Brasil e Espanha A Finep – Financiadora de Estudos e Projetos e o CDTI – Centro para el Desarrollo Tecnológico Industrial convidam empresas inovadoras de ambos os países a apresentar propostas de projetos a serem executados em cooperação sob as condições da presente Chamada Pública. As propostas devem contemplar uma colaboração efetiva entre as empresas proponentes e devem ser inovadoras no âmbito dos respectivos países ou em todo o mundo. Esta Chamada abrange propostas de qualquer setor de atividades.",
+    "orgão_fomento": "FINEP",
+    "categoria": "inovação",
+    "status": "aberta",
+    "data_abertura": "2015-10-13",
+    "data_encerramento": "",
+    "link": "https://www.finep.gov.br/e/chamada-publica/222684/719676",
+    "cronograma": [
+        {
+            "evento": "Data de publicação",
+            "data": "2015-10-13"
+        }
+    ],
+    "tags": [
+        "Todo Brasil",
+        "inovação"
+    ],
+    "anexos": [
+        {
+            "titulo": "Anexo II",
+            "link": "https://www.finep.gov.br/documents/20117/206285/CDTI-Chamada_PublicaAnexo_2.pdf/3f065783-b945-aa9a-279c-39785f9e0bb5?version=1.0&t=1778029625758&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=bb0f1b2c-d365-a1ee-f7f5-e2f36dae1b7e",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo I",
+            "link": "https://www.finep.gov.br/documents/20117/206285/CDTI-Chamada_PublicaAnexo_1.pdf/0ca9bd7c-c838-dba0-13b7-5d9a81ff1522?version=1.0&t=1778029627206&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=77992bbe-799d-cc0e-603d-54bdd31b3f92",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Edital",
+            "link": "https://www.finep.gov.br/documents/20117/206285/CDTI-Chamada_Publica.pdf/1b3bfab4-a12b-48b7-83c1-898ddf281b52?version=1.0&t=1778029628731&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=2c3997d2-b7a3-d725-9b90-4ce717c80c69",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Resultado final da fase I",
+            "link": "https://www.finep.gov.br/documents/20117/206285/17_10-2016_Resultado_Final_Fase_I_Finep-CDTI.pdf/0200576c-0c39-0eef-f65d-ac71c988ae18?version=1.0&t=1778029630034&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=903de012-01c3-42c1-b6f4-4dd88fd1207c",
+            "tipo": "pdf"
+        }
+    ]
+}

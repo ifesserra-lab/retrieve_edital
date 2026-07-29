@@ -1,0 +1,125 @@
+{
+    "nome": "DESAFIO TECNOLÓGICO ELETROLISADOR NACIONAL",
+    "descrição": "SELEÇÃO PÚBLICA FINEP/PETROBRAS A Financiadora de Estudos e Projetos – Finep, a Petrobras e o Ministério da Ciência, Tecnologia e Inovação (MCTI), com apoio técnico do Ministério da Fazenda, tornam pública a presente Seleção Pública, cujo objetivo é apoiar o desenvolvimento de um projeto de inovação voltado para o desenvolvimento tecnológico de um Eletrolisador Nacional, seguindo as especificações apresentadas no Edital e seus anexos, especialmente, no Anexo 1. A executora líder do projeto deverá ser necessariamente uma empresa brasileira, com participação de, no mínimo, duas empresas brasileiras coexecutoras e uma ICT. As ICTs participantes deverão ser credenciadas ou possuir protocolo de solicitação de credenciamento junto à ANP no momento da submissão da Proposta.   O valor solicitado para o projeto deverá ser, obrigatoriamente, de no mínimo R$ 50.000.000,00 (cinquenta milhões de reais) e de, no máximo, R$ 150.000.000,00 (cento e cinquenta milhões de reais), com apresentação de contrapartida de pelo menos 25% (vinte e cinco por cento) do valor total do projeto. Os recursos não-reembolsáveis serão concedidos conforme a seguir: · Até R$ 75.000.000,00 (setenta e cinco milhões de reais) de subvenção econômica com recursos não-reembolsáveis do Fundo Nacional de Desenvolvimento Científico e Tecnológico (FNDCT); · Até R$ 75.000.000,00 (setenta e cinco milhões de reais) de recursos de investimento obrigatório da Petrobras em PD&I, regulados por meio da Resolução ANP nº 918/2023. A versão editável do Anexo 9 encontra-se disponível para download aqui.   Dúvidas a respeito do Edital devem ser dirigidas exclusivamente para o endereço eletrônico cp_desafioeletrolisador@finep.gov.br.   Conforme previsto no cronograma do Edital desta Seleção Pública, a Finep e a Petrobras realizaram no dia 08/07/2026, em formato híbrido, um workshop com o objetivo de apresentar a chamada pública e esclarecer dúvidas relacionadas à submissão de propostas. A apresentação em Power Point utilizada no workshop encontra-se disponível para download aqui",
+    "orgão_fomento": "FINEP",
+    "categoria": "inovação",
+    "status": "aberta",
+    "data_abertura": "2026-06-16",
+    "data_encerramento": "2026-09-21",
+    "link": "https://www.finep.gov.br/e/chamada-publica/222684/968467",
+    "cronograma": [
+        {
+            "evento": "Data de publicação",
+            "data": "2026-06-16"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2026-09-21"
+        }
+    ],
+    "tags": [
+        "Energia e Transição Sustentável",
+        "Startup",
+        "Receita: até R$ 4,8 Mi",
+        "Receita: R$ 4,8 Mi - R$ 16,0 Mi",
+        "Receita: R$ 16,0 Mi - R$ 90,0 Mi",
+        "Receita: R$ 90,0 Mi - R$ 300,0 Mi",
+        "Receita: maior que R$ 300,0 Mi",
+        "ICT",
+        "Não reembolsável",
+        "Todo Brasil",
+        "inovação"
+    ],
+    "anexos": [
+        {
+            "titulo": "Edital",
+            "link": "https://www.finep.gov.br/documents/20120/758476/Desafio+Eletrolisador+-+Edital+%282%29.pdf/0f64c82d-8c0a-59c8-e68c-a40daf7a6e38?version=1.0&t=1781630955279&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=c0f17778-c741-2848-d03a-9d8bce8d8acf",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo 1 - Especificações Técnicas do Desafio Tecnológico",
+            "link": "https://www.finep.gov.br/documents/20120/758476/Desafio+Eletrolisador+-+ANEXO+1+-+Desafio+Tecnolo%CC%81gico+Eletrolisador+Nacional+%281%29.pdf/3d05169b-6388-715c-21fe-bedbe90c6f63?version=1.0&t=1781630978479&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=119d60c8-91d1-286f-44d2-2777bd2b3253",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo 1.1 - Plano de Trabalho PETROBRAS",
+            "link": "https://www.finep.gov.br/documents/20120/758476/Desafio+Eletrolisador+-+ANEXO+1.1+-+Plano+de+Trabalho+PETROBRAS.pdf/f892e6f1-41d3-f00f-c5f8-919474a007ae?version=1.0&t=1781612739750&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=8ac927c5-873b-7999-08b6-9b4fecb342a9",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo 2 – Definição de Nível de Maturidade Tecnológica",
+            "link": "https://www.finep.gov.br/documents/20120/758476/Desafio+Eletrolisador+-+ANEXO+2+-+Defini%C3%A7%C3%A3o+de+TRL.pdf/26cbb140-c1fa-958d-133d-d9fcee7b612b?version=1.0&t=1781612780308&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=c667b3c6-c638-e952-d1f8-49b762ef040c",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo 3 – Lista de Documentos Para Apresentação",
+            "link": "https://www.finep.gov.br/documents/20120/758476/Desafio+Eletrolisador+-+ANEXO+3+-+Documentos+m%C3%ADnimos.pdf/48111ca0-2d4e-46c7-e104-3ad31905826b?version=1.0&t=1781612812837&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=11b1019b-411a-8df9-703d-8ab48a60360e",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo 4 – Termo de Outorga de Subvenção Econômica Da Finep",
+            "link": "https://www.finep.gov.br/documents/20120/758476/Desafio+Eletrolisador+-+ANEXO+4+-+Minuta_de_Termo_de_Outorga_Finep_13mai2026.pdf/c14da5f7-ade0-f9d4-02b6-f0ad66b3f56d?version=1.0&t=1781612869082&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=b7cd7e24-c9a6-c202-dbc2-22c5b66f5348",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo 5 – Termo de Cooperação da Petrobras",
+            "link": "https://www.finep.gov.br/documents/20120/758476/Desafio+Eletrolisador+-+ANEXO+5+-+Termo+de+Coopera%C3%A7%C3%A3o+da+PETROBRAS+-+REV1.pdf/98108c2b-9bc2-4596-06ee-e2e3e97502ec?version=1.0&t=1784581733890&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=f5379bd4-8ec2-683c-be03-bfbdf63a6e0a",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo 6 – Modelo de Declaração de Ações Coletivas",
+            "link": "https://www.finep.gov.br/documents/20120/758476/Desafio+Eletrolisador+-+ANEXO+6+-+Declara%C3%A7%C3%A3o_A%C3%A7%C3%B5es_Coletivas.pdf/5e63d031-f353-9e9b-8ff9-a0b37fca07c2?version=1.0&t=1781613819783&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=9eef202a-9cf5-a9fa-fcf4-32eab2e12e77",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo 7 – Modelo de Declaração Ambiental e Outros Aspectos Regulatórios",
+            "link": "https://www.finep.gov.br/documents/20120/758476/Desafio+Eletrolisador+-+ANEXO+7+-+Declara%C3%A7%C3%A3o+ambiental+e+outros+aspectos+regulat%C3%B3rios.pdf/8cbeef61-abff-9291-5815-79b9f0ecf2da?version=1.0&t=1781613861199&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=79106bc7-1fc0-643f-6d8a-4b18f386f357",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo 8 – Planilha Para Aferição do Índice De Nacionalização do Eletrolisador",
+            "link": "https://www.finep.gov.br/documents/20120/758476/Desafio+Eletrolisador+-+ANEXO+8+-+PLANILHA+PARA+AFERI%C3%87%C3%83O+DO+%C3%8DNDICE+DE+NACIONALIZA%C3%87%C3%83O+DO+ELETROLISADOR.pdf/c718ef95-ce2c-c09d-a86d-0ca49edb0095?version=1.0&t=1781613902939&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=78340c2f-0b6d-66d8-8202-30e33d461438",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo 9 – Planilha Para Cálculo do Custo Nivelado Do Hidrogênio",
+            "link": "https://www.finep.gov.br/documents/20120/758476/Desafio+Eletrolisador+-+ANEXO+9+-+Planilha+para+c%C3%A1lculo+do+custo+nivelado+do+hidrog%C3%AAnio+%281%29.pdf/93a2f319-466b-05d6-385d-fe78a9b990c5?version=1.0&t=1781613944694&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=f6284ae4-438a-bd93-e5ed-76900a0ec100",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo 10 – Modelo de Carta de Manifestação de Interesse – Aquisição do Sistema",
+            "link": "https://www.finep.gov.br/documents/20120/758476/Desafio+Eletrolisador+-+ANEXO+10+-+Carta+de+Manifesta%C3%A7%C3%A3o+de+Interesse+-+Aquisi%C3%A7%C3%A3o+do+Sistema.pdf/dae9abed-733c-9e61-b2e3-052c25062b1b?version=1.0&t=1781613993892&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=539b9bdf-4e9c-1835-bf98-9fd5a8b3cbe0",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo 11 – Modelo de Carta De Manifestação de Interesse – Demonstração do Sistema",
+            "link": "https://www.finep.gov.br/documents/20120/758476/Desafio+Eletrolisador+-+ANEXO+11+-+Carta+de+Manifesta%C3%A7%C3%A3o+de+Interesse+-+Demonstra%C3%A7%C3%A3o+do+Sistema.pdf/d242da8f-8d8c-c6a4-75d6-a8b62499a077?version=1.0&t=1781614157327&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=53e988d9-8a34-a905-47c5-665e7a51bab9",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo 12 – Modelo de Negócios",
+            "link": "https://www.finep.gov.br/documents/20120/758476/Desafio+Eletrolisador+-+ANEXO+12+%E2%80%93+Modelo+de+neg%C3%B3cios.pdf/e1eb67cb-1655-2c5b-18ae-6d8b37b56441?version=1.0&t=1781614200787&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=83c4b8b8-18d3-ce05-177c-76ca5193a5b0",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo 13 – Manual de Gestão De Projetos de Pd&I Da Petrobras",
+            "link": "https://www.finep.gov.br/documents/20120/758476/Desafio+Eletrolisador+-+ANEXO+13+-+Manual+de+gest%C3%A3o+de+projetos+de+PD%26I+da+PETROBRAS+-+v27+%281%29.pdf/9aedda9b-fc7b-d138-d2de-0ab5f70fa296?version=1.0&t=1783620641519&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=b672f9e1-1cda-282a-77d3-b4666611baf9",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo 14 – Declaração Unificada",
+            "link": "https://www.finep.gov.br/documents/20120/758476/Desafio+Eletrolisador+-+ANEXO+14+-+Declara%C3%A7%C3%A3o+Unificada+%28Termos+de+Coopera%C3%A7%C3%A3o+PETROBRAS%29.pdf/98cb87ee-99a2-eec6-fb5f-ac769c0429c1?version=1.0&t=1781614312387&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=21602ae3-cd54-2eee-b6f6-0565174eb94c",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Aviso sobre a 1ª rerratificação",
+            "link": "https://www.finep.gov.br/documents/20120/758476/AVISO+sobre+a+1%C2%AA+rerratifica%C3%A7%C3%A3o+-+Ecossistema+Tecnol%C3%B3gico+de+Biorrefino.pdf/ac487918-09c0-f680-830c-055f4b5b211d?version=1.0&t=1783620703790&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=4133ed77-a899-d2c4-62c3-c9a6318583ba",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "FAQ - Perguntas Frequentes",
+            "link": "https://www.finep.gov.br/documents/20120/758476/FAQ+-+Perguntas+Frequentes+-+Eletrolisador+Nacional.pdf/02cbb75a-7de6-d874-83f6-f265e96f172c?version=1.0&t=1783971903012&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=b9966d9f-b6bb-c2ee-968f-97a73c3d0dfe",
+            "tipo": "pdf"
+        }
+    ]
+}

@@ -1,0 +1,87 @@
+{
+    "nome": "CARTA CONVITE MCTI/FINEP/FNDCT - PROMOÇÃO DA AUTONOMIA TECNOLÓGICA NA ÁREA DA DEFESA",
+    "descrição": "Selecionar propostas para concessão de apoio financeiro a Instituições de Ciência, Tecnologia e Inovação do Ministério da Defesa (ICTMD), visando à execução de projetos de pesquisa para promover a capacidade e a autonomia científica, tecnológica e de inovação do Brasil em áreas críticas para a defesa nacional e para a segurança, priorizando projetos alinhados com a Estratégia Nacional de Defesa, com tecnologias transversais e arranjos interinstitucionais, que possibilitem a superação de entraves e bloqueios, bem como o transbordamento de tecnologias e inovações para a área civil.   Linhas Temáticas: •     Linha Temática 1: Sistemas de guiamento, de controle e de navegação com aplicação em mísseis, foguetes e veículos não tripulados terrestres / aéreos / navais; •     Linha Temática 2: Sistemas de sensoriamento remoto, de consciência situacional e comando e controle, com aplicações para a Defesa, e sensores diversos; •     Linha Temática 3: Aplicações em Inteligência Artificial (IA), Defesa e Segurança Cibernética, Tecnologias Quânticas, Robótica, Visão Computacional, Análise Avançada de dados e aplicações críticas em processos analíticos e decisórios; •     Linha Temática 4: Tecnologias associadas às áreas nuclear e de energia para a Defesa; •     Linha Temática 5: Tecnologias relacionadas a foguetes e veículos lançadores de satélites voltados para a aplicação espacial, hipersônica, sistemas propulsivos, componentes químicos e energéticos especiais, materiais compostos, componentes mecânicos, elétricos e eletrônicos, materiais estruturais e energéticos avançados, e manufatura aditiva.   Em casos de dúvidas, encaminhar questionamentos para cp_cc_defesa2026@finep.gov.br.",
+    "orgão_fomento": "FINEP",
+    "categoria": "inovação",
+    "status": "aberta",
+    "data_abertura": "2026-05-26",
+    "data_encerramento": "2026-09-18",
+    "link": "https://www.finep.gov.br/e/chamada-publica/222684/943682",
+    "cronograma": [
+        {
+            "evento": "Data de publicação",
+            "data": "2026-05-26"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2026-09-18"
+        }
+    ],
+    "tags": [
+        "Não reembolsável",
+        "Todo Brasil",
+        "inovação"
+    ],
+    "anexos": [
+        {
+            "titulo": "Carta Convite Programa 9 - Defesa",
+            "link": "https://www.finep.gov.br/documents/20120/758476/0-+Minuta+Edital+-+CC+Defesa+V5.pdf/49510d10-0df4-4557-d525-9e3c0597cbdf?version=1.0&t=1779820301874&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=2f72e5ad-e97a-154f-037e-955a0ef44407",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo I: Orientações para Apresentação de Projeto Básico/Executivo",
+            "link": "https://www.finep.gov.br/documents/20120/758476/1-+Anexo+I+Projeto+B%C3%A1sico_Executivo.pdf/31ce0197-5c47-7cc1-0eb5-4f3c4ec3b840?version=1.0&t=1779820358016&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=f8592b41-66ff-c1bc-935e-837068a20959",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo II: Orientações para Apresentação de Projeto Resumido",
+            "link": "https://www.finep.gov.br/documents/20120/758476/2-+Anexo+II+Projeto+Resumido+V2.pdf/5bfe98a1-48c0-27f0-a937-c696bf67d1f2?version=1.0&t=1779820474160&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=4c178b75-ebc7-4f74-ecc8-8a623c1d7543",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo III: Exigências para Avaliação dos Itens de Orçamento (",
+            "link": "https://www.finep.gov.br/documents/20120/758476/3-+Anexo+III+Exigencias+para+Avaliacao+dos+Itens+de+Orcamento+V2.pdf/968ace2d-c5f9-3c4f-d6c7-c278f0dfd6ca?version=1.0&t=1779820525142&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=82383f14-803b-c118-de0b-dbb377517c3a",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo IV: Condições para Despesas Relativas a Bolsas",
+            "link": "https://www.finep.gov.br/documents/20120/758476/4-+Anexo+IV+Condicoes+para+Despesas+relativas+a+Bolsas.pdf/fd219f24-d4e0-76c6-7c1c-fe8cad3aa13d?version=1.0&t=1779820570636&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=c7a7b127-baf2-71be-382b-260fb0dbe9c7",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo V: Tabela com Requisitos e Valores para Pagamento de Pessoal",
+            "link": "https://www.finep.gov.br/documents/20120/758476/5-+Anexo+V+Tabela+com+Requisitos+e+Valores+para+Pagamento+de+Pessoal.pdf/658ea4d0-55da-061e-5226-f8992c14c26d?version=1.0&t=1779820634717&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=0cab9330-3f4c-84d8-0c02-af852e20f242",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo VI: Modelo de Carta de Manifestação de interesse da empresa (",
+            "link": "https://www.finep.gov.br/documents/20120/758476/6-+ANEXO+VI+Carta+Manifestacao+Interesse+Empresa.pdf/c259792c-290a-fa01-a339-7ae5db6e0672?version=1.0&t=1779820682402&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=5ca2c63b-a7ff-d9e0-a5d5-b90a0a58e80c",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo VII: Modelo de Declaração da Autoridade de Ciência e Tecnologia do Ministério da Defesa ou da Força",
+            "link": "https://www.finep.gov.br/documents/20120/758476/7-+ANEXO+VII+Modelo+de+Declara%C3%A7%C3%A3o+da+Autoridade+de+Ci%C3%AAncia+e+Tecnologia+do+Minist%C3%A9rio+da+Defesa+ou+da+For%C3%A7a.pdf/650ceee6-580e-93f4-5db2-d0287ad284a8?version=1.0&t=1779820722429&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=a91f0ad1-c8b9-1863-635f-1d7f33396c1d",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo VIII: Modelo de apresentação de informações sobre equipe (",
+            "link": "https://www.finep.gov.br/documents/20120/758476/8-+Anexo+VIII+-+Equipe+e+Atividades+V2.pdf/9bd55e6e-b192-5903-41c0-36a2069cc34e?version=1.0&t=1779820784483&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=e29ca5ee-ec9f-d154-82c1-a7b06d8173d4",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo IX: Minuta de Convênio - Cláusulas Padrão",
+            "link": "https://www.finep.gov.br/documents/20120/758476/9-+Anexo+IX+Minuta+do+Conv%C3%AAnio+Clausulas+Padrao.pdf/5bbd551b-6a39-b0c4-9eba-9eb83fcc8dc0?version=1.0&t=1779820834171&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=4ec9c593-e15a-9124-6388-bcc899aeb5ab",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Telas da plataforma",
+            "link": "https://www.finep.gov.br/documents/20120/758476/Telas_Plataforma_de_Apoio_e_Financiamento+-+Carta_Convite_Defesa_2026_.pdf/b2ba8e54-21b3-2abe-0fff-92321ec97fd2?version=1.0&t=1780515330799&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=5aca00ef-b9eb-5385-5c20-a0e21b058bd0",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "FAQ - Perguntas frequentes",
+            "link": "https://www.finep.gov.br/documents/20120/758476/FAQ.pdf/827e7267-03b5-3950-1fe9-806535c0ad27?version=1.0&t=1780513284915&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=65a386f9-a4b6-4757-02f2-2bb7e97595e4",
+            "tipo": "pdf"
+        }
+    ]
+}
