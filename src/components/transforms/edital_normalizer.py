@@ -2,15 +2,28 @@ import os
 import re
 import io
 import logging
+from datetime import date
 from typing import List, Dict, Optional
 import pdfplumber
 
 from src.core.interfaces import ITransform
 from src.domain.models import RawEdital, EditalDomain
+from src.components.transforms import publication_rules
 from src.components.transforms.mistral_client import MistralExtractionService
 from src.components.transforms.date_utils import normalize_schedule_dates
 
 logger = logging.getLogger(__name__)
+
+
+def _unresolved_opening_date() -> str:
+    """
+    Placeholder de `data_abertura` quando nenhuma data foi encontrada.
+
+    Serve como sentinela interna para saber que a data ainda não foi resolvida.
+    Antes era a string fixa "2026-01-01", que passaria a ser silenciosamente
+    errada a partir de 2027.
+    """
+    return f"{date.today().year}-01-01"
 
 
 def _extract_last_schedule_date(text: str) -> str:
@@ -42,7 +55,14 @@ class EditalNormalizer(ITransform[RawEdital, EditalDomain]):
     def __init__(self, extraction_service: Optional[MistralExtractionService] = None):
         self.extraction_service = extraction_service or MistralExtractionService()
     
-    def process(self, raw_data: RawEdital) -> EditalDomain:
+    def process(self, raw_data: RawEdital) -> Optional[EditalDomain]:
+        """
+        Normaliza o RawEdital em EditalDomain.
+
+        Devolve `None` quando o item não é uma oportunidade publicável — anexo
+        solto, registro sem conteúdo extraído ou prazo já encerrado. Os sete
+        fluxos já ignoram item nulo, então nada mais precisa mudar.
+        """
         # Mandatory validation
         if not raw_data.title or raw_data.title.strip() == "":
             raise ValueError("O título do edital não pode ser nulo ou vazio.")
@@ -83,7 +103,8 @@ class EditalNormalizer(ITransform[RawEdital, EditalDomain]):
         normalized_cronograma = normalize_schedule_dates(cronograma)
         raw_cronograma = list(cronograma)
 
-        data_abertura = "2026-01-01"
+        unresolved_opening = _unresolved_opening_date()
+        data_abertura = unresolved_opening
         data_encerramento = ""
         start_fallback_tokens = (
             "início do período do edital",
@@ -121,7 +142,7 @@ class EditalNormalizer(ITransform[RawEdital, EditalDomain]):
                 data_abertura = date_value
                 break
 
-        if data_abertura == "2026-01-01":
+        if data_abertura == unresolved_opening:
             for item in normalized_cronograma:
                 event_name = item.get("evento") or ""
                 date_value = item.get("data") or ""
@@ -131,7 +152,7 @@ class EditalNormalizer(ITransform[RawEdital, EditalDomain]):
                     data_abertura = date_value
                     break
 
-        if data_abertura == "2026-01-01":
+        if data_abertura == unresolved_opening:
             for item in normalized_cronograma:
                 date_value = item.get("data") or ""
                 if re.match(r"\d{4}-\d{2}-\d{2}", str(date_value)):
@@ -193,8 +214,8 @@ class EditalNormalizer(ITransform[RawEdital, EditalDomain]):
                     
                     # Normalize dates
                     mistral_domain.cronograma = normalized_cronograma
-                    
-                    return mistral_domain
+
+                    return self._publish_or_discard(mistral_domain, raw_data)
                 else:
                     logger.warning(f"Mistral returned no domain for {clean_title}, falling back to basic extraction.")
             except Exception as e:
@@ -243,7 +264,7 @@ class EditalNormalizer(ITransform[RawEdital, EditalDomain]):
         if "bolsa" in combined_text and "bolsa" not in tags:
             tags.append("bolsa")
 
-        return EditalDomain(
+        edital = EditalDomain(
             nome=clean_title,
             descrição=description or f"Edital de fomento {clean_agency}: {clean_title}",
             orgão_fomento=clean_agency,
@@ -256,3 +277,22 @@ class EditalNormalizer(ITransform[RawEdital, EditalDomain]):
             tags=tags,
             anexos=anexos
         )
+        return self._publish_or_discard(edital, raw_data)
+
+    @staticmethod
+    def _publish_or_discard(
+        edital: EditalDomain, raw_data: RawEdital
+    ) -> Optional[EditalDomain]:
+        """
+        Aplica as regras de publicação e ajusta o status ao prazo.
+
+        Item não publicável volta como `None`; os fluxos já o ignoram.
+        """
+        verdict = publication_rules.evaluate(edital, raw_data)
+        if not verdict.publishable:
+            logger.info(
+                "Edital não publicado (%s): %s", verdict.reason, edital.nome[:70]
+            )
+            return None
+        edital.status = publication_rules.resolve_status(edital)
+        return edital

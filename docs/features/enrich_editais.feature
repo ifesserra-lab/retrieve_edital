@@ -20,4 +20,4 @@ Feature: PDF Data Extraction and Enrichment
   Scenario: Handling PDFs that miss expected extraction blocks
     Given the pipeline has downloaded an Anexo PDF with structural anomalies
     When the Transform engine attempts to find the "OBJETO" or "CRONOGRAMA" bounds
-    Then the engine should gracefully fallback to empty descriptions or empty schedule lists without aborting
+    Then the engine should discard the record without aborting the pipeline
