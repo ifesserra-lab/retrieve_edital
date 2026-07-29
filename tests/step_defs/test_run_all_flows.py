@@ -1,4 +1,7 @@
+import pytest
+
 from scripts import run_all_flows
+from src.flow_health import FlowStats
 
 
 def test_flow_commands_include_capes_and_cnpq_in_expected_order():
@@ -45,3 +48,127 @@ def test_main_runs_all_flows_in_sequence(monkeypatch):
         ("CAPES", "src.flows.ingest_capes_flow"),
         ("CNPQ", "src.flows.ingest_cnpq_flow"),
     ]
+
+
+def write_log(workdir, rows):
+    """Monta um flow_processing_log.md com as linhas dadas (mais recente primeiro)."""
+    docs_dir = workdir / "docs"
+    docs_dir.mkdir(parents=True, exist_ok=True)
+    header = (
+        "# Flow Processing Log\n\n"
+        "| Data/Hora | Fluxo | Resultado | Observações |\n"
+        "| :-- | :-- | :-- | :-- |\n"
+    )
+    (docs_dir / "flow_processing_log.md").write_text(
+        header + "".join(rows), encoding="utf-8"
+    )
+
+
+def log_row(flow, delta, result="Sucesso"):
+    return (
+        f"| 2026-07-27 03:00:00 -03:00 | `{flow}` | {result} | "
+        f"Registry `x`: 10 -> 10 (delta {delta}); outras notas. |\n"
+    )
+
+
+class TestZeroDeltaStreak:
+    def test_counts_consecutive_zero_delta_runs_for_the_flow(self, tmp_path):
+        write_log(tmp_path, [log_row("FINEP", 0), log_row("FINEP", 0), log_row("FINEP", 3)])
+        assert run_all_flows.count_zero_delta_streak(tmp_path, "FINEP") == 2
+
+    def test_stops_at_the_first_run_that_collected_something(self, tmp_path):
+        write_log(tmp_path, [log_row("FINEP", 2), log_row("FINEP", 0)])
+        assert run_all_flows.count_zero_delta_streak(tmp_path, "FINEP") == 0
+
+    def test_ignores_rows_of_other_flows(self, tmp_path):
+        write_log(tmp_path, [log_row("CNPQ", 0), log_row("FINEP", 0), log_row("CNPQ", 0)])
+        assert run_all_flows.count_zero_delta_streak(tmp_path, "FINEP") == 1
+
+    def test_returns_zero_when_log_is_absent(self, tmp_path):
+        assert run_all_flows.count_zero_delta_streak(tmp_path, "FINEP") == 0
+
+
+class TestResolveResult:
+    def test_failure_wins_over_every_other_signal(self):
+        assert (
+            run_all_flows.resolve_result("FINEP", 1, 5, 0, FlowStats(36, 5))
+            == run_all_flows.RESULT_FAILURE
+        )
+
+    def test_source_returning_no_raw_item_is_a_warning_not_success(self):
+        """Foi assim que a queda da FINEP passou meses reportada como Sucesso."""
+        assert (
+            run_all_flows.resolve_result("FINEP", 0, 0, 1, FlowStats(0, 0))
+            == run_all_flows.RESULT_WARNING
+        )
+
+    def test_no_new_editais_but_healthy_source_is_success(self):
+        assert (
+            run_all_flows.resolve_result("FINEP", 0, 0, 1, FlowStats(36, 0))
+            == run_all_flows.RESULT_SUCCESS
+        )
+
+    def test_long_zero_delta_streak_without_stats_is_a_warning(self):
+        streak = run_all_flows.ZERO_DELTA_ALERT_THRESHOLD
+        assert (
+            run_all_flows.resolve_result("CNPQ", 0, 0, streak, None)
+            == run_all_flows.RESULT_WARNING
+        )
+
+    def test_short_zero_delta_streak_is_still_success(self):
+        assert (
+            run_all_flows.resolve_result("CNPQ", 0, 0, 2, None)
+            == run_all_flows.RESULT_SUCCESS
+        )
+
+    def test_low_volume_flows_are_exempt_from_the_streak_rule(self, monkeypatch):
+        monkeypatch.setattr(run_all_flows, "LOW_VOLUME_FLOWS", frozenset({"cnpq"}))
+        streak = run_all_flows.ZERO_DELTA_ALERT_THRESHOLD + 5
+        assert (
+            run_all_flows.resolve_result("CNPQ", 0, 0, streak, None)
+            == run_all_flows.RESULT_SUCCESS
+        )
+
+
+class TestBuildObservations:
+    def test_reports_raw_count_and_flags_empty_source(self):
+        result, observations = run_all_flows.build_observations(
+            "FINEP",
+            {"finep": 10},
+            {"finep": 10},
+            175,
+            [],
+            0,
+            stats=FlowStats(raw_count=0, new_count=0),
+            zero_delta_streak=1,
+        )
+        assert result == run_all_flows.RESULT_WARNING
+        assert "Origem devolveu 0 itens brutos" in observations
+        assert "verificar se o portal mudou" in observations
+
+    def test_healthy_run_stays_successful(self):
+        result, observations = run_all_flows.build_observations(
+            "FINEP",
+            {"finep": 10},
+            {"finep": 36},
+            201,
+            [],
+            0,
+            stats=FlowStats(raw_count=36, new_count=26),
+            zero_delta_streak=0,
+        )
+        assert result == run_all_flows.RESULT_SUCCESS
+        assert "(delta 26)" in observations
+
+
+@pytest.mark.parametrize(
+    "line, expected",
+    [
+        ("| ts | `FINEP` | Sucesso | Registry (delta 0); |", ("FINEP", "Registry (delta 0);")),
+        ("| :-- | :-- | :-- | :-- |", None),
+        ("texto solto", None),
+        ("| incompleto |", None),
+    ],
+)
+def test_parse_log_row(line, expected):
+    assert run_all_flows._parse_log_row(line) == expected
