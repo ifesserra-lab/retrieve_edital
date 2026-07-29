@@ -4,7 +4,7 @@ Follows SOLID principles: Open/Closed, dependency inversion.
 """
 
 from abc import ABC, abstractmethod
-from typing import Any, List, Generic, TypeVar
+from typing import Any, Dict, List, Generic, TypeVar
 
 # T represents the Type of the data structure (e.g. Dict, or a Domain Model)
 T = TypeVar("T")
@@ -42,8 +42,15 @@ class ISink(ABC, Generic[T]):
     Interface for data persistence (Load).
     Responsible solely for writing the validated data into the final target.
     """
-    
+
     @abstractmethod
-    def write(self, items: List[T]) -> None:
-        """Persists the items sequentially or in batch to the storage solution."""
+    def write(self, items: List[T]) -> Dict[str, T]:
+        """
+        Persists the items sequentially or in batch to the storage solution.
+
+        Returns the items actually persisted, keyed by the identifier the storage
+        assigned them (for the JSON sink, the output filename base). Flows use
+        this to register only what reached the target: registering an item whose
+        write failed would mark it as processed with nothing to show for it.
+        """
         pass

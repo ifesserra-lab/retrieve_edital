@@ -72,9 +72,10 @@ def run_pipeline(
     # 3. Load
     logger.info("Phase 3: Load/Sink")
     if valid_domains:
-        sink.write(valid_domains)
-        keys = [sink.basename_for(d, index=i) for i, d in enumerate(valid_domains, start=1)]
-        add_many("fapes", keys, path=processed_index_path)
+        # FAPES deduplica pelo nome do arquivo, então a chave tem de vir do
+        # sink: recalcular aqui perderia o sufixo aplicado em caso de colisão.
+        persisted = sink.write(valid_domains)
+        add_many("fapes", list(persisted.keys()), path=processed_index_path)
         logger.info("Pipeline completed successfully.")
     else:
         logger.warning("No valid domains to sink. Pipeline finished with warnings.")

@@ -33,6 +33,9 @@ class SpySink:
 
     def write(self, items):
         self.written_items.extend(items)
+        # O contrato do ISink devolve o que foi persistido, indexado pela chave
+        # que o destino atribuiu — é o que o flow registra no índice.
+        return {f"item_{index}": item for index, item in enumerate(items, start=1)}
 
 
 def test_ingest_proex_ifes_flow_persists_items_and_updates_registry(tmp_path):

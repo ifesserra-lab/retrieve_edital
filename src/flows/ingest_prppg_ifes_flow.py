@@ -69,10 +69,10 @@ def run_pipeline(
 
     logger.info("Phase 3: Load/Sink")
     if valid_domains:
-        sink.write(valid_domains)
+        persisted = sink.write(valid_domains)
         add_many(
             "prppg_ifes",
-            [domain.link for domain in valid_domains],
+            [domain.link for domain in persisted.values()],
             path=processed_index_path,
         )
         logger.info("Pipeline completed successfully.")

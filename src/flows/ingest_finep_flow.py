@@ -86,8 +86,12 @@ def run_pipeline(
     logger.info("Phase 3: Load/Sink")
     emit_flow_stats(raw_count=listing_count, new_count=len(valid_domains))
     if valid_domains:
-        sink.write(valid_domains)
-        add_many("finep", [d.link for d in valid_domains], path=processed_index_path)
+        persisted = sink.write(valid_domains)
+        add_many(
+            "finep",
+            [d.link for d in persisted.values()],
+            path=processed_index_path,
+        )
         logger.info("Pipeline completed successfully.")
     else:
         logger.warning("No valid domains to sink. Pipeline finished with warnings.")
