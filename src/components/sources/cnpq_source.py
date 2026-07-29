@@ -1,3 +1,19 @@
+"""
+CNPq Chamadas Públicas Source.
+
+O source anterior lia `memoria2.cnpq.br`, portal descontinuado que responde 200
+com 137 KB mas contém **um único** card — por isso o fluxo parecia saudável
+enquanto coletava quase nada. Ver `docs/spec_finep_cnpq_horizon.md`.
+
+Passa a ler o portal atual, no gov.br:
+
+    https://www.gov.br/cnpq/pt-br/chamadas/abertas-para-submissao
+
+É um Plone estático (sem JS, sem Playwright). A listagem traz um `div.item` por
+chamada; a página de detalhe traz o objeto da chamada, o período de inscrições
+no formato `INSCRIÇÕES: dd/mm/aaaa a dd/mm/aaaa` e os documentos.
+"""
+
 import logging
 import re
 from datetime import datetime
@@ -9,178 +25,285 @@ from bs4 import BeautifulSoup, Tag
 
 from src.core.interfaces import ISource
 from src.domain.models import RawEdital
+from src.flow_health import warn_on_redirect
 
 logger = logging.getLogger(__name__)
 
-CNPQ_BASE_URL = "http://memoria2.cnpq.br"
-CNPQ_CHAMADAS_ABERTAS_URL = (
-    f"{CNPQ_BASE_URL}/web/guest/chamadas-publicas"
-    "?p_p_id=resultadosportlet_WAR_resultadoscnpqportlet_INSTANCE_0ZaM&filtro=abertas/"
+CNPQ_BASE_URL = "https://www.gov.br"
+CNPQ_ABERTAS_URL = "https://www.gov.br/cnpq/pt-br/chamadas/abertas-para-submissao"
+
+# Só links sob este caminho são documentos da chamada. Filtra o boilerplate do
+# portal, como a "Carta de Serviços", que aparece em toda página do gov.br.
+CHAMADAS_PATH_MARKER = "/chamadas/todas-as-chamadas/"
+DOCUMENT_EXTENSIONS = (".pdf", ".doc", ".docx", ".xls", ".xlsx", ".odt", ".odp")
+
+# O rótulo do período varia por chamada: "INSCRIÇÕES" nas chamadas comuns,
+# "Recebimento das propostas" nos chamamentos públicos.
+PERIOD_LABELS = (
+    r"INSCRI[ÇC][ÕO]ES",
+    r"RECEBIMENTO\s+D[AE]S?\s+PROPOSTAS?",
+    r"SUBMISS[ÃA]O\s+D[AE]S?\s+PROPOSTAS?",
+    r"PRAZO\s+PARA\s+SUBMISS[ÃA]O",
 )
-DATE_RANGE_REGEX = re.compile(
+INSCRICOES_REGEX = re.compile(
+    rf"(?:{'|'.join(PERIOD_LABELS)})\s*:?\s*"
     r"(\d{2}/\d{2}/\d{4})\s*a\s*(\d{2}/\d{2}/\d{4})",
     re.IGNORECASE,
 )
 
+# Rótulos reconhecidos pelo EditalNormalizer ao derivar as datas.
+OPENING_EVENT = "Abertura das inscrições"
+DEADLINE_EVENT = "Prazo para envio de propostas"
 
-def _normalize_cnpq_url(href: str) -> str:
-    if not href:
-        return CNPQ_CHAMADAS_ABERTAS_URL
-    if href.startswith("http"):
-        return href
-    return urljoin(CNPQ_BASE_URL, href)
+# Rótulo do documento principal da chamada na página de detalhe.
+MAIN_DOCUMENT_LABEL = "chamada"
 
 
 def _dd_mm_yyyy_to_iso(date_str: str) -> str:
     try:
         return datetime.strptime(date_str.strip(), "%d/%m/%Y").strftime("%Y-%m-%d")
     except ValueError:
-        return date_str
+        return ""
 
 
-def _parse_inscricao_range(text: str) -> Tuple[str, str]:
-    match = DATE_RANGE_REGEX.search(text or "")
-    if not match:
-        return "", ""
-    start, end = match.groups()
-    return _dd_mm_yyyy_to_iso(start), _dd_mm_yyyy_to_iso(end)
+def _year_of(iso_date: str) -> Optional[int]:
+    if not iso_date:
+        return None
+    try:
+        return datetime.strptime(iso_date, "%Y-%m-%d").year
+    except ValueError:
+        return None
+
+
+def _is_document_url(url: str) -> bool:
+    return CHAMADAS_PATH_MARKER in url and url.lower().endswith(DOCUMENT_EXTENSIONS)
 
 
 class CnpqSource(ISource[RawEdital]):
     """
-    Extractor for CNPq chamadas públicas abertas.
-    Parses the legacy portal cards directly from the "abertas" page and
-    downloads the first available PDF attachment for OCR when present.
+    Extrai as chamadas públicas do CNPq abertas para submissão.
+
+    Para cada chamada, entra na página de detalhe para obter descrição, período
+    de inscrições e documentos, e baixa o PDF principal para OCR.
     """
 
     def __init__(
         self,
-        start_url: str = CNPQ_CHAMADAS_ABERTAS_URL,
+        listing_url: str = CNPQ_ABERTAS_URL,
         processed_urls: Optional[Set[str]] = None,
         current_year: Optional[int] = None,
         timeout: int = 30,
+        session: Optional[requests.Session] = None,
     ) -> None:
-        self.start_url = start_url
+        self.listing_url = listing_url
         self.processed_urls = processed_urls or set()
-        self.current_year = current_year if current_year is not None else datetime.now().year
+        self.current_year = (
+            current_year if current_year is not None else datetime.now().year
+        )
         self.timeout = timeout
+        self.session = session or requests.Session()
+        # Quantas chamadas a origem devolveu antes da deduplicação. O runner usa
+        # esse número para distinguir "nada novo" de "source quebrado".
+        self.last_listing_count = 0
 
-    def _download_file_bytes(self, url: str) -> Optional[bytes]:
+    def read(self) -> List[RawEdital]:
         try:
-            response = requests.get(url, timeout=self.timeout)
+            response = self.session.get(self.listing_url, timeout=self.timeout)
             response.raise_for_status()
-            content_type = (response.headers.get("content-type") or "").lower()
-            if "application/pdf" not in content_type:
-                logger.info(
-                    "Skipping non-PDF CNPq attachment for OCR: %s (%s)",
-                    url,
-                    content_type or "unknown",
-                )
-                return None
-            return response.content
-        except Exception as exc:
-            logger.error("Error downloading CNPq file %s: %s", url, exc)
+            warn_on_redirect(self.listing_url, response.url)
+        except requests.RequestException as exc:
+            logger.error("Erro ao ler a listagem de chamadas do CNPq: %s", exc)
+            self.last_listing_count = 0
+            return []
+
+        listing_entries = self._extract_listing_entries(response.text)
+        self.last_listing_count = len(listing_entries)
+        logger.info("CnpqSource encontrou %s chamadas na listagem.", len(listing_entries))
+
+        raw_editais: List[RawEdital] = []
+        for detail_url, listing_title in listing_entries:
+            if detail_url in self.processed_urls:
+                logger.debug("Chamada já processada; ignorando: %s", detail_url)
+                continue
+            try:
+                raw_edital = self._build_raw_edital(detail_url, listing_title)
+            except requests.RequestException as exc:
+                logger.error("Erro ao ler a chamada %s: %s", detail_url, exc)
+                continue
+            if raw_edital is not None:
+                raw_editais.append(raw_edital)
+
+        logger.info(
+            "CnpqSource selecionou %s chamadas novas de %s na listagem.",
+            len(raw_editais),
+            len(listing_entries),
+        )
+        return raw_editais
+
+    def _extract_listing_entries(self, html: str) -> List[Tuple[str, str]]:
+        """Devolve (url_detalhe, titulo) por chamada, na ordem da listagem."""
+        soup = BeautifulSoup(html, "html.parser")
+        entries: List[Tuple[str, str]] = []
+        seen: Set[str] = set()
+
+        for anchor in soup.select("div.item h2.headline a[href], h2.headline a.summary[href]"):
+            href = (anchor.get("href") or "").strip()
+            if not href or CHAMADAS_PATH_MARKER not in href:
+                continue
+            detail_url = urljoin(CNPQ_BASE_URL, href)
+            if detail_url.lower().endswith(DOCUMENT_EXTENSIONS):
+                continue
+            if detail_url in seen:
+                continue
+            seen.add(detail_url)
+            entries.append((detail_url, anchor.get_text(" ", strip=True)))
+        return entries
+
+    def _build_raw_edital(
+        self, detail_url: str, listing_title: str
+    ) -> Optional[RawEdital]:
+        response = self.session.get(detail_url, timeout=self.timeout)
+        response.raise_for_status()
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        title = self._extract_title(soup) or listing_title
+        if not title:
+            logger.debug("Chamada sem título; ignorando: %s", detail_url)
             return None
 
-    def _extract_permalink(self, card_container: Tag) -> str:
-        input_el = card_container.find("input", attrs={"value": re.compile(r"idDivulgacao=\d+")})
-        if input_el and input_el.get("value"):
-            return _normalize_cnpq_url(input_el["value"].strip())
+        page_text = soup.get_text(" ", strip=True)
+        data_abertura, data_encerramento = self._extract_inscricao_period(page_text)
 
-        for anchor in card_container.select("a[href]"):
-            href = (anchor.get("href") or "").strip()
-            if "idDivulgacao=" in href:
-                return _normalize_cnpq_url(href)
+        encerramento_year = _year_of(data_encerramento)
+        if encerramento_year is not None and encerramento_year < self.current_year:
+            logger.debug(
+                "Chamada '%s' descartada: encerramento %s anterior a %s.",
+                title[:60],
+                data_encerramento,
+                self.current_year,
+            )
+            return None
+
+        anexos = self._extract_anexos(soup)
+        pdf_content = self._download_main_pdf(anexos)
+
+        return RawEdital(
+            title=title,
+            # `source_category` fica de fora de propósito: quando definido, o
+            # EditalNormalizer o impõe sobre a categoria que o Mistral extraiu do
+            # PDF, e o valor viraria um item novo no vocabulário de categorias que
+            # o portal consome. Sem ele, a categoria segue vindo do conteúdo do
+            # edital, como nas outras fontes.
+            url=detail_url,
+            raw_agency="CNPq",
+            raw_description=self._extract_description(soup),
+            pdf_content=pdf_content,
+            document_type="edital",
+            raw_status="aberto",
+            raw_cronograma=self._build_cronograma(data_abertura, data_encerramento)
+            or None,
+            raw_tags=["cnpq", "chamada pública"],
+            raw_anexos=anexos or None,
+        )
+
+    @staticmethod
+    def _extract_title(soup: BeautifulSoup) -> str:
+        for selector in ("h1.documentFirstHeading", "h1", "h2.headline"):
+            element = soup.select_one(selector)
+            if element:
+                title = element.get_text(" ", strip=True)
+                if title:
+                    return title
         return ""
 
-    def _extract_anexos(self, content_block: Tag) -> List[Dict[str, str]]:
+    @staticmethod
+    def _extract_description(soup: BeautifulSoup) -> str:
+        content = soup.select_one("#content-core") or soup.select_one(
+            "#parent-fieldname-text"
+        )
+        if content is None:
+            return ""
+        text = content.get_text(" ", strip=True)
+        # O período de inscrições vira cronograma; não precisa poluir a descrição.
+        return INSCRICOES_REGEX.sub("", text).strip()
+
+    @staticmethod
+    def _extract_inscricao_period(page_text: str) -> Tuple[str, str]:
+        match = INSCRICOES_REGEX.search(page_text)
+        if match is None:
+            return "", ""
+        return (
+            _dd_mm_yyyy_to_iso(match.group(1)),
+            _dd_mm_yyyy_to_iso(match.group(2)),
+        )
+
+    @staticmethod
+    def _build_cronograma(
+        data_abertura: str, data_encerramento: str
+    ) -> List[Dict[str, str]]:
+        """
+        Cronograma é o período de inscrições, e só ele.
+
+        A data de "Publicado em" da página é timestamp do CMS, não marco do
+        edital — e o EditalNormalizer dá precedência a eventos de publicação ao
+        derivar `data_abertura`, o que faria a data do CMS sobrepor a abertura
+        real das inscrições.
+        """
+        cronograma: List[Dict[str, str]] = []
+        if data_abertura:
+            cronograma.append({"evento": OPENING_EVENT, "data": data_abertura})
+        if data_encerramento:
+            cronograma.append({"evento": DEADLINE_EVENT, "data": data_encerramento})
+        return cronograma
+
+    @staticmethod
+    def _extract_anexos(soup: BeautifulSoup) -> List[Dict[str, str]]:
         anexos: List[Dict[str, str]] = []
-        for item in content_block.select("ul > li"):
-            anchor = item.find("a", href=True)
-            if anchor is None:
+        seen: Set[str] = set()
+        for anchor in soup.select("a[href]"):
+            href = urljoin(CNPQ_BASE_URL, (anchor.get("href") or "").strip())
+            if not _is_document_url(href) or href in seen:
                 continue
-            href = _normalize_cnpq_url(anchor["href"].strip())
-            label = item.get_text(" ", strip=True).replace(" link", "").strip(" :")
+            seen.add(href)
+            label = anchor.get_text(" ", strip=True) or "Documento"
             anexos.append(
                 {
-                    "titulo": label or "Documento",
+                    "titulo": label,
                     "link": href,
-                    "tipo": "anexo",
+                    "tipo": href.rsplit(".", 1)[-1].lower(),
                 }
             )
         return anexos
 
-    def _extract_raw_edital_from_card(self, card_container: Tag) -> Optional[RawEdital]:
-        content_block = card_container.select_one("div.content")
-        if content_block is None:
+    def _download_main_pdf(self, anexos: List[Dict[str, str]]) -> Optional[bytes]:
+        main_pdf_url = self._select_main_pdf_url(anexos)
+        if not main_pdf_url:
             return None
-
-        title_el = content_block.find("h4")
-        description_el = content_block.find("p")
-        if title_el is None:
-            return None
-
-        title = title_el.get_text(" ", strip=True)
-        description = description_el.get_text(" ", strip=True) if description_el else ""
-        permalink = self._extract_permalink(card_container)
-        anexos = self._extract_anexos(content_block)
-
-        if not permalink:
-            permalink = anexos[0]["link"] if anexos else title
-        if permalink in self.processed_urls:
-            return None
-
-        inscricao_text = ""
-        inscricao_item = content_block.select_one("div.inscricao li")
-        if inscricao_item:
-            inscricao_text = inscricao_item.get_text(" ", strip=True)
-
-        data_abertura, data_encerramento = _parse_inscricao_range(inscricao_text)
-        if data_encerramento:
-            encerramento_year = int(data_encerramento[:4])
-            if encerramento_year < self.current_year:
-                return None
-        cronograma = []
-        if data_abertura:
-            cronograma.append({"evento": "abertura das inscrições", "data": data_abertura})
-        if data_encerramento:
-            cronograma.append({"evento": "encerramento das inscrições", "data": data_encerramento})
-
-        pdf_content = None
-        for anexo in anexos:
-            pdf_content = self._download_file_bytes(anexo["link"])
-            if pdf_content:
-                break
-
-        return RawEdital(
-            title=title,
-            url=permalink,
-            raw_agency="CNPq",
-            raw_description=description,
-            pdf_content=pdf_content,
-            raw_cronograma=cronograma,
-            raw_tags=["cnpq"],
-            raw_anexos=anexos,
-        )
-
-    def _extract_listing_entries(self, html: str) -> List[RawEdital]:
-        soup = BeautifulSoup(html, "html.parser")
-        raw_editais: List[RawEdital] = []
-
-        for card_container in soup.select("li:has(div.content)"):
-            raw = self._extract_raw_edital_from_card(card_container)
-            if raw:
-                raw_editais.append(raw)
-
-        return raw_editais
-
-    def read(self) -> List[RawEdital]:
         try:
-            response = requests.get(self.start_url, timeout=self.timeout)
+            response = self.session.get(main_pdf_url, timeout=self.timeout)
             response.raise_for_status()
-            raw_editais = self._extract_listing_entries(response.text)
-            logger.info("CnpqSource extracted %s chamadas.", len(raw_editais))
-            return raw_editais
-        except Exception as exc:
-            logger.error("Error during CNPq extraction: %s", exc)
-            return []
+        except requests.RequestException as exc:
+            logger.warning("Erro ao baixar o PDF %s: %s", main_pdf_url, exc)
+            return None
+
+        content_type = (response.headers.get("content-type") or "").lower()
+        if "application/pdf" not in content_type:
+            logger.info(
+                "Documento principal do CNPq não é PDF, ignorando para OCR: %s (%s)",
+                main_pdf_url,
+                content_type or "desconhecido",
+            )
+            return None
+        return response.content
+
+    @staticmethod
+    def _select_main_pdf_url(anexos: List[Dict[str, str]]) -> str:
+        """
+        O documento principal é o rotulado exatamente como "Chamada" na página.
+        Sem ele, cai no primeiro PDF disponível.
+        """
+        pdfs = [a for a in anexos if a["link"].lower().endswith(".pdf")]
+        for anexo in pdfs:
+            if anexo["titulo"].strip().lower() == MAIN_DOCUMENT_LABEL:
+                return anexo["link"]
+        return pdfs[0]["link"] if pdfs else ""
