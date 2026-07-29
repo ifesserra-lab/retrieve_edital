@@ -43,7 +43,7 @@ graph TB
 | Fluxo | Arquivo | Source | Descrição |
 |-------|---------|--------|-----------|
 | FAPES | `src/flows/ingest_fapes_flow.py` | `FapesSource` | Editais FAPES em múltiplas seções, com OCR Mistral quando há PDF principal. |
-| FINEP | `src/flows/ingest_finep_flow.py` | `FinepSource` | Chamadas abertas com página de detalhe, cronograma, tags, anexos e filtro por ano de prazo. |
+| FINEP | `src/flows/ingest_finep_flow.py` | `FinepSource` | Chamadas abertas via **API Liferay do portal** (OAuth2 + `/o/c/chamadapublicas`), com cronograma, tags, anexos e filtro por ano de prazo. Sem Playwright. |
 | CONIF | `src/flows/ingest_conif_flow.py` | `ConifSource` | Editais do ano corrente, com leitura da página de detalhe e OCR do PDF principal. |
 | PRPPG_IFES | `src/flows/ingest_prppg_ifes_flow.py` | `PrppgIfesSource` | Editais do SIGPesq/Ifes com paginação ASP.NET, URL estável `?cod=` e download do anexo principal. |
 | PROEX_IFES | `src/flows/ingest_proex_ifes_flow.py` | `ProexIfesSource` | Editais abertos da PROEX/IFES, limitados ao ano corrente, com deduplicação pela URL do PDF principal e fallback para `curl` quando o portal retorna `403` a `requests`. |
@@ -53,6 +53,7 @@ graph TB
 ## Configuração global
 
 - `src/config.py`: `get_reference_year(override)` para fontes que filtram por ano de referência.
+- `src/flow_health.py`: sinais de saúde dos fluxos — os fluxos publicam a contagem bruta pelo stdout (`[flow-stats] raw=N new=M`) e o runner usa esse número para distinguir **"o portal não publicou nada"** de **"o source quebrou"**. Antes disso, as duas situações apareciam no log como `Sucesso, delta 0`, o que manteve as quedas da FINEP e do CNPq invisíveis por meses.
 - `.env`: `MISTRAL_API_KEY` para OCR e extrações estruturadas via Mistral.
 - `registry/processed_editais.json`: índice de editais já processados por source (`fapes`, `finep`, `conif`, `prppg_ifes`, `proex_ifes`, `capes`, `cnpq`).
 - `docs/flow_processing_log.md`: log operacional da última execução de cada fluxo.
@@ -108,6 +109,11 @@ graph TB
 
 - `scripts/run_all_flows.py` executa os fluxos na ordem:
   `FAPES` → `FINEP` → `CONIF` → `PRPPG_IFES` → `PROEX_IFES` → `CAPES` → `CNPQ`.
+- O runner captura a saída de cada fluxo e classifica o resultado em três estados:
+  - **Sucesso** — a origem respondeu e o fluxo terminou bem (mesmo sem editais novos);
+  - **Atenção** — a origem devolveu **zero itens brutos**, ou o fluxo está há `ZERO_DELTA_ALERT_THRESHOLD` (7) execuções seguidas sem nada novo;
+  - **Falha** — exit code diferente de zero.
+  Fontes de baixo volume declaradas em `LOW_VOLUME_FLOWS` ficam isentas da regra de sequência.
 - `.github/workflows/run_scraper.yml` chama o runner unificado e deve persistir:
   - `data/output/*.json`
   - `registry/processed_editais.json`
