@@ -3,7 +3,7 @@
 **Autor**: Horizon Project Agent
 **Data**: 2026-07-27
 **Status**: Draft — aguardando aprovação
-**Origem**: `Analise_Portal_IFES_Serra.pdf` §2.2 · recorte do [spec_expansao_fontes.md](spec_expansao_fontes.md) Tier B
+**Origem**: [analise_portal_ifes_serra.pdf](analise_portal_ifes_serra.pdf) §2.2 · recorte do [spec_expansao_fontes.md](spec_expansao_fontes.md) Tier B
 **Prioridade no PDF**: nº 3 (curto prazo) — "abre acesso ao modelo de financiamento mais ágil do Brasil para ICTs"
 
 ---
