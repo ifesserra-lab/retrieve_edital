@@ -9,6 +9,38 @@ from src.components.sinks.json_sink import key_from_nome
 
 logger = logging.getLogger(__name__)
 
+# Cada seção do site da FAPES corresponde a uma categoria. O mapeamento é
+# explícito de propósito: antes, a categoria saía do slug da URL e só era
+# corrigida por uma cadeia de `if`, então uma seção não prevista virava
+# categoria. Era o caso de `chamadas-internacionais`, cujo slug vazava como
+# `chamadas` — a URL termina em "internacionais", que não contém
+# "internacional", então a comparação por substring nunca casava.
+#
+# Chamadas internacionais são cooperação em pesquisa; `internacional` é âmbito,
+# não tema, e vira tag em vez de categoria.
+FAPES_URL_CATEGORIES = (
+    ("difusao", "divulgação de conhecimento"),
+    ("extensao", "extensão"),
+    ("inovacao", "inovação"),
+    ("pesquisa", "pesquisa"),
+    ("internaciona", "pesquisa"),
+)
+FAPES_FALLBACK_CATEGORY = "outros"
+
+
+def category_for_url(url: str) -> str:
+    """Categoria da seção da FAPES; nunca devolve pedaço da URL."""
+    lowered = (url or "").lower()
+    for token, category in FAPES_URL_CATEGORIES:
+        if token in lowered:
+            return category
+    logger.warning(
+        "Seção da FAPES sem categoria mapeada: %s. Usando %s.",
+        url,
+        FAPES_FALLBACK_CATEGORY,
+    )
+    return FAPES_FALLBACK_CATEGORY
+
 class FapesSource(ISource[RawEdital]):
     """
     Playwright-based Extractor for the FAPES editais.
@@ -47,20 +79,7 @@ class FapesSource(ISource[RawEdital]):
                 page = browser.new_page()
                 
                 for url in self.start_urls:
-                    # Determine category based on URL suffix
-                    # Example: https://fapes.es.gov.br/inovacao -> inovacao
-                    # https://fapes.es.gov.br/editais-abertos-pesquisa-4 -> pesquisa
-                    category = url.split("/")[-1].replace("editais-abertos-", "").split("-")[0]
-                    if "difusao" in url:
-                        category = "divulgação de conhecimento"
-                    elif "extensao" in url:
-                        category = "extensão"
-                    elif "pesquisa" in url:
-                        category = "pesquisa"
-                    elif "inovacao" in url:
-                        category = "inovação"
-                    elif "internacional" in url:
-                        category = "internacional"
+                    category = category_for_url(url)
 
                     logger.info(f"Navigating to open editais page at {url} (Category: {category})")
                     try:

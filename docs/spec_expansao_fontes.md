@@ -3,7 +3,7 @@
 **Autor**: Horizon Project Agent
 **Data**: 2026-07-27
 **Status**: Draft — aguardando aprovação
-**Origem**: `Analise_Portal_IFES_Serra.pdf` (Análise das Lacunas de Fontes de Fomento — abr/2026)
+**Origem**: [analise_portal_ifes_serra.pdf](analise_portal_ifes_serra.pdf) (Análise das Lacunas de Fontes de Fomento — abr/2026)
 **Escopo do repositório**: `retrieve_edital` (camada de coleta ETL). O portal de exibição (`ifesserra-lab.github.io/portal_edital`) é outro repositório.
 
 ---
