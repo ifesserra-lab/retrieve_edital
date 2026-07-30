@@ -12,6 +12,13 @@ Documento operacional para registrar a data de processamento dos fluxos do proje
 
 | Data/Hora | Fluxo | Resultado | Observações |
 | :-- | :-- | :-- | :-- |
+| 2026-07-30 02:43:29 -03:00 | `CNPQ` | Atenção | Registry `cnpq`: 10 -> 10 (delta 0); `data/output/` com 153 JSONs; arquivos não-JSON: nenhum. Origem devolveu 10 itens brutos. |
+| 2026-07-30 02:43:28 -03:00 | `CAPES` | Atenção | Registry `capes`: 31 -> 31 (delta 0); `data/output/` com 153 JSONs; arquivos não-JSON: nenhum. Sem editais novos há 19 execuções seguidas — verificar se o source ainda funciona. |
+| 2026-07-30 02:43:05 -03:00 | `PROEX_IFES` | Atenção | Registry `proex_ifes`: 7 -> 7 (delta 0); `data/output/` com 153 JSONs; arquivos não-JSON: nenhum. Sem editais novos há 59 execuções seguidas — verificar se o source ainda funciona. |
+| 2026-07-30 02:43:03 -03:00 | `PRPPG_IFES` | Atenção | Registry `prppg_ifes`: 16 -> 16 (delta 0); `data/output/` com 153 JSONs; arquivos não-JSON: nenhum. Sem editais novos há 44 execuções seguidas — verificar se o source ainda funciona. |
+| 2026-07-30 02:42:46 -03:00 | `CONIF` | Sucesso | Registry `conif`: 16 -> 16 (delta 0); `data/output/` com 153 JSONs; arquivos não-JSON: nenhum. |
+| 2026-07-30 02:42:41 -03:00 | `FINEP` | Atenção | Registry `finep`: 36 -> 36 (delta 0); `data/output/` com 153 JSONs; arquivos não-JSON: nenhum. Origem devolveu 36 itens brutos. |
+| 2026-07-30 02:42:39 -03:00 | `FAPES` | Atenção | Registry `fapes`: 62 -> 62 (delta 0); `data/output/` com 153 JSONs; arquivos não-JSON: nenhum. Sem editais novos há 10 execuções seguidas — verificar se o source ainda funciona. |
 | 2026-07-29 02:49:01 -03:00 | `CNPQ` | Sucesso | Registry `cnpq`: 5 -> 5 (delta 0); `data/output/` com 175 JSONs; arquivos não-JSON: nenhum. |
 | 2026-07-29 02:48:59 -03:00 | `CAPES` | Sucesso | Registry `capes`: 31 -> 31 (delta 0); `data/output/` com 175 JSONs; arquivos não-JSON: nenhum. |
 | 2026-07-29 02:48:49 -03:00 | `PROEX_IFES` | Sucesso | Registry `proex_ifes`: 7 -> 7 (delta 0); `data/output/` com 175 JSONs; arquivos não-JSON: nenhum. |
