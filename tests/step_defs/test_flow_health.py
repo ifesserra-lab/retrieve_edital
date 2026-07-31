@@ -66,3 +66,30 @@ class TestWarnOnRedirect:
     def test_ignores_missing_urls(self):
         assert warn_on_redirect("", "https://example.org") is False
         assert warn_on_redirect("https://example.org", "") is False
+
+
+class TestStatsEmittedWhenEverythingIsRejected:
+    """
+    O PROEX/IFES devolveu 7 itens e publicou 0 — todos com prazo encerrado — e não
+    emitiu estatística alguma: `emit_flow_stats` estava dentro do
+    `if valid_domains:`. Sem o sinal, o runner cai no proxy de sequência e pode
+    acusar de quebrada uma origem que respondeu normalmente.
+    """
+
+    def test_every_flow_emits_outside_the_valid_domains_branch(self):
+        import pathlib
+        import re
+
+        for caminho in sorted(pathlib.Path("src/flows").glob("ingest_*_flow.py")):
+            fonte = caminho.read_text(encoding="utf-8")
+            emissao = re.search(
+                r"^(\s*)emit_flow_stats\(raw_count=listing_count, new_count=len\(",
+                fonte,
+                re.M,
+            )
+            assert emissao, f"{caminho.name} não emite estatísticas antes do sink"
+            # Quatro espaços = corpo da função; oito = dentro de um `if`.
+            assert len(emissao.group(1)) == 4, (
+                f"{caminho.name} emite dentro de um bloco condicional: "
+                "itens todos rejeitados não gerariam sinal"
+            )

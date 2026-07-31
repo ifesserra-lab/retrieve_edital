@@ -71,8 +71,13 @@ def run_pipeline(
     )
 
     logger.info("Phase 3: Load/Sink")
+    # Emitido antes do sink, e fora do `if`: quando a origem responde mas todos
+    # os itens são rejeitados pelas regras de publicação, o runner precisa saber
+    # que a origem respondeu. Dentro do `if`, esse caso não emitia nada e o
+    # runner caía no proxy de sequência — o falso alarme que as estatísticas
+    # existem para evitar.
+    emit_flow_stats(raw_count=listing_count, new_count=len(valid_domains))
     if valid_domains:
-        emit_flow_stats(raw_count=listing_count, new_count=len(valid_domains))
         persisted = sink.write(valid_domains)
         add_many(
             "conif",
