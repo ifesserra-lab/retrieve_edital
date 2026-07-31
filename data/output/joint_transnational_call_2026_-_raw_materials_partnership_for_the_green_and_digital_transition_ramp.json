@@ -1,6 +1,6 @@
 {
     "nome": "JOINT TRANSNATIONAL CALL 2026 - RAW MATERIALS PARTNERSHIP FOR THE GREEN AND DIGITAL TRANSITION (RAMP)",
-    "descrição": "Este edital visa financiar projetos de pesquisa e/ou inovação ao longo de toda a cadeia de valor de matérias-primas. Os projetos devem focar em melhorar o acesso a matérias-primas, promovendo práticas de economia circular, alcançando sustentabilidade e minimizando custos sociais e ambientais. Eles devem agregar valor, inovar e contribuir para o desenvolvimento industrial. O escopo temático do edital baseia-se na Agenda Estratégica de Pesquisa e Inovação (SRIA) da RAMP e inclui suprimento primário e secundário, design e produção, uso e reutilização de produtos e componentes.",
+    "descrição": "Este edital visa financiar projetos de pesquisa e/ou inovação ao longo da cadeia de valor de matérias-primas. Os projetos devem focar em melhorar o acesso a matérias-primas enquanto promovem práticas de economia circular, alcançam sustentabilidade e minimizam custos sociais e ambientais. Eles devem agregar valor, inovar e contribuir para o desenvolvimento industrial. O escopo temático do edital baseia-se na Agenda Estratégica de Pesquisa e Inovação (SRIA) do RAMP e inclui suprimento primário e secundário, design e produção, uso e reutilização de produtos e componentes.",
     "orgão_fomento": "FAPES",
     "categoria": "pesquisa",
     "status": "aberto",
@@ -11,8 +11,9 @@
     "tags": [
         "matérias-primas",
         "economia circular",
-        "transição verde e digital",
-        "inovação tecnológica",
+        "transição verde",
+        "transição digital",
+        "inovação",
         "sustentabilidade"
     ],
     "anexos": [
