@@ -126,6 +126,32 @@ nunca entram no registry e voltam a cada execução, gastando OCR. Registrá-los
 resolveria o desperdício, mas impediria a recoleta de um edital cuja extração
 falhou e depois passou a funcionar. A escolha entre as duas coisas fica pendente.
 
+## Datas que a extração não encontra
+
+Levantamento de 2026-07-31, sobre 628 editais:
+
+| Campo | Situação |
+| :-- | :-- |
+| `data_abertura` | 564 com data real, **64 vazios** |
+| `data_encerramento` | 584 com prazo, **44 vazios** |
+
+Os 64 sem abertura vinham preenchidos com 1º de janeiro do ano corrente — um
+placeholder do normalizer que o portal exibia como se fosse informação da fonte.
+Agora sai vazio: não saber a data é um fato, inventá-la não.
+
+Os 44 sem prazo se dividem em dois grupos, e só um é problema:
+
+- **14 da FINEP** são chamadas de fluxo contínuo. A origem realmente não tem
+  prazo, e o dado está correto.
+- **15 da CAPES, 9 da FAPES e 6 do CONIF** são extração incompleta: o prompt de
+  `extract_from_pdf` **pede** o cronograma, mas o Mistral não o encontra nesses
+  PDFs.
+
+O segundo grupo é qualidade de extração, não instrução faltante — melhorar exige
+avaliar os PDFs concretos que falham e ajustar o prompt contra eles. Fica
+registrado como pendência, sem correção especulativa. O impacto é de exibição: o
+edital aparece no portal sem prazo, mas com descrição e link corretos.
+
 ## Chave de acesso
 
 `MISTRAL_API_KEY` no `.env` local e como secret do repositório no GitHub

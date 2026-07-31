@@ -266,3 +266,76 @@ class TestClassifierFailureIsNotDisguisedAsAResult:
 
         assert edital is not None
         assert edital.categoria == "pesquisa"
+
+
+class TestPlaceholderOpeningDate:
+    """
+    `data_abertura` sem data real recebia 1º de janeiro do ano corrente, e o
+    portal exibia isso como se fosse informação da fonte — 64 editais mostravam
+    uma abertura que ninguém publicou.
+    """
+
+    def test_normalizer_leaves_the_opening_date_empty_when_nothing_was_found(self):
+        from unittest.mock import MagicMock
+
+        from src.components.transforms.edital_normalizer import EditalNormalizer
+
+        service = MagicMock()
+        service.extract_from_pdf.return_value = None
+        normalizer = EditalNormalizer(extraction_service=service)
+
+        raw = RawEdital(
+            title="Edital sem cronograma",
+            url="https://exemplo.org/edital",
+            raw_agency="FAPES",
+            raw_description="Apoio a projetos de pesquisa aplicada no estado.",
+        )
+        edital = normalizer.process(raw)
+
+        assert edital is not None
+        assert edital.data_abertura == ""
+
+    def test_normalizer_keeps_a_real_opening_date(self):
+        from unittest.mock import MagicMock
+
+        from src.components.transforms.edital_normalizer import EditalNormalizer
+
+        service = MagicMock()
+        service.extract_from_pdf.return_value = None
+        normalizer = EditalNormalizer(extraction_service=service)
+
+        raw = RawEdital(
+            title="Edital com cronograma",
+            url="https://exemplo.org/edital",
+            raw_agency="FAPES",
+            raw_description="Apoio a projetos de pesquisa aplicada no estado.",
+            raw_cronograma=[
+                {"evento": "Abertura das inscrições", "data": "2026-03-10"},
+                {"evento": "Prazo para envio de propostas", "data": "2099-12-31"},
+            ],
+        )
+        edital = normalizer.process(raw)
+
+        assert edital.data_abertura == "2026-03-10"
+
+
+def test_curation_clears_the_invented_opening_date():
+    from scripts.curate_output import expected_opening_date
+
+    # 1º de janeiro sem etapa que o confirme: era o placeholder.
+    assert expected_opening_date({"data_abertura": "2026-01-01", "cronograma": []}) == ""
+    # 1º de janeiro confirmado pelo cronograma: é data real, preservada.
+    assert (
+        expected_opening_date(
+            {
+                "data_abertura": "2026-01-01",
+                "cronograma": [{"evento": "Abertura", "data": "2026-01-01"}],
+            }
+        )
+        == "2026-01-01"
+    )
+    # Qualquer outra data passa intacta.
+    assert (
+        expected_opening_date({"data_abertura": "2026-05-20", "cronograma": []})
+        == "2026-05-20"
+    )

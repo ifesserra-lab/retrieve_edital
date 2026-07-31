@@ -25,6 +25,7 @@ Uso:
 
 import argparse
 import json
+import re
 import sys
 from datetime import date
 from pathlib import Path
@@ -150,6 +151,28 @@ def expected_agency(edital: dict) -> str:
     return current
 
 
+# `data_abertura` sem data real recebia 1º de janeiro do ano corrente, e o portal
+# exibia isso como se fosse informação da fonte.
+PLACEHOLDER_OPENING_REGEX = re.compile(r"\d{4}-01-01")
+
+
+def expected_opening_date(edital: dict) -> str:
+    """
+    Data de abertura, ou vazio quando o valor é o antigo placeholder.
+
+    O placeholder é reconhecido por ser 1º de janeiro **sem nenhuma etapa do
+    cronograma que o confirme**. Um edital que realmente abra em 1º de janeiro e
+    tenha isso no cronograma é preservado.
+    """
+    opening = (edital.get("data_abertura") or "").strip()
+    if not PLACEHOLDER_OPENING_REGEX.fullmatch(opening):
+        return opening
+    for item in edital.get("cronograma") or []:
+        if (item.get("data") or "").strip() == opening:
+            return opening
+    return ""
+
+
 def expected_category(edital: dict) -> str:
     """
     Categoria reduzida ao vocabulário canônico.
@@ -208,6 +231,7 @@ def curate(
     status_changes: List[Tuple[Path, str, str]] = []
     category_changes: List[Tuple[Path, str, str]] = []
     agency_changes: List[Tuple[Path, str, str]] = []
+    opening_changes: List[Tuple[Path, str, str]] = []
     removals: Dict[str, List[Path]] = {}
     shell_keys: List[str] = []
 
@@ -225,7 +249,14 @@ def curate(
         wanted_status = expected_status(edital, today)
         wanted_category = expected_category(edital)
         wanted_agency = expected_agency(edital)
+        wanted_opening = expected_opening_date(edital)
         dirty = False
+        if wanted_opening != (edital.get("data_abertura") or "").strip():
+            opening_changes.append(
+                (path, edital.get("data_abertura") or "", wanted_opening)
+            )
+            edital["data_abertura"] = wanted_opening
+            dirty = True
         if wanted_agency and wanted_agency != (edital.get("orgão_fomento") or "").strip():
             agency_changes.append(
                 (path, edital.get("orgão_fomento") or "", wanted_agency)
@@ -260,6 +291,15 @@ def curate(
     if len(category_changes) > 10:
         print(f"  ... e outros {len(category_changes) - 10}")
 
+    if opening_changes:
+        print(
+            f"\nDatas de abertura inventadas a limpar{verb}: {len(opening_changes)}"
+        )
+        for path, before, _ in opening_changes[:5]:
+            print(f"  {before!r} -> '' (sem prova no cronograma)  {path.name[:52]}")
+        if len(opening_changes) > 5:
+            print(f"  ... e outras {len(opening_changes) - 5}")
+
     if agency_changes:
         print(f"\nÓrgãos a preencher{verb}: {len(agency_changes)}")
         for path, before, after in agency_changes[:5]:
@@ -287,6 +327,7 @@ def curate(
     print(
         f"\nResumo{verb}: {len(status_changes)} status, "
         f"{len(category_changes)} categorias, {len(agency_changes)} órgãos, "
+        f"{len(opening_changes)} aberturas, "
         f"{total_removed} removidos."
     )
     if not apply:
@@ -295,6 +336,7 @@ def curate(
         "status": len(status_changes),
         "categories": len(category_changes),
         "agencies": len(agency_changes),
+        "openings": len(opening_changes),
         "removed": total_removed,
     }
 
