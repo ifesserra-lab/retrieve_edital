@@ -32,5 +32,11 @@
             "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/19052026_Edital_2823166_EDITAL_CONJUNTO_4_2026___CAPES_CFN.pdf",
             "tipo": "anexo"
         }
-    ]
+    ],
+    "ambito_geografico": "nacional",
+    "fonte_key": "capes",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "modalidade": ""
 }

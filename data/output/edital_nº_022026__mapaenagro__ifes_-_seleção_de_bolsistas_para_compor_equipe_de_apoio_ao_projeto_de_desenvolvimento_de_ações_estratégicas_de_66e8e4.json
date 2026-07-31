@@ -39,5 +39,11 @@
             "link": "https://proex.ifes.edu.br/images/M_images/Proex/Editais/2026/02/Resultado_final_EDITAL_N_02_2026__MAPA_ENAGRO__IFESdocx.pdf",
             "tipo": "pdf"
         }
-    ]
+    ],
+    "ambito_geografico": "estadual-ES",
+    "fonte_key": "proex_ifes",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "modalidade": ""
 }

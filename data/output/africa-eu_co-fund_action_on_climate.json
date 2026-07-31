@@ -25,5 +25,14 @@
         "Climate, Energy and Mobility",
         "Climate Science and Solutions"
     ],
-    "anexos": []
+    "anexos": [],
+    "modalidade": "",
+    "publico_alvo": [
+        "pesquisador",
+        "internacional"
+    ],
+    "ambito_geografico": "internacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "horizon"
 }

@@ -102,5 +102,11 @@
             "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/09032026_Edital_2727063_Anexo_VII___Declaracao_de_Fluencia_Orientador_Estrangeiro.pdf",
             "tipo": "anexo"
         }
-    ]
+    ],
+    "ambito_geografico": "nacional",
+    "fonte_key": "capes",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "modalidade": ""
 }

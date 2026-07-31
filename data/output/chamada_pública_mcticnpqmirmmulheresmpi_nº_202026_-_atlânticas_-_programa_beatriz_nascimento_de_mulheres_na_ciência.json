@@ -66,5 +66,10 @@
             "tipo": "pdf"
         }
     ],
-    "modalidade": ""
+    "modalidade": "",
+    "ambito_geografico": "nacional",
+    "fonte_key": "cnpq",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": ""
 }

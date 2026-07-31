@@ -376,3 +376,43 @@ class TestContinuousFlowModality:
     def test_does_not_declare_it_when_tipo_de_oportunidade_exists(self):
         raw = self._read_one(build_api_item(prazoProposto=None, vigenciaFim=None))
         assert raw.raw_modalidade is None
+
+
+class TestPublicoAlvoEAmbito:
+    """
+    A taxonomia `publicoAlvo` da API é rica em detalhe comercial e ia inteira
+    para as tags. Agora também alimenta o campo próprio, no vocabulário do portal.
+    """
+
+    @staticmethod
+    def _read_one(item):
+        source = FinepSource(
+            reference_year=2026, api_client=StubApiClient(items=[item])
+        )
+        return source.read()[0]
+
+    def test_startup_e_cooperativa_viram_empresa(self):
+        raw = self._read_one(build_api_item())
+        assert raw.raw_publico_alvo == ["empresa"]
+
+    def test_ict_vira_ict_empresa(self):
+        item = build_api_item(
+            publicoAlvo=[{"key": "ict", "name": "ICT"}, {"key": "startup", "name": "Startup"}]
+        )
+        assert self._read_one(item).raw_publico_alvo == ["ict-empresa", "empresa"]
+
+    def test_faixas_de_receita_viram_empresa(self):
+        item = build_api_item(
+            publicoAlvo=[
+                {"key": "empresa1", "name": "Receita: até R$ 4,8 Mi"},
+                {"key": "empresa5", "name": "Receita: maior que R$ 300,0 Mi"},
+            ]
+        )
+        assert self._read_one(item).raw_publico_alvo == ["empresa"]
+
+    def test_todo_brasil_e_ambito_nacional(self):
+        assert self._read_one(build_api_item()).raw_ambito_geografico == "nacional"
+
+    def test_regiao_especifica_e_preservada(self):
+        item = build_api_item(regiao={"key": "norte", "name": "Região Norte"})
+        assert self._read_one(item).raw_ambito_geografico == "Região Norte"

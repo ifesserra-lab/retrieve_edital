@@ -262,5 +262,11 @@
             "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/24052024_Edital_2384178_SEI_2382892_Edital_14_2019___Alteracao_II.pdf",
             "tipo": "anexo"
         }
-    ]
+    ],
+    "ambito_geografico": "nacional",
+    "fonte_key": "capes",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "modalidade": ""
 }

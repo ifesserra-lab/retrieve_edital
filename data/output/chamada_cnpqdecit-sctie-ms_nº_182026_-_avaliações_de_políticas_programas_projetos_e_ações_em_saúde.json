@@ -62,5 +62,11 @@
             "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-18-2026/anexo-v-diretrizes-metodologicas-das-avaliacoes-de-politicas-puublicas-nacionais-de-saude.docx",
             "tipo": "docx"
         }
-    ]
+    ],
+    "ambito_geografico": "nacional",
+    "fonte_key": "cnpq",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "modalidade": ""
 }

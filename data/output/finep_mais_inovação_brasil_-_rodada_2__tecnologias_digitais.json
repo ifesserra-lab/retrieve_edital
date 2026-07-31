@@ -55,5 +55,11 @@
             "link": "http://www.finep.gov.br/images/chamadas-publicas/2026/12_03_2026_TA_A5.pdf",
             "tipo": "Documentos"
         }
-    ]
+    ],
+    "ambito_geografico": "nacional",
+    "fonte_key": "finep",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "modalidade": ""
 }

@@ -58,6 +58,21 @@ LEGACY_DETAIL_TEMPLATE = (
 # portal distinguir "candidate-se a qualquer momento" de "prazo desconhecido".
 CONTINUOUS_FLOW_MODALITY = "fluxo-contínuo"
 
+# A taxonomia `publicoAlvo` da API é rica em detalhe comercial — faixas de receita,
+# tipo de organização — e mapeia para o vocabulário canônico do portal. `ICT`
+# indica cooperação instituição-empresa; os demais indicam empresa.
+PUBLICO_ALVO_BY_KEY = {
+    "ict": "ict-empresa",
+    "startup": "empresa",
+    "cooperativa": "empresa",
+    "fundosDeInvestimento": "empresa",
+}
+PUBLICO_ALVO_REVENUE_PREFIX = "empresa"
+
+# `regiao` da API descreve o alcance da chamada. "Todo Brasil" é o âmbito
+# nacional; qualquer outro valor é recorte regional e é preservado como está.
+NATIONAL_REGION_KEY = "todoBrasil"
+
 OPEN_SITUATION_KEY = "aberta"
 OPEN_SITUATION_FILTER = f"situacao eq '{OPEN_SITUATION_KEY}'"
 DEFAULT_PAGE_SIZE = 100
@@ -420,6 +435,8 @@ class FinepSource(ISource[RawEdital]):
             url=public_url,
             source_category="chamada pública",
             raw_modalidade=self._modalidade_of(item, deadline),
+            raw_publico_alvo=self._publico_alvo_of(item) or None,
+            raw_ambito_geografico=self._ambito_of(item),
             raw_agency="FINEP",
             raw_description=description,
             document_type="edital",
@@ -428,6 +445,31 @@ class FinepSource(ISource[RawEdital]):
             raw_tags=self._build_tags(item) or None,
             raw_anexos=self._fetch_anexos(chamada_id) or None,
         )
+
+    @staticmethod
+    def _publico_alvo_of(item: Dict[str, Any]) -> List[str]:
+        """Traduz a taxonomia `publicoAlvo` para o vocabulário do portal."""
+        resultado: List[str] = []
+        for entrada in item.get("publicoAlvo") or []:
+            if not isinstance(entrada, dict):
+                continue
+            chave = (entrada.get("key") or "").strip()
+            valor = PUBLICO_ALVO_BY_KEY.get(chave)
+            if valor is None and chave.startswith("empresa"):
+                # `empresa1`..`empresa5` são faixas de receita.
+                valor = PUBLICO_ALVO_REVENUE_PREFIX
+            if valor and valor not in resultado:
+                resultado.append(valor)
+        return resultado
+
+    @staticmethod
+    def _ambito_of(item: Dict[str, Any]) -> str:
+        """Âmbito a partir de `regiao`; "Todo Brasil" significa nacional."""
+        regiao = item.get("regiao")
+        chave = (regiao or {}).get("key", "") if isinstance(regiao, dict) else ""
+        if not chave or chave == NATIONAL_REGION_KEY:
+            return "nacional"
+        return _name_of(regiao) or "nacional"
 
     @staticmethod
     def _modalidade_of(item: Dict[str, Any], deadline: str) -> Optional[str]:

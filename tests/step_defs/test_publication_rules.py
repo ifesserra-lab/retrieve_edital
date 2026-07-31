@@ -443,3 +443,51 @@ class TestModalidade:
         """Deduzir da falta de prazo seria circular: é o que o campo desambigua."""
         edital = build_edital(data_encerramento="", cronograma=[])
         assert publication_rules.resolve_modalidade(edital, build_raw()) == ""
+
+
+class TestCamposDeFonte:
+    """
+    Prioridade 6 do PDF de análise. `ambito_geografico` e `fonte_key` são
+    conhecimento estático e certo sobre cada fonte; `publico_alvo` só é preenchido
+    com o que a origem declara.
+    """
+
+    @pytest.mark.parametrize(
+        "orgao, ambito, fonte_key",
+        [
+            ("FAPES", "estadual-ES", "fapes"),
+            ("FINEP", "nacional", "finep"),
+            ("HORIZON EUROPE", "internacional", "horizon"),
+            ("PRPPG/IFES", "estadual-ES", "prppg_ifes"),
+        ],
+    )
+    def test_perfil_da_fonte(self, orgao, ambito, fonte_key):
+        edital = build_edital(orgão_fomento=orgao)
+        raw = build_raw()
+        assert publication_rules.resolve_ambito_geografico(edital, raw) == ambito
+        assert publication_rules.resolve_fonte_key(edital, raw) == fonte_key
+
+    def test_ambito_declarado_pela_origem_prevalece(self):
+        """A FINEP informa a região da chamada, que não é sempre Todo Brasil."""
+        edital = build_edital(orgão_fomento="FINEP")
+        raw = build_raw(raw_ambito_geografico="Região Norte")
+        assert publication_rules.resolve_ambito_geografico(edital, raw) == "Região Norte"
+
+    def test_fonte_desconhecida_fica_vazia(self):
+        edital = build_edital(orgão_fomento="AGÊNCIA NOVA")
+        assert publication_rules.resolve_ambito_geografico(edital, build_raw()) == ""
+
+    def test_publico_alvo_so_com_o_que_a_origem_declara(self):
+        raw = build_raw(raw_publico_alvo=["empresa", "ict-empresa"])
+        assert publication_rules.resolve_publico_alvo(build_edital(), raw) == [
+            "empresa",
+            "ict-empresa",
+        ]
+
+    def test_publico_alvo_vazio_quando_a_origem_nao_informa(self):
+        """Inferir do texto produziria rótulo plausível e não verificável."""
+        assert publication_rules.resolve_publico_alvo(build_edital(), build_raw()) == []
+
+    def test_publico_alvo_descarta_valor_fora_do_vocabulario(self):
+        raw = build_raw(raw_publico_alvo=["empresa", "qualquer coisa", "EMPRESA"])
+        assert publication_rules.resolve_publico_alvo(build_edital(), raw) == ["empresa"]

@@ -26,5 +26,11 @@
             "link": "https://fapes.es.gov.br/Media/fapes/Editais/CONFAP-DAAD_1º_Termo_Aditivo_e_Declaração.pdf",
             "tipo": "alteração"
         }
-    ]
+    ],
+    "ambito_geografico": "estadual-ES",
+    "fonte_key": "fapes",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "modalidade": ""
 }

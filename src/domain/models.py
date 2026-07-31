@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Optional, List, Dict
 
 @dataclass
@@ -21,6 +21,12 @@ class RawEdital:
     # Modalidade declarada pela origem. Hoje só `fluxo-contínuo`, quando a
     # fonte indica explicitamente que a chamada não tem prazo de encerramento.
     raw_modalidade: Optional[str] = None
+    # Público-alvo e âmbito declarados pela origem, quando ela os informa. A FINEP
+    # traz o público na taxonomia `publicoAlvo` e a região em `regiao`; o Horizon,
+    # pelas divisões do programa. Fontes sem essa informação deixam vazio, em vez
+    # de receber palpite.
+    raw_publico_alvo: Optional[List[str]] = None
+    raw_ambito_geografico: Optional[str] = None
 
 @dataclass
 class EditalDomain:
@@ -39,3 +45,15 @@ class EditalDomain:
     # campo, `data_encerramento` vazio significava as duas coisas ao mesmo
     # tempo e o portal não tinha como diferenciá-las.
     modalidade: str = ""
+    # Campos da prioridade 6 do PDF de análise. `publico_alvo` e
+    # `ambito_geografico` são preenchidos quando há evidência da origem;
+    # `valor_estimado` e `trl_exigido` existem no schema mas só podem vir do texto
+    # do PDF, e ficam vazios até que a extração seja avaliada contra os documentos
+    # que hoje falham — preencher por palpite seria pior que deixar vazio.
+    publico_alvo: List[str] = field(default_factory=list)
+    ambito_geografico: str = ""
+    valor_estimado: Optional[float] = None
+    trl_exigido: str = ""
+    # Qual fonte monitorada produziu este edital. `orgão_fomento` é rótulo de
+    # exibição; esta é a chave técnica, estável, usada para rastrear origem.
+    fonte_key: str = ""

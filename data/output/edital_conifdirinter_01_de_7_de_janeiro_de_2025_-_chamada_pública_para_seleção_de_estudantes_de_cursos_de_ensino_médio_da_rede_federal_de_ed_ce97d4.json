@@ -83,5 +83,11 @@
             "link": "https://portal.conif.org.br/images/Editais/2026/2_Fevereiro/edital-01_26---ujaen-graduacao---resultado-final.pdf",
             "tipo": "anexo"
         }
-    ]
+    ],
+    "ambito_geografico": "nacional",
+    "fonte_key": "conif",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "modalidade": ""
 }

@@ -68,5 +68,11 @@
             "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/04022026_Edital_2762984_SEI_2759864_Edital_Conjunto_n__2_2026.pdf",
             "tipo": "anexo"
         }
-    ]
+    ],
+    "ambito_geografico": "nacional",
+    "fonte_key": "capes",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "modalidade": ""
 }

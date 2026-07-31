@@ -26,5 +26,11 @@
             "link": "https://fapes.es.gov.br/Media/fapes/Editais/Diretrizes%20FAPES_Chamada_ERC_2026.pdf",
             "tipo": "anexo"
         }
-    ]
+    ],
+    "ambito_geografico": "estadual-ES",
+    "fonte_key": "fapes",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "modalidade": ""
 }

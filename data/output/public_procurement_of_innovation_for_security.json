@@ -36,5 +36,14 @@
             "link": "https://ec.europa.eu/research/participants/submission/manage/screen/submission/create-draft/43992?topic=HORIZON-CL3-2026-01-SSRI-03",
             "tipo": "link"
         }
-    ]
+    ],
+    "modalidade": "",
+    "publico_alvo": [
+        "pesquisador",
+        "internacional"
+    ],
+    "ambito_geografico": "internacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "horizon"
 }

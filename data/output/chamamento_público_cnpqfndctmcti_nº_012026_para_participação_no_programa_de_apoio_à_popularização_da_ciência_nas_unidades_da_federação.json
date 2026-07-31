@@ -47,5 +47,11 @@
             "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamamento-no-01-2026/Chamamento_01_2026_PopUF_Anexo_III.pdf",
             "tipo": "pdf"
         }
-    ]
+    ],
+    "ambito_geografico": "nacional",
+    "fonte_key": "cnpq",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "modalidade": ""
 }

@@ -30,5 +30,14 @@
             "link": "https://ec.europa.eu/research/participants/submission/manage/screen/submission/create-draft/43585?topic=HORIZON-CL4-2026-SPACE-03-81",
             "tipo": "link"
         }
-    ]
+    ],
+    "modalidade": "",
+    "publico_alvo": [
+        "pesquisador",
+        "internacional"
+    ],
+    "ambito_geografico": "internacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "horizon"
 }

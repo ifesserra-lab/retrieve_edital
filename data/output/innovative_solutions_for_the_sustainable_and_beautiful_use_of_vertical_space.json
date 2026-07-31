@@ -43,5 +43,14 @@
             "link": "https://ec.europa.eu/research/participants/submission/manage/screen/submission/create-draft/43956?topic=HORIZON-NEB-2026-01-REGEN-03",
             "tipo": "link"
         }
-    ]
+    ],
+    "modalidade": "",
+    "publico_alvo": [
+        "pesquisador",
+        "internacional"
+    ],
+    "ambito_geografico": "internacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "horizon"
 }

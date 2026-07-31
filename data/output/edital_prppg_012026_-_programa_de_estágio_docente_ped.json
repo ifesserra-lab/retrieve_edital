@@ -65,5 +65,11 @@
             "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=280#downloadTarget=ctl00%24Conteudo%24Consulta_Arquivo%24rptArquivo%24ctl03%24Download",
             "tipo": "pdf"
         }
-    ]
+    ],
+    "ambito_geografico": "estadual-ES",
+    "fonte_key": "prppg_ifes",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "modalidade": ""
 }

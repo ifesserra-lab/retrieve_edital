@@ -41,5 +41,11 @@
             "link": "https://fapes.es.gov.br/Media/fapes/Editais/ANEXO%20VI%20-%20DECLARAÇÃO%20DE%20CIÊNCIA%20DE%20CONTEÚDO%20DO%20PROJETO%20E%20AUTORIZAÇÃO%20DE%20EXECUÇÃO%20-%20GÊNESIS%202026.docx",
             "tipo": "anexo"
         }
-    ]
+    ],
+    "ambito_geografico": "estadual-ES",
+    "fonte_key": "fapes",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "modalidade": ""
 }

@@ -185,5 +185,11 @@
             "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/resultados-dos-editais/EDITAL362017_17Chamada.pdf",
             "tipo": "anexo"
         }
-    ]
+    ],
+    "ambito_geografico": "nacional",
+    "fonte_key": "capes",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "modalidade": ""
 }

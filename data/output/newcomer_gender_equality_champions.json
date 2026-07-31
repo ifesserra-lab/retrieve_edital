@@ -31,5 +31,14 @@
             "link": "https://ec.europa.eu/research/participants/submission/manage/screen/submission/create-draft/44837?topic=HORIZON-WIDERA-2026-GENDER-Prize-02",
             "tipo": "link"
         }
-    ]
+    ],
+    "modalidade": "",
+    "publico_alvo": [
+        "pesquisador",
+        "internacional"
+    ],
+    "ambito_geografico": "internacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "horizon"
 }

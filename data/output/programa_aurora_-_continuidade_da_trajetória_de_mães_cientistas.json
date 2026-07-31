@@ -42,5 +42,11 @@
             "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/Edital_2818271_SEI_2817084_Edital_16_2026__1_.pdf",
             "tipo": "anexo"
         }
-    ]
+    ],
+    "ambito_geografico": "nacional",
+    "fonte_key": "capes",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "modalidade": ""
 }

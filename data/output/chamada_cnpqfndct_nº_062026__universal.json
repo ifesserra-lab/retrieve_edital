@@ -42,5 +42,11 @@
             "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-06-2026/FAQ_Chamada_Universal_06_2026_atualizado_23_07.pdf",
             "tipo": "pdf"
         }
-    ]
+    ],
+    "ambito_geografico": "nacional",
+    "fonte_key": "cnpq",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "modalidade": ""
 }

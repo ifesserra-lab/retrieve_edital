@@ -34,6 +34,7 @@ from typing import Dict, List, Tuple
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from src.components.transforms.publication_rules import (  # noqa: E402
+    SOURCE_PROFILES,
     CLOSED_SYNONYMS,
     FALLBACK_DESCRIPTION_PREFIX,
     STATUS_CLOSED,
@@ -191,6 +192,36 @@ def expected_category(edital: dict) -> str:
     return canonical_category(edital.get("categoria"), hint)
 
 
+def backfill_source_profile(edital: dict) -> dict:
+    """
+    Preenche `ambito_geografico` e `fonte_key` a partir da fonte, quando vazios.
+
+    São conhecimento estático e certo — a FAPES é estadual do ES, o Horizon é
+    europeu. `publico_alvo`, `valor_estimado` e `trl_exigido` **não** são
+    preenchidos aqui: dependem de evidência da origem ou do texto do PDF, e
+    inventá-los seria pior que deixá-los vazios. Eles chegam na recoleta.
+    """
+    mudancas = {}
+    perfil = SOURCE_PROFILES.get((edital.get("orgão_fomento") or "").strip().upper())
+    if not perfil:
+        return mudancas
+    ambito, fonte_key = perfil
+    if ambito and not (edital.get("ambito_geografico") or "").strip():
+        mudancas["ambito_geografico"] = ambito
+    if fonte_key and not (edital.get("fonte_key") or "").strip():
+        mudancas["fonte_key"] = fonte_key
+    # Campos do schema que podem faltar nos JSONs gravados antes da adição.
+    for campo, vazio in (
+        ("publico_alvo", []),
+        ("valor_estimado", None),
+        ("trl_exigido", ""),
+        ("modalidade", ""),
+    ):
+        if campo not in edital:
+            mudancas[campo] = vazio
+    return mudancas
+
+
 def drop_registry_keys(registry_path: Path, keys: List[str], apply: bool) -> int:
     """
     Remove chaves do índice para que o edital possa ser recoletado.
@@ -232,6 +263,7 @@ def curate(
     category_changes: List[Tuple[Path, str, str]] = []
     agency_changes: List[Tuple[Path, str, str]] = []
     opening_changes: List[Tuple[Path, str, str]] = []
+    profile_changes: List[Tuple[Path, list]] = []
     removals: Dict[str, List[Path]] = {}
     shell_keys: List[str] = []
 
@@ -251,6 +283,11 @@ def curate(
         wanted_agency = expected_agency(edital)
         wanted_opening = expected_opening_date(edital)
         dirty = False
+        perfil = backfill_source_profile(edital)
+        if perfil:
+            profile_changes.append((path, sorted(perfil)))
+            edital.update(perfil)
+            dirty = True
         if wanted_opening != (edital.get("data_abertura") or "").strip():
             opening_changes.append(
                 (path, edital.get("data_abertura") or "", wanted_opening)
@@ -291,6 +328,11 @@ def curate(
     if len(category_changes) > 10:
         print(f"  ... e outros {len(category_changes) - 10}")
 
+    if profile_changes:
+        print(f"\nCampos de fonte a preencher{verb}: {len(profile_changes)}")
+        campos = sorted({c for _, cs in profile_changes for c in cs})
+        print(f"  campos: {', '.join(campos)}")
+
     if opening_changes:
         print(
             f"\nDatas de abertura inventadas a limpar{verb}: {len(opening_changes)}"
@@ -327,7 +369,7 @@ def curate(
     print(
         f"\nResumo{verb}: {len(status_changes)} status, "
         f"{len(category_changes)} categorias, {len(agency_changes)} órgãos, "
-        f"{len(opening_changes)} aberturas, "
+        f"{len(opening_changes)} aberturas, {len(profile_changes)} perfis, "
         f"{total_removed} removidos."
     )
     if not apply:
@@ -337,6 +379,7 @@ def curate(
         "categories": len(category_changes),
         "agencies": len(agency_changes),
         "openings": len(opening_changes),
+        "profiles": len(profile_changes),
         "removed": total_removed,
     }
 

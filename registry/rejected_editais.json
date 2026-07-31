@@ -40,5 +40,74 @@
       "recusado_em": "2026-07-31",
       "valida_ate": "2026-08-07"
     }
+  },
+  "finep": {
+    "https://www.finep.gov.br/e/chamada-publica/222684/753688": {
+      "motivo": "prazo encerrado em 2026-05-29",
+      "recusado_em": "2026-07-31",
+      "valida_ate": "2026-08-07"
+    },
+    "https://www.finep.gov.br/e/chamada-publica/222684/755080": {
+      "motivo": "prazo encerrado em 2026-04-09",
+      "recusado_em": "2026-07-31",
+      "valida_ate": "2026-08-07"
+    },
+    "https://www.finep.gov.br/e/chamada-publica/222684/755727": {
+      "motivo": "prazo encerrado em 2026-05-11",
+      "recusado_em": "2026-07-31",
+      "valida_ate": "2026-08-07"
+    },
+    "https://www.finep.gov.br/e/chamada-publica/222684/755795": {
+      "motivo": "prazo encerrado em 2026-06-08",
+      "recusado_em": "2026-07-31",
+      "valida_ate": "2026-08-07"
+    },
+    "https://www.finep.gov.br/e/chamada-publica/222684/755892": {
+      "motivo": "prazo encerrado em 2026-07-03",
+      "recusado_em": "2026-07-31",
+      "valida_ate": "2026-08-07"
+    },
+    "https://www.finep.gov.br/e/chamada-publica/222684/756012": {
+      "motivo": "prazo encerrado em 2026-05-28",
+      "recusado_em": "2026-07-31",
+      "valida_ate": "2026-08-07"
+    }
+  },
+  "horizon": {
+    "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-EIC-2025-ACCELERATOR-02-CHALLENGES-01": {
+      "motivo": "prazo encerrado em 2025-10-01",
+      "recusado_em": "2026-07-31",
+      "valida_ate": "2026-08-07"
+    },
+    "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-EIC-2025-ACCELERATOR-02-CHALLENGES-02": {
+      "motivo": "prazo encerrado em 2025-10-01",
+      "recusado_em": "2026-07-31",
+      "valida_ate": "2026-08-07"
+    },
+    "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-EIC-2025-ACCELERATOR-02-CHALLENGES-03": {
+      "motivo": "prazo encerrado em 2025-10-01",
+      "recusado_em": "2026-07-31",
+      "valida_ate": "2026-08-07"
+    },
+    "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-EIC-2025-ACCELERATOR-02-CHALLENGES-04": {
+      "motivo": "prazo encerrado em 2025-10-01",
+      "recusado_em": "2026-07-31",
+      "valida_ate": "2026-08-07"
+    },
+    "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-EIC-2025-ACCELERATOR-02-CHALLENGES-05": {
+      "motivo": "prazo encerrado em 2025-10-01",
+      "recusado_em": "2026-07-31",
+      "valida_ate": "2026-08-07"
+    },
+    "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-EIC-2025-ACCELERATOR-02-OPEN-01": {
+      "motivo": "prazo encerrado em 2025-10-01",
+      "recusado_em": "2026-07-31",
+      "valida_ate": "2026-08-07"
+    },
+    "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-JU-CHIPS-2025-IA-LEAI-two-stage": {
+      "motivo": "prazo encerrado em 2025-09-17",
+      "recusado_em": "2026-07-31",
+      "valida_ate": "2026-08-07"
+    }
   }
 }

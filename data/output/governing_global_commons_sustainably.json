@@ -46,5 +46,14 @@
             "link": "https://ec.europa.eu/research/participants/submission/manage/screen/submission/create-draft/44026?topic=HORIZON-CL2-2026-01-DEMOCRACY-06",
             "tipo": "link"
         }
-    ]
+    ],
+    "modalidade": "",
+    "publico_alvo": [
+        "pesquisador",
+        "internacional"
+    ],
+    "ambito_geografico": "internacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "horizon"
 }

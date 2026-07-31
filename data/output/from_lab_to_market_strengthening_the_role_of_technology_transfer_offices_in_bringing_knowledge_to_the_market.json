@@ -33,5 +33,14 @@
             "link": "https://ec.europa.eu/research/participants/submission/manage/screen/submission/create-draft/44730?topic=HORIZON-EIE-2026-03-CONNECT-01",
             "tipo": "link"
         }
-    ]
+    ],
+    "modalidade": "",
+    "publico_alvo": [
+        "pesquisador",
+        "internacional"
+    ],
+    "ambito_geografico": "internacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "horizon"
 }
