@@ -12,6 +12,13 @@ Documento operacional para registrar a data de processamento dos fluxos do proje
 
 | Data/Hora | Fluxo | Resultado | Observações |
 | :-- | :-- | :-- | :-- |
+| 2026-07-31 03:09:27 -03:00 | `CNPQ` | Atenção | Registry `cnpq`: 10 -> 10 (delta 0); `data/output/` com 153 JSONs; arquivos não-JSON: nenhum. Origem devolveu 9 itens brutos. |
+| 2026-07-31 03:09:24 -03:00 | `CAPES` | Atenção | Registry `capes`: 31 -> 31 (delta 0); `data/output/` com 153 JSONs; arquivos não-JSON: nenhum. Sem editais novos há 20 execuções seguidas — verificar se o source ainda funciona. |
+| 2026-07-31 03:09:12 -03:00 | `PROEX_IFES` | Atenção | Registry `proex_ifes`: 7 -> 7 (delta 0); `data/output/` com 153 JSONs; arquivos não-JSON: nenhum. Sem editais novos há 60 execuções seguidas — verificar se o source ainda funciona. |
+| 2026-07-31 03:09:11 -03:00 | `PRPPG_IFES` | Atenção | Registry `prppg_ifes`: 16 -> 16 (delta 0); `data/output/` com 153 JSONs; arquivos não-JSON: nenhum. Sem editais novos há 45 execuções seguidas — verificar se o source ainda funciona. |
+| 2026-07-31 03:08:54 -03:00 | `CONIF` | Sucesso | Registry `conif`: 16 -> 16 (delta 0); `data/output/` com 153 JSONs; arquivos não-JSON: nenhum. |
+| 2026-07-31 03:08:48 -03:00 | `FINEP` | Atenção | Registry `finep`: 36 -> 36 (delta 0); `data/output/` com 153 JSONs; arquivos não-JSON: nenhum. Origem devolveu 36 itens brutos. |
+| 2026-07-31 03:08:46 -03:00 | `FAPES` | Atenção | Registry `fapes`: 62 -> 62 (delta 0); `data/output/` com 153 JSONs; arquivos não-JSON: nenhum. Sem editais novos há 11 execuções seguidas — verificar se o source ainda funciona. |
 | 2026-07-30 02:43:29 -03:00 | `CNPQ` | Atenção | Registry `cnpq`: 10 -> 10 (delta 0); `data/output/` com 153 JSONs; arquivos não-JSON: nenhum. Origem devolveu 10 itens brutos. |
 | 2026-07-30 02:43:28 -03:00 | `CAPES` | Atenção | Registry `capes`: 31 -> 31 (delta 0); `data/output/` com 153 JSONs; arquivos não-JSON: nenhum. Sem editais novos há 19 execuções seguidas — verificar se o source ainda funciona. |
 | 2026-07-30 02:43:05 -03:00 | `PROEX_IFES` | Atenção | Registry `proex_ifes`: 7 -> 7 (delta 0); `data/output/` com 153 JSONs; arquivos não-JSON: nenhum. Sem editais novos há 59 execuções seguidas — verificar se o source ainda funciona. |
