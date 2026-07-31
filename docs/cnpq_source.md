@@ -54,7 +54,7 @@ O rótulo varia conforme o tipo de peça:
 
 O início vira `Abertura das inscrições` e o fim `Prazo para envio de propostas` no cronograma — rótulos que o `EditalNormalizer` reconhece ao derivar `data_abertura` e `data_encerramento`.
 
-**A data de `Publicado em` da página é deliberadamente ignorada.** É timestamp do CMS, não marco do edital, e o normalizer dá precedência a eventos de publicação ao derivar `data_abertura` — incluí-la faria a data do CMS sobrepor a abertura real das inscrições.
+A data de `Publicado em` **voltou ao cronograma**. Ela havia sido removida porque o normalizer dava precedência a eventos de publicação ao derivar `data_abertura`, e a data do CMS sobrepunha a abertura real das inscrições. Com a precedência corrigida — `abertura das inscrições` antes de `publicação` — ela pode ser registrada como a informação adicional que é.
 
 Chamada sem período declarado na página **é mantida**: a data costuma estar apenas no PDF, e o OCR a recupera. Foi o caso da `Nº 20/2026 - Atlânticas`, cujo encerramento (2026-09-30) só existia no documento.
 
