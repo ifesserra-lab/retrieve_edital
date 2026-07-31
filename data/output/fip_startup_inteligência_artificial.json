@@ -35,5 +35,11 @@
             "link": "https://www.finep.gov.br/documents/20120/758476/FIP_IA_1a_Retificacao_Cronograma+%281%29.docx/b5f6ff48-a383-d499-7717-6163a16630e7?version=1.0&t=1783967616092&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=9d297653-e409-ae9d-4e2b-d118de36c823",
             "tipo": "pdf"
         }
-    ]
+    ],
+    "ambito_geografico": "nacional",
+    "fonte_key": "finep",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "modalidade": ""
 }

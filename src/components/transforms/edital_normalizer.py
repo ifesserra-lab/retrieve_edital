@@ -359,4 +359,9 @@ class EditalNormalizer(ITransform[RawEdital, EditalDomain]):
             edital.categoria, publication_rules.category_hint_text(edital)
         )
         edital.modalidade = publication_rules.resolve_modalidade(edital, raw_data)
+        edital.ambito_geografico = publication_rules.resolve_ambito_geografico(
+            edital, raw_data
+        )
+        edital.fonte_key = publication_rules.resolve_fonte_key(edital, raw_data)
+        edital.publico_alvo = publication_rules.resolve_publico_alvo(edital, raw_data)
         return edital

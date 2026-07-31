@@ -39,5 +39,11 @@
             "link": "https://agifes.ifes.edu.br/wp-content/uploads/2026/05/Edital-PROEX-07_2026-Resultado-Final-da-Etapa-2.docx.pdf",
             "tipo": "pdf"
         }
-    ]
+    ],
+    "ambito_geografico": "estadual-ES",
+    "fonte_key": "proex_ifes",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "modalidade": ""
 }

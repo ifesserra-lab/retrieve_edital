@@ -102,5 +102,12 @@
             "tipo": "pdf"
         }
     ],
-    "modalidade": "fluxo-contínuo"
+    "modalidade": "fluxo-contínuo",
+    "publico_alvo": [
+        "empresa"
+    ],
+    "ambito_geografico": "nacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "finep"
 }

@@ -77,5 +77,11 @@
             "link": "https://fapes.es.gov.br/Media/fapes/Editais/Termo%20de%20Compromisso%20entre%20a%20Empresa%20e%20a%20ICT-IES-P.docx",
             "tipo": "anexo"
         }
-    ]
+    ],
+    "ambito_geografico": "estadual-ES",
+    "fonte_key": "fapes",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "modalidade": ""
 }

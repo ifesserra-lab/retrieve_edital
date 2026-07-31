@@ -35,5 +35,11 @@
             "link": "https://fapes.es.gov.br/Media/fapes/Editais/Diretrizes_Chamada%20Ocean%202%20CRA.pdf",
             "tipo": "anexo"
         }
-    ]
+    ],
+    "ambito_geografico": "estadual-ES",
+    "fonte_key": "fapes",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "modalidade": ""
 }

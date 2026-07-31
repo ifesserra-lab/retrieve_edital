@@ -59,5 +59,11 @@
             "link": "http://www.finep.gov.br/images/chamadas-publicas/2026/06_02_2026_C_Agro_Anexo5.pdf",
             "tipo": "Documentos"
         }
-    ]
+    ],
+    "ambito_geografico": "nacional",
+    "fonte_key": "finep",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "modalidade": ""
 }

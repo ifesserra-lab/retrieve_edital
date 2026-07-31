@@ -40,5 +40,14 @@
             "link": "https://ec.europa.eu/research/participants/submission/manage/screen/submission/create-draft/44352?topic=HORIZON-MSCA-2026-DN-01-01",
             "tipo": "link"
         }
-    ]
+    ],
+    "modalidade": "",
+    "publico_alvo": [
+        "pesquisador",
+        "internacional"
+    ],
+    "ambito_geografico": "internacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "horizon"
 }

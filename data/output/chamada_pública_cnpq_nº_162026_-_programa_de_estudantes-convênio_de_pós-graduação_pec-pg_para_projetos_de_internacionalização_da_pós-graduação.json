@@ -42,5 +42,11 @@
             "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-16-2026/ANEXO_II_Chamada_CNPq_PEC_PG_16_2026.docx",
             "tipo": "docx"
         }
-    ]
+    ],
+    "ambito_geografico": "nacional",
+    "fonte_key": "cnpq",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "modalidade": ""
 }

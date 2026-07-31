@@ -197,5 +197,11 @@
             "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/Edital_52_Certificacao_LinguaInglesa2010.pdf",
             "tipo": "anexo"
         }
-    ]
+    ],
+    "ambito_geografico": "nacional",
+    "fonte_key": "capes",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "modalidade": ""
 }

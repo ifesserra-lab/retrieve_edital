@@ -60,6 +60,35 @@ CATEGORY_FALLBACK = "outros"
 MODALITY_CONTINUOUS = "fluxo-contínuo"
 CONTINUOUS_FLOW_MARKERS = ("fluxo contínuo", "fluxo continuo", "fluxo-contínuo")
 
+# Âmbito geográfico e chave técnica por fonte monitorada. É conhecimento estático
+# e certo: a FAPES é a fundação estadual do Espírito Santo, PRPPG e PROEX são
+# unidades do IFES, o Horizon é europeu. Não há inferência aqui — o que a origem
+# não permite afirmar fica vazio.
+SOURCE_PROFILES = {
+    "FAPES": ("estadual-ES", "fapes"),
+    "FINEP": ("nacional", "finep"),
+    "CAPES": ("nacional", "capes"),
+    "CNPQ": ("nacional", "cnpq"),
+    "CONIF": ("nacional", "conif"),
+    "PRPPG/IFES": ("estadual-ES", "prppg_ifes"),
+    "PROEX/IFES": ("estadual-ES", "proex_ifes"),
+    "HORIZON EUROPE": ("internacional", "horizon"),
+}
+
+# Valores canônicos de `publico_alvo`, conforme o §3.2 do PDF de análise.
+PUBLICO_PESQUISADOR = "pesquisador"
+PUBLICO_ESTUDANTE = "estudante"
+PUBLICO_EMPRESA = "empresa"
+PUBLICO_ICT_EMPRESA = "ict-empresa"
+PUBLICO_INTERNACIONAL = "internacional"
+CANONICAL_PUBLICO_ALVO = (
+    PUBLICO_PESQUISADOR,
+    PUBLICO_ESTUDANTE,
+    PUBLICO_EMPRESA,
+    PUBLICO_ICT_EMPRESA,
+    PUBLICO_INTERNACIONAL,
+)
+
 
 @dataclass(frozen=True)
 class PublicationVerdict:
@@ -201,6 +230,47 @@ def resolve_modalidade(edital: EditalDomain, raw_data: RawEdital) -> str:
     if any(marker in haystack for marker in CONTINUOUS_FLOW_MARKERS):
         return MODALITY_CONTINUOUS
     return (edital.modalidade or "").strip().lower()
+
+
+def _profile_of(edital: EditalDomain) -> tuple:
+    return SOURCE_PROFILES.get((edital.orgão_fomento or "").strip().upper(), ("", ""))
+
+
+def resolve_ambito_geografico(edital: EditalDomain, raw_data: RawEdital) -> str:
+    """
+    Âmbito geográfico: o declarado pela origem, ou o perfil da fonte.
+
+    A origem tem precedência porque pode ser mais específica — a FINEP informa a
+    região da chamada, que não é sempre "Todo Brasil".
+    """
+    declarado = (raw_data.raw_ambito_geografico or "").strip()
+    if declarado:
+        return declarado
+    if (edital.ambito_geografico or "").strip():
+        return edital.ambito_geografico.strip()
+    return _profile_of(edital)[0]
+
+
+def resolve_fonte_key(edital: EditalDomain, raw_data: RawEdital) -> str:
+    """Chave técnica da fonte. `orgão_fomento` é rótulo de exibição."""
+    return _profile_of(edital)[1] or (edital.fonte_key or "").strip()
+
+
+def resolve_publico_alvo(edital: EditalDomain, raw_data: RawEdital) -> list:
+    """
+    Público-alvo, apenas com o que a origem declara.
+
+    Fonte que não informa fica com lista vazia. Inferir do texto produziria
+    rótulo plausível e não verificável — o mesmo erro que fazia uma chave de API
+    inválida parecer classificação.
+    """
+    declarado = raw_data.raw_publico_alvo or edital.publico_alvo or []
+    vistos = []
+    for valor in declarado:
+        normalizado = (str(valor) or "").strip().lower()
+        if normalizado in CANONICAL_PUBLICO_ALVO and normalizado not in vistos:
+            vistos.append(normalizado)
+    return vistos
 
 
 def resolve_status(edital: EditalDomain, today: Optional[date] = None) -> str:

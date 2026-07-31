@@ -32,5 +32,14 @@
             "link": "https://ec.europa.eu/research/participants/submission/manage/screen/submission/create-draft/44557?topic=HORIZON-CL5-2026-10-D2-03",
             "tipo": "link"
         }
-    ]
+    ],
+    "modalidade": "",
+    "publico_alvo": [
+        "pesquisador",
+        "internacional"
+    ],
+    "ambito_geografico": "internacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "horizon"
 }

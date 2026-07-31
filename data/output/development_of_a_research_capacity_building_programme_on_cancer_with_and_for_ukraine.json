@@ -38,5 +38,14 @@
             "link": "https://ec.europa.eu/research/participants/submission/manage/screen/submission/create-draft/43446?topic=HORIZON-MISS-2026-02-CANCER-06",
             "tipo": "link"
         }
-    ]
+    ],
+    "modalidade": "",
+    "publico_alvo": [
+        "pesquisador",
+        "internacional"
+    ],
+    "ambito_geografico": "internacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "horizon"
 }

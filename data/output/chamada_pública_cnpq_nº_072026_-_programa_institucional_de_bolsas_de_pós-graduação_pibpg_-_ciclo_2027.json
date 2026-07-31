@@ -43,5 +43,11 @@
             "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-07-2026/Anexo_II_Chamada_CNPq_n__07_2026_Oficio_de_Indicacao_de_Representante_Institucional._15.5.26_2.docx",
             "tipo": "docx"
         }
-    ]
+    ],
+    "ambito_geografico": "nacional",
+    "fonte_key": "cnpq",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "modalidade": ""
 }

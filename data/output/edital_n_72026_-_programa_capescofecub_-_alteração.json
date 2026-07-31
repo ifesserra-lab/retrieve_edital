@@ -287,5 +287,11 @@
             "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/19062024_Edital_2400250_SEI_2399447_Edital_12_2019___ALTERACAO_III.pdf",
             "tipo": "anexo"
         }
-    ]
+    ],
+    "ambito_geografico": "nacional",
+    "fonte_key": "capes",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "modalidade": ""
 }

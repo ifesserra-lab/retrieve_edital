@@ -137,5 +137,11 @@
             "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/08072024_Edital_2408466_Anexo_VII.pdf",
             "tipo": "anexo"
         }
-    ]
+    ],
+    "ambito_geografico": "nacional",
+    "fonte_key": "capes",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "modalidade": ""
 }

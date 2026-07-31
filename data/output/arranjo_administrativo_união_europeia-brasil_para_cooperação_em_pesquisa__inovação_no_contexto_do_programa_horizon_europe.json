@@ -31,5 +31,11 @@
             "link": "https://fapes.es.gov.br/Media/fapes/Editais/AA_EC_BRAZIL_PT-1.pdf",
             "tipo": "anexo"
         }
-    ]
+    ],
+    "ambito_geografico": "estadual-ES",
+    "fonte_key": "fapes",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "modalidade": ""
 }

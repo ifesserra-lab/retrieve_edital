@@ -83,6 +83,15 @@ def check_json_keys(context, datatable):
         "tags",
         "anexos",
         "modalidade",
+        # Campos da prioridade 6 do PDF de análise. `publico_alvo` e
+        # `ambito_geografico` são preenchidos quando há evidência da origem;
+        # `valor_estimado` e `trl_exigido` existem no schema mas ficam vazios até
+        # que a extração do PDF seja avaliada contra os documentos que falham.
+        "publico_alvo",
+        "ambito_geografico",
+        "valor_estimado",
+        "trl_exigido",
+        "fonte_key",
     }
     
     for filepath in context["expected_files"]:

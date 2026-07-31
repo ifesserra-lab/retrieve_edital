@@ -83,5 +83,11 @@
             "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/20032026_Edital_2787827_SEI_2787352_Edital_6_2026.pdf",
             "tipo": "anexo"
         }
-    ]
+    ],
+    "ambito_geografico": "nacional",
+    "fonte_key": "capes",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "modalidade": ""
 }

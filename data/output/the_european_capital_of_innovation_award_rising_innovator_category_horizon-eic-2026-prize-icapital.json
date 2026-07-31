@@ -31,5 +31,15 @@
             "link": "https://ec.europa.eu/research/participants/submission/manage/screen/submission/create-draft/43929?topic=HORIZON-EIC-2026-PRIZE-ICAPITAL-02",
             "tipo": "link"
         }
-    ]
+    ],
+    "modalidade": "",
+    "publico_alvo": [
+        "pesquisador",
+        "internacional",
+        "empresa"
+    ],
+    "ambito_geografico": "internacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "horizon"
 }

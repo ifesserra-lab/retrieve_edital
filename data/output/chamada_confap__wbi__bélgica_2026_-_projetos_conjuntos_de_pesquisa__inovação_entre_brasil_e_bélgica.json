@@ -36,5 +36,11 @@
             "link": "https://fapes.es.gov.br/Media/fapes/Editais/CONFAP-WBI%202026%20-%20Termo%20de%20Adesão.pdf",
             "tipo": "anexo"
         }
-    ]
+    ],
+    "ambito_geografico": "estadual-ES",
+    "fonte_key": "fapes",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "modalidade": ""
 }

@@ -31,5 +31,11 @@
             "link": "https://fapes.es.gov.br/Media/fapes/Editais/ANEXO%20IV%20-%20Declaração%20de%20Ciência%20do%20NIT-%20Edital%2012-2026.docx",
             "tipo": "anexo"
         }
-    ]
+    ],
+    "ambito_geografico": "estadual-ES",
+    "fonte_key": "fapes",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "modalidade": ""
 }

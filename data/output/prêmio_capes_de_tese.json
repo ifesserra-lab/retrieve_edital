@@ -13,5 +13,10 @@
         "pesquisa"
     ],
     "anexos": [],
-    "modalidade": ""
+    "modalidade": "",
+    "ambito_geografico": "nacional",
+    "fonte_key": "capes",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": ""
 }

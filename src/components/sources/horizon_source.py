@@ -395,6 +395,8 @@ class HorizonSource(ISource[RawEdital]):
             title=title,
             url=topic_url,
             source_category=self._category_of(item),
+            raw_publico_alvo=self._publico_alvo_of(item),
+            raw_ambito_geografico="internacional",
             raw_agency="Horizon Europe",
             raw_description=self._build_description(item, identifier),
             document_type="edital",
@@ -403,6 +405,19 @@ class HorizonSource(ISource[RawEdital]):
             raw_tags=self._build_tags(item) or None,
             raw_anexos=self._build_anexos(item) or None,
         )
+
+    @staticmethod
+    def _publico_alvo_of(item: Dict[str, Any]) -> List[str]:
+        """
+        Toda chamada do Horizon interessa a pesquisador e é internacional. As do
+        EIC financiam inovação empresarial, então incluem empresa.
+        """
+        publico = ["pesquisador", "internacional"]
+        for division in _divisions_of(item):
+            if _abbreviation_of(division).startswith(EIC_DIVISION_PREFIX):
+                publico.append("empresa")
+                break
+        return publico
 
     @staticmethod
     def _category_of(item: Dict[str, Any]) -> str:

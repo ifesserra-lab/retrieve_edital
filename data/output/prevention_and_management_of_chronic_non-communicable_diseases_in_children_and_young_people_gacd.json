@@ -45,5 +45,14 @@
         "Social biomedical sciences (includes family planning, sexual health, psycho-oncology, political and social effects of biomedical research)",
         "Social structure, inequalities, social mobility, interethnic relations"
     ],
-    "anexos": []
+    "anexos": [],
+    "modalidade": "",
+    "publico_alvo": [
+        "pesquisador",
+        "internacional"
+    ],
+    "ambito_geografico": "internacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "horizon"
 }

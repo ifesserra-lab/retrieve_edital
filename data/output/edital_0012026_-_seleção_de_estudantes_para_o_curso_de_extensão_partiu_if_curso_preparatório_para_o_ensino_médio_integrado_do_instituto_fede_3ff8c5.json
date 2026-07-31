@@ -84,5 +84,11 @@
             "link": "https://proex.ifes.edu.br/images/M_images/Proex/Editais/2026/01/Comunicado_Matricula_PartiIF_2026.pdf",
             "tipo": "pdf"
         }
-    ]
+    ],
+    "ambito_geografico": "estadual-ES",
+    "fonte_key": "proex_ifes",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "modalidade": ""
 }

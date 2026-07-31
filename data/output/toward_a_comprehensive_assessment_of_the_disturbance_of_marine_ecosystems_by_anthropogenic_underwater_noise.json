@@ -60,5 +60,14 @@
             "link": "https://ec.europa.eu/research/participants/submission/manage/screen/submission/create-draft/43975?topic=HORIZON-CL6-2026-01-ZEROPOLLUTION-01",
             "tipo": "link"
         }
-    ]
+    ],
+    "modalidade": "",
+    "publico_alvo": [
+        "pesquisador",
+        "internacional"
+    ],
+    "ambito_geografico": "internacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "horizon"
 }

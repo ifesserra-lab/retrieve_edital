@@ -13,5 +13,11 @@
         "extensão",
         "bolsa"
     ],
-    "anexos": []
+    "anexos": [],
+    "ambito_geografico": "nacional",
+    "fonte_key": "capes",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "modalidade": ""
 }

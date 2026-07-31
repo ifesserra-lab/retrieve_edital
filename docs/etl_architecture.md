@@ -60,6 +60,11 @@ graph TB
 - `registry/processed_editais.json`: índice de editais já processados por source (`fapes`, `finep`, `conif`, `prppg_ifes`, `proex_ifes`, `capes`, `cnpq`, `horizon`).
 - `src/components/transforms/publication_rules.py`: decide o que é oportunidade publicável e mantém os campos de filtro em vocabulário fechado. Descarta anexo/alteração solto, registro sem conteúdo extraído e prazo já encerrado; canoniza `status` em `aberto`/`encerrado` e `categoria` em `divulgação de conhecimento`, `extensão`, `inovação`, `pesquisa` ou `outros`. Resolve também `modalidade`, hoje limitada a marcar `fluxo-contínuo` quando a origem declara ou o texto do edital diz — o que distingue "aberto permanentemente" de "prazo desconhecido", antes indistinguíveis com `data_encerramento` vazio.
 - `scripts/curate_output.py`: cuida do acervo já gravado — realinha `status` ao prazo, canoniza `categoria` e preenche `orgão_fomento` pelo host do link (o runner chama a cada execução) e, com `--apply`, remove o que não é edital.
+- Campos da prioridade 6 do PDF de análise, em `EditalDomain`: `publico_alvo`, `ambito_geografico`, `modalidade`, `valor_estimado`, `trl_exigido` e `fonte_key`.
+  - `ambito_geografico` e `fonte_key` vêm do perfil da fonte (`SOURCE_PROFILES`) — conhecimento estático e certo. A origem pode sobrepor o âmbito quando é mais específica, como a FINEP informando a região da chamada.
+  - `publico_alvo` só é preenchido com o que a origem declara: a FINEP pela taxonomia `publicoAlvo`, o Horizon pelas divisões (EIC inclui `empresa`). Fonte que não informa fica vazia — inferir do texto produziria rótulo plausível e não verificável.
+  - `valor_estimado` e `trl_exigido` existem no schema e ficam vazios: só podem vir do texto do PDF, e ajustar a extração exige avaliá-la contra os documentos que hoje falham.
+- `registry/rejected_editais.json`: editais recusados pelas regras de publicação, com motivo e validade de sete dias. Sem ele, um edital recusado volta como novo em toda execução, com PDF baixado e OCR refeito.
 - `docs/flow_processing_log.md`: log operacional da última execução de cada fluxo.
 - `scripts/run_all_flows.py`: runner unificado para todos os fluxos.
 

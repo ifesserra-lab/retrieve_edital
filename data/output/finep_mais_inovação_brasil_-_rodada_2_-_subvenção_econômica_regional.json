@@ -86,5 +86,11 @@
             "link": "https://www.finep.gov.br/documents/20120/758476/Cronograma+Atualizado+.pdf/2b368fe7-1f72-0822-5585-eba25eba9dee?version=1.0&t=1783104379868&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=d78a4949-b4bb-cc24-3378-8cb2da0d5289",
             "tipo": "pdf"
         }
-    ]
+    ],
+    "ambito_geografico": "nacional",
+    "fonte_key": "finep",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "modalidade": ""
 }

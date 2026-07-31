@@ -46,5 +46,11 @@
             "link": "https://fapes.es.gov.br/Media/fapes/Vídeos/Webinário%20do%20Edital%20Fapes%20n°%2007_2026%20Espaço%20Científicos%20Culturais.mp4",
             "tipo": "anexo"
         }
-    ]
+    ],
+    "ambito_geografico": "estadual-ES",
+    "fonte_key": "fapes",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "modalidade": ""
 }

@@ -34,5 +34,14 @@
         "Social structure, inequalities, social mobility, interethnic relations",
         "Structures vulnerability prediction"
     ],
-    "anexos": []
+    "anexos": [],
+    "modalidade": "",
+    "publico_alvo": [
+        "pesquisador",
+        "internacional"
+    ],
+    "ambito_geografico": "internacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "horizon"
 }

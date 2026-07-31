@@ -53,5 +53,14 @@
         "Visual arts, performing arts, design",
         "Web and information systems, database systems, information retrieval and digital libraries, data fusion"
     ],
-    "anexos": []
+    "anexos": [],
+    "modalidade": "",
+    "publico_alvo": [
+        "pesquisador",
+        "internacional"
+    ],
+    "ambito_geografico": "internacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "horizon"
 }

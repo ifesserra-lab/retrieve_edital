@@ -59,5 +59,11 @@
             "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/12032026_Chamada_Publica_2782569.pdf",
             "tipo": "anexo"
         }
-    ]
+    ],
+    "ambito_geografico": "nacional",
+    "fonte_key": "capes",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "modalidade": ""
 }

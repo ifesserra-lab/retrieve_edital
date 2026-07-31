@@ -69,5 +69,13 @@
             "link": "https://www.finep.gov.br/documents/20120/758476/rerratifica%C3%A7%C3%A3o_edital_brics.pdf/e957c7fa-44ba-b008-0db0-d1c9deb58d52?version=1.0&t=1784289837503&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=56c4f83a-09b1-5039-7593-f57329aec193",
             "tipo": "pdf"
         }
-    ]
+    ],
+    "modalidade": "",
+    "publico_alvo": [
+        "empresa"
+    ],
+    "ambito_geografico": "nacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "finep"
 }

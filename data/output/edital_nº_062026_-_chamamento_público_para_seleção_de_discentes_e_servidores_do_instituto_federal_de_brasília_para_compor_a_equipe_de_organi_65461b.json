@@ -34,5 +34,11 @@
             "link": "https://agifes.ifes.edu.br/wp-content/uploads/2026/05/Resultado-final-Edital-No-06.2026.pdf",
             "tipo": "pdf"
         }
-    ]
+    ],
+    "ambito_geografico": "estadual-ES",
+    "fonte_key": "proex_ifes",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "modalidade": ""
 }

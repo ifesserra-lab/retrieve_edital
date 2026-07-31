@@ -56,5 +56,11 @@
             "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/19012026_Edital_2753903_SEI_2753034_Edital_1_2026.pdf",
             "tipo": "anexo"
         }
-    ]
+    ],
+    "ambito_geografico": "nacional",
+    "fonte_key": "capes",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "modalidade": ""
 }

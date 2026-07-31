@@ -73,5 +73,10 @@
         "sustentabilidade"
     ],
     "anexos": [],
-    "modalidade": ""
+    "modalidade": "",
+    "ambito_geografico": "estadual-ES",
+    "fonte_key": "fapes",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": ""
 }

@@ -238,5 +238,11 @@
             "link": "https://www.gov.br/capes/pt-br/images/novo_portal/editais/editais/anexos/Stic_Amsud/23052019_Anexo_IV_-_Termo_de_Outorga_e_Aceite_de_Bolsa_v.2.pdf",
             "tipo": "anexo"
         }
-    ]
+    ],
+    "ambito_geografico": "nacional",
+    "fonte_key": "capes",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "modalidade": ""
 }

@@ -25,5 +25,15 @@
         "The European Innovation Council (EIC)",
         "Innovative Europe"
     ],
-    "anexos": []
+    "anexos": [],
+    "modalidade": "",
+    "publico_alvo": [
+        "pesquisador",
+        "internacional",
+        "empresa"
+    ],
+    "ambito_geografico": "internacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "horizon"
 }

@@ -43,5 +43,11 @@
             "link": "https://fapes.es.gov.br/Media/fapes/Editais/MSCA%20Staff%20Exchanges%20-%20European%20Research%20Executive%20Agency.pdf",
             "tipo": "anexo"
         }
-    ]
+    ],
+    "ambito_geografico": "estadual-ES",
+    "fonte_key": "fapes",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "modalidade": ""
 }

@@ -149,5 +149,11 @@
             "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/09112021_Edital_1557212_Anexo_Modelo_Projeto_de_Pesquisa_.pdf",
             "tipo": "anexo"
         }
-    ]
+    ],
+    "ambito_geografico": "nacional",
+    "fonte_key": "capes",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "modalidade": ""
 }

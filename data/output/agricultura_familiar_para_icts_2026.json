@@ -116,5 +116,11 @@
             "link": "https://www.finep.gov.br/documents/20120/758476/Nota+Explicativa+n%C2%BA01+-+Conceito+de+Aquicultura+%28Linha+Tem%C3%A1tica+n%C2%BA04%29.pdf/0c648a0d-4b13-6d23-c2f7-640e300f94f0?version=1.0&t=1782511174009&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=be54c340-89ea-5cdd-8842-34ea4307858b",
             "tipo": "pdf"
         }
-    ]
+    ],
+    "ambito_geografico": "nacional",
+    "fonte_key": "finep",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "modalidade": ""
 }

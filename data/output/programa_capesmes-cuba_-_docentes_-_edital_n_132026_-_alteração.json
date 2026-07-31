@@ -37,5 +37,11 @@
             "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/23042026_Edital_2640998_Termo_de_Outorga_PVE__exterior_brasil_r.pdf",
             "tipo": "anexo"
         }
-    ]
+    ],
+    "ambito_geografico": "nacional",
+    "fonte_key": "capes",
+    "publico_alvo": [],
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "modalidade": ""
 }
