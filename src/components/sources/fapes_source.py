@@ -1,4 +1,5 @@
 import logging
+import re
 import requests
 from typing import List, Optional
 from playwright.sync_api import sync_playwright, TimeoutError
@@ -25,6 +26,89 @@ FAPES_URL_CATEGORIES = (
     ("internaciona", "pesquisa"),
 )
 FAPES_FALLBACK_CATEGORY = "outros"
+
+
+# Palavras que identificam o documento principal do grupo e as que identificam
+# documentos de apoio. A eleição do principal precisa ser determinística: ela
+# define a identidade do edital e, por consequência, a chave de deduplicação.
+MAIN_DOCUMENT_HINTS = ("edital", "chamada", "diretrizes", "regulamento", "chamamento")
+SUPPORTING_DOCUMENT_HINTS = (
+    "anexo",
+    "formulário",
+    "formulario",
+    "modelo",
+    "retificação",
+    "retificacao",
+    "alteração",
+    "alteracao",
+    "faq",
+    "manual",
+    "planilha",
+    "declaração",
+    "declaracao",
+    "resultado",
+    "cronograma",
+)
+GENERIC_LINK_TITLES = ("baixar", "clique aqui", "download", "acesse")
+
+
+def _tokens(text: str) -> set:
+    return {
+        token
+        for token in re.split(r"[^0-9a-zà-ú]+", (text or "").lower())
+        if len(token) > 2
+    }
+
+
+def score_main_document(title: str, url: str, group_title: str) -> tuple:
+    """
+    Pontua um documento como candidato a principal do grupo.
+
+    Maior é melhor. A ordem dos critérios é o que garante determinismo:
+
+    1. quantos termos o título compartilha com o título do grupo — o cabeçalho do
+       bloco nomeia o edital, então quem mais se parece com ele é o principal;
+    2. o título menciona edital, chamada, diretrizes, regulamento ou chamamento;
+    3. penaliza menção a anexo, formulário, modelo, retificação, FAQ e afins;
+    4. penaliza título genérico como "baixar" ou "clique aqui", que não informa.
+
+    Nenhum critério depende de LLM. A classificação do Mistral variava entre
+    execuções e, ao decidir quem era o principal, mudava a identidade do edital
+    de uma rodada para a outra.
+    """
+    lowered = f"{title} {url}".lower()
+    shared = len(_tokens(title) & _tokens(group_title))
+    looks_main = any(hint in lowered for hint in MAIN_DOCUMENT_HINTS)
+    looks_supporting = any(hint in lowered for hint in SUPPORTING_DOCUMENT_HINTS)
+    is_generic = (title or "").strip().lower() in GENERIC_LINK_TITLES
+    return (
+        shared,
+        1 if looks_main else 0,
+        -1 if looks_supporting else 0,
+        -1 if is_generic else 0,
+    )
+
+
+def elect_main_document_index(docs: list, group_title: str) -> int:
+    """
+    Índice do documento principal do grupo, ou -1 quando o grupo está vazio.
+
+    Empate é resolvido pela ordem em que os links aparecem no HTML, o que mantém
+    a escolha estável entre execuções.
+    """
+    if not docs:
+        return -1
+    melhor = 0
+    melhor_score = score_main_document(
+        docs[0].get("title", ""), docs[0].get("url", ""), group_title
+    )
+    for indice in range(1, len(docs)):
+        score = score_main_document(
+            docs[indice].get("title", ""), docs[indice].get("url", ""), group_title
+        )
+        if score > melhor_score:
+            melhor, melhor_score = indice, score
+    return melhor
 
 
 def category_for_url(url: str) -> str:
@@ -180,18 +264,29 @@ class FapesSource(ISource[RawEdital]):
                             if titles_to_classify:
                                 classifications = self.classifier.classify_document_titles(titles_to_classify)
                             
+                            # O principal é eleito por evidência da página, antes
+                            # e independentemente do Mistral: era a classificação
+                            # do LLM que decidia quem era `edital`, e como ela
+                            # varia entre execuções, a identidade do edital — e
+                            # com ela a chave de deduplicação — mudava de rodada
+                            # para rodada.
+                            main_index = elect_main_document_index(temp_docs, group_id)
+
                             # Map back to RawEdital objects
                             group_raw_editais = []
-                            for doc in temp_docs:
+                            for indice, doc in enumerate(temp_docs):
                                 href = doc["url"]
                                 title = doc["title"]
-                                doc_type = classifications.get(title, "edital")
-                                
-                                # Heuristic if Mistral didn't see it (e.g., if we skipped it)
-                                if title.lower() in ["baixar", "clique aqui"]:
-                                    # If it's a generic link with same href as something else, we already deduplicated.
-                                    # If it's unique but generic, it's likely the edital itself.
+                                if indice == main_index:
+                                    # O principal é sempre `edital`: é ele que
+                                    # recebe OCR e passa pelas regras de
+                                    # publicação, que descartam anexo e alteração.
                                     doc_type = "edital"
+                                else:
+                                    # O Mistral agora só rotula os documentos de
+                                    # apoio, o que é informação de exibição e não
+                                    # de identidade.
+                                    doc_type = classifications.get(title, "anexo")
 
                                 # Deduplica pela URL do documento, não pelo
                                 # título. O título da página passava por
@@ -232,14 +327,18 @@ class FapesSource(ISource[RawEdital]):
                             # o canário do runner acusar a origem de quebrada.
                             self.last_listing_count += 1
 
-                            # Identify the main edital in the group
-                            # Strategy: First one classified as 'edital', or first one overall
-                            main_candidates = [r for r in group_raw_editais if r.document_type == "edital"]
-                            if main_candidates:
-                                main_edital = main_candidates[0]
-                            else:
-                                main_edital = group_raw_editais[0]
-                            
+                            # O principal é o que foi eleito acima. Se ele caiu
+                            # na deduplicação, o grupo inteiro já é conhecido.
+                            main_candidates = [
+                                r for r in group_raw_editais if r.document_type == "edital"
+                            ]
+                            if not main_candidates:
+                                logger.debug(
+                                    "Grupo %s sem documento principal novo; ignorando.",
+                                    group_id,
+                                )
+                                continue
+                            main_edital = main_candidates[0]
                             main_edital.is_main = True
                             
                             # All other documents in the group are attachments
