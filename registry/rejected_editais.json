@@ -1,0 +1,44 @@
+{
+  "fapes": {
+    "https://fapes.es.gov.br/Media/fapes/Editais/EDITAL_FAPES_Nº_102026_DR._EMPREENDEDOR_CAPIXABA_-_CORRIGIDO.pdf": {
+      "motivo": "prazo encerrado em 2026-05-04",
+      "recusado_em": "2026-07-31",
+      "valida_ate": "2026-08-07"
+    },
+    "https://fapes.es.gov.br/Media/fapes/Editais/Edital%20Fapes%2005_2026%20-%20Visita%20Técnico%20Cientifica%20(1).pdf": {
+      "motivo": "prazo encerrado em 2026-02-09",
+      "recusado_em": "2026-07-31",
+      "valida_ate": "2026-08-07"
+    },
+    "https://fapes.es.gov.br/Media/fapes/Editais/Edital%20Programa%20Gênesis%202026%20-%20Assinado.pdf": {
+      "motivo": "prazo encerrado em 2026-06-30",
+      "recusado_em": "2026-07-31",
+      "valida_ate": "2026-08-07"
+    },
+    "https://fapes.es.gov.br/Media/fapes/Editais/Edital%20Universal%20Extensão%20-%20Assinado.pdf": {
+      "motivo": "prazo encerrado em 2026-06-30",
+      "recusado_em": "2026-07-31",
+      "valida_ate": "2026-08-07"
+    },
+    "https://fapes.es.gov.br/Media/fapes/Editais/Edital_Fapes_02-2026-Participação_Evento_Técnico_Científico.pdf": {
+      "motivo": "prazo encerrado em 2026-02-06",
+      "recusado_em": "2026-07-31",
+      "valida_ate": "2026-08-07"
+    },
+    "https://fapes.es.gov.br/Media/fapes/Editais/Edital_Fapes_03_2026_Organização_Eventos_Técnico-Científicos.pdf": {
+      "motivo": "prazo encerrado em 2026-03-07",
+      "recusado_em": "2026-07-31",
+      "valida_ate": "2026-08-07"
+    },
+    "https://fapes.es.gov.br/Media/fapes/Editais/Edital_Fapes_04_2026_-_Estágio_Técnico_Cientifico.pdf": {
+      "motivo": "prazo encerrado em 2026-03-10",
+      "recusado_em": "2026-07-31",
+      "valida_ate": "2026-08-07"
+    },
+    "https://fapes.es.gov.br/Media/fapes/Editais/Edital_Fapes_28_2025_Publicação_de_Artigos_Técnico-Científicos.pdf": {
+      "motivo": "prazo encerrado em 2025-12-22",
+      "recusado_em": "2026-07-31",
+      "valida_ate": "2026-08-07"
+    }
+  }
+}

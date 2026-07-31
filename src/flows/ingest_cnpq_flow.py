@@ -10,6 +10,7 @@ from src.components.transforms.edital_normalizer import EditalNormalizer
 from src.core.interfaces import ISink, ISource, ITransform
 from src.domain.models import EditalDomain, RawEdital
 from src.flow_health import emit_flow_stats
+from src import rejection_store
 from src.processed_store import DEFAULT_PATH, add_many, get_keys_set
 
 load_dotenv()
@@ -27,6 +28,10 @@ def run_pipeline(
     Orquestra o ETL de chamadas públicas CNPq usando deduplicação por permalink.
     """
     processed_urls = get_keys_set("cnpq", path=processed_index_path)
+    # Recusas ainda válidas contam como já vistas: sem isso, um edital
+    # que o portão rejeitou volta como novo em toda execução, com PDF
+    # baixado e OCR refeito só para ser rejeitado de novo.
+    processed_urls = processed_urls | rejection_store.get_active_keys("cnpq")
     source = source or CnpqSource(processed_urls=processed_urls)
     transform = transform or EditalNormalizer()
     sink = sink or LocalJSONSink()
@@ -69,6 +74,8 @@ def run_pipeline(
 
     logger.info("Phase 3: Load/Sink")
     emit_flow_stats(raw_count=listing_count, new_count=len(valid_domains))
+    rejection_store.record("cnpq", getattr(transform, "rejections", {}))
+
     if valid_domains:
         persisted = sink.write(valid_domains)
         add_many(

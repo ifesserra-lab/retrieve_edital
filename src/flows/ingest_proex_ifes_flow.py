@@ -10,6 +10,7 @@ from src.components.transforms.edital_normalizer import EditalNormalizer
 from src.core.interfaces import ISink, ISource, ITransform
 from src.domain.models import EditalDomain, RawEdital
 from src.flow_health import emit_flow_stats
+from src import rejection_store
 from src.processed_store import DEFAULT_PATH, add_many, get_keys_set
 
 load_dotenv()
@@ -25,6 +26,10 @@ def run_pipeline(
     processed_index_path: str = DEFAULT_PATH,
 ) -> None:
     processed_urls = get_keys_set("proex_ifes", path=processed_index_path)
+    # Recusas ainda válidas contam como já vistas: sem isso, um edital
+    # que o portão rejeitou volta como novo em toda execução, com PDF
+    # baixado e OCR refeito só para ser rejeitado de novo.
+    processed_urls = processed_urls | rejection_store.get_active_keys("proex_ifes")
     source = source or ProexIfesSource(
         current_year=current_year,
         processed_urls=processed_urls,
@@ -76,6 +81,8 @@ def run_pipeline(
     # runner caía no proxy de sequência — o falso alarme que as estatísticas
     # existem para evitar.
     emit_flow_stats(raw_count=listing_count, new_count=len(valid_domains))
+    rejection_store.record("proex_ifes", getattr(transform, "rejections", {}))
+
     if valid_domains:
         persisted = sink.write(valid_domains)
         add_many(
