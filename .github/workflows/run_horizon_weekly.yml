@@ -32,10 +32,11 @@ jobs:
     - name: Run Horizon Europe Flow
       env:
         MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
-        # Divisões do Horizon Europe a indexar. Sem esta variável, o source usa o
-        # default de src/components/sources/horizon_source.py — que precisa de
-        # validação da PRPPG. Lista vazia significa não publicar nada.
-        HORIZON_DIVISIONS: ${{ vars.HORIZON_DIVISIONS }}
+        # Divisões do Horizon Europe a indexar. `HORIZON` cobre o programa
+        # inteiro, porque a comparação é por prefixo — foi a decisão de
+        # 2026-07-31. Para restringir, defina a variável de repositório
+        # HORIZON_DIVISIONS com os códigos separados por vírgula.
+        HORIZON_DIVISIONS: ${{ vars.HORIZON_DIVISIONS || 'HORIZON' }}
       run: |
         python -m src.flows.ingest_horizon_flow
 

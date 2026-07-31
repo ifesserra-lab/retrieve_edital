@@ -1,0 +1,48 @@
+{
+    "nome": "APPROACHES AND TOOLS FOR SECURITY IN SOFTWARE AND HARDWARE DEVELOPMENT AND ASSESSMENT",
+    "descrição": "Chamada: Indirectly Managed Action by the ECCC (2026). Área: Horizon Europe (HORIZON); Global Challenges and European Industrial Competitiveness; Civil Security for Society; Cybersecurity. Identificador da chamada no Funding & Tenders Portal: HORIZON-CL3-2026-02-CS-ECCC-01.",
+    "orgão_fomento": "HORIZON EUROPE",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-03-03",
+    "data_encerramento": "2026-09-15",
+    "link": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL3-2026-02-CS-ECCC-01",
+    "cronograma": [
+        {
+            "evento": "Abertura das inscrições",
+            "data": "2026-03-03"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2026-09-15"
+        }
+    ],
+    "tags": [
+        "horizon europe",
+        "internacional",
+        "Horizon Europe (HORIZON)",
+        "Global Challenges and European Industrial Competitiveness",
+        "Civil Security for Society",
+        "Cybersecurity",
+        "Computer hardware and architecture",
+        "Cybersecurity Domains",
+        "Cybersecurity Research Domains",
+        "Design-Manufacturing",
+        "Hardware technology (RFID, chips, sensors, networking, etc.)",
+        "Identification of the impact of hardware and software changes on the management of Information Security",
+        "Secure software engineering",
+        "Security Management and Governance",
+        "Security design patterns",
+        "Security requirements engineering with emphasis on identity, privacy, accountability, and trust",
+        "Software and Hardware Security Engineering",
+        "Software testing processes and tools",
+        "Systems Engineering and Integrated Systems Design"
+    ],
+    "anexos": [
+        {
+            "titulo": "HORIZON  Research and Innovation Actions",
+            "link": "https://ec.europa.eu/research/participants/submission/manage/screen/submission/create-draft/43617?topic=HORIZON-CL3-2026-02-CS-ECCC-01",
+            "tipo": "link"
+        }
+    ]
+}

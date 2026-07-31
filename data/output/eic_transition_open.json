@@ -1,0 +1,35 @@
+{
+    "nome": "EIC TRANSITION OPEN",
+    "descrição": "Chamada: EIC Transition 2026. Área: The European Innovation Council (EIC); Innovative Europe; Horizon Europe (HORIZON). Identificador da chamada no Funding & Tenders Portal: HORIZON-EIC-2026-TRANSITIONOPEN.",
+    "orgão_fomento": "HORIZON EUROPE",
+    "categoria": "inovação",
+    "status": "aberto",
+    "data_abertura": "2026-04-22",
+    "data_encerramento": "2026-09-16",
+    "link": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-EIC-2026-TRANSITIONOPEN",
+    "cronograma": [
+        {
+            "evento": "Abertura das inscrições",
+            "data": "2026-04-22"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2026-09-16"
+        }
+    ],
+    "tags": [
+        "horizon europe",
+        "internacional",
+        "eic",
+        "The European Innovation Council (EIC)",
+        "Innovative Europe",
+        "Horizon Europe (HORIZON)"
+    ],
+    "anexos": [
+        {
+            "titulo": "HORIZON EIC Grants",
+            "link": "https://ec.europa.eu/research/participants/submission/manage/screen/submission/create-draft/43977?topic=HORIZON-EIC-2026-TRANSITIONOPEN",
+            "tipo": "link"
+        }
+    ]
+}

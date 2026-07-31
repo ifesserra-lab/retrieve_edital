@@ -1,0 +1,38 @@
+{
+    "nome": "ADDITIONAL ACTIVITIES FOR THE EUROPEAN PARTNERSHIP OF AGRICULTURE OF DATA",
+    "descrição": "Chamada: Call 04 - single stage (2026). Área: Agriculture, Forestry and Rural Areas; Environmental Observation; Food, Bioeconomy Natural Resources, Agriculture and Environment; Global Challenges and European Industrial Competitiveness; Horizon Europe (HORIZON). Identificador da chamada no Funding & Tenders Portal: HORIZON-CL6-2026-04-GOVERNANCE-01.",
+    "orgão_fomento": "HORIZON EUROPE",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-08-25",
+    "data_encerramento": "2026-11-26",
+    "link": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL6-2026-04-GOVERNANCE-01",
+    "cronograma": [
+        {
+            "evento": "Abertura das inscrições",
+            "data": "2026-08-25"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2026-11-26"
+        }
+    ],
+    "tags": [
+        "horizon europe",
+        "internacional",
+        "Agriculture, Forestry and Rural Areas",
+        "Environmental Observation",
+        "Food, Bioeconomy Natural Resources, Agriculture and Environment",
+        "Global Challenges and European Industrial Competitiveness",
+        "Horizon Europe (HORIZON)",
+        "Data protection and privacy",
+        "Data value chains",
+        "Digital data",
+        "Digital services",
+        "Digital skills",
+        "Earth Observation / Services and applications",
+        "Technologies and Use Cases Dimension",
+        "Web and information systems, database systems, information retrieval and digital libraries, data fusion"
+    ],
+    "anexos": []
+}

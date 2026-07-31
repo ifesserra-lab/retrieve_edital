@@ -1,0 +1,36 @@
+{
+    "nome": "MICROELECTRONIC – FRONT-END MODULE (FEM)",
+    "descrição": "Chamada: HORIZON-JU-SNS-2026-FEM. Área: Digital, Industry and Space; Global Challenges and European Industrial Competitiveness; Key Digital Technologies; Horizon Europe (HORIZON). Identificador da chamada no Funding & Tenders Portal: HORIZON-JU-SNS-2026-FEM-STREAM-B-02.",
+    "orgão_fomento": "HORIZON EUROPE",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-05-26",
+    "data_encerramento": "2026-09-03",
+    "link": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-JU-SNS-2026-FEM-STREAM-B-02",
+    "cronograma": [
+        {
+            "evento": "Abertura das inscrições",
+            "data": "2026-05-26"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2026-09-03"
+        }
+    ],
+    "tags": [
+        "horizon europe",
+        "internacional",
+        "Digital, Industry and Space",
+        "Global Challenges and European Industrial Competitiveness",
+        "Key Digital Technologies",
+        "Horizon Europe (HORIZON)",
+        "Communication engineering and systems telecommunications"
+    ],
+    "anexos": [
+        {
+            "titulo": "HORIZON JU Research and Innovation Actions",
+            "link": "https://ec.europa.eu/research/participants/submission/manage/screen/submission/create-draft/44270?topic=HORIZON-JU-SNS-2026-FEM-STREAM-B-02",
+            "tipo": "link"
+        }
+    ]
+}

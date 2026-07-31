@@ -1,0 +1,38 @@
+{
+    "nome": "ERC PROOF OF CONCEPT GRANTS",
+    "descrição": "Chamada: Call for proposals for ERC Proof of Concept. Área: Excellent Science; Horizon Europe (HORIZON); European Research Council (ERC). Identificador da chamada no Funding & Tenders Portal: ERC-2026-POC.",
+    "orgão_fomento": "HORIZON EUROPE",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-01-20",
+    "data_encerramento": "2026-09-17",
+    "link": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERC-2026-POC",
+    "cronograma": [
+        {
+            "evento": "Abertura das inscrições",
+            "data": "2026-01-20"
+        },
+        {
+            "evento": "Prazo da fase 1",
+            "data": "2026-03-17"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2026-09-17"
+        }
+    ],
+    "tags": [
+        "horizon europe",
+        "internacional",
+        "Excellent Science",
+        "Horizon Europe (HORIZON)",
+        "European Research Council (ERC)"
+    ],
+    "anexos": [
+        {
+            "titulo": "HORIZON ERC Proof of Concept Grants",
+            "link": "https://ec.europa.eu/research/participants/submission/manage/screen/submission/create-draft/43276?topic=ERC-2026-POC",
+            "tipo": "link"
+        }
+    ]
+}

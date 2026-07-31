@@ -20,9 +20,11 @@ Dois cuidados que o volume impõe:
   são decodificados um a um, o que evita materializar os 11 mil dicionários de
   uma vez. O payload cru ainda fica na memória: o pico medido é de ~900 MB,
   confortável nos 7 GB do runner do GitHub Actions;
-- há ~200 chamadas HORIZON abertas a qualquer momento, a maioria irrelevante
-  para o IFES. **O filtro temático por divisão é obrigatório**: sem divisões
-  configuradas o source não devolve nada, em vez de afogar o portal.
+- há ~480 chamadas HORIZON abertas ou previstas a qualquer momento. O recorte
+  por divisão é configurável e **o default é vazio**: sem `HORIZON_DIVISIONS` o
+  source não devolve nada e nem baixa o dataset, para não habilitar centenas de
+  editais por omissão. Em produção a configuração é `HORIZON`, que por prefixo
+  cobre o programa inteiro.
 """
 
 import json
@@ -33,6 +35,8 @@ from datetime import datetime, timezone
 from typing import Any, Dict, Iterator, List, Optional, Sequence, Set
 
 import requests
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 
 from src.core.interfaces import ISource
 from src.domain.models import RawEdital
@@ -58,7 +62,9 @@ PUBLISHABLE_STATUSES = ("Open", "Forthcoming")
 # 192 chamadas relevantes, das quais 185 publicáveis — mais do que o portal
 # inteiro tinha (153). Publicar isso sem curadoria afogaria as fontes nacionais.
 #
-# Configure `HORIZON_DIVISIONS` (separado por vírgula) para habilitar.
+# Configure `HORIZON_DIVISIONS` (separado por vírgula) para habilitar. Como a
+# comparação é por prefixo, `HORIZON_DIVISIONS=HORIZON` indexa o programa
+# inteiro — toda subdivisão começa com esse código.
 DEFAULT_DIVISIONS: tuple[str, ...] = ()
 
 # Sugestão de partida, **pendente de validação da PRPPG**. Um prefixo cobre as
@@ -76,6 +82,24 @@ CATEGORY_EIC = "inovação"
 CATEGORY_RESEARCH = "pesquisa"
 
 DEFAULT_TIMEOUT = 180
+
+# Baixar 126 MB de uma vez falha de vez em quando com `Connection reset by peer`.
+# Sem retry no transporte, a execução semanal inteira se perde por um soluço de
+# rede — e o canário do runner a reportaria como "origem devolveu zero itens".
+DOWNLOAD_MAX_RETRIES = 4
+DOWNLOAD_BACKOFF_FACTOR = 5
+RETRYABLE_STATUSES = (429, 500, 502, 503, 504)
+# A janela precisa ter fim explícito: `Range` aberto responde 206 mas a
+# transferência estola. 8 MiB é grande o bastante para poucas idas e pequeno o
+# bastante para não ser cortado.
+DOWNLOAD_WINDOW_SIZE = 8 << 20
+_CONTENT_RANGE_REGEX = re.compile(r"bytes\s+\d+-\d+/(\d+)")
+
+
+def _total_from_content_range(response: "requests.Response") -> Optional[int]:
+    """Tamanho total do recurso, lido do cabeçalho `Content-Range`."""
+    match = _CONTENT_RANGE_REGEX.search(response.headers.get("Content-Range", ""))
+    return int(match.group(1)) if match else None
 
 _OBJECT_LIST_KEY = "GrantTenderObj"
 
@@ -165,7 +189,7 @@ class HorizonSource(ISource[RawEdital]):
         self.divisions = get_configured_divisions(divisions)
         self.processed_urls = processed_urls or set()
         self.timeout = timeout
-        self.session = session or requests.Session()
+        self.session = session or self._build_session()
         # Quantas chamadas relevantes a origem devolveu antes da deduplicação.
         self.last_listing_count = 0
         if not self.divisions:
@@ -177,6 +201,21 @@ class HorizonSource(ISource[RawEdital]):
             logger.info(
                 "HorizonSource filtrando pelas divisões: %s", ", ".join(self.divisions)
             )
+
+    @staticmethod
+    def _build_session() -> requests.Session:
+        """Sessão com retry no transporte, para o download de 126 MB."""
+        session = requests.Session()
+        retry = Retry(
+            total=DOWNLOAD_MAX_RETRIES,
+            connect=DOWNLOAD_MAX_RETRIES,
+            read=DOWNLOAD_MAX_RETRIES,
+            backoff_factor=DOWNLOAD_BACKOFF_FACTOR,
+            status_forcelist=RETRYABLE_STATUSES,
+            allowed_methods=frozenset(["GET"]),
+        )
+        session.mount("https://", HTTPAdapter(max_retries=retry))
+        return session
 
     def read(self) -> List[RawEdital]:
         if not self.divisions:
@@ -213,6 +252,27 @@ class HorizonSource(ISource[RawEdital]):
         return raw_editais
 
     def _download_bulk(self) -> str:
+        """
+        Baixa o dataset, primeiro pelo caminho barato e depois pelo confiável.
+
+        O caminho rápido pede `gzip` e transfere ~22 MB. Quando a conexão cai no
+        meio — `Connection reset by peer` aconteceu de forma reprodutível em
+        2026-07-30 —, cai para o download retomável: sem compressão, os offsets
+        em bytes são estáveis e o servidor aceita `Range` (`Accept-Ranges: bytes`,
+        resposta `206`), então cada tentativa continua de onde parou em vez de
+        reiniciar os 126 MB.
+        """
+        try:
+            return self._download_compressed()
+        except (requests.RequestException, OSError) as exc:
+            logger.warning(
+                "Download comprimido do dataset falhou (%s). "
+                "Tentando download retomável por Range.",
+                exc,
+            )
+            return self._download_resumable()
+
+    def _download_compressed(self) -> str:
         response = self.session.get(
             self.bulk_url,
             timeout=self.timeout,
@@ -221,6 +281,88 @@ class HorizonSource(ISource[RawEdital]):
         response.raise_for_status()
         warn_on_redirect(self.bulk_url, response.url)
         return response.text
+
+    def _download_resumable(self) -> str:
+        """
+        Baixa o corpo em janelas limitadas de `Range`, uma após a outra.
+
+        A janela precisa ter fim explícito. Medições de 2026-07-30 contra o
+        servidor da UE:
+
+        - transferência única de 126 MB: `Connection reset by peer` no meio;
+        - `Range: bytes=N-` (aberto), como o `curl -C -` envia: responde `206`,
+          mas a transferência estola e é cortada;
+        - `Range: bytes=N-M` (limitado a 8 MB): `206` com os bytes exatos, rápido.
+
+        Cada janela é tentada de forma independente, então uma falha custa uma
+        janela e não o download inteiro.
+        """
+        buffer = bytearray()
+        total: Optional[int] = None
+
+        while total is None or len(buffer) < total:
+            start = len(buffer)
+            chunk, reported_total, partial = self._fetch_window(start)
+            if not chunk:
+                break
+            buffer.extend(chunk)
+            if not partial:
+                # Servidor ignorou o Range e mandou o corpo inteiro.
+                total = len(buffer)
+                break
+            if reported_total is not None:
+                total = reported_total
+
+        if total is not None and len(buffer) < total:
+            raise requests.RequestException(
+                f"Download do dataset do Horizon incompleto: "
+                f"{len(buffer)} de {total} bytes."
+            )
+        logger.info(
+            "Dataset do Horizon baixado em janelas: %.0f MB.",
+            len(buffer) / (1024 * 1024),
+        )
+        return buffer.decode("utf-8")
+
+    def _fetch_window(
+        self, start: int
+    ) -> tuple[bytes, Optional[int], bool]:
+        """
+        Busca uma janela a partir de `start`, com retentativas próprias.
+
+        Devolve (bytes, tamanho total do recurso, se a resposta foi parcial).
+        """
+        end = start + DOWNLOAD_WINDOW_SIZE - 1
+        last_error: Optional[Exception] = None
+
+        for attempt in range(1, DOWNLOAD_MAX_RETRIES + 1):
+            try:
+                response = self.session.get(
+                    self.bulk_url,
+                    timeout=self.timeout,
+                    headers={
+                        "Accept-Encoding": "identity",
+                        "Range": f"bytes={start}-{end}",
+                    },
+                )
+                response.raise_for_status()
+                partial = response.status_code == 206
+                return response.content, _total_from_content_range(response), partial
+            except (requests.RequestException, OSError) as exc:
+                last_error = exc
+                logger.warning(
+                    "Janela %s-%s falhou na tentativa %s/%s: %s",
+                    start,
+                    end,
+                    attempt,
+                    DOWNLOAD_MAX_RETRIES,
+                    exc,
+                )
+
+        raise requests.RequestException(
+            f"Janela {start}-{end} do dataset do Horizon falhou em "
+            f"{DOWNLOAD_MAX_RETRIES} tentativas: {last_error}"
+        )
 
     def _is_relevant(self, item: Dict[str, Any]) -> bool:
         if _abbreviation_of(item.get("status")) not in PUBLISHABLE_STATUSES:

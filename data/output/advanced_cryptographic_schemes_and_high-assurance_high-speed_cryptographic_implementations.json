@@ -1,0 +1,47 @@
+{
+    "nome": "ADVANCED CRYPTOGRAPHIC SCHEMES AND HIGH-ASSURANCE HIGH-SPEED CRYPTOGRAPHIC IMPLEMENTATIONS",
+    "descrição": "Chamada: Indirectly Managed Action by the ECCC (2026). Área: Horizon Europe (HORIZON); Global Challenges and European Industrial Competitiveness; Civil Security for Society; Cybersecurity. Identificador da chamada no Funding & Tenders Portal: HORIZON-CL3-2026-02-CS-ECCC-03.",
+    "orgão_fomento": "HORIZON EUROPE",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-03-03",
+    "data_encerramento": "2026-09-15",
+    "link": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL3-2026-02-CS-ECCC-03",
+    "cronograma": [
+        {
+            "evento": "Abertura das inscrições",
+            "data": "2026-03-03"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2026-09-15"
+        }
+    ],
+    "tags": [
+        "horizon europe",
+        "internacional",
+        "Horizon Europe (HORIZON)",
+        "Global Challenges and European Industrial Competitiveness",
+        "Civil Security for Society",
+        "Cybersecurity",
+        "Asymmetric cryptography",
+        "Cryptology (Cryptography and Cryptanalysis)",
+        "Cybersecurity Domains",
+        "Data Security and Privacy",
+        "Digital services",
+        "Electronic identification  (eID) and authentication",
+        "Identity Management",
+        "Optical and electronic document security",
+        "Post-quantum cryptography",
+        "Quantum cryptography",
+        "Software and Hardware Security Engineering",
+        "Symmetric cryptography"
+    ],
+    "anexos": [
+        {
+            "titulo": "HORIZON  Research and Innovation Actions",
+            "link": "https://ec.europa.eu/research/participants/submission/manage/screen/submission/create-draft/43617?topic=HORIZON-CL3-2026-02-CS-ECCC-03",
+            "tipo": "link"
+        }
+    ]
+}

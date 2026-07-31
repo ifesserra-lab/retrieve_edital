@@ -1,0 +1,30 @@
+{
+    "nome": "INTERNATIONAL COOPERATION IN AI (IA)",
+    "descrição": "Chamada: DIGITAL. Área: Horizon Europe (HORIZON); Global Challenges and European Industrial Competitiveness; Digital, Industry and Space; Key Digital Technologies. Identificador da chamada no Funding & Tenders Portal: HORIZON-CL4-2027-04-DIGITAL-EMERGING-06.",
+    "orgão_fomento": "HORIZON EUROPE",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-11-17",
+    "data_encerramento": "2027-03-18",
+    "link": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2027-04-DIGITAL-EMERGING-06",
+    "cronograma": [
+        {
+            "evento": "Abertura das inscrições",
+            "data": "2026-11-17"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2027-03-18"
+        }
+    ],
+    "tags": [
+        "horizon europe",
+        "internacional",
+        "Horizon Europe (HORIZON)",
+        "Global Challenges and European Industrial Competitiveness",
+        "Digital, Industry and Space",
+        "Key Digital Technologies",
+        "Artificial intelligence, intelligent systems, multi agent systems"
+    ],
+    "anexos": []
+}

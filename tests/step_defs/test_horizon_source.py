@@ -74,7 +74,7 @@ class FakeSession:
         self.raise_error = raise_error
         self.requests_made = 0
 
-    def get(self, url, timeout=None, headers=None):
+    def get(self, url, timeout=None, headers=None, stream=False):
         self.requests_made += 1
         if self.raise_error is not None:
             raise self.raise_error
@@ -295,3 +295,153 @@ class TestCategory:
     def test_category_stays_within_the_existing_vocabulary(self):
         source, _ = build_source()
         assert source.read()[0].source_category in {"inovação", "pesquisa"}
+
+
+class TestWholeProgrammeShortcut:
+    def test_the_horizon_prefix_indexes_every_division(self):
+        """
+        A comparação é por prefixo, então `HORIZON` cobre todo o programa — não é
+        preciso listar as 13 subdivisões.
+        """
+        items = [
+            build_item(
+                identifier="A",
+                programmeDivision=[{"abbreviation": "HORIZON.1.1", "description": "ERC"}],
+            ),
+            build_item(
+                identifier="B",
+                programmeDivision=[{"abbreviation": "HORIZON.2.6", "description": "Food"}],
+            ),
+            build_item(
+                identifier="C",
+                programmeDivision=[{"abbreviation": "HORIZON.4.1", "description": "Widening"}],
+            ),
+        ]
+        source, _ = build_source(items, divisions=["HORIZON"])
+        assert len(source.read()) == 3
+
+    def test_session_has_transport_level_retry(self):
+        """Um `Connection reset by peer` não pode custar a execução semanal."""
+        session = HorizonSource._build_session()
+        adapter = session.get_adapter("https://ec.europa.eu")
+        assert adapter.max_retries.total >= 3
+        assert 429 in adapter.max_retries.status_forcelist
+
+
+class TestWindowedDownload:
+    """
+    Medições de 2026-07-30 contra o servidor da UE:
+
+    - transferência única dos 126 MB: `Connection reset by peer` no meio;
+    - `Range: bytes=N-` (aberto), como o `curl -C -` envia: responde `206`, mas a
+      transferência estola e é cortada;
+    - `Range: bytes=N-M` (limitado a 8 MB): `206` com os bytes exatos, rápido.
+
+    Daí o download em janelas com fim explícito.
+    """
+
+    def build_window_session(self, payload: str, failures_per_window=None,
+                             honour_range=True):
+        raw = payload.encode("utf-8")
+        remaining = dict(failures_per_window or {})
+
+        class WindowResponse:
+            def __init__(self, content, status_code, headers):
+                self.content = content
+                self.status_code = status_code
+                self.headers = headers
+                self.url = HORIZON_BULK_URL
+
+            def raise_for_status(self):
+                return None
+
+        class WindowSession:
+            def __init__(self):
+                self.ranges = []
+                self.compressed_attempts = 0
+
+            def get(self, url, timeout=None, headers=None, stream=False):
+                headers = headers or {}
+                range_header = headers.get("Range")
+                if range_header is None:
+                    # Caminho comprimido: indisponível neste cenário.
+                    self.compressed_attempts += 1
+                    raise requests.RequestException("compressed path unavailable")
+
+                self.ranges.append(range_header)
+                start = int(range_header.split("=")[1].split("-")[0])
+                if remaining.get(start, 0) > 0:
+                    remaining[start] -= 1
+                    raise requests.RequestException("connection reset")
+
+                if not honour_range:
+                    return WindowResponse(raw, 200, {})
+                end = int(range_header.split("-")[1])
+                body = raw[start : end + 1]
+                return WindowResponse(
+                    body,
+                    206,
+                    {"Content-Range": f"bytes {start}-{start + len(body) - 1}/{len(raw)}"},
+                )
+
+        return WindowSession()
+
+    def test_assembles_the_payload_from_successive_windows(self, monkeypatch):
+        monkeypatch.setattr(
+            "src.components.sources.horizon_source.DOWNLOAD_WINDOW_SIZE", 4096
+        )
+        payload = build_payload([build_item(identifier=f"ID-{i}") for i in range(40)])
+        session = self.build_window_session(payload)
+        source = HorizonSource(divisions=["HORIZON.3.1"], session=session)
+
+        assert len(source.read()) == 40
+        assert len(session.ranges) > 1, "payload maior que a janela exige várias idas"
+
+    def test_every_range_request_is_bounded(self, monkeypatch):
+        """`Range` aberto é justamente o que o servidor não entrega."""
+        monkeypatch.setattr(
+            "src.components.sources.horizon_source.DOWNLOAD_WINDOW_SIZE", 4096
+        )
+        payload = build_payload([build_item(identifier=f"ID-{i}") for i in range(30)])
+        session = self.build_window_session(payload)
+        HorizonSource(divisions=["HORIZON.3.1"], session=session).read()
+
+        for range_header in session.ranges:
+            start, _, end = range_header.partition("=")[2].partition("-")
+            assert start.isdigit() and end.isdigit(), f"Range sem fim: {range_header}"
+
+    def test_a_failing_window_is_retried_without_losing_the_rest(self, monkeypatch):
+        monkeypatch.setattr(
+            "src.components.sources.horizon_source.DOWNLOAD_WINDOW_SIZE", 4096
+        )
+        payload = build_payload([build_item(identifier=f"ID-{i}") for i in range(40)])
+        session = self.build_window_session(payload, failures_per_window={4096: 2})
+        source = HorizonSource(divisions=["HORIZON.3.1"], session=session)
+
+        assert len(source.read()) == 40
+        assert session.ranges.count("bytes=4096-8191") == 3, "duas falhas e um acerto"
+
+    def test_falls_back_to_windows_when_the_compressed_path_fails(self):
+        payload = build_payload([build_item()])
+        session = self.build_window_session(payload)
+        source = HorizonSource(divisions=["HORIZON.3.1"], session=session)
+        assert len(source.read()) == 1
+        assert session.compressed_attempts == 1
+
+    def test_server_ignoring_range_returns_the_whole_body_once(self):
+        payload = build_payload([build_item()])
+        session = self.build_window_session(payload, honour_range=False)
+        source = HorizonSource(divisions=["HORIZON.3.1"], session=session)
+        assert len(source.read()) == 1
+        assert len(session.ranges) == 1
+
+    def test_gives_up_after_the_retry_budget(self):
+        from src.components.sources.horizon_source import DOWNLOAD_MAX_RETRIES
+
+        payload = build_payload([build_item()])
+        session = self.build_window_session(
+            payload, failures_per_window={0: DOWNLOAD_MAX_RETRIES + 5}
+        )
+        source = HorizonSource(divisions=["HORIZON.3.1"], session=session)
+        assert source.read() == []
+        assert source.last_listing_count == 0

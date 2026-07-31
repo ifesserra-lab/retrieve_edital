@@ -1,0 +1,38 @@
+{
+    "nome": "STARTUP EUROPE",
+    "descrição": "Chamada: Interconnected Innovation Ecosystems (2027.1). Área: European innovation ecosystems; Innovative Europe; Horizon Europe (HORIZON). Identificador da chamada no Funding & Tenders Portal: HORIZON-EIE-2027-01-CONNECT-01.",
+    "orgão_fomento": "HORIZON EUROPE",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2027-06-01",
+    "data_encerramento": "2027-09-15",
+    "link": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-EIE-2027-01-CONNECT-01",
+    "cronograma": [
+        {
+            "evento": "Abertura das inscrições",
+            "data": "2027-06-01"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2027-09-15"
+        }
+    ],
+    "tags": [
+        "horizon europe",
+        "internacional",
+        "European innovation ecosystems",
+        "Innovative Europe",
+        "Horizon Europe (HORIZON)",
+        "Business development",
+        "Business support services",
+        "Entrepreneurship",
+        "Incubator companies",
+        "Innovation support services",
+        "Market development",
+        "Market-creating innovation",
+        "New business opportunities",
+        "Start-up companies",
+        "Technology development"
+    ],
+    "anexos": []
+}

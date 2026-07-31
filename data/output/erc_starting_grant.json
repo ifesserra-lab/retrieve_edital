@@ -1,0 +1,35 @@
+{
+    "nome": "ERC STARTING GRANT",
+    "descrição": "Chamada: Call for Proposals for ERC Starting Grant. Área: Frontier science; Excellent Science; Horizon Europe (HORIZON); European Research Council (ERC). Identificador da chamada no Funding & Tenders Portal: ERC-2027-STG.",
+    "orgão_fomento": "HORIZON EUROPE",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-07-22",
+    "data_encerramento": "2026-10-14",
+    "link": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERC-2027-STG",
+    "cronograma": [
+        {
+            "evento": "Abertura das inscrições",
+            "data": "2026-07-22"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2026-10-14"
+        }
+    ],
+    "tags": [
+        "horizon europe",
+        "internacional",
+        "Frontier science",
+        "Excellent Science",
+        "Horizon Europe (HORIZON)",
+        "European Research Council (ERC)"
+    ],
+    "anexos": [
+        {
+            "titulo": "HORIZON ERC Grants",
+            "link": "https://ec.europa.eu/research/participants/submission/manage/screen/submission/create-draft/45732?topic=ERC-2027-STG",
+            "tipo": "link"
+        }
+    ]
+}
