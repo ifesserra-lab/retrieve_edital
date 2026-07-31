@@ -258,20 +258,28 @@ class FapesSource(ISource[RawEdital]):
                             logger.info(f"Foud {len(unique_docs)} unique document links in group {group_id}")
                             temp_docs = [{"title": t, "url": h} for h, t in unique_docs.items()]
 
+                            # A eleição do principal não depende de LLM, então
+                            # dá para descobrir se o grupo já é conhecido antes de
+                            # gastar uma chamada ao Mistral com ele. Antes a
+                            # classificação vinha primeiro e rodava para todo
+                            # grupo, mesmo os já coletados.
+                            main_index = elect_main_document_index(temp_docs, group_id)
+                            if (
+                                main_index >= 0
+                                and temp_docs[main_index]["url"] in self.processed_urls
+                            ):
+                                logger.debug(
+                                    "Grupo %s já coletado; pulando sem classificar.",
+                                    group_id,
+                                )
+                                continue
+
                             # Classify titles in bulk using Mistral
                             titles_to_classify = [d["title"] for d in temp_docs if d["title"].lower() not in ["baixar", "clique aqui"]]
                             classifications = {}
                             if titles_to_classify:
                                 classifications = self.classifier.classify_document_titles(titles_to_classify)
                             
-                            # O principal é eleito por evidência da página, antes
-                            # e independentemente do Mistral: era a classificação
-                            # do LLM que decidia quem era `edital`, e como ela
-                            # varia entre execuções, a identidade do edital — e
-                            # com ela a chave de deduplicação — mudava de rodada
-                            # para rodada.
-                            main_index = elect_main_document_index(temp_docs, group_id)
-
                             # Map back to RawEdital objects
                             group_raw_editais = []
                             for indice, doc in enumerate(temp_docs):

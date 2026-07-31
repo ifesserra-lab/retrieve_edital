@@ -159,6 +159,10 @@ class EditalNormalizer(ITransform[RawEdital, EditalDomain]):
     
     def __init__(self, extraction_service: Optional[MistralExtractionService] = None):
         self.extraction_service = extraction_service or MistralExtractionService()
+        # Recusas desta execução, como {url: motivo}. O fluxo as registra no
+        # índice de recusados para não repetir OCR de um edital que o portão já
+        # rejeitou — sem isso, ele volta como novo em toda execução.
+        self.rejections: Dict[str, str] = {}
     
     def process(self, raw_data: RawEdital) -> Optional[EditalDomain]:
         """
@@ -334,9 +338,8 @@ class EditalNormalizer(ITransform[RawEdital, EditalDomain]):
         )
         return self._publish_or_discard(edital, raw_data)
 
-    @staticmethod
     def _publish_or_discard(
-        edital: EditalDomain, raw_data: RawEdital
+        self, edital: EditalDomain, raw_data: RawEdital
     ) -> Optional[EditalDomain]:
         """
         Aplica as regras de publicação e ajusta o status ao prazo.
@@ -348,6 +351,8 @@ class EditalNormalizer(ITransform[RawEdital, EditalDomain]):
             logger.info(
                 "Edital não publicado (%s): %s", verdict.reason, edital.nome[:70]
             )
+            if raw_data.url:
+                self.rejections[raw_data.url] = verdict.reason
             return None
         edital.status = publication_rules.resolve_status(edital)
         edital.categoria = publication_rules.canonical_category(

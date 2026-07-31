@@ -8,6 +8,7 @@ from src.components.transforms.edital_normalizer import EditalNormalizer
 from src.components.sinks.json_sink import LocalJSONSink
 from src.domain.models import RawEdital, EditalDomain
 from src.flow_health import emit_flow_stats
+from src import rejection_store
 from src.processed_store import get_keys_set, add_many, DEFAULT_PATH
 
 # Load environment variables from .env file
@@ -53,6 +54,10 @@ def run_pipeline(
     # do título da página — as duas chaves não fechavam, e os mesmos editais
     # voltavam a cada execução consumindo OCR.
     processed_urls = get_keys_set("fapes", path=processed_index_path)
+    # Recusas ainda válidas contam como já vistas: sem isso, um edital
+    # que o portão rejeitou volta como novo em toda execução, com PDF
+    # baixado e OCR refeito só para ser rejeitado de novo.
+    processed_urls = processed_urls | rejection_store.get_active_keys("fapes")
     source = source or FapesSource(processed_urls=processed_urls)
     transform = transform or EditalNormalizer()
     sink = sink or LocalJSONSink()
@@ -103,6 +108,8 @@ def run_pipeline(
     # runner caía no proxy de sequência — o falso alarme que as estatísticas
     # existem para evitar.
     emit_flow_stats(raw_count=listing_count, new_count=len(valid_domains))
+    rejection_store.record("fapes", getattr(transform, "rejections", {}))
+
     if valid_domains:
         persisted = sink.write(valid_domains)
         add_many(
