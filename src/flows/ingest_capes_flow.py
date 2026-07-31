@@ -9,6 +9,7 @@ from src.components.sources.capes_source import CapesSource
 from src.components.transforms.edital_normalizer import EditalNormalizer
 from src.core.interfaces import ISink, ISource, ITransform
 from src.domain.models import EditalDomain, RawEdital
+from src.flow_health import emit_flow_stats
 from src.processed_store import DEFAULT_PATH, add_many, get_keys_set
 
 load_dotenv()
@@ -34,7 +35,12 @@ def run_pipeline(
     logger.info("Phase 1: Extraction")
     raw_data_list = source.read()
 
+    # Quantos itens a origem devolveu antes da deduplicação: é o que
+    # permite ao runner separar "portal sem novidade" de "source quebrado".
+    listing_count = getattr(source, "last_listing_count", len(raw_data_list))
+
     if not raw_data_list:
+        emit_flow_stats(raw_count=listing_count, new_count=0)
         logger.warning("Extraction returned empty. Halting pipeline.")
         return
 
@@ -63,6 +69,7 @@ def run_pipeline(
 
     logger.info("Phase 3: Load/Sink")
     if valid_domains:
+        emit_flow_stats(raw_count=listing_count, new_count=len(valid_domains))
         persisted = sink.write(valid_domains)
         add_many(
             "capes",

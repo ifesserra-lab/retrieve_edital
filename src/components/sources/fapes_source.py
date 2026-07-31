@@ -59,6 +59,10 @@ class FapesSource(ISource[RawEdital]):
         else:
             self.start_urls = start_urls
         self.processed_titles = processed_titles or set()
+        # Quantos itens a listagem da origem devolveu, antes da deduplicação e
+        # dos filtros. É o que permite ao runner distinguir "portal sem
+        # novidade" de "source quebrado". Ver src/flow_health.py.
+        self.last_listing_count = 0
         self.classifier = classifier or MistralExtractionService()
         
     def _download_pdf(self, url: str) -> Optional[bytes]:
@@ -72,6 +76,7 @@ class FapesSource(ISource[RawEdital]):
 
     def read(self) -> List[RawEdital]:
         raw_editais: List[RawEdital] = []
+        self.last_listing_count = 0
         
         try:
             with sync_playwright() as p:
@@ -114,6 +119,8 @@ class FapesSource(ISource[RawEdital]):
                         if not notice_blocks:
                             logger.warning(f"No document groups found on {url}.")
                             break
+
+                        self.last_listing_count += len(notice_blocks)
 
                         for block in notice_blocks:
                             # Try to find a descriptive group title

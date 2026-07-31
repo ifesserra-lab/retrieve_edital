@@ -7,7 +7,13 @@ def test_extract_iso_date_from_pt_text():
     assert _extract_iso_date_from_pt_text("sem data") is None
 
 
-def test_extract_current_year_links_filters_non_current_year_and_processed_urls():
+def test_extract_current_year_links_returns_every_current_year_entry():
+    """
+    O parser da listagem devolve tudo o que a origem trouxe, inclusive o que já
+    está no registry. A deduplicação é do `read()`: com ela aqui, a contagem
+    bruta viraria "quantos são novos" em vez de "a origem respondeu", e um portal
+    saudável sem novidade pareceria quebrado para o canário do runner.
+    """
     html = """
     <html>
       <body>
@@ -26,12 +32,12 @@ def test_extract_current_year_links_filters_non_current_year_and_processed_urls(
 
     result = source._extract_current_year_links(html)
 
-    assert result == [
-        {
-            "title": "Edital 1 - Atual",
-            "url": "https://portal.conif.org.br/editais/2026/edital-1",
-        }
+    # Filtra por ano, mas não pelo registry.
+    assert [item["url"] for item in result] == [
+        "https://portal.conif.org.br/editais/2026/edital-1",
+        "https://portal.conif.org.br/editais/2026/edital-3",
     ]
+    assert result[0]["title"] == "Edital 1 - Atual"
 
 
 class FakePage:
