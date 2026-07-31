@@ -134,8 +134,16 @@ def resolve_result(
     """
     if return_code != 0:
         return RESULT_FAILURE
-    if stats is not None and stats.source_returned_nothing:
-        return RESULT_WARNING
+    if stats is not None:
+        # Com estatísticas, a saúde da origem é fato, não inferência: zero itens
+        # brutos é scraper quebrado, e qualquer item prova que a origem respondeu.
+        # A regra de sequência abaixo é só um proxy para quando não há esse dado,
+        # e deve ceder à evidência — do contrário um fluxo saudável cujo portal
+        # não publica nada há semanas fica em alerta permanente, e alerta que
+        # dispara sempre não informa nada.
+        return (
+            RESULT_WARNING if stats.source_returned_nothing else RESULT_SUCCESS
+        )
     if REGISTRY_KEYS[flow_name] in LOW_VOLUME_FLOWS:
         return RESULT_SUCCESS
     if delta == 0 and zero_delta_streak >= ZERO_DELTA_ALERT_THRESHOLD:

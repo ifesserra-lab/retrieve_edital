@@ -108,6 +108,24 @@ class TestResolveResult:
             == run_all_flows.RESULT_SUCCESS
         )
 
+    def test_proven_healthy_source_overrides_a_long_zero_delta_streak(self):
+        """
+        Em 2026-07-31, 6 dos 7 fluxos saíram como Atenção. FINEP e CNPq estavam
+        provadamente saudáveis (36 e 9 itens brutos) e foram marcados só pela
+        sequência de deltas zero. Alerta que dispara sempre não informa nada.
+        """
+        streak = run_all_flows.ZERO_DELTA_ALERT_THRESHOLD * 3
+        assert (
+            run_all_flows.resolve_result("FINEP", 0, 0, streak, FlowStats(36, 0))
+            == run_all_flows.RESULT_SUCCESS
+        )
+
+    def test_empty_source_is_a_warning_even_on_the_first_occurrence(self):
+        assert (
+            run_all_flows.resolve_result("FINEP", 0, 0, 1, FlowStats(0, 0))
+            == run_all_flows.RESULT_WARNING
+        )
+
     def test_long_zero_delta_streak_without_stats_is_a_warning(self):
         streak = run_all_flows.ZERO_DELTA_ALERT_THRESHOLD
         assert (
