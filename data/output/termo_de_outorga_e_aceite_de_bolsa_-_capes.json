@@ -17,54 +17,50 @@
     ],
     "anexos": [
         {
-            "titulo": "Manual Cartão Pesquisador",
-            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/documentos/09042024_manual-cartao-pesquisador-capes-2024-v04.pdf",
-            "tipo": "anexo"
-        },
-        {
             "titulo": "Termo de Outorga e Aceite de Bolsa - formato, pdf, 280kb",
-            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/Edital_2799129_2Modelo_Termo_de_Outorga_Bolsista__1_.pdf",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/Edital_2799129_2Modelo_Termo_de_Outorga_Bolsista__1_.pdf/@@display-file/file",
             "tipo": "anexo"
         },
         {
             "titulo": "Edital nº 19/2026 - Programa Capes/Universidade em Buffalo (Capes/UB) - Professor Visitante - formato, pdf, 139kb",
-            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/Edital_2843097_SEI_2842333_Edital_n__19_2026.pdf",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/Edital_2843097_SEI_2842333_Edital_n__19_2026.pdf/@@display-file/file",
             "tipo": "anexo"
         },
         {
             "titulo": "Portaria nº 289, de 28 de dezembro de 2018  - formato, pdf, 557kb",
-            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/copy_of_Edital_2799130_4Portaria_289_de_28_12_2018.pdf",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/copy_of_Edital_2799130_4Portaria_289_de_28_12_2018.pdf/@@display-file/file",
             "tipo": "anexo"
         },
         {
             "titulo": "Resultado final do edital nº 16/2025 - formato, pdf, 55kb",
-            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/resultados-dos-editais/20022026_Edital_2770689_SEI_2770040_Edital_16_2025.pdf",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/resultados-dos-editais/20022026_Edital_2770689_SEI_2770040_Edital_16_2025.pdf/@@display-file/file",
             "tipo": "anexo"
         },
         {
             "titulo": "Alteração do resultado preliminar do edital nº 16/2025 - formato, pdf, 56kb",
-            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/resultados-dos-editais/02012025_Edital_2746048_SEI_2745845_Edital_N__16_2025___Alteracao_do_RESULTADO_PRELIMINAR.pdf",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/resultados-dos-editais/02012025_Edital_2746048_SEI_2745845_Edital_N__16_2025___Alteracao_do_RESULTADO_PRELIMINAR.pdf/@@display-file/file",
             "tipo": "anexo"
         },
         {
             "titulo": "Resultado preliminar do edital nº 16/2025 - formato, pdf, 57kb",
-            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/resultados-dos-editais/29122025_Edital_2744824_SEI_2744199_Edital_16__de_2025.pdf",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/resultados-dos-editais/29122025_Edital_2744824_SEI_2744199_Edital_16__de_2025.pdf/@@display-file/file",
             "tipo": "anexo"
         },
         {
             "titulo": "Lista de inscritos no edital nº 16/2025 - formato, pdf, 207kb",
-            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/resultados-dos-editais/29102025_Lista_Listagem_2693783_SEI___23038.003238_2025_21_buffalo.pdf",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/resultados-dos-editais/29102025_Lista_Listagem_2693783_SEI___23038.003238_2025_21_buffalo.pdf/@@display-file/file",
             "tipo": "anexo"
         },
         {
             "titulo": "Edital nº 16/2025 - formato, pdf, 360kb",
-            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/11082025_Edital_2654124.pdf",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/11082025_Edital_2654124.pdf/@@display-file/file",
             "tipo": "anexo"
         },
         {
-            "titulo": "11082025_Edital_2585802_2Modelo_Termo_de_Outorga_Bolsista__1_.pdf",
-            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/11082025_Edital_2585802_2Modelo_Termo_de_Outorga_Bolsista__1_.pdf",
+            "titulo": "file",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/11082025_Edital_2585802_2Modelo_Termo_de_Outorga_Bolsista__1_.pdf/@@display-file/file",
             "tipo": "anexo"
         }
-    ]
+    ],
+    "modalidade": ""
 }

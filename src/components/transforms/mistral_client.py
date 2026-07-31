@@ -24,6 +24,13 @@ RATE_LIMIT_MAX_RETRIES = 10
 RATE_LIMIT_INITIAL_WAIT_SEC = 60
 RATE_LIMIT_BACKOFF_FACTOR = 2.0
 
+# Teto de espera acumulada por chamada. Contar tentativas não limita o tempo: dez
+# retentativas dobrando a partir de 60s somam mais de 17 horas, muito além de
+# qualquer janela de job aceitável. O que importa é quanto tempo a chamada pode
+# segurar o fluxo, então o corte é por tempo — a última espera é encurtada para
+# não passar do teto, e depois disso a falha sobe para o chamador.
+RATE_LIMIT_MAX_TOTAL_WAIT_SEC = 15 * 60
+
 
 def _is_rate_limit_error(exc: Exception) -> bool:
     s = str(exc).lower()
@@ -35,10 +42,15 @@ def _call_with_rate_limit_retry(
     context: str = "",
 ) -> T:
     """
-    Executes fn(); on 429 (rate limit) retries with exponential backoff.
-    Does not stop: retries up to RATE_LIMIT_MAX_RETRIES times.
+    Executa fn(); em caso de 429 (rate limit) tenta de novo com backoff exponencial.
+
+    O corte é por **tempo acumulado**, não por número de tentativas: contar
+    tentativas não limita a duração, e dez retentativas dobrando a partir de 60s
+    somariam mais de 17 horas. Ao esgotar o teto, a exceção sobe para o chamador,
+    que registra a falha — e o canário do runner a torna visível.
     """
     last_exc = None
+    total_waited = 0.0
     for attempt in range(RATE_LIMIT_MAX_RETRIES):
         try:
             return fn()
@@ -46,16 +58,34 @@ def _call_with_rate_limit_retry(
             last_exc = e
             if not _is_rate_limit_error(e) or attempt == RATE_LIMIT_MAX_RETRIES - 1:
                 raise
+
+            remaining = RATE_LIMIT_MAX_TOTAL_WAIT_SEC - total_waited
+            if remaining <= 0:
+                logger.error(
+                    "Rate limit persistente: teto de %.0fs de espera esgotado após "
+                    "%s tentativas. Desistindo. Contexto: %s",
+                    RATE_LIMIT_MAX_TOTAL_WAIT_SEC,
+                    attempt,
+                    context or "Mistral API",
+                )
+                raise
+
             wait_sec = RATE_LIMIT_INITIAL_WAIT_SEC * (RATE_LIMIT_BACKOFF_FACTOR ** attempt)
+            # Encurta a última espera para não estourar o teto.
+            wait_sec = min(wait_sec, remaining)
             logger.warning(
-                "Rate limit hit (%s). Waiting %.0fs before retry %s/%s. Context: %s",
+                "Rate limit hit (%s). Waiting %.0fs before retry %s/%s "
+                "(%.0fs de %.0fs do teto usados). Context: %s",
                 e,
                 wait_sec,
                 attempt + 1,
                 RATE_LIMIT_MAX_RETRIES,
+                total_waited + wait_sec,
+                RATE_LIMIT_MAX_TOTAL_WAIT_SEC,
                 context or "Mistral API",
             )
             time.sleep(wait_sec)
+            total_waited += wait_sec
     if last_exc is not None:
         raise last_exc
     raise RuntimeError("Unexpected retry exit")

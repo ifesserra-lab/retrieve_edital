@@ -70,12 +70,13 @@ Três caminhos, em ordem de custo-benefício:
    job. Hoje não existe teto.
 3. **Plano pago com limite maior**, se as duas medidas acima não bastarem.
 
-## Limite prático do backoff atual
+## Teto de espera do backoff
 
-`RATE_LIMIT_MAX_RETRIES = 10` combinado com fator 2 e início em 60s é generoso
-demais para um job diário. Um teto de espera acumulada por execução seria mais
-adequado que um número de tentativas — fica registrado como melhoria pendente,
-não implementada.
+Contar tentativas não limita duração: dez retentativas dobrando a partir de 60s
+somavam **mais de 17 horas** numa única chamada. O corte passou a ser por tempo
+acumulado, `RATE_LIMIT_MAX_TOTAL_WAIT_SEC = 15 min`, com a última espera
+encurtada para não estourar o teto. Esgotado, a exceção sobe para o chamador e o
+canário do runner torna a falha visível em vez de o job ficar pendurado.
 
 ## Quando a chave expira: o que se vê
 
@@ -139,6 +140,22 @@ Os 64 sem abertura vinham preenchidos com 1º de janeiro do ano corrente — um
 placeholder do normalizer que o portal exibia como se fosse informação da fonte.
 Agora sai vazio: não saber a data é um fato, inventá-la não.
 
+### O cronograma extraído era descartado
+
+Diagnosticado em 2026-07-31: `mistral_domain.cronograma` recebia o cronograma da
+fonte por atribuição direta. Como **FAPES, CAPES e PROEX/IFES não fornecem
+cronograma**, a atribuição era de lista vazia e apagava o que o OCR havia
+extraído. A correlação era exata — as três fontes sem `raw_cronograma` eram
+exatamente as com cronograma vazio na saída.
+
+74 editais perdiam cronograma já pago em OCR, e 23 ficavam sem data alguma. O
+dado existia: o PDF do `EDITAL FAPES Nº 28/2025` tem 17 datas.
+
+Os dois cronogramas passam a ser unidos, com a fonte tendo precedência em caso de
+mesmo evento. As datas são rederivadas do resultado.
+
+### Prazo ausente: dois significados, agora distintos
+
 Os 44 sem prazo se dividem em dois grupos, e só um é problema:
 
 - **14 da FINEP** são chamadas de fluxo contínuo. A origem realmente não tem
@@ -147,10 +164,15 @@ Os 44 sem prazo se dividem em dois grupos, e só um é problema:
   `extract_from_pdf` **pede** o cronograma, mas o Mistral não o encontra nesses
   PDFs.
 
-O segundo grupo é qualidade de extração, não instrução faltante — melhorar exige
-avaliar os PDFs concretos que falham e ajustar o prompt contra eles. Fica
-registrado como pendência, sem correção especulativa. O impacto é de exibição: o
-edital aparece no portal sem prazo, mas com descrição e link corretos.
+O primeiro grupo ganhou marca explícita: `modalidade = fluxo-contínuo`. Sem ela,
+`data_encerramento` vazio significava tanto "candidate-se a qualquer momento"
+quanto "não sabemos o prazo", e quem usa o portal não distinguia os dois. Só sinal
+explícito conta — a origem declarar, ou o texto do edital dizer "fluxo contínuo".
+Deduzir da ausência de prazo seria circular.
+
+O segundo grupo era, em boa parte, o cronograma descartado acima. O que sobrar
+depois da recoleta é qualidade de extração de PDF específico, e aí sim exige
+avaliar os documentos que falham antes de mexer no prompt.
 
 ## Chave de acesso
 

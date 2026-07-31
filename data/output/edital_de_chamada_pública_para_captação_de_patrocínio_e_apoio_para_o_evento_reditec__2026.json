@@ -1,0 +1,68 @@
+{
+    "nome": "EDITAL DE CHAMADA PÚBLICA PARA CAPTAÇÃO DE PATROCÍNIO E APOIO PARA O EVENTO REDITEC – 2026",
+    "descrição": "O presente edital tem por objeto a captação de recursos financeiros, por meio de patrocínio de empresas públicas e/ou privadas, e de apoio para a realização da 50ª Reunião dos Dirigentes das Instituições Federais de Educação Profissional e Tecnológica (Reditec), que acontecerá de 10 a 12 de novembro de 2026, em Montes Claros - MG. O patrocínio e apoio incluem contrapartidas conforme modalidades de cotas descritas no edital.",
+    "orgão_fomento": "CONIF",
+    "categoria": "outros",
+    "status": "aberto",
+    "data_abertura": "2026-07-25",
+    "data_encerramento": "2026-07-31",
+    "link": "https://portal.conif.org.br/editais/2026/edital-8-captacao-de-patrocinio-e-apoio-ao-evento-reditec-2026",
+    "cronograma": [
+        {
+            "evento": "data de publicação",
+            "data": "2026-07-25"
+        },
+        {
+            "evento": "Publicação do Edital",
+            "data": "2026-07-24"
+        },
+        {
+            "evento": "Submissão de proposta de patrocínio e/ou apoio",
+            "data": "2026-07-24"
+        },
+        {
+            "evento": "Fim do período de submissão de propostas",
+            "data": "2026-07-31"
+        },
+        {
+            "evento": "Publicação do resultado da análise das propostas (por e-mail)",
+            "data": "2026-08-04"
+        },
+        {
+            "evento": "Pagamento dos valores das cotas de patrocínio (à vista com 5% de desconto ou 1ª parcela sem desconto)",
+            "data": "2026-08-17"
+        }
+    ],
+    "tags": [
+        "patrocínio",
+        "evento",
+        "educação profissional",
+        "Reditec",
+        "captação de recursos",
+        "conif",
+        "2026"
+    ],
+    "anexos": [
+        {
+            "titulo": "EDITAL CONIF Nº 08/2026, de 24 de julho de 2026",
+            "link": "https://portal.conif.org.br/images/Editais/2026/7_Julho/edital-9---reditec-2026.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "ANEXO I – Mapa da feira",
+            "link": "https://portal.conif.org.br/images/Editais/2026/7_Julho/edital-9---mapa-da-feira_2026.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "ANEXO II – Proposta de patrocínio",
+            "link": "https://portal.conif.org.br/images/Editais/2026/7_Julho/edital-9---ficha-de-inscricao-reditec_2026.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Documento",
+            "link": "https://portal.conif.org.br/images/Editais/2026/7_Julho/anexo-ii---declaracao-de-autoria-e-originalidade.pdf",
+            "tipo": "anexo"
+        }
+    ],
+    "modalidade": ""
+}

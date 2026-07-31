@@ -15,17 +15,6 @@ from src.components.transforms.date_utils import normalize_schedule_dates
 logger = logging.getLogger(__name__)
 
 
-def _unresolved_opening_date() -> str:
-    """
-    Placeholder de `data_abertura` quando nenhuma data foi encontrada.
-
-    Serve como sentinela interna para saber que a data ainda não foi resolvida.
-    Antes era a string fixa "2026-01-01", que passaria a ser silenciosamente
-    errada a partir de 2027.
-    """
-    return f"{date.today().year}-01-01"
-
-
 def _extract_last_schedule_date(text: str) -> str:
     if not text:
         return ""
@@ -45,6 +34,122 @@ def _extract_last_schedule_date(text: str) -> str:
 def _match_any_token(event_name: str, tokens: tuple[str, ...]) -> bool:
     lowered = (event_name or "").lower()
     return any(token in lowered for token in tokens)
+
+
+# Rótulos de etapa que indicam início e fim do período de submissão. A ordem de
+# precedência importa: `abertura das inscrições` descreve o marco do edital,
+# enquanto `publicação` costuma ser a data em que o documento foi divulgado. Para
+# uma chamada de fluxo contínuo, o início útil é a abertura das inscrições.
+START_EVENT_TOKENS = (
+    "início do período do edital",
+    "inicio do período do edital",
+    "abertura das inscrições",
+    "abertura das inscricoes",
+    "abertura da inscrição",
+    "abertura da inscricao",
+    "inscrição",
+    "inscricao",
+    "manifestação de interesse",
+    "manifestacao de interesse",
+    "início",
+    "inicio",
+    "período",
+    "periodo",
+)
+PUBLICATION_EVENT_TOKENS = ("publicação", "publicacao")
+END_EVENT_TOKENS = (
+    "fim do período do edital",
+    "fim do periodo do edital",
+    "prazo para envio da proposta",
+    "prazo para envio de propostas",
+    "prazo para envio",
+    "encerramento",
+    "término",
+    "termino",
+)
+
+
+def _is_iso_date(value) -> bool:
+    return bool(re.match(r"\d{4}-\d{2}-\d{2}", str(value or "")))
+
+
+def _first_date_matching(events: List[Dict[str, str]], tokens: tuple) -> str:
+    for item in events:
+        date_value = item.get("data") or ""
+        if _is_iso_date(date_value) and _match_any_token(item.get("evento") or "", tokens):
+            return date_value
+    return ""
+
+
+def derive_opening_date(events: List[Dict[str, str]]) -> str:
+    """
+    Data de abertura a partir do cronograma, ou vazio quando não há data alguma.
+
+    Precedência: abertura de inscrições, depois publicação, depois a primeira data
+    disponível. A abertura vem antes porque é o marco do edital; a publicação é
+    quando o documento foi divulgado, e usá-la primeiro fazia a data do CMS
+    sobrepor o início real das inscrições.
+
+    Nunca inventa data: sem nenhuma etapa datada, devolve string vazia.
+    """
+    for tokens in (START_EVENT_TOKENS, PUBLICATION_EVENT_TOKENS):
+        found = _first_date_matching(events, tokens)
+        if found:
+            return found
+    for item in events:
+        if _is_iso_date(item.get("data")):
+            return item["data"]
+    return ""
+
+
+def derive_closing_date(
+    raw_events: List[Dict[str, str]], normalized_events: List[Dict[str, str]]
+) -> str:
+    """
+    Data de encerramento a partir do cronograma, ou vazio quando não há prazo.
+
+    Vazio é resposta legítima: chamada de fluxo contínuo não tem encerramento.
+    """
+    for tokens in (END_EVENT_TOKENS, START_EVENT_TOKENS):
+        for raw_item, normalized_item in zip(raw_events, normalized_events):
+            end_date = _extract_last_schedule_date(raw_item.get("data") or "")
+            if not end_date and _is_iso_date(normalized_item.get("data")):
+                end_date = normalized_item["data"]
+            if not end_date:
+                continue
+            if _match_any_token(normalized_item.get("evento") or "", tokens):
+                return end_date
+    return ""
+
+
+def merge_cronograma(
+    source_events: Optional[List[Dict[str, str]]],
+    extracted_events: Optional[List[Dict[str, str]]],
+) -> List[Dict[str, str]]:
+    """
+    Une o cronograma da fonte com o extraído do PDF, sem perder nenhum dos dois.
+
+    Antes o cronograma da fonte simplesmente substituía o do Mistral. Como FAPES,
+    CAPES e PROEX/IFES não fornecem cronograma, a substituição era por lista
+    vazia e apagava o que o OCR havia extraído — 74 editais ficaram sem
+    cronograma, e 23 sem data alguma.
+
+    A fonte tem precedência em caso de mesmo evento, porque o dado dela é
+    estruturado; os eventos que só o PDF traz são acrescentados ao fim.
+    """
+    merged: List[Dict[str, str]] = []
+    seen: set = set()
+    for events in (source_events or [], extracted_events or []):
+        for item in events:
+            if not isinstance(item, dict):
+                continue
+            event_name = (item.get("evento") or "").strip()
+            key = event_name.lower()
+            if not event_name or key in seen:
+                continue
+            seen.add(key)
+            merged.append({"evento": event_name, "data": item.get("data") or ""})
+    return merged
 
 class EditalNormalizer(ITransform[RawEdital, EditalDomain]):
     """
@@ -103,91 +208,8 @@ class EditalNormalizer(ITransform[RawEdital, EditalDomain]):
         normalized_cronograma = normalize_schedule_dates(cronograma)
         raw_cronograma = list(cronograma)
 
-        unresolved_opening = _unresolved_opening_date()
-        data_abertura = unresolved_opening
-        data_encerramento = ""
-        start_fallback_tokens = (
-            "início do período do edital",
-            "inicio do período do edital",
-            "abertura das inscrições",
-            "abertura das inscricoes",
-            "abertura da inscrição",
-            "abertura da inscricao",
-            "inscrição",
-            "inscricao",
-            "manifestação de interesse",
-            "manifestacao de interesse",
-            "início",
-            "inicio",
-            "período",
-            "periodo",
-        )
-        end_fallback_tokens = (
-            "fim do período do edital",
-            "fim do periodo do edital",
-            "prazo para envio da proposta",
-            "prazo para envio de propostas",
-            "prazo para envio",
-            "encerramento",
-            "término",
-            "termino",
-        )
-
-        for item in normalized_cronograma:
-            event_name = item.get("evento") or ""
-            date_value = item.get("data") or ""
-            if not re.match(r"\d{4}-\d{2}-\d{2}", str(date_value)):
-                continue
-            if _match_any_token(event_name, ("publicação", "publicacao")):
-                data_abertura = date_value
-                break
-
-        if data_abertura == unresolved_opening:
-            for item in normalized_cronograma:
-                event_name = item.get("evento") or ""
-                date_value = item.get("data") or ""
-                if not re.match(r"\d{4}-\d{2}-\d{2}", str(date_value)):
-                    continue
-                if _match_any_token(event_name, start_fallback_tokens):
-                    data_abertura = date_value
-                    break
-
-        if data_abertura == unresolved_opening:
-            for item in normalized_cronograma:
-                date_value = item.get("data") or ""
-                if re.match(r"\d{4}-\d{2}-\d{2}", str(date_value)):
-                    data_abertura = date_value
-                    break
-
-        if data_abertura == unresolved_opening:
-            # Nenhuma data encontrada: devolve vazio em vez de 1º de janeiro. O
-            # placeholder aparecia no portal como se fosse informação da fonte —
-            # 64 editais exibiam uma data de abertura que ninguém publicou.
-            # `data_encerramento` já sai vazio quando não há prazo; o campo de
-            # abertura passa a seguir o mesmo critério.
-            data_abertura = ""
-
-        for raw_item, normalized_item in zip(raw_cronograma, normalized_cronograma):
-            event_name = normalized_item.get("evento") or ""
-            normalized_date = normalized_item.get("data") or ""
-            end_date = _extract_last_schedule_date(raw_item.get("data") or "")
-            if not end_date and re.match(r"\d{4}-\d{2}-\d{2}", str(normalized_date)):
-                end_date = normalized_date
-            if not end_date:
-                continue
-            if _match_any_token(event_name, end_fallback_tokens):
-                data_encerramento = end_date
-                break
-
-        if not data_encerramento:
-            for raw_item, normalized_item in zip(raw_cronograma, normalized_cronograma):
-                event_name = normalized_item.get("evento") or ""
-                end_date = _extract_last_schedule_date(raw_item.get("data") or "")
-                if not end_date:
-                    continue
-                if _match_any_token(event_name, start_fallback_tokens):
-                    data_encerramento = end_date
-                    break
+        data_abertura = derive_opening_date(normalized_cronograma)
+        data_encerramento = derive_closing_date(raw_cronograma, normalized_cronograma)
 
         # Mistral extraction from PDF if available
         # Only extract full content for 'edital' or 'alteração' types, and if pdf_content is present
@@ -207,11 +229,6 @@ class EditalNormalizer(ITransform[RawEdital, EditalDomain]):
                     # Force the category from the source website as requested
                     if raw_data.source_category:
                         mistral_domain.categoria = raw_data.source_category
-                    if data_abertura:
-                        mistral_domain.data_abertura = data_abertura
-                    if data_encerramento:
-                        mistral_domain.data_encerramento = data_encerramento
-                    
                     # Add tags based on document type
                     if raw_data.document_type == "alteração":
                         mistral_domain.tags.append("alteração")
@@ -219,9 +236,30 @@ class EditalNormalizer(ITransform[RawEdital, EditalDomain]):
                     
                     mistral_domain.tags = list(dict.fromkeys((mistral_domain.tags or []) + tags))
                     mistral_domain.anexos = anexos
-                    
-                    # Normalize dates
-                    mistral_domain.cronograma = normalized_cronograma
+
+                    # Une o cronograma da fonte ao extraído do PDF. Antes o da
+                    # fonte substituía o do Mistral, e como FAPES, CAPES e
+                    # PROEX/IFES não fornecem cronograma, a substituição era por
+                    # lista vazia: apagava o que o OCR já havia extraído.
+                    merged = merge_cronograma(
+                        normalized_cronograma, mistral_domain.cronograma
+                    )
+                    mistral_domain.cronograma = normalize_schedule_dates(merged)
+
+                    # Rederiva as datas do cronograma resultante. A fonte tem
+                    # precedência quando trouxe a data; senão vale o que o
+                    # cronograma unido revelar, e só então o que o Mistral pôs
+                    # nos campos escalares.
+                    mistral_domain.data_abertura = (
+                        data_abertura
+                        or derive_opening_date(mistral_domain.cronograma)
+                        or (mistral_domain.data_abertura or "")
+                    )
+                    mistral_domain.data_encerramento = (
+                        data_encerramento
+                        or derive_closing_date(merged, mistral_domain.cronograma)
+                        or (mistral_domain.data_encerramento or "")
+                    )
 
                     return self._publish_or_discard(mistral_domain, raw_data)
                 else:
@@ -315,4 +353,5 @@ class EditalNormalizer(ITransform[RawEdital, EditalDomain]):
         edital.categoria = publication_rules.canonical_category(
             edital.categoria, publication_rules.category_hint_text(edital)
         )
+        edital.modalidade = publication_rules.resolve_modalidade(edital, raw_data)
         return edital

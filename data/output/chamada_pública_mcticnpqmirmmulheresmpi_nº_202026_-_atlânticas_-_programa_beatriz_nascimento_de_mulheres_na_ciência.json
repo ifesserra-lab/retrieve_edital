@@ -1,18 +1,55 @@
 {
     "nome": "CHAMADA PÚBLICA MCTI/CNPQ/MIR/MMULHERES/MPI Nº 20/2026 - ATLÂNTICAS - PROGRAMA BEATRIZ NASCIMENTO DE MULHERES NA CIÊNCIA",
-    "descrição": "Selecionar mulheres negras (pretas e pardas), mulheres quilombolas, mulheres indígenas e mulheres ciganas para a realização de parte de suas pesquisas de doutorado ou de projetos de pós-doutorado no exterior, por meio da concessão de bolsas de pesquisa nas modalidades Desenvolvimento Tecnológico e Inovação no Exterior Júnior (DEJ), Desenvolvimento Tecnológico e Inovação no Exterior Sênior (DES) e Pós-Doutorado no Exterior (PDE). O programa visa expandir a trajetória acadêmica dessas mulheres, promover a internacionalização e o desenvolvimento científico e tecnológico, além de fomentar a cooperação com centros de pesquisa e universidades estrangeiras.",
+    "descrição": "Selecionar mulheres negras (pretas e pardas), mulheres quilombolas, mulheres indígenas e mulheres ciganas para a realização de parte de suas pesquisas de doutorado ou de projetos de pós-doutorado no exterior. O edital visa conceder bolsas de pesquisa nas modalidades Desenvolvimento Tecnológico e Inovação no Exterior Júnior (DEJ), Desenvolvimento Tecnológico e Inovação no Exterior Sênior (DES) e Pós-Doutorado no Exterior (PDE), promovendo a internacionalização, o desenvolvimento científico e tecnológico, e a ampliação da participação dessas mulheres em espaços acadêmicos e de decisão.",
     "orgão_fomento": "CNPQ",
     "categoria": "pesquisa",
     "status": "aberto",
-    "data_abertura": "",
-    "data_encerramento": "2026-09-30",
+    "data_abertura": "2026-06-30",
+    "data_encerramento": "2026-10-01",
     "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-20-2026/chamada-publica-cnpq-N-20-2026",
-    "cronograma": [],
+    "cronograma": [
+        {
+            "evento": "Data de publicação",
+            "data": "2026-06-30"
+        },
+        {
+            "evento": "Lançamento da Chamada no Diário Oficial da União e na página do CNPq",
+            "data": "2026-06-30"
+        },
+        {
+            "evento": "Prazo para impugnação da Chamada",
+            "data": "2026-07-10"
+        },
+        {
+            "evento": "Data limite para submissão das propostas",
+            "data": "2026-09-30"
+        },
+        {
+            "evento": "Período de Julgamento + Comitê de Confirmação de autodeclaração e Comissão de Avaliação de Memorial Descritivo",
+            "data": "2026-10-01"
+        },
+        {
+            "evento": "Divulgação do resultado preliminar do julgamento",
+            "data": "2026-12-15"
+        },
+        {
+            "evento": "Prazo final para interposição de recurso administrativo",
+            "data": "2026-12-25"
+        },
+        {
+            "evento": "Divulgação da decisão no Diário Oficial da União e na página do CNPq",
+            "data": "2027-01-01"
+        },
+        {
+            "evento": "Período para implementação das bolsas",
+            "data": "2027-03-01"
+        }
+    ],
     "tags": [
         "mulheres na ciência",
         "bolsas no exterior",
-        "diversidade étnico-racial",
-        "internacionalização da pesquisa",
+        "equidade racial",
+        "internacionalização",
         "pós-doutorado",
         "cnpq",
         "chamada pública"
@@ -28,5 +65,6 @@
             "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-20-2026/lista_conae_2736172.pdf",
             "tipo": "pdf"
         }
-    ]
+    ],
+    "modalidade": ""
 }

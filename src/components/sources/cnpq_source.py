@@ -50,6 +50,10 @@ INSCRICOES_REGEX = re.compile(
     r"(\d{2}/\d{2}/\d{4})\s*a\s*(\d{2}/\d{2}/\d{4})",
     re.IGNORECASE,
 )
+PUBLICADO_REGEX = re.compile(
+    r"Publicado\s+em\s+(\d{2}/\d{2}/\d{4})",
+    re.IGNORECASE,
+)
 
 # Rótulos reconhecidos pelo EditalNormalizer ao derivar as datas.
 OPENING_EVENT = "Abertura das inscrições"
@@ -200,7 +204,9 @@ class CnpqSource(ISource[RawEdital]):
             pdf_content=pdf_content,
             document_type="edital",
             raw_status="aberto",
-            raw_cronograma=self._build_cronograma(data_abertura, data_encerramento)
+            raw_cronograma=self._build_cronograma(
+                page_text, data_abertura, data_encerramento
+            )
             or None,
             raw_tags=["cnpq", "chamada pública"],
             raw_anexos=anexos or None,
@@ -239,21 +245,26 @@ class CnpqSource(ISource[RawEdital]):
 
     @staticmethod
     def _build_cronograma(
-        data_abertura: str, data_encerramento: str
+        page_text: str, data_abertura: str, data_encerramento: str
     ) -> List[Dict[str, str]]:
         """
-        Cronograma é o período de inscrições, e só ele.
+        Período de inscrições e, quando disponível, a data de publicação.
 
-        A data de "Publicado em" da página é timestamp do CMS, não marco do
-        edital — e o EditalNormalizer dá precedência a eventos de publicação ao
-        derivar `data_abertura`, o que faria a data do CMS sobrepor a abertura
-        real das inscrições.
+        A publicação voltou ao cronograma: o normalizer passou a dar precedência
+        a `abertura das inscrições` sobre `publicação` ao derivar `data_abertura`,
+        então a data do CMS não sobrepõe mais o início real e pode ser registrada
+        como a informação adicional que é.
         """
         cronograma: List[Dict[str, str]] = []
         if data_abertura:
             cronograma.append({"evento": OPENING_EVENT, "data": data_abertura})
         if data_encerramento:
             cronograma.append({"evento": DEADLINE_EVENT, "data": data_encerramento})
+        publicacao_match = PUBLICADO_REGEX.search(page_text or "")
+        if publicacao_match:
+            publicacao = _dd_mm_yyyy_to_iso(publicacao_match.group(1))
+            if publicacao:
+                cronograma.append({"evento": "Data de publicação", "data": publicacao})
         return cronograma
 
     @staticmethod

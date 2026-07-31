@@ -339,3 +339,107 @@ def test_curation_clears_the_invented_opening_date():
         expected_opening_date({"data_abertura": "2026-05-20", "cronograma": []})
         == "2026-05-20"
     )
+
+
+class TestCronogramaIsNotDiscarded:
+    """
+    `mistral_domain.cronograma = normalized_cronograma` substituía o cronograma
+    extraído do PDF pelo da fonte. Como FAPES, CAPES e PROEX/IFES não fornecem
+    cronograma, a substituição era por lista vazia: 74 editais ficaram sem
+    cronograma e 23 sem data alguma, mesmo com o OCR já pago.
+    """
+
+    @staticmethod
+    def _normalizer_with_extraction(cronograma, **campos):
+        from unittest.mock import MagicMock
+
+        from src.components.transforms.edital_normalizer import EditalNormalizer
+
+        extraido = build_edital(cronograma=cronograma, **campos)
+        service = MagicMock()
+        service.extract_from_pdf.return_value = extraido
+        return EditalNormalizer(extraction_service=service)
+
+    def test_keeps_the_extracted_cronograma_when_the_source_has_none(self):
+        normalizer = self._normalizer_with_extraction(
+            [
+                {"evento": "Abertura das inscrições", "data": "2026-02-25"},
+                {"evento": "Prazo para envio de propostas", "data": "2099-04-13"},
+            ],
+            data_abertura="",
+            data_encerramento="",
+        )
+        raw = RawEdital(
+            title="Edital FAPES",
+            url="https://fapes.es.gov.br/edital.pdf",
+            raw_agency="FAPES",
+            pdf_content=b"%PDF-fake",
+            document_type="edital",
+        )
+        edital = normalizer.process(raw)
+
+        assert [c["evento"] for c in edital.cronograma] == [
+            "Abertura das inscrições",
+            "Prazo para envio de propostas",
+        ]
+        assert edital.data_abertura == "2026-02-25"
+        assert edital.data_encerramento == "2099-04-13"
+
+    def test_merges_both_without_losing_either_side(self):
+        """O CONIF traz só a publicação; o prazo vem do PDF."""
+        normalizer = self._normalizer_with_extraction(
+            [{"evento": "Prazo para envio de propostas", "data": "2099-08-31"}],
+            data_encerramento="",
+        )
+        raw = RawEdital(
+            title="Edital CONIF",
+            url="https://portal.conif.org.br/editais/2026/edital-8",
+            raw_agency="CONIF",
+            pdf_content=b"%PDF-fake",
+            document_type="edital",
+            raw_cronograma=[{"evento": "data de publicação", "data": "2026-07-25"}],
+        )
+        edital = normalizer.process(raw)
+
+        eventos = [c["evento"] for c in edital.cronograma]
+        assert "data de publicação" in eventos
+        assert "Prazo para envio de propostas" in eventos
+        assert edital.data_encerramento == "2099-08-31"
+
+    def test_source_wins_when_both_declare_the_same_event(self):
+        normalizer = self._normalizer_with_extraction(
+            [{"evento": "Prazo para envio de propostas", "data": "2099-01-01"}]
+        )
+        raw = RawEdital(
+            title="Edital",
+            url="https://exemplo.org/e.pdf",
+            raw_agency="FINEP",
+            pdf_content=b"%PDF-fake",
+            document_type="edital",
+            raw_cronograma=[
+                {"evento": "Prazo para envio de propostas", "data": "2099-12-31"}
+            ],
+        )
+        edital = normalizer.process(raw)
+        assert edital.data_encerramento == "2099-12-31"
+
+
+class TestModalidade:
+    def test_source_declared_modality_is_used(self):
+        edital = build_edital()
+        raw = build_raw(raw_modalidade="fluxo-contínuo")
+        assert publication_rules.resolve_modalidade(edital, raw) == "fluxo-contínuo"
+
+    def test_detected_from_the_edital_text(self):
+        edital = build_edital(
+            nome="SUBVENÇÃO DESCENTRALIZADA EM FLUXO CONTÍNUO - PRÓ AMAZÔNIA"
+        )
+        assert (
+            publication_rules.resolve_modalidade(edital, build_raw())
+            == "fluxo-contínuo"
+        )
+
+    def test_absence_of_deadline_is_not_evidence_of_continuous_flow(self):
+        """Deduzir da falta de prazo seria circular: é o que o campo desambigua."""
+        edital = build_edital(data_encerramento="", cronograma=[])
+        assert publication_rules.resolve_modalidade(edital, build_raw()) == ""

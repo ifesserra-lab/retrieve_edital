@@ -144,19 +144,26 @@ class TestDetailMapping:
         assert raw.title.startswith("Chamada CNPq/MCTI nº 25/2026")
         assert "apoio à pesquisa" in raw.raw_description
 
-    def test_cronograma_carries_the_inscricao_period(self):
+    def test_cronograma_carries_the_inscricao_period_and_the_publication(self):
+        """
+        A data de publicação voltou ao cronograma: o normalizer passou a dar
+        precedência a `abertura das inscrições` sobre `publicação` ao derivar
+        `data_abertura`, então a data do CMS não sobrepõe mais o início real.
+        """
         source, _ = build_source()
         raw = source.read()[0]
         assert raw.raw_cronograma == [
             {"evento": OPENING_EVENT, "data": "2026-07-10"},
             {"evento": DEADLINE_EVENT, "data": "2026-08-12"},
+            {"evento": "Data de publicação", "data": "2026-07-10"},
         ]
 
-    def test_cms_publication_date_is_not_part_of_the_cronograma(self):
-        """O normalizer prioriza eventos de publicação e sobreporia a abertura real."""
+    def test_the_opening_date_still_comes_from_the_inscricao_period(self):
+        from src.components.transforms.edital_normalizer import derive_opening_date
+
         source, _ = build_source()
-        eventos = [c["evento"] for c in source.read()[0].raw_cronograma]
-        assert not any("publica" in e.lower() for e in eventos)
+        cronograma = source.read()[0].raw_cronograma
+        assert derive_opening_date(cronograma) == "2026-07-10"
 
     def test_description_does_not_repeat_the_inscricao_line(self):
         source, _ = build_source()
@@ -208,7 +215,8 @@ class TestYearFilter:
             }
         )
         source, _ = build_source(session=session, current_year=2026)
-        assert source.read()[0].raw_cronograma == [
+        cronograma = source.read()[0].raw_cronograma
+        assert cronograma[:2] == [
             {"evento": OPENING_EVENT, "data": "2026-07-02"},
             {"evento": DEADLINE_EVENT, "data": "2026-08-17"},
         ]
@@ -223,7 +231,10 @@ class TestYearFilter:
         source, _ = build_source(session=session, current_year=2026)
         raw_editais = source.read()
         assert len(raw_editais) == 1
-        assert raw_editais[0].raw_cronograma is None
+        # Sem período declarado sobra a publicação, que é data real e é registrada.
+        assert [c["evento"] for c in raw_editais[0].raw_cronograma] == [
+            "Data de publicação"
+        ]
 
 
 class TestResilience:

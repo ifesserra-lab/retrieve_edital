@@ -51,6 +51,15 @@ CANONICAL_CATEGORIES = (
 )
 CATEGORY_FALLBACK = "outros"
 
+# Modalidade `fluxo-contínuo` marca a chamada aberta permanentemente. Sem ela,
+# `data_encerramento` vazio significava tanto "candidate-se a qualquer momento"
+# quanto "não sabemos o prazo", e quem usa o portal não distinguia os dois.
+#
+# Só sinal explícito conta: a ausência de prazo **não** é evidência de fluxo
+# contínuo, é exatamente a ambiguidade que este campo resolve.
+MODALITY_CONTINUOUS = "fluxo-contínuo"
+CONTINUOUS_FLOW_MARKERS = ("fluxo contínuo", "fluxo continuo", "fluxo-contínuo")
+
 
 @dataclass(frozen=True)
 class PublicationVerdict:
@@ -173,6 +182,25 @@ def category_hint_text(edital: EditalDomain) -> str:
             " ".join(edital.tags or []),
         ]
     )
+
+
+def resolve_modalidade(edital: EditalDomain, raw_data: RawEdital) -> str:
+    """
+    Modalidade da chamada, hoje limitada a marcar fluxo contínuo.
+
+    Duas evidências valem, ambas explícitas: a origem declarou a modalidade em
+    `raw_modalidade`, ou o próprio texto do edital diz "fluxo contínuo".
+
+    Deduzir fluxo contínuo da falta de prazo seria circular — é justamente o que
+    este campo existe para desambiguar.
+    """
+    declared = (raw_data.raw_modalidade or "").strip().lower()
+    if declared:
+        return declared
+    haystack = f"{edital.nome or ''} {edital.descrição or ''}".lower()
+    if any(marker in haystack for marker in CONTINUOUS_FLOW_MARKERS):
+        return MODALITY_CONTINUOUS
+    return (edital.modalidade or "").strip().lower()
 
 
 def resolve_status(edital: EditalDomain, today: Optional[date] = None) -> str:

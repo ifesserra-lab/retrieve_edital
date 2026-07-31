@@ -54,10 +54,11 @@ graph TB
 ## Configuração global
 
 - `src/config.py`: `get_reference_year(override)` para fontes que filtram por ano de referência.
+- Cronograma: quando há OCR, o cronograma da fonte é **unido** ao extraído do PDF, com a fonte tendo precedência em caso de mesmo evento. `data_abertura` e `data_encerramento` são derivadas do resultado, com precedência `abertura das inscrições` > `publicação` > primeira data. Nenhuma data é inventada: sem etapa datada, o campo sai vazio.
 - `src/flow_health.py`: sinais de saúde dos fluxos — os fluxos publicam a contagem bruta pelo stdout (`[flow-stats] raw=N new=M`) e o runner usa esse número para distinguir **"o portal não publicou nada"** de **"o source quebrou"**. Antes disso, as duas situações apareciam no log como `Sucesso, delta 0`, o que manteve as quedas da FINEP e do CNPq invisíveis por meses.
 - `.env`: `MISTRAL_API_KEY` para OCR e extrações estruturadas via Mistral.
 - `registry/processed_editais.json`: índice de editais já processados por source (`fapes`, `finep`, `conif`, `prppg_ifes`, `proex_ifes`, `capes`, `cnpq`, `horizon`).
-- `src/components/transforms/publication_rules.py`: decide o que é oportunidade publicável e mantém os campos de filtro em vocabulário fechado. Descarta anexo/alteração solto, registro sem conteúdo extraído e prazo já encerrado; canoniza `status` em `aberto`/`encerrado` e `categoria` em `divulgação de conhecimento`, `extensão`, `inovação`, `pesquisa` ou `outros`.
+- `src/components/transforms/publication_rules.py`: decide o que é oportunidade publicável e mantém os campos de filtro em vocabulário fechado. Descarta anexo/alteração solto, registro sem conteúdo extraído e prazo já encerrado; canoniza `status` em `aberto`/`encerrado` e `categoria` em `divulgação de conhecimento`, `extensão`, `inovação`, `pesquisa` ou `outros`. Resolve também `modalidade`, hoje limitada a marcar `fluxo-contínuo` quando a origem declara ou o texto do edital diz — o que distingue "aberto permanentemente" de "prazo desconhecido", antes indistinguíveis com `data_encerramento` vazio.
 - `scripts/curate_output.py`: cuida do acervo já gravado — realinha `status` ao prazo, canoniza `categoria` e preenche `orgão_fomento` pelo host do link (o runner chama a cada execução) e, com `--apply`, remove o que não é edital.
 - `docs/flow_processing_log.md`: log operacional da última execução de cada fluxo.
 - `scripts/run_all_flows.py`: runner unificado para todos os fluxos.

@@ -51,7 +51,9 @@ Isso é deliberado: se a FINEP rotacionar o segredo, o source se adapta em vez d
 
 Aceita chamadas cujo prazo caia **no ano de referência ou depois**. A API já garante `situacao = aberta`, então uma chamada aberta com prazo distante continua sendo oportunidade válida — diferente do parser antigo, que só aceitava o ano de referência e o seguinte.
 
-Chamadas **sem `prazoProposto`** são mantidas: são de fluxo contínuo (ex.: `COOPERAÇÃO ICT-EMPRESA – 01/2017`, aberta desde 2017). Elas ficam com `data_encerramento` vazio, o que é o dado correto — a tarefa INF-02 introduz `modalidade = fluxo-contínuo` para exibi-las adequadamente.
+Chamadas **sem `prazoProposto`** são mantidas: são de fluxo contínuo (ex.: `COOPERAÇÃO ICT-EMPRESA – 01/2017`, aberta desde 2017). Elas ficam com `data_encerramento` vazio, o que é o dado correto.
+
+Quando também faltam `vigenciaFim` **e** `tipoDeOportunidade`, o source declara `modalidade = fluxo-contínuo`: a combinação das três ausências é o padrão dessas peças na API. Assim o portal distingue "candidate-se a qualquer momento" de "prazo desconhecido" — antes, `data_encerramento` vazio significava as duas coisas.
 
 | Origem do ano | Prioridade |
 |---------------|------------|

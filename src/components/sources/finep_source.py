@@ -52,6 +52,12 @@ LEGACY_DETAIL_TEMPLATE = (
     "http://www.finep.gov.br/chamadas-publicas/chamadapublica/{database_id}"
 )
 
+# A API não tem campo de modalidade, mas a ausência combinada de prazo, vigência
+# e tipo de oportunidade é o padrão das chamadas de fluxo contínuo — como a
+# `COOPERAÇÃO ICT-EMPRESA – 01/2017`, aberta desde 2017. Declarar isso deixa o
+# portal distinguir "candidate-se a qualquer momento" de "prazo desconhecido".
+CONTINUOUS_FLOW_MODALITY = "fluxo-contínuo"
+
 OPEN_SITUATION_KEY = "aberta"
 OPEN_SITUATION_FILTER = f"situacao eq '{OPEN_SITUATION_KEY}'"
 DEFAULT_PAGE_SIZE = 100
@@ -413,6 +419,7 @@ class FinepSource(ISource[RawEdital]):
             title=title,
             url=public_url,
             source_category="chamada pública",
+            raw_modalidade=self._modalidade_of(item, deadline),
             raw_agency="FINEP",
             raw_description=description,
             document_type="edital",
@@ -421,6 +428,23 @@ class FinepSource(ISource[RawEdital]):
             raw_tags=self._build_tags(item) or None,
             raw_anexos=self._fetch_anexos(chamada_id) or None,
         )
+
+    @staticmethod
+    def _modalidade_of(item: Dict[str, Any], deadline: str) -> Optional[str]:
+        """
+        Declara fluxo contínuo quando a chamada aberta não tem prazo algum.
+
+        Só quando as três evidências faltam juntas: prazo de proposta, fim de
+        vigência e tipo de oportunidade. Chamada aberta sem nenhuma delas é
+        permanente na prática, e é assim que a FINEP publica esse tipo de peça.
+        """
+        if deadline:
+            return None
+        if _iso_date(item.get("vigenciaFim")):
+            return None
+        if _name_of(item.get("tipoDeOportunidade")):
+            return None
+        return CONTINUOUS_FLOW_MODALITY
 
     def _deadline_is_relevant(self, deadline: str) -> bool:
         """
