@@ -335,3 +335,44 @@ class TestFinepSourceMalformedItems:
         tags = source.read()[0].raw_tags
         assert "Mobilidade e Logística" in tags
         assert "Startup" not in tags
+
+
+class TestContinuousFlowModality:
+    """
+    `data_encerramento` vazio significava tanto "candidate-se a qualquer momento"
+    quanto "não sabemos o prazo". A modalidade desambigua, e a FINEP dá a
+    evidência: chamada aberta sem prazo, sem vigência e sem tipo de oportunidade
+    é permanente — como a `COOPERAÇÃO ICT-EMPRESA – 01/2017`.
+    """
+
+    @staticmethod
+    def _read_one(item):
+        source = FinepSource(
+            reference_year=2026, api_client=StubApiClient(items=[item])
+        )
+        return source.read()[0]
+
+    def test_declares_continuous_flow_when_no_deadline_evidence_exists(self):
+        raw = self._read_one(
+            build_api_item(
+                prazoProposto=None, vigenciaFim=None, tipoDeOportunidade=None
+            )
+        )
+        assert raw.raw_modalidade == "fluxo-contínuo"
+
+    def test_does_not_declare_it_when_there_is_a_deadline(self):
+        assert self._read_one(build_api_item()).raw_modalidade is None
+
+    def test_does_not_declare_it_when_vigencia_exists(self):
+        raw = self._read_one(
+            build_api_item(
+                prazoProposto=None,
+                vigenciaFim="2026-11-19T00:00:00.000Z",
+                tipoDeOportunidade=None,
+            )
+        )
+        assert raw.raw_modalidade is None
+
+    def test_does_not_declare_it_when_tipo_de_oportunidade_exists(self):
+        raw = self._read_one(build_api_item(prazoProposto=None, vigenciaFim=None))
+        assert raw.raw_modalidade is None

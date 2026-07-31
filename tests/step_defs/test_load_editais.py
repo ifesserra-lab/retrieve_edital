@@ -66,7 +66,24 @@ def json_files_created(context, temp_output_dir, expected_format):
 
 @then('each separate JSON must strictly contain the following keys:')
 def check_json_keys(context, datatable):
-    expected_keys = {"nome", "descrição", "orgão_fomento", "categoria", "status", "data_abertura", "data_encerramento", "link", "cronograma", "tags", "anexos"}
+    # `modalidade` entrou para distinguir "aberto permanentemente" de "prazo
+    # desconhecido": sem ele, `data_encerramento` vazio significava as duas
+    # coisas. É adição aditiva — consumidores que ignoram chaves novas seguem
+    # funcionando, e os JSONs anteriores continuam válidos.
+    expected_keys = {
+        "nome",
+        "descrição",
+        "orgão_fomento",
+        "categoria",
+        "status",
+        "data_abertura",
+        "data_encerramento",
+        "link",
+        "cronograma",
+        "tags",
+        "anexos",
+        "modalidade",
+    }
     
     for filepath in context["expected_files"]:
         with open(filepath, 'r', encoding='utf-8') as f:

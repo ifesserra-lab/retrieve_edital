@@ -18,6 +18,9 @@ class RawEdital:
     raw_cronograma: Optional[List[Dict[str, str]]] = None  # [{"evento": "...", "data": "YYYY-MM-DD"}]
     raw_tags: Optional[List[str]] = None
     raw_anexos: Optional[List[Dict[str, str]]] = None  # [{"titulo": "...", "link": "...", "tipo": "pdf"}]
+    # Modalidade declarada pela origem. Hoje só `fluxo-contínuo`, quando a
+    # fonte indica explicitamente que a chamada não tem prazo de encerramento.
+    raw_modalidade: Optional[str] = None
 
 @dataclass
 class EditalDomain:
@@ -32,3 +35,7 @@ class EditalDomain:
     cronograma: List[Dict[str, str]]
     tags: List[str]
     anexos: List[Dict[str, str]] = None # List of {title, url, type}
+    # Distingue "aberto permanentemente" de "prazo desconhecido": sem este
+    # campo, `data_encerramento` vazio significava as duas coisas ao mesmo
+    # tempo e o portal não tinha como diferenciá-las.
+    modalidade: str = ""
