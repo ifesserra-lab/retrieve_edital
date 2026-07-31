@@ -1,0 +1,45 @@
+{
+    "nome": "MSCA DOCTORAL NETWORKS 2026",
+    "descrição": "Área: Nurturing Excellence through Mobility of Researchers across Borders, Sectors and Disciplines; Marie Skłodowska-Curie Actions (MSCA); Excellent Science; Horizon Europe (HORIZON). Identificador da chamada no Funding & Tenders Portal: HORIZON-MSCA-2026-DN-01-01.",
+    "orgão_fomento": "HORIZON EUROPE",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-05-28",
+    "data_encerramento": "2026-11-24",
+    "link": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-MSCA-2026-DN-01-01",
+    "cronograma": [
+        {
+            "evento": "Abertura das inscrições",
+            "data": "2026-05-28"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2026-11-24"
+        }
+    ],
+    "tags": [
+        "horizon europe",
+        "internacional",
+        "Nurturing Excellence through Mobility of Researchers across Borders, Sectors and Disciplines",
+        "Marie Skłodowska-Curie Actions (MSCA)",
+        "Excellent Science",
+        "Horizon Europe (HORIZON)"
+    ],
+    "anexos": [
+        {
+            "titulo": "HORIZON TMA MSCA Doctoral Networks - Industrial Doctorates",
+            "link": "https://ec.europa.eu/research/participants/submission/manage/screen/submission/create-draft/44351?topic=HORIZON-MSCA-2026-DN-01-01",
+            "tipo": "link"
+        },
+        {
+            "titulo": "HORIZON TMA MSCA Doctoral Networks",
+            "link": "https://ec.europa.eu/research/participants/submission/manage/screen/submission/create-draft/44350?topic=HORIZON-MSCA-2026-DN-01-01",
+            "tipo": "link"
+        },
+        {
+            "titulo": "HORIZON TMA MSCA Doctoral Networks - Joint Doctorates",
+            "link": "https://ec.europa.eu/research/participants/submission/manage/screen/submission/create-draft/44352?topic=HORIZON-MSCA-2026-DN-01-01",
+            "tipo": "link"
+        }
+    ]
+}

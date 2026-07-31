@@ -1,0 +1,34 @@
+{
+    "nome": "ERC PLUS GRANTS",
+    "descrição": "Chamada: Call for Proposals for ERC PLUS Grant. Área: European Research Council (ERC); Excellent Science; Horizon Europe (HORIZON). Identificador da chamada no Funding & Tenders Portal: ERC-2026-PLUS.",
+    "orgão_fomento": "HORIZON EUROPE",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-06-02",
+    "data_encerramento": "2026-09-02",
+    "link": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERC-2026-PLUS",
+    "cronograma": [
+        {
+            "evento": "Abertura das inscrições",
+            "data": "2026-06-02"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2026-09-02"
+        }
+    ],
+    "tags": [
+        "horizon europe",
+        "internacional",
+        "European Research Council (ERC)",
+        "Excellent Science",
+        "Horizon Europe (HORIZON)"
+    ],
+    "anexos": [
+        {
+            "titulo": "HORIZON ERC Grants",
+            "link": "https://ec.europa.eu/research/participants/submission/manage/screen/submission/create-draft/44511?topic=ERC-2026-PLUS",
+            "tipo": "link"
+        }
+    ]
+}

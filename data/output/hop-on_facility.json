@@ -1,0 +1,34 @@
+{
+    "nome": "HOP-ON FACILITY",
+    "descrição": "Chamada: Hop-on Facility. Área: Widening participation and spreading excellence; Widening Participation and Strengthening the European Research Area; Horizon Europe (HORIZON). Identificador da chamada no Funding & Tenders Portal: HORIZON-WIDERA-2026-03-WIDENING-01.",
+    "orgão_fomento": "HORIZON EUROPE",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-01-13",
+    "data_encerramento": "2026-09-24",
+    "link": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-WIDERA-2026-03-WIDENING-01",
+    "cronograma": [
+        {
+            "evento": "Abertura das inscrições",
+            "data": "2026-01-13"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2026-09-24"
+        }
+    ],
+    "tags": [
+        "horizon europe",
+        "internacional",
+        "Widening participation and spreading excellence",
+        "Widening Participation and Strengthening the European Research Area",
+        "Horizon Europe (HORIZON)"
+    ],
+    "anexos": [
+        {
+            "titulo": "HORIZON  Research and Innovation Actions",
+            "link": "https://ec.europa.eu/research/participants/submission/manage/screen/submission/create-draft/43196?topic=HORIZON-WIDERA-2026-03-WIDENING-01",
+            "tipo": "link"
+        }
+    ]
+}

@@ -1,0 +1,35 @@
+{
+    "nome": "GRAND CHALLENGE ON QUANTUM SENSORS FOR INERTIAL NAVIGATION",
+    "descrição": "Área: Horizon Europe (HORIZON); Global Challenges and European Industrial Competitiveness; Digital, Industry and Space. Identificador da chamada no Funding & Tenders Portal: HORIZON-JU-EUROHPC-2026-NGC-04-01.",
+    "orgão_fomento": "HORIZON EUROPE",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-06-02",
+    "data_encerramento": "2026-09-30",
+    "link": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-JU-EUROHPC-2026-NGC-04-01",
+    "cronograma": [
+        {
+            "evento": "Abertura das inscrições",
+            "data": "2026-06-02"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2026-09-30"
+        }
+    ],
+    "tags": [
+        "horizon europe",
+        "internacional",
+        "Horizon Europe (HORIZON)",
+        "Global Challenges and European Industrial Competitiveness",
+        "Digital, Industry and Space",
+        "Quantum Technologies (e.g. computing and communication)"
+    ],
+    "anexos": [
+        {
+            "titulo": "HORIZON JU Coordination and Support Actions",
+            "link": "https://ec.europa.eu/research/participants/submission/manage/screen/submission/create-draft/44491?topic=HORIZON-JU-EUROHPC-2026-NGC-04-01",
+            "tipo": "link"
+        }
+    ]
+}

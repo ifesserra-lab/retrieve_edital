@@ -1,0 +1,35 @@
+{
+    "nome": "THE EUROPEAN CAPITAL OF INNOVATION AWARD RISING INNOVATOR CATEGORY HORIZON-EIC-2026-PRIZE-ICAPITAL",
+    "descrição": "Chamada: The European Capital of Innovation Award HORIZON-EIC-2026-PRIZE-ICAPITAL. Área: Horizon Europe (HORIZON); Innovative Europe; The European Innovation Council (EIC). Identificador da chamada no Funding & Tenders Portal: HORIZON-EIC-2026-PRIZE-ICAPITAL-02.",
+    "orgão_fomento": "HORIZON EUROPE",
+    "categoria": "inovação",
+    "status": "aberto",
+    "data_abertura": "2026-05-05",
+    "data_encerramento": "2026-08-04",
+    "link": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-EIC-2026-PRIZE-ICAPITAL-02",
+    "cronograma": [
+        {
+            "evento": "Abertura das inscrições",
+            "data": "2026-05-05"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2026-08-04"
+        }
+    ],
+    "tags": [
+        "horizon europe",
+        "internacional",
+        "Horizon Europe (HORIZON)",
+        "Innovative Europe",
+        "eic",
+        "The European Innovation Council (EIC)"
+    ],
+    "anexos": [
+        {
+            "titulo": "HORIZON Recognition Prize",
+            "link": "https://ec.europa.eu/research/participants/submission/manage/screen/submission/create-draft/43929?topic=HORIZON-EIC-2026-PRIZE-ICAPITAL-02",
+            "tipo": "link"
+        }
+    ]
+}

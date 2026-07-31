@@ -1,0 +1,36 @@
+{
+    "nome": "EIC ACCELERATOR 2026 - SHORT PROPOSAL",
+    "descrição": "Chamada: EIC Accelerator 2026 - Short application. Área: The Accelerator; The European Innovation Council (EIC); Innovative Europe; Horizon Europe (HORIZON). Identificador da chamada no Funding & Tenders Portal: HORIZON-EIC-2026-ACCELERATOR-01.",
+    "orgão_fomento": "HORIZON EUROPE",
+    "categoria": "inovação",
+    "status": "aberto",
+    "data_abertura": "2025-11-06",
+    "data_encerramento": "2026-12-17",
+    "link": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-EIC-2026-ACCELERATOR-01",
+    "cronograma": [
+        {
+            "evento": "Abertura das inscrições",
+            "data": "2025-11-06"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2026-12-17"
+        }
+    ],
+    "tags": [
+        "horizon europe",
+        "internacional",
+        "eic",
+        "The Accelerator",
+        "The European Innovation Council (EIC)",
+        "Innovative Europe",
+        "Horizon Europe (HORIZON)"
+    ],
+    "anexos": [
+        {
+            "titulo": "HORIZON EIC Accelerator",
+            "link": "https://ec.europa.eu/research/participants/submission/manage/screen/submission/create-draft/42510?topic=HORIZON-EIC-2026-ACCELERATOR-01",
+            "tipo": "link"
+        }
+    ]
+}
