@@ -66,7 +66,7 @@ graph TB
   - `valor_estimado` e `trl_exigido` existem no schema e ficam vazios: só podem vir do texto do PDF, e ajustar a extração exige avaliá-la contra os documentos que hoje falham.
 - `registry/rejected_editais.json`: editais recusados pelas regras de publicação, com motivo e validade de sete dias. Sem ele, um edital recusado volta como novo em toda execução, com PDF baixado e OCR refeito.
 - `docs/flow_processing_log.md`: log operacional da última execução de cada fluxo.
-- `scripts/run_all_flows.py`: runner unificado para todos os fluxos.
+- `scripts/run_all_flows.py`: runner unificado. Aceita `--only FINEP,CNPQ` para execução seletiva e `--timeout` para o teto de duração por fluxo (default 20 min).
 
 ## Components
 
@@ -123,6 +123,9 @@ graph TB
   - **Atenção** — a origem devolveu **zero itens brutos**, ou o fluxo está há `ZERO_DELTA_ALERT_THRESHOLD` (7) execuções seguidas sem nada novo;
   - **Falha** — exit code diferente de zero.
   Fontes de baixo volume declaradas em `LOW_VOLUME_FLOWS` ficam isentas da regra de sequência.
+- **Falha de um fluxo não interrompe os demais.** Antes o runner fazia `raise SystemExit` na primeira falha: com oito fontes, uma indisponível zerava a coleta de todas as outras. Agora o erro é registrado, os fluxos seguintes rodam, e o exit code final reflete que houve falha — a informação não se perde. O realinhamento de status roda de todo modo.
+- **Teto de duração por fluxo** (`--timeout`, default 20 min). Um fluxo travado — portal pendurado, backoff longo do Mistral — consumia a janela do job inteiro. Ao estourar, o processo é encerrado com exit code 124 e registrado como falha.
+- **Sem paralelismo, deliberadamente.** O limite de requisições do Mistral é por chave de API, então rodar fluxos em paralelo multiplicaria os `429` em vez de acelerar. O ganho de tempo viria à custa de mais espera em backoff. Ver [mistral_usage.md](mistral_usage.md).
 - **Evidência prevalece sobre proxy**: havendo `[flow-stats]`, a saúde da origem é fato — zero itens brutos é scraper quebrado, qualquer item prova que a origem respondeu. A regra de sequência só vale na ausência desse dado. Os oito fluxos publicam as estatísticas.
 - Os parsers de listagem devolvem **tudo** o que a origem trouxe; a comparação com o registry acontece no `read()`. Com a deduplicação dentro do parser, a contagem bruta mediria "quantos são novos" e um portal saudável sem novidade pareceria quebrado.
 - `.github/workflows/run_scraper.yml` chama o runner unificado e deve persistir:
