@@ -27,27 +27,63 @@ Sem autenticação, sem API key, atualizado diariamente (`Last-Modified`).
 
 A análise original listava `EIC Accelerator` como fonte separada. Ela **está neste mesmo dataset**, identificável por `programmeDivision` conter `HORIZON.3.1` (*The European Innovation Council*). Um único source cobre as duas fontes.
 
-## Volume e o filtro obrigatório
+## Volume e o filtro por divisão
 
-O dataset tem **11.141 registros** de todos os programas da Comissão: `Open` 361, `Forthcoming` 287, `Closed` 10.493. Só interessam os de `frameworkProgramme = HORIZON` com status `Open` ou `Forthcoming`.
+O dataset tem **11.141 registros** de todos os programas da Comissão. Filtrando por
+`frameworkProgramme = HORIZON` com status `Open` ou `Forthcoming`, sobram **481**.
 
-**O filtro temático por divisão é obrigatório, e o default é vazio.** Medição de 2026-07-29 com as três divisões sugeridas: **192 chamadas relevantes, 185 publicáveis** — mais do que os 153 editais que o portal inteiro tinha. Publicar isso sem curadoria afogaria as fontes nacionais.
+**Decisão em 2026-07-31: indexar o programa inteiro.** A configuração em produção é:
 
-Sem `HORIZON_DIVISIONS` configurado, o source não devolve nada e nem baixa o dataset.
-
-```bash
-HORIZON_DIVISIONS="HORIZON.2.4,HORIZON.3.1" python -m src.flows.ingest_horizon_flow
+```
+HORIZON_DIVISIONS=HORIZON
 ```
 
-Sugestão de partida, **pendente de validação da PRPPG** (constante `SUGGESTED_DIVISIONS`):
+Como a comparação é por prefixo e toda subdivisão começa com `HORIZON`, esse
+único valor cobre as 13 subáreas.
 
-| Divisão | Área |
-| :-- | :-- |
-| `HORIZON.2.4` | Digital, Industry and Space |
-| `HORIZON.2.5` | Climate, Energy and Mobility |
-| `HORIZON.3.1` | European Innovation Council (inclui o EIC Accelerator) |
+O raciocínio: dividir por área só compensa se volume custar algo, e aqui quase não
+custa. Horizon **não usa OCR**, então não consome Mistral; o portal filtra por
+órgão, então quem procura edital nacional não tropeça nas chamadas europeias; e o
+download é pago de uma vez independentemente do recorte.
 
-Um prefixo cobre as subdivisões: `HORIZON.2.4` casa com `HORIZON.2.4.1`.
+O **default no código continua vazio** — sem `HORIZON_DIVISIONS` o source não
+devolve nada e nem baixa o dataset. É proteção contra habilitar 474 editais por
+omissão, não recomendação contra o programa inteiro.
+
+Subáreas disponíveis, com o número de chamadas abertas ou previstas medido em
+2026-07-31:
+
+| Código | Chamadas | Área |
+| :-- | --: | :-- |
+| `HORIZON.1.1` | 4 | European Research Council (ERC) |
+| `HORIZON.1.2` | 8 | Divulgação científica |
+| `HORIZON.1.3` | 10 | Infraestruturas de pesquisa |
+| `HORIZON.2.1` | 76 | Saúde |
+| `HORIZON.2.2` | 85 | Cultura, criatividade e sociedade |
+| `HORIZON.2.3` | 76 | Segurança civil |
+| `HORIZON.2.4` | 91 | Digital, Indústria e Espaço |
+| `HORIZON.2.5` | 114 | Clima, Energia e Mobilidade |
+| `HORIZON.2.6` | 138 | Alimentos, Bioeconomia e Agricultura |
+| `HORIZON.3.1` | 18 | European Innovation Council (EIC) |
+| `HORIZON.3.2` | 4 | Ecossistemas de inovação |
+| `HORIZON.4.1` | 7 | Widening participation |
+| `HORIZON.4.2` | 8 | Reforma do sistema europeu de P&I |
+
+*(A soma passa de 481 porque uma chamada pode pertencer a mais de uma subárea.)*
+
+Para restringir depois, basta listar os códigos separados por vírgula:
+
+```bash
+HORIZON_DIVISIONS="HORIZON.3.1,HORIZON.2.4" python -m src.flows.ingest_horizon_flow
+```
+
+### Elegibilidade: o cuidado que sobra
+
+O Brasil participa do Horizon como terceiro país, e as regras variam por chamada
+— algumas admitem parceiro brasileiro financiado, outras só participação
+associada sem recurso. **O dataset não traz esse campo**, então o portal exibe
+chamadas em que o IFES pode não ser elegível. É limitação conhecida da fonte, não
+do coletor.
 
 ## Mapeamento
 
@@ -71,11 +107,49 @@ O dataset **não traz texto descritivo** — só título, identificador, datas, 
 
 Derivada da divisão, dentro do vocabulário que o portal já usa: divisão do EIC → `inovação`; demais → `pesquisa`. Sem isso, as 185 chamadas caíam todas em `outros`, já que sem texto descritivo a inferência por palavra-chave do normalizer não tem onde se apoiar.
 
+## Download: janelas de Range
+
+O arquivo tem **126 MB**, e baixá-lo numa transferência só falha de forma
+reprodutível. Medições contra o servidor da UE em 2026-07-30:
+
+| Formato | Resultado |
+| :-- | :-- |
+| transferência única de 126 MB | `Connection reset by peer` no meio, sempre por volta dos 71 MB |
+| `Range: bytes=N-` (aberto), como o `curl -C -` envia | `206`, mas estola e é cortado em ~54 MB |
+| `Range: bytes=N-M` (limitado a 8 MiB) | `206` com os bytes exatos, rápido |
+
+Retry que reinicia do zero não resolve, e a retomada com `Range` aberto também
+não. O que funciona é **janela com fim explícito**: o download é sequencial em
+janelas de 8 MiB, cada uma com retentativas próprias, então uma falha custa uma
+janela e não o download inteiro. O tamanho total vem do cabeçalho
+`Content-Range`, e a montagem só é aceita quando completa — download parcial
+levanta erro em vez de entregar JSON truncado ao parser.
+
+O caminho comprimido com `gzip` (~22 MB) é tentado primeiro, por ser mais barato;
+as janelas são o fallback.
+
+Tempo medido do dataset completo: **47 segundos**.
+
 ## Memória e cadência
 
-O arquivo tem **126 MB** (≈22 MB com `Accept-Encoding: gzip`). Os objetos são decodificados um a um, o que evita materializar os 11 mil dicionários de uma vez; o payload cru ainda fica na memória, com **pico medido de ~900 MB** — confortável nos 7 GB do runner do GitHub Actions.
+Os objetos são decodificados um a um, o que evita materializar os 11 mil
+dicionários de uma vez; o payload cru ainda fica na memória, com **pico medido de
+~900 MB** — confortável nos 7 GB do runner do GitHub Actions.
 
-**Cadência semanal**, não diária: o dataset muda pouco de um dia para o outro e o download é pesado. Por isso este fluxo fica **fora** de `scripts/run_all_flows.py`, em [.github/workflows/run_horizon_weekly.yml](../.github/workflows/run_horizon_weekly.yml).
+**Cadência semanal**, não diária: o dataset muda pouco de um dia para o outro e o
+download é pesado. Por isso este fluxo fica **fora** de `scripts/run_all_flows.py`,
+em [.github/workflows/run_horizon_weekly.yml](../.github/workflows/run_horizon_weekly.yml).
+
+## Primeira coleta (2026-07-31)
+
+481 chamadas relevantes, **474 publicadas** — 7 descartadas pelas regras de
+publicação por prazo já encerrado. Categorias: `pesquisa` 462, `inovação` 12
+(as do EIC).
+
+O sink registrou **7 colisões de nome**: o Horizon tem chamadas homônimas, como
+`ERA FELLOWSHIPS` e `BIOTECHNOLOGY FOR HEALTHY AGEING`, que aparecem em fases ou
+edições diferentes. Cada uma recebeu sufixo derivado do link em vez de sobrescrever
+a anterior.
 
 ## Contrato (ISource)
 

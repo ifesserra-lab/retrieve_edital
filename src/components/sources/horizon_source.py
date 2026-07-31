@@ -20,9 +20,11 @@ Dois cuidados que o volume impõe:
   são decodificados um a um, o que evita materializar os 11 mil dicionários de
   uma vez. O payload cru ainda fica na memória: o pico medido é de ~900 MB,
   confortável nos 7 GB do runner do GitHub Actions;
-- há ~200 chamadas HORIZON abertas a qualquer momento, a maioria irrelevante
-  para o IFES. **O filtro temático por divisão é obrigatório**: sem divisões
-  configuradas o source não devolve nada, em vez de afogar o portal.
+- há ~480 chamadas HORIZON abertas ou previstas a qualquer momento. O recorte
+  por divisão é configurável e **o default é vazio**: sem `HORIZON_DIVISIONS` o
+  source não devolve nada e nem baixa o dataset, para não habilitar centenas de
+  editais por omissão. Em produção a configuração é `HORIZON`, que por prefixo
+  cobre o programa inteiro.
 """
 
 import json
