@@ -1,7 +1,9 @@
+import argparse
 import json
 import re
 import subprocess
 import sys
+import time
 from datetime import date, datetime
 from pathlib import Path
 from typing import Optional, Tuple
@@ -39,6 +41,9 @@ RESULT_SUCCESS = "Sucesso"
 RESULT_WARNING = "Atenção"
 RESULT_FAILURE = "Falha"
 
+# Código de saída atribuído a um fluxo encerrado por estourar o teto de duração.
+TIMEOUT_RETURN_CODE = 124
+
 # Após tantas execuções seguidas sem nenhum edital novo, o fluxo passa a ser
 # reportado como suspeito. Foi a ausência desse sinal que deixou as quedas da
 # FINEP e do CNPq invisíveis por meses.
@@ -48,6 +53,11 @@ ZERO_DELTA_ALERT_THRESHOLD = 7
 # chamadas por ano). Para elas, `delta 0` prolongado é o comportamento
 # esperado e não deve gerar alerta.
 LOW_VOLUME_FLOWS = frozenset()
+
+# Teto de duração por fonte. Um fluxo que trava — portal pendurado, backoff longo
+# do Mistral — não pode consumir a janela do job inteiro. Ao estourar, o processo
+# é encerrado, a falha é registrada e os fluxos seguintes continuam.
+DEFAULT_FLOW_TIMEOUT_SEC = 20 * 60
 
 DELTA_REGEX = re.compile(r"\(delta (-?\d+)\)")
 LOG_SEPARATOR = "| :-- | :-- | :-- | :-- |\n"
@@ -237,9 +247,17 @@ def append_flow_log_row(
 
 
 def run_command_capturing_output(
-    command: list[str], workdir: Path
+    command: list[str],
+    workdir: Path,
+    timeout_sec: int = DEFAULT_FLOW_TIMEOUT_SEC,
 ) -> tuple[int, str]:
-    """Executa o fluxo repassando a saída ao console e guardando-a para análise."""
+    """
+    Executa o fluxo repassando a saída ao console e guardando-a para análise.
+
+    O teto de duração é aplicado por leitura: cada linha recebida renova a
+    verificação do prazo total, e ao estourar o processo é encerrado. Sem isso um
+    portal pendurado consome a janela do job inteiro.
+    """
     process = subprocess.Popen(
         command,
         cwd=workdir,
@@ -249,31 +267,73 @@ def run_command_capturing_output(
         bufsize=1,
     )
     captured: list[str] = []
+    limite = time.monotonic() + timeout_sec
     assert process.stdout is not None
     for line in process.stdout:
         print(line, end="")
         captured.append(line)
+        if time.monotonic() > limite:
+            captured.append(
+                f"[run_all_flows] Teto de {timeout_sec}s excedido; encerrando o fluxo.\n"
+            )
+            print(captured[-1], end="")
+            process.kill()
+            process.wait()
+            return TIMEOUT_RETURN_CODE, "".join(captured)
     process.wait()
     return process.returncode, "".join(captured)
 
 
-def run_flow(name: str, command: list[str], workdir: Path) -> None:
+def run_flow(
+    name: str,
+    command: list[str],
+    workdir: Path,
+    timeout_sec: int = DEFAULT_FLOW_TIMEOUT_SEC,
+) -> str:
+    """
+    Executa um fluxo e devolve o resultado registrado no log.
+
+    Não interrompe a execução em caso de falha: com oito fontes, uma indisponível
+    zerava a coleta de todas as outras. O erro é registrado e o runner segue; o
+    exit code final reflete que houve falha, então a informação não se perde.
+    """
     print(f"[run_all_flows] Starting {name} flow...")
     before_counts = load_registry_counts(workdir)
-    return_code, output = run_command_capturing_output(command, workdir)
+    return_code, output = run_command_capturing_output(command, workdir, timeout_sec)
     stats = parse_flow_stats(output)
     result = append_flow_log_row(workdir, name, before_counts, return_code, stats)
     if return_code != 0:
-        raise SystemExit(
-            f"[run_all_flows] {name} flow failed with exit code {return_code}."
+        print(
+            f"[run_all_flows] {name} flow failed with exit code {return_code}; "
+            "seguindo para os demais."
         )
-    if result == RESULT_WARNING:
+    elif result == RESULT_WARNING:
         print(
             f"[run_all_flows] {name} flow completed with warnings — "
             "ver docs/flow_processing_log.md."
         )
-        return
-    print(f"[run_all_flows] {name} flow completed successfully.")
+    else:
+        print(f"[run_all_flows] {name} flow completed successfully.")
+    return result
+
+
+def select_flows(only: Optional[str]) -> list:
+    """
+    Fluxos a executar. Sem `--only`, todos; com, apenas os nomeados.
+
+    Nome desconhecido é erro explícito em vez de silenciosamente nada rodar.
+    """
+    if not only:
+        return list(FLOW_COMMANDS)
+    pedidos = [nome.strip().upper() for nome in only.split(",") if nome.strip()]
+    conhecidos = {nome for nome, _ in FLOW_COMMANDS}
+    desconhecidos = [nome for nome in pedidos if nome not in conhecidos]
+    if desconhecidos:
+        raise SystemExit(
+            f"[run_all_flows] Fluxo desconhecido: {', '.join(desconhecidos)}. "
+            f"Disponíveis: {', '.join(sorted(conhecidos))}."
+        )
+    return [(nome, cmd) for nome, cmd in FLOW_COMMANDS if nome in pedidos]
 
 
 def refresh_edital_status(workdir: Path) -> None:
@@ -290,12 +350,41 @@ def refresh_edital_status(workdir: Path) -> None:
     curate(workdir=workdir, apply=True, refresh_status_only=True, today=date.today())
 
 
-def main() -> int:
+def main(argv: Optional[list] = None) -> int:
+    parser = argparse.ArgumentParser(description="Runner unificado dos fluxos ETL.")
+    parser.add_argument(
+        "--only",
+        help="executa apenas os fluxos nomeados, separados por vírgula (ex.: FINEP,CNPQ)",
+    )
+    parser.add_argument(
+        "--timeout",
+        type=int,
+        default=DEFAULT_FLOW_TIMEOUT_SEC,
+        help=f"teto de duração por fluxo, em segundos (default {DEFAULT_FLOW_TIMEOUT_SEC})",
+    )
+    args = parser.parse_args(argv)
+
     repo_root = Path(__file__).resolve().parents[1]
-    for name, command in FLOW_COMMANDS:
-        run_flow(name, command, repo_root)
+    selecionados = select_flows(args.only)
+
+    resultados: dict[str, str] = {}
+    for name, command in selecionados:
+        resultados[name] = run_flow(name, command, repo_root, args.timeout)
+
     refresh_edital_status(repo_root)
-    print("[run_all_flows] All flows completed successfully.")
+
+    falhas = [nome for nome, r in resultados.items() if r == RESULT_FAILURE]
+    avisos = [nome for nome, r in resultados.items() if r == RESULT_WARNING]
+    print(
+        f"[run_all_flows] {len(resultados)} fluxos: "
+        f"{len(resultados) - len(falhas) - len(avisos)} com sucesso, "
+        f"{len(avisos)} com atenção, {len(falhas)} com falha."
+    )
+    if avisos:
+        print(f"[run_all_flows] Atenção em: {', '.join(avisos)}")
+    if falhas:
+        print(f"[run_all_flows] Falha em: {', '.join(falhas)}")
+        return 1
     return 0
 
 
