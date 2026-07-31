@@ -5,7 +5,6 @@ from playwright.sync_api import sync_playwright, TimeoutError
 from src.core.interfaces import ISource
 from src.domain.models import RawEdital
 from src.components.transforms.mistral_client import MistralExtractionService
-from src.components.sinks.json_sink import key_from_nome
 
 logger = logging.getLogger(__name__)
 
@@ -47,7 +46,7 @@ class FapesSource(ISource[RawEdital]):
     Complies with ISource interface returning a List of RawEdition models.
     """
     
-    def __init__(self, start_urls: List[str] = None, processed_titles: set = None, classifier: Optional[MistralExtractionService] = None):
+    def __init__(self, start_urls: List[str] = None, processed_urls: set = None, classifier: Optional[MistralExtractionService] = None):
         if start_urls is None:
             self.start_urls = [
                 "https://fapes.es.gov.br/editais-abertos-pesquisa-4",
@@ -58,7 +57,7 @@ class FapesSource(ISource[RawEdital]):
             ]
         else:
             self.start_urls = start_urls
-        self.processed_titles = processed_titles or set()
+        self.processed_urls = processed_urls or set()
         # Quantos itens a listagem da origem devolveu, antes da deduplicação e
         # dos filtros. É o que permite ao runner distinguir "portal sem
         # novidade" de "source quebrado". Ver src/flow_health.py.
@@ -119,8 +118,6 @@ class FapesSource(ISource[RawEdital]):
                         if not notice_blocks:
                             logger.warning(f"No document groups found on {url}.")
                             break
-
-                        self.last_listing_count += len(notice_blocks)
 
                         for block in notice_blocks:
                             # Try to find a descriptive group title
@@ -196,8 +193,14 @@ class FapesSource(ISource[RawEdital]):
                                     # If it's unique but generic, it's likely the edital itself.
                                     doc_type = "edital"
 
-                                safe_title = key_from_nome(title)
-                                if safe_title in self.processed_titles:
+                                # Deduplica pela URL do documento, não pelo
+                                # título. O título da página passava por
+                                # `key_from_nome`, mas o registry guardava o
+                                # basename derivado do nome que o Mistral
+                                # reescreve — as duas chaves não fechavam, e a
+                                # FAPES reprocessava os mesmos editais em toda
+                                # execução, gastando OCR e batendo em rate limit.
+                                if doc["url"] in self.processed_urls:
                                     continue
                                 
                                 # Download content only for edital and alteração
@@ -221,6 +224,13 @@ class FapesSource(ISource[RawEdital]):
 
                             if not group_raw_editais:
                                 continue
+
+                            # Conta grupos com documento, não blocos do HTML: os
+                            # seletores de bloco variam com a seção e chegavam a
+                            # zerar em páginas que ainda produziam editais. Um
+                            # contador que reporta zero com itens presentes faria
+                            # o canário do runner acusar a origem de quebrada.
+                            self.last_listing_count += 1
 
                             # Identify the main edital in the group
                             # Strategy: First one classified as 'edital', or first one overall
