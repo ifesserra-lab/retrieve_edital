@@ -159,6 +159,14 @@ class EditalNormalizer(ITransform[RawEdital, EditalDomain]):
                     data_abertura = date_value
                     break
 
+        if data_abertura == unresolved_opening:
+            # Nenhuma data encontrada: devolve vazio em vez de 1º de janeiro. O
+            # placeholder aparecia no portal como se fosse informação da fonte —
+            # 64 editais exibiam uma data de abertura que ninguém publicou.
+            # `data_encerramento` já sai vazio quando não há prazo; o campo de
+            # abertura passa a seguir o mesmo critério.
+            data_abertura = ""
+
         for raw_item, normalized_item in zip(raw_cronograma, normalized_cronograma):
             event_name = normalized_item.get("evento") or ""
             normalized_date = normalized_item.get("data") or ""
