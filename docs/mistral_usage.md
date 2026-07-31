@@ -104,6 +104,28 @@ O classificador da FINEP **não** disfarça mais a falha: devolvia `inovação`,
 indistinguível de uma classificação real, e agora devolve vazio para o chamador
 decidir. O normalizer mantém a categoria da fonte e registra em log.
 
+## A FAPES reprocessava tudo a cada execução
+
+Descoberto ao validar a chave nova, em 2026-07-31: o `FapesSource` deduplicava por
+`key_from_nome(título da página)`, enquanto o registry guardava o nome do arquivo,
+derivado do nome que o **Mistral reescreve**. As duas chaves nunca fechavam, então
+os mesmos editais voltavam como novos em toda execução, consumindo OCR e batendo
+em rate limit — a FAPES era a maior consumidora de Mistral do pipeline sem
+produzir nada.
+
+A dedup passou a ser por URL do documento, como nas demais fontes. E como o
+"edital principal" do grupo é eleito pela classificação do Mistral, que varia
+entre execuções, o registry guarda **todas** as URLs do grupo: qualquer documento
+que reapareça identifica o edital já coletado.
+
+Efeito medido: de 12 editais reapresentados como novos para 4.
+
+**Resíduo conhecido**: os 4 restantes são itens que as regras de publicação
+rejeitam — anexo, alteração e prazo vencido. Como não são publicados, suas URLs
+nunca entram no registry e voltam a cada execução, gastando OCR. Registrá-los
+resolveria o desperdício, mas impediria a recoleta de um edital cuja extração
+falhou e depois passou a funcionar. A escolha entre as duas coisas fica pendente.
+
 ## Chave de acesso
 
 `MISTRAL_API_KEY` no `.env` local e como secret do repositório no GitHub
