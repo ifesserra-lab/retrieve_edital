@@ -86,6 +86,10 @@ class ProexIfesSource(ISource[RawEdital]):
         self.start_url = start_url
         self.processed_urls = processed_urls or set()
         self.current_year = current_year if current_year is not None else datetime.now().year
+        # Quantos itens a listagem da origem devolveu, antes da deduplicação e
+        # dos filtros. É o que permite ao runner distinguir "portal sem
+        # novidade" de "source quebrado". Ver src/flow_health.py.
+        self.last_listing_count = 0
         self.timeout = timeout
         self.session = session or requests.Session()
         if hasattr(self.session, "headers"):
@@ -263,8 +267,11 @@ class ProexIfesSource(ISource[RawEdital]):
         try:
             listing_html = self._fetch_listing_html()
 
+            entries = list(self._extract_current_year_entries(listing_html))
+            self.last_listing_count = len(entries)
+
             raw_editais: List[RawEdital] = []
-            for entry in self._extract_current_year_entries(listing_html):
+            for entry in entries:
                 title = str(entry.get("title") or "").strip()
                 attachments = list(entry.get("attachments") or [])
                 main_attachment = self._select_main_attachment(attachments)

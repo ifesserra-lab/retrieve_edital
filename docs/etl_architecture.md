@@ -117,6 +117,8 @@ graph TB
   - **Atenção** — a origem devolveu **zero itens brutos**, ou o fluxo está há `ZERO_DELTA_ALERT_THRESHOLD` (7) execuções seguidas sem nada novo;
   - **Falha** — exit code diferente de zero.
   Fontes de baixo volume declaradas em `LOW_VOLUME_FLOWS` ficam isentas da regra de sequência.
+- **Evidência prevalece sobre proxy**: havendo `[flow-stats]`, a saúde da origem é fato — zero itens brutos é scraper quebrado, qualquer item prova que a origem respondeu. A regra de sequência só vale na ausência desse dado. Os oito fluxos publicam as estatísticas.
+- Os parsers de listagem devolvem **tudo** o que a origem trouxe; a comparação com o registry acontece no `read()`. Com a deduplicação dentro do parser, a contagem bruta mediria "quantos são novos" e um portal saudável sem novidade pareceria quebrado.
 - `.github/workflows/run_scraper.yml` chama o runner unificado e deve persistir:
   - `data/output/*.json`
   - `registry/processed_editais.json`

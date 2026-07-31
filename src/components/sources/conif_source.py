@@ -68,6 +68,10 @@ class ConifSource(ISource[RawEdital]):
     ) -> None:
         self.start_url = start_url
         self.current_year = current_year if current_year is not None else datetime.now().year
+        # Quantos itens a listagem da origem devolveu, antes da deduplicação e
+        # dos filtros. É o que permite ao runner distinguir "portal sem
+        # novidade" de "source quebrado". Ver src/flow_health.py.
+        self.last_listing_count = 0
         self.processed_urls = processed_urls or set()
 
     def _extract_current_year_links(self, html: str) -> List[dict]:
@@ -88,10 +92,10 @@ class ConifSource(ISource[RawEdital]):
             if not title or title.lower() == "leia mais":
                 continue
 
+            # A comparação com o registry saiu daqui para o read(): com ela aqui,
+            # a contagem bruta virava "quantos são novos" em vez de "a origem
+            # respondeu", e um portal saudável sem novidade parecia quebrado.
             normalized_url = _normalize_conif_url(href)
-            if normalized_url in self.processed_urls:
-                continue
-
             found[normalized_url] = {
                 "title": title,
                 "url": normalized_url,
@@ -197,9 +201,12 @@ class ConifSource(ISource[RawEdital]):
                 page.wait_for_load_state("networkidle", timeout=20000)
 
                 links = self._extract_current_year_links(page.content())
+                self.last_listing_count = len(links)
                 raw_editais: List[RawEdital] = []
 
                 for item in links:
+                    if item["url"] in self.processed_urls:
+                        continue
                     try:
                         raw = self._extract_detail_page(page, item["url"], item["title"])
                         if raw:

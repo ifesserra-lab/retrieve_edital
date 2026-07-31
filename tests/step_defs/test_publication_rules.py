@@ -222,3 +222,47 @@ class TestCanonicalCategory:
         }
         for value in ["chamadas", "internacional", "qualquer coisa", "", None]:
             assert publication_rules.canonical_category(value) in vocabulary
+
+
+class TestClassifierFailureIsNotDisguisedAsAResult:
+    """
+    Em 2026-07-31 a chave da API Mistral passou a responder 401. O classificador
+    da FINEP engolia a falha e devolvia `inovação`, valor indistinguível de uma
+    classificação real — o chamador recebia algo plausível e seguia adiante.
+    """
+
+    def test_classifier_returns_empty_when_it_fails(self):
+        from unittest.mock import MagicMock, patch
+
+        from src.components.transforms.mistral_client import MistralExtractionService
+
+        with patch.dict("os.environ", {"MISTRAL_API_KEY": "chave-de-teste"}):
+            service = MistralExtractionService()
+        service.client = MagicMock()
+        service.client.chat.complete.side_effect = RuntimeError("Status 401")
+
+        assert service.categorize_finep_by_description("Subvenção à inovação.") == ""
+
+    def test_normalizer_keeps_the_source_category_when_classification_is_unavailable(self):
+        from unittest.mock import MagicMock
+
+        from src.components.transforms.edital_normalizer import EditalNormalizer
+
+        service = MagicMock()
+        service.categorize_finep_by_description.return_value = ""
+        normalizer = EditalNormalizer(extraction_service=service)
+
+        raw = RawEdital(
+            title="Chamada FINEP",
+            url="https://www.finep.gov.br/e/chamada-publica/222684/1",
+            raw_agency="FINEP",
+            raw_description="Subvenção econômica para projetos de pesquisa aplicada.",
+            source_category="pesquisa",
+            raw_cronograma=[
+                {"evento": "Prazo para envio de propostas", "data": "2099-12-31"}
+            ],
+        )
+        edital = normalizer.process(raw)
+
+        assert edital is not None
+        assert edital.categoria == "pesquisa"

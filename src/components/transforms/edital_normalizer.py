@@ -226,8 +226,17 @@ class EditalNormalizer(ITransform[RawEdital, EditalDomain]):
         category = raw_data.source_category or "outros"
         if "FINEP" in (raw_data.raw_agency or "").upper() and description:
             try:
-                category = self.extraction_service.categorize_finep_by_description(description)
-                logger.info("FINEP edital categorizado por Mistral: %s", category)
+                classified = self.extraction_service.categorize_finep_by_description(description)
+                if classified:
+                    category = classified
+                    logger.info("FINEP edital categorizado por Mistral: %s", category)
+                else:
+                    # Classificador indisponível: mantém a categoria da fonte em
+                    # vez de gravar um palpite como se fosse classificação.
+                    logger.warning(
+                        "Classificação FINEP indisponível; mantendo categoria da fonte: %s",
+                        category,
+                    )
             except Exception as e:
                 logger.warning("Mistral categorização FINEP falhou, usando fallback: %s", e)
         if not tags:

@@ -249,8 +249,12 @@ Descrição do edital:
                     return allowed
             return "inovação"
         except Exception as e:
+            # Devolve vazio, não um palpite: retornar "inovação" aqui tornava uma
+            # chave de API inválida indistinguível de uma classificação real — o
+            # chamador recebia um valor plausível e seguia adiante. Cabe a ele
+            # decidir o fallback.
             logger.warning("Mistral categorize_finep_by_description failed: %s", e)
-            return "inovação"
+            return ""
 
     def _get_extraction_prompt(self, ocr_text: str) -> str:
         return f"""

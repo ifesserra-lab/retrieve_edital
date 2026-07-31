@@ -28,7 +28,16 @@ def _normalize_capes_url(href: str) -> str:
 
 
 def _is_pdf_link(url: str) -> bool:
-    return url.lower().endswith(".pdf")
+    """
+    True para links de documento, não de página.
+
+    Só olhar a terminação `.pdf` não basta: o gov.br serve o mesmo arquivo em
+    `…/edital.pdf/@@display-file/file`, e esses escapavam do filtro. O Playwright
+    então tentava navegar para eles e falhava com `Page.goto: Download is
+    starting`, derrubando o item — foi o que zerou a coleta da CAPES.
+    """
+    lowered = url.lower()
+    return ".pdf" in lowered or lowered.endswith((".doc", ".docx", ".odt"))
 
 
 class CapesSource(ISource[RawEdital]):
@@ -47,6 +56,10 @@ class CapesSource(ISource[RawEdital]):
         self.start_url = start_url
         self.processed_urls = processed_urls or set()
         self.current_year = current_year if current_year is not None else datetime.now().year
+        # Quantos itens a listagem da origem devolveu, antes da deduplicação e
+        # dos filtros. É o que permite ao runner distinguir "portal sem
+        # novidade" de "source quebrado". Ver src/flow_health.py.
+        self.last_listing_count = 0
 
     def _infer_year_from_text(self, text: str) -> Optional[int]:
         years = [int(value) for value in re.findall(r"\b(20\d{2})\b", text or "")]
@@ -80,7 +93,10 @@ class CapesSource(ISource[RawEdital]):
             normalized_url = _normalize_capes_url(href)
             if _is_pdf_link(normalized_url):
                 continue
-            if normalized_url in self.processed_urls or normalized_url in seen_urls:
+            # `seen_urls` é deduplicação interna da listagem. A comparação com o
+            # registry saiu daqui para o read(), para que a contagem bruta
+            # signifique "a origem respondeu" e não "não havia nada novo".
+            if normalized_url in seen_urls:
                 continue
             if "gov.br/capes" not in normalized_url:
                 continue
@@ -210,9 +226,12 @@ class CapesSource(ISource[RawEdital]):
                 page.wait_for_load_state("networkidle", timeout=20000)
 
                 listing_entries = self._extract_listing_entries(page.content())
+                self.last_listing_count = len(listing_entries)
                 raw_editais: List[RawEdital] = []
 
                 for item in listing_entries:
+                    if item["url"] in self.processed_urls:
+                        continue
                     try:
                         raw = self._extract_detail_page(page, item["url"], item["title"])
                         if raw:

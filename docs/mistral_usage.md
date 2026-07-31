@@ -77,6 +77,33 @@ demais para um job diário. Um teto de espera acumulada por execução seria mai
 adequado que um número de tentativas — fica registrado como melhoria pendente,
 não implementada.
 
+## Quando a chave expira: o que se vê
+
+Em 2026-07-31 a chave passou a responder `401 Unauthorized`. O efeito em cascata
+vale registrar, porque nenhum passo grita:
+
+1. `extract_from_pdf` falha em toda fonte com OCR;
+2. o `EditalNormalizer` cai no fallback e monta o edital só com o título;
+3. as regras de publicação reconhecem isso como casca vazia e **descartam**;
+4. o fluxo termina com zero editais novos e sai como `Sucesso`, porque a origem
+   respondeu normalmente — o portal está de pé, é o LLM que não está.
+
+Foi assim que 15 editais novos da FAPES ficaram parados: a listagem os trazia, a
+extração não conseguia processá-los, e o portão corretamente recusou publicar
+registros vazios. Antes do portão, eles teriam entrado como cascas — é essa a
+origem das 29 que a curadoria removeu.
+
+**Diagnóstico rápido**, quando um fluxo com OCR fica sem novidade e a origem está
+saudável:
+
+```bash
+grep -c "Status 401" <log-do-fluxo>
+```
+
+O classificador da FINEP **não** disfarça mais a falha: devolvia `inovação`, valor
+indistinguível de uma classificação real, e agora devolve vazio para o chamador
+decidir. O normalizer mantém a categoria da fonte e registra em log.
+
 ## Chave de acesso
 
 `MISTRAL_API_KEY` no `.env` local e como secret do repositório no GitHub

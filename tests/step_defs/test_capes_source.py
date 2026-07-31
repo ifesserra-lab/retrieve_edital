@@ -1,7 +1,23 @@
-from src.components.sources.capes_source import CapesSource
+from src.components.sources.capes_source import CapesSource, _is_pdf_link
 
 
-def test_extract_listing_entries_uses_editais_abertos_and_skips_processed_urls():
+def test_is_pdf_link_catches_the_gov_br_display_file_form():
+    """
+    Só olhar a terminação `.pdf` não bastava: o gov.br serve o mesmo arquivo em
+    `…/edital.pdf/@@display-file/file`, e esses escapavam. O Playwright tentava
+    navegar para eles e falhava com `Page.goto: Download is starting`, o que
+    zerou a coleta da CAPES.
+    """
+    assert _is_pdf_link("https://www.gov.br/capes/edital.pdf") is True
+    assert _is_pdf_link("https://www.gov.br/capes/edital.pdf/@@display-file/file") is True
+    assert _is_pdf_link("https://www.gov.br/capes/pt-br/assuntos/edital-a") is False
+
+
+def test_extract_listing_entries_returns_every_entry_from_editais_abertos():
+    """
+    O parser devolve tudo o que a listagem trouxe; a comparação com o registry é
+    do `read()`, para não falsear a contagem bruta que o canário usa.
+    """
     html = """
     <html>
       <body>
@@ -24,11 +40,10 @@ def test_extract_listing_entries_uses_editais_abertos_and_skips_processed_urls()
 
     result = source._extract_listing_entries(html)
 
-    assert result == [
-        {
-            "title": "Edital A",
-            "url": "https://www.gov.br/capes/pt-br/assuntos/edital-a",
-        }
+    # Descarta o PDF e a repetição interna, mas não o que está no registry.
+    assert [item["url"] for item in result] == [
+        "https://www.gov.br/capes/pt-br/assuntos/edital-a",
+        "https://www.gov.br/capes/pt-br/assuntos/edital-b",
     ]
 
 

@@ -8,6 +8,7 @@ from src.components.sources.fapes_source import FapesSource
 from src.components.transforms.edital_normalizer import EditalNormalizer
 from src.components.sinks.json_sink import LocalJSONSink
 from src.domain.models import RawEdital, EditalDomain
+from src.flow_health import emit_flow_stats
 from src.processed_store import get_keys_set, add_many, DEFAULT_PATH
 
 # Load environment variables from .env file
@@ -41,8 +42,13 @@ def run_pipeline(
     # 1. Extract
     logger.info("Phase 1: Extraction")
     raw_data_list = source.read()
+
+    # Quantos itens a origem devolveu antes da deduplicação: é o que
+    # permite ao runner separar "portal sem novidade" de "source quebrado".
+    listing_count = getattr(source, "last_listing_count", len(raw_data_list))
     
     if not raw_data_list:
+        emit_flow_stats(raw_count=listing_count, new_count=0)
         logger.warning("Extraction returned empty. Halting pipeline.")
         return
         
@@ -74,6 +80,7 @@ def run_pipeline(
     if valid_domains:
         # FAPES deduplica pelo nome do arquivo, então a chave tem de vir do
         # sink: recalcular aqui perderia o sufixo aplicado em caso de colisão.
+        emit_flow_stats(raw_count=listing_count, new_count=len(valid_domains))
         persisted = sink.write(valid_domains)
         add_many("fapes", list(persisted.keys()), path=processed_index_path)
         logger.info("Pipeline completed successfully.")

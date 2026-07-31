@@ -60,6 +60,10 @@ class PrppgIfesSource(ISource[RawEdital]):
     ) -> None:
         self.start_url = start_url
         self.current_year = current_year if current_year is not None else datetime.now().year
+        # Quantos itens a listagem da origem devolveu, antes da deduplicação e
+        # dos filtros. É o que permite ao runner distinguir "portal sem
+        # novidade" de "source quebrado". Ver src/flow_health.py.
+        self.last_listing_count = 0
         self.processed_urls = processed_urls or set()
         self.timeout = timeout
         self.session = session or requests.Session()
@@ -395,6 +399,7 @@ class PrppgIfesSource(ISource[RawEdital]):
             page_html = self._fetch_listing_page_html(page_number=1)
             total_pages = self._parse_total_pages(page_html)
             raw_editais: List[RawEdital] = []
+            self.last_listing_count = 0
 
             for page_number in range(1, total_pages + 1):
                 if page_number > 1:
@@ -403,7 +408,9 @@ class PrppgIfesSource(ISource[RawEdital]):
                         previous_html=page_html,
                     )
 
-                for listing_item in self._extract_listing_rows(page_html):
+                listing_rows = list(self._extract_listing_rows(page_html))
+                self.last_listing_count += len(listing_rows)
+                for listing_item in listing_rows:
                     if listing_item["listing_start_date"]:
                         if not listing_item["listing_start_date"].startswith(str(self.current_year)):
                             continue
