@@ -1,30 +1,39 @@
 {
     "nome": "ERC – CONFAP 2026 CALL - RESEARCH OPPORTUNITIES IN EUROPE FOR ACTIVE PHD RESEARCHERS FROM BRAZIL",
-    "descrição": "O edital convida pesquisadores brasileiros com título de doutorado a estabelecerem colaborações de pesquisa com Investigadores Principais apoiados por bolsas do European Research Council (ERC). O objetivo é promover intercâmbios científicos de curta ou longa duração (até 12 meses) em projetos financiados pelo ERC, abrangendo diversas áreas do conhecimento, com possibilidade de apoio financeiro para despesas de viagem e subsistência.",
+    "descrição": "O edital convida pesquisadores brasileiros com título de doutorado a estabelecerem colaborações de pesquisa com Investigadores Principais apoiados por grants do European Research Council (ERC). O objetivo é promover intercâmbios científicos de curta ou longa duração (até 12 meses) em projetos ERC, abrangendo diversas áreas do conhecimento, com possibilidade de apoio financeiro para despesas de viagem e subsistência.",
     "orgão_fomento": "FAPES",
     "categoria": "pesquisa",
-    "status": "encerrado",
-    "data_abertura": "",
-    "data_encerramento": "2026-07-10",
+    "status": "aberto",
+    "data_abertura": "2026-10-01",
+    "data_encerramento": "2026-10-01",
     "link": "https://fapes.es.gov.br/Media/fapes/Editais/Chamada-ERC-CONFAP-2026.pdf",
-    "cronograma": [],
+    "cronograma": [
+        {
+            "evento": "Lançamento do edital",
+            "data": "2026-05-06"
+        },
+        {
+            "evento": "Prazo final para submissão de propostas",
+            "data": "2026-07-10"
+        },
+        {
+            "evento": "Início das atividades de intercâmbio científico",
+            "data": "2026-10-01"
+        }
+    ],
     "tags": [
         "pesquisa internacional",
         "colaboração científica",
         "ERC",
-        "intercâmbio acadêmico",
-        "financiamento à pesquisa"
+        "intercâmbio de pesquisadores",
+        "fomento à pesquisa"
     ],
     "anexos": [
         {
-            "titulo": "PUBLICAÇÃO CONFAP - Chamada ERC-CONFAP 2026",
-            "link": "https://fapes.es.gov.br/Media/fapes/Editais/Chamada%20ERC-Site_CONFAP.pdf",
-            "tipo": "edital"
-        },
-        {
-            "titulo": "DIRETRIZES FAPES PARA CHAMADA ERC-CONFAP 2026",
-            "link": "https://fapes.es.gov.br/Media/fapes/Editais/Diretrizes%20FAPES_Chamada_ERC_2026.pdf",
-            "tipo": "anexo"
+            "titulo": "DIRETRIZES FAPES PARA CHAMADA ERC-CONFAP 2026 (ALTERAÇÃO)",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/Diretrizes_Chamada_Internacional_ERC%202026%20(ALTERAÇAO).pdf",
+            "tipo": "alteração"
         }
-    ]
+    ],
+    "modalidade": ""
 }

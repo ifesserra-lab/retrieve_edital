@@ -1,13 +1,38 @@
 {
     "nome": "CALL FOR JOINT RESEARCH & INNOVATION PROJECTS – 2026",
-    "descrição": "Edital para apoio a projetos conjuntos de pesquisa e inovação entre grupos de pesquisa do Brasil e da Comunidade Francesa da Bélgica (Wallonie-Bruxelles), nas áreas de inovação para saúde, sistemas energéticos sustentáveis, cadeia agroalimentar do futuro, gestão ambiental inovadora, aeronáutica, espaço, defesa e Amazônia. O objetivo é promover intercâmbios científicos e tecnológicos entre os dois territórios.",
+    "descrição": "Edital para apoio a projetos conjuntos de pesquisa e inovação entre grupos de pesquisa do Brasil e da Comunidade Francesa da Bélgica (Wallonie-Bruxelles), nas áreas de inovação para saúde, sistemas energéticos sustentáveis, cadeia agroalimentar, gestão ambiental inovadora, aeronáutica, espaço, defesa e Amazônia. O objetivo é promover intercâmbios científicos e tecnológicos entre os dois territórios.",
     "orgão_fomento": "FAPES",
     "categoria": "pesquisa",
     "status": "aberto",
-    "data_abertura": "",
-    "data_encerramento": "2026-09-30",
+    "data_abertura": "2027-01-01",
+    "data_encerramento": "2027-01-01",
     "link": "https://fapes.es.gov.br/Media/fapes/Editais/Chamada%20CONFAP%20-%20WBI%202026.pdf",
-    "cronograma": [],
+    "cronograma": [
+        {
+            "evento": "Abertura do edital",
+            "data": "2026-06-22"
+        },
+        {
+            "evento": "Prazo final para submissão de projetos",
+            "data": "2026-09-30"
+        },
+        {
+            "evento": "Avaliações",
+            "data": "2026-10-01"
+        },
+        {
+            "evento": "Comitê conjunto e seleção final dos projetos",
+            "data": "2026-12-01"
+        },
+        {
+            "evento": "Comunicação da seleção final aos candidatos",
+            "data": "2026-12-01"
+        },
+        {
+            "evento": "Início das atividades/projetos",
+            "data": "2027-01-01"
+        }
+    ],
     "tags": [
         "pesquisa conjunta",
         "inovação",
@@ -21,21 +46,7 @@
             "titulo": "DIRETRIZES FAPES WBI - BÉLGICA 2026",
             "link": "https://fapes.es.gov.br/Media/fapes/Editais/Diretrizes%20Fapes%20WBI%20-2026.pdf",
             "tipo": "anexo"
-        },
-        {
-            "titulo": "PUBLICAÇÃO CONFAP - CHAMADA CONFAP WBI - BÉLGICA 2026",
-            "link": "https://fapes.es.gov.br/Media/fapes/Editais/CONFAP%20—%20Conselho%20Nacional%20das%20Fundações%20Estaduais%20de%20Amparo%20à%20PesquisaLançada%20a%20Chamada%20CONFAP%20%20WBI%202026%20para%20apoio%20a%20projetos%20conjuntos%20de%20pesquisa%20e%20inovação%20entre%20Brasil%20e%20Bélgica.pdf",
-            "tipo": "edital"
-        },
-        {
-            "titulo": "CONFAP-WBI 2026 - Anexo I - Formulário de Submissão",
-            "link": "https://fapes.es.gov.br/Media/fapes/Editais/CONFAP-WBI%202026%20Anexo%20I%20-%20Formulário%20de%20Submissão.doc",
-            "tipo": "anexo"
-        },
-        {
-            "titulo": "CONFAP-WBI 2026 - Termo de Adesão",
-            "link": "https://fapes.es.gov.br/Media/fapes/Editais/CONFAP-WBI%202026%20-%20Termo%20de%20Adesão.pdf",
-            "tipo": "anexo"
         }
-    ]
+    ],
+    "modalidade": ""
 }

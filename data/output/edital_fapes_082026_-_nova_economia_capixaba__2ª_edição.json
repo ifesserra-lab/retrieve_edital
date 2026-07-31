@@ -1,19 +1,89 @@
 {
     "nome": "EDITAL FAPES 08/2026 - NOVA ECONOMIA CAPIXABA – 2ª EDIÇÃO",
-    "descrição": "Promover um significativo aumento de competitividade dos setores econômicos capixabas no cenário nacional por meio de projetos de inovação a partir de demandas das empresas, em colaboração com Instituições de Ciência e Tecnologia (ICT) ou Instituições de Ensino Superior (IES) capixabas, públicas ou privadas. Os projetos devem apresentar aderência aos setores econômicos elencados no Plano de Desenvolvimento de Longo Prazo (PDLP), intitulado ES 500 Anos, e podem estar alinhados com o Plano Estadual de Ciência, Tecnologia e Inovação do Espírito Santo (PCTI-ES). O apoio aos projetos de inovação ocorrerá por meio de um modelo de coinvestimento tripartite entre a FAPES, a empresa proponente e a ICT/IES.",
+    "descrição": "Promover um significativo aumento de competitividade dos setores econômicos capixabas no cenário nacional por meio de projetos de inovação a partir de demandas das empresas, em colaboração com Instituições de Ciência e Tecnologia (ICT) ou Instituições de Ensino Superior (IES) capixabas, públicas ou privadas. Os projetos devem apresentar aderência aos setores econômicos elencados no Plano de Desenvolvimento de Longo Prazo (PDLP) ES 500 Anos e alinhamento com o Plano Estadual de Ciência, Tecnologia e Inovação do Espírito Santo (PCTI-ES). O apoio será realizado através de um modelo de coinvestimento tripartite entre a FAPES, a empresa proponente e a ICT/IES.",
     "orgão_fomento": "FAPES",
     "categoria": "inovação",
     "status": "aberto",
-    "data_abertura": "",
+    "data_abertura": "2026-03-30",
     "data_encerramento": "",
     "link": "https://fapes.es.gov.br/Media/fapes/Editais/Edital_08-2026_-_Nova_Economia_Capixaba_-_2_Edição_-_Lançamento.pdf",
-    "cronograma": [],
-    "tags": [
-        "inovação",
-        "subvenção econômica",
-        "competitividade",
-        "ES 500 Anos",
-        "coinvestimento"
+    "cronograma": [
+        {
+            "evento": "Publicação da Chamada Pública",
+            "data": "2026-03-30"
+        },
+        {
+            "evento": "Submissão das propostas no SIGFAPES (fluxo contínuo)",
+            "data": "Imediato"
+        },
+        {
+            "evento": "Avaliação dos documentos submetidos no SIGFAPES e conformidade ao edital",
+            "data": "Após 20 (vinte) dias úteis a partir do 1º dia do mês subsequente"
+        },
+        {
+            "evento": "Previsão de publicação do resultado preliminar da habilitação e análise de conformidade",
+            "data": "Após 25 (vinte e cinco) dias úteis a partir do 1º dia do mês subsequente"
+        },
+        {
+            "evento": "Prazo de submissão dos recursos administrativos da habilitação e análise de conformidade",
+            "data": "5 (cinco) dias úteis a partir da publicação do resultado preliminar"
+        },
+        {
+            "evento": "Previsão de publicação do resultado homologado da habilitação e análise de conformidade",
+            "data": "A partir do julgamento pelo CCAF dos recursos administrativos"
+        },
+        {
+            "evento": "Avaliação do estágio de maturidade tecnológica (TRL) do projeto e julgamento de mérito da proposta",
+            "data": "Até 20 (vinte) dias úteis a partir da publicação do resultado homologado da habilitação e análise de conformidade"
+        },
+        {
+            "evento": "Previsão de publicação do resultado preliminar da avaliação de maturidade e mérito",
+            "data": "A partir das avaliações da maturidade e mérito"
+        },
+        {
+            "evento": "Prazo de submissão dos recursos administrativos da avaliação de maturidade e mérito",
+            "data": "5 (cinco) dias úteis a partir da publicação do resultado preliminar"
+        },
+        {
+            "evento": "Previsão de publicação do resultado homologado da avaliação de maturidade e mérito",
+            "data": "A partir do julgamento pelo CCAF dos recursos administrativos"
+        },
+        {
+            "evento": "Visita técnica ou apresentação, presencial ou online",
+            "data": "Até 30 (trinta) dias úteis a partir da publicação do resultado preliminar das avaliações da maturidade e mérito"
+        },
+        {
+            "evento": "Previsão de publicação do resultado das visitas técnicas",
+            "data": "A partir da realização da visita técnica"
+        },
+        {
+            "evento": "Prazo de submissão dos recursos administrativos da visita técnica",
+            "data": "5 (cinco) dias úteis a partir da publicação do resultado preliminar da visita técnica"
+        },
+        {
+            "evento": "Previsão de publicação do resultado dos recursos administrativos da visita técnica",
+            "data": "A partir do julgamento pelo CCAF dos recursos administrativos"
+        },
+        {
+            "evento": "Submissão das documentações para contratação",
+            "data": "Até 30 (trinta) dias a partir da publicação do resultado homologado do julgamento de mérito"
+        },
+        {
+            "evento": "Avaliação das documentações submetidas para contratação",
+            "data": "A partir da submissão dos documentos para contratação"
+        },
+        {
+            "evento": "Início da vigência dos Termos de Outorga",
+            "data": "A partir do primeiro dia do mês subsequente à assinatura do Termo de Outorga"
+        }
     ],
-    "anexos": []
+    "tags": [
+        "inovação tecnológica",
+        "competitividade empresarial",
+        "subvenção econômica",
+        "ES 500 Anos",
+        "coinvestimento tripartite"
+    ],
+    "anexos": [],
+    "modalidade": ""
 }

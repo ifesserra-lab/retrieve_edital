@@ -1,0 +1,56 @@
+{
+    "nome": "PROGRAMA CAPES/MES-CUBA - DOCENTES - EDITAL Nº 13/2026",
+    "descrição": "O edital refere-se à publicação da lista de inscritos no Programa CAPES/MES-CUBA - DOCENTES, uma iniciativa de cooperação internacional voltada para docentes, visando o aperfeiçoamento e intercâmbio acadêmico entre instituições brasileiras e cubanas.",
+    "orgão_fomento": "CAPES",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-04-23",
+    "data_encerramento": "",
+    "link": "https://www.gov.br/capes/pt-br/acesso-a-informacao/acoes-e-programas/bolsas/bolsas-e-auxilios-internacionais/encontre-aqui/paises/cuba/mes-docentes",
+    "cronograma": [
+        {
+            "evento": "Publicação da lista de inscritos no DOU",
+            "data": "2026-04-23"
+        },
+        {
+            "evento": "Prazo para envio de comprovante de inscrição em caso de não constar na lista",
+            "data": "5 dias úteis a partir da data de publicação deste documento"
+        }
+    ],
+    "tags": [
+        "cooperação internacional",
+        "docentes",
+        "intercâmbio acadêmico",
+        "CAPES",
+        "Cuba",
+        "capes"
+    ],
+    "anexos": [
+        {
+            "titulo": "Edital nº 13/2026 - Lista de Inscritos, formarto, pdf, 130kb",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/lista_listagem_2854147_lista_de_inscritos_docentes.pdf/@@display-file/file",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Alteração Edital nº 13/2026 - Programa CAPES/MES-CUBA - Docentes , formato, pdf, 52,2kb",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/edital_2850494_sei_2849670_edital_n__13_2026___alteracao.pdf/@@display-file/file",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Alteração Edital nº 13/2026 - Programa CAPES/MES-CUBA - Docentes , formato, pdf, 123kb",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/25052026_Edital_2826299_SEI_2825184_Edital_13_2026___ALTERACAO.pdf/@@display-file/file",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Edital nº 13/2026 - Programa CAPES/MES-CUBA - Docentes , formato, pdf, 123kb",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/23042026_Edital_2806981_SEI_2806195_Edital_13_2026.pdf/@@display-file/file",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Termo de Outorga PVE exterior, formato - pdf, 114kb",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/23042026_Edital_2640998_Termo_de_Outorga_PVE__exterior_brasil_r.pdf/@@display-file/file",
+            "tipo": "anexo"
+        }
+    ],
+    "modalidade": ""
+}

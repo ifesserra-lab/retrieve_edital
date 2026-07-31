@@ -1,0 +1,127 @@
+{
+    "nome": "PROGRAMA DE DESENVOLVIMENTO ACADÊMICO INDÍGENA - PDAI - EDITAL Nº 23/2026",
+    "descrição": "O PDAI visa fomentar a formação de pesquisadores e pesquisadoras indígenas em nível de mestrado e doutorado, por meio da concessão de bolsas em Programas de Pós-Graduação (PPG) stricto sensu recomendados pela Capes. O programa busca ampliar o acesso de estudantes indígenas ao Sistema Nacional de Pós-Graduação (SNPG), fortalecer políticas e ações afirmativas, promover a diversidade epistêmica e estimular a produção de conhecimento científico articulado às realidades e demandas dos povos indígenas. A iniciativa contribui para a proteção de direitos, sustentabilidade dos territórios, valorização cultural e desenvolvimento comunitário baseado nas epistemologias indígenas.",
+    "orgão_fomento": "CAPES",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-08-17",
+    "data_encerramento": "2026-08-17",
+    "link": "https://www.gov.br/capes/pt-br/acesso-a-informacao/acoes-e-programas/bolsas/programas-estrategicos/desenvolvimento-regional/programa-de-desenvolvimento-academico-indigena-pdai",
+    "cronograma": [
+        {
+            "evento": "Impugnação do Edital",
+            "data": "5 dias úteis após publicação do extrato no DOU"
+        },
+        {
+            "evento": "Indicação de vagas pelos PPGs",
+            "data": "2026-07-06"
+        },
+        {
+            "evento": "Publicação da lista de cursos pela Capes",
+            "data": "2026-08-13"
+        },
+        {
+            "evento": "Inscrição dos(as) candidatos(as)",
+            "data": "2026-08-17"
+        },
+        {
+            "evento": "Análise documental pela Capes",
+            "data": "2026-10-02"
+        },
+        {
+            "evento": "Divulgação do resultado da análise documental",
+            "data": "2026-10-13"
+        },
+        {
+            "evento": "Recurso da análise documental",
+            "data": "2026-10-16"
+        },
+        {
+            "evento": "Seleção pelos PPGs – 1ª rodada (1ª opção)",
+            "data": "2026-10-23"
+        },
+        {
+            "evento": "Resultado preliminar da 1ª rodada",
+            "data": "2026-11-04"
+        },
+        {
+            "evento": "Recurso da seleção pelos PPGs – 1ª rodada",
+            "data": "2026-11-09"
+        },
+        {
+            "evento": "Seleção pelos PPGs – 2ª rodada (2ª opção)",
+            "data": "2026-11-16"
+        },
+        {
+            "evento": "Resultado preliminar da 2ª rodada",
+            "data": "2026-11-25"
+        },
+        {
+            "evento": "Recurso da seleção pelos PPGs – 2ª rodada",
+            "data": "2026-11-09"
+        },
+        {
+            "evento": "Seleção pelos PPGs – 3ª rodada (ampla avaliação)",
+            "data": "2026-12-14"
+        },
+        {
+            "evento": "Resultado preliminar da 3ª rodada",
+            "data": "2026-12-23"
+        },
+        {
+            "evento": "Manifestação de aceite do discente selecionado na ampla avaliação",
+            "data": "2027-01-04"
+        },
+        {
+            "evento": "Identificação de bolsas ociosas pela Capes",
+            "data": "2027-01-12"
+        },
+        {
+            "evento": "Remanejamento final e alocação de bolsas remanescentes",
+            "data": "5 dias úteis após a identificação das cotas ociosas"
+        },
+        {
+            "evento": "Homologação pela Pró-Reitoria da IES",
+            "data": "2027-01-29"
+        },
+        {
+            "evento": "Publicação do Resultado Final",
+            "data": "2027-02-19"
+        },
+        {
+            "evento": "Matrícula e início das atividades no PPG",
+            "data": "1º / 2º semestre de 2027"
+        }
+    ],
+    "tags": [
+        "povos indígenas",
+        "pós-graduação",
+        "ações afirmativas",
+        "diversidade epistêmica",
+        "bolsas de estudo",
+        "capes"
+    ],
+    "anexos": [
+        {
+            "titulo": "Portaria CAPES nº150, de 7 de abril de 2026 - formato, pdf, 2,3mb",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/documentos/Publicacao_no_DOU_2799102_PORTARIA_CAPES_N__150.pdf/@@display-file/file",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "file",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/02092020_Edital_13_PDPGAmazniaLegal_DOU02setembro.pdf/@@display-file/file",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Perguntas Frequentes (FAQ) para Coordenadores(as) de PPG -  formato. pdf, 311kb",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/documentos/faq_pdai_21-07-2026.pdf/@@display-file/file",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Edital nº 23/2026 - Programa de Desenvolvimento Acadêmico Indígena (PDAI), formato, pdf, 168kb",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/edital_2851776_sei_2851450_edital_n__23_2026.pdf/@@display-file/file",
+            "tipo": "anexo"
+        }
+    ],
+    "modalidade": ""
+}

@@ -1,19 +1,53 @@
 {
     "nome": "EDITAL FAPES Nº 18/2026 - PARCERIAS ENTRE STARTUPS",
-    "descrição": "Selecionar e apoiar, através de subvenção econômica (recursos não reembolsáveis), startups capixabas que busquem celebrar parcerias estratégicas com outras startups do Espírito Santo, nacionais ou internacionais. O objetivo é promover a expansão de mercado, inovação e avanço tecnológico, aprimoramento de produtos ou serviços, acesso a novos canais ou redes de distribuição, atração de talentos e aprimoramento de competências, posicionamento de marca e mercado, acesso a oportunidades de financiamento ou investimento, e impacto socioambiental sustentável.",
+    "descrição": "Selecionar e apoiar, através de subvenção econômica (recursos não reembolsáveis), startups capixabas que busquem celebrar parcerias estratégicas com outras startups do Espírito Santo, nacionais ou internacionais. O objetivo é promover a expansão de mercado, inovação e avanço tecnológico, aprimoramento de produtos ou serviços, acesso a novos canais de distribuição, atração de talentos, posicionamento de marca, acesso a financiamentos ou investimentos, e impacto socioambiental sustentável.",
     "orgão_fomento": "FAPES",
     "categoria": "inovação",
     "status": "aberto",
-    "data_abertura": "",
-    "data_encerramento": "2026-08-04",
+    "data_abertura": "2026-12-01",
+    "data_encerramento": "2026-12-01",
     "link": "https://fapes.es.gov.br/Media/fapes/Editais/EDITAL_FAPES_18-2026_-_PARCERIAS_ENTRE_STARTUPS%20(1).pdf",
-    "cronograma": [],
+    "cronograma": [
+        {
+            "evento": "Publicação da Chamada Pública",
+            "data": "2026-06-22"
+        },
+        {
+            "evento": "Submissão das propostas no SIGFAPES",
+            "data": "2026-06-22"
+        },
+        {
+            "evento": "Avaliação de habilitação e avaliação de mérito",
+            "data": "2026-08-05"
+        },
+        {
+            "evento": "Previsão de publicação do resultado preliminar da habilitação e análise de mérito",
+            "data": "2026-10-02"
+        },
+        {
+            "evento": "Prazo de submissão dos recursos administrativos",
+            "data": "2026-10-09"
+        },
+        {
+            "evento": "Previsão de publicação do resultado homologado da habilitação e mérito",
+            "data": "2026-10-27"
+        },
+        {
+            "evento": "Avaliação das documentações submetidas e contratação das propostas",
+            "data": "2026-10-28"
+        },
+        {
+            "evento": "Início da vigência das parcerias contratadas",
+            "data": "2026-12-01"
+        }
+    ],
     "tags": [
         "startups",
         "parcerias estratégicas",
         "inovação tecnológica",
         "subvenção econômica",
-        "empreendedorismo"
+        "ecossistema de empreendedorismo"
     ],
-    "anexos": []
+    "anexos": [],
+    "modalidade": ""
 }

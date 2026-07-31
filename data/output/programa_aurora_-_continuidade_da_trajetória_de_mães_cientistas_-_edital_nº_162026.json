@@ -1,0 +1,98 @@
+{
+    "nome": "PROGRAMA AURORA - CONTINUIDADE DA TRAJETÓRIA DE MÃES CIENTISTAS - EDITAL Nº 16/2026",
+    "descrição": "O edital visa apoiar a continuidade da trajetória acadêmica e científica de mães pesquisadoras, proporcionando condições para que possam dar seguimento às suas atividades de pesquisa e formação, mitigando os impactos da maternidade na carreira científica.",
+    "orgão_fomento": "CAPES",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-09-10",
+    "data_encerramento": "2026-09-10",
+    "link": "https://www.gov.br/capes/pt-br/acesso-a-informacao/acoes-e-programas/bolsas/programas-estrategicos/programa-aurora",
+    "cronograma": [
+        {
+            "evento": "Publicação do edital",
+            "data": "2026-05-12"
+        },
+        {
+            "evento": "Prazo para impugnação do edital",
+            "data": "2026-05-19"
+        },
+        {
+            "evento": "Submissão das propostas (Ciclo Jun/2026)",
+            "data": "2026-06-05"
+        },
+        {
+            "evento": "Análise técnica (Ciclo Jun/2026)",
+            "data": "2026-06-22"
+        },
+        {
+            "evento": "Recurso técnico (Ciclo Jun/2026)",
+            "data": "3 dias úteis"
+        },
+        {
+            "evento": "Divulgação do resultado preliminar (Ciclo Jun/2026)",
+            "data": "2026-08-17"
+        },
+        {
+            "evento": "Prazo para envio de recurso referente ao resultado preliminar (Ciclo Jun/2026)",
+            "data": "3 dias úteis"
+        },
+        {
+            "evento": "Homologação pela Presidência da CAPES (Ciclo Jun/2026)",
+            "data": "2026-08-24"
+        },
+        {
+            "evento": "Divulgação do resultado final no DOU (Ciclo Jun/2026)",
+            "data": "2026-08-25"
+        },
+        {
+            "evento": "Início da implementação das bolsas (Ciclo Jun/2026)",
+            "data": "2026-09-10"
+        }
+    ],
+    "tags": [
+        "mães cientistas",
+        "bolsas de pesquisa",
+        "equidade de gênero",
+        "CAPES",
+        "apoio à pesquisa",
+        "capes"
+    ],
+    "anexos": [
+        {
+            "titulo": "Portaria nº 159, de 9 de abril de 2026 - altera a Portaria CAPES nº 129, de 25 de março de 2026",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/documentos/18052026_Portarian159de9deAbrilde2026.pdf/@@display-file/file",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Portaria nº 129, de 25 de março de 2026",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/documentos/Portarian129de25deMarode2026.pdf/@@display-file/file",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Resultado da Análise Técnica – 2º Ciclo, formato, pdf, 214kb",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/documentos/resultado_2862224_resultado_para_publicacao___segundo_ciclo.pdf/@@display-file/file",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Alteração Edital nº 16/2026 - Programa AURORA, formato, pdf, 982kb",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/edital_2853575_edital.pdf/@@display-file/file",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Resultado da Etapa de Análise Técnica referente ao primeiro ciclo (junho/2026) do Edital nº 16/2026 – Programa Aurora – Continuidade da Trajetória de Mães Cientistas",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/documentos/resultado-da-analise-tecnica-1.pdf/@@display-file/file",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Alteração Edital nº 16/2026 - Programa AURORA",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/Edital_2829258_Edital.pdf/@@display-file/file",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Edital nº 16/2026 - Programa AURORA — Continuidade da Trajetória de Mães Cientistas",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/Edital_2818271_SEI_2817084_Edital_16_2026__1_.pdf/@@display-file/file",
+            "tipo": "anexo"
+        }
+    ],
+    "modalidade": ""
+}

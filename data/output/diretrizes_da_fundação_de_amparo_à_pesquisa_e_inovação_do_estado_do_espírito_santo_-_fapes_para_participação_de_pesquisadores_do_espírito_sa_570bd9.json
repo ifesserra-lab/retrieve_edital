@@ -1,0 +1,39 @@
+{
+    "nome": "DIRETRIZES DA FUNDAÇÃO DE AMPARO À PESQUISA E INOVAÇÃO DO ESTADO DO ESPÍRITO SANTO - FAPES PARA PARTICIPAÇÃO DE PESQUISADORES DO ESPÍRITO SANTO EM PROPOSTAS DO HORIZONTE EUROPA",
+    "descrição": "O edital estabelece diretrizes para apoiar a participação de pesquisadores do estado do Espírito Santo em propostas colaborativas submetidas ao programa Horizonte Europa, da União Europeia. O objetivo é fomentar a integração de co-pesquisadores principais (co-PIs) do Espírito Santo em consórcios internacionais, garantindo sua contribuição relevante para projetos de pesquisa e inovação, bem como o desenvolvimento científico e tecnológico do estado. A FAPES oferece financiamento complementar para pesquisadores elegíveis, condicionado à aprovação da proposta pelo Horizonte Europa.",
+    "orgão_fomento": "FAPES",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "",
+    "data_encerramento": "",
+    "link": "https://fapes.es.gov.br/Media/fapes/Editais/Diretrizes%20Fapes%20Horizon%20Europe%202021-2027-1.pdf",
+    "cronograma": [
+        {
+            "evento": "Consulta de elegibilidade à FAPES (envio de documentos)",
+            "data": "A qualquer momento (sem data específica)"
+        },
+        {
+            "evento": "Submissão da proposta à FAPES para avaliação",
+            "data": "A qualquer momento (sem data específica, condicionada aos prazos do Horizonte Europa)"
+        },
+        {
+            "evento": "Aprovação pela FAPES (Termo de Outorga)",
+            "data": "Após a submissão do Acordo de Subvenção com a UE"
+        }
+    ],
+    "tags": [
+        "Horizonte Europa",
+        "pesquisa colaborativa",
+        "financiamento internacional",
+        "Espírito Santo",
+        "inovação tecnológica"
+    ],
+    "anexos": [
+        {
+            "titulo": "PUBLICAÇÃO CONFAP",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/Publicação%20CONFAP-12.pdf",
+            "tipo": "anexo"
+        }
+    ],
+    "modalidade": ""
+}

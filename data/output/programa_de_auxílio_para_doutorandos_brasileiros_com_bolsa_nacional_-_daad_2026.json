@@ -1,30 +1,33 @@
 {
     "nome": "PROGRAMA DE AUXÍLIO PARA DOUTORANDOS BRASILEIROS COM BOLSA NACIONAL - DAAD 2026",
-    "descrição": "O edital oferece financiamento complementar a doutorandos brasileiros que já possuam bolsa de estudos concedida pela CAPES ou por uma Fundação Estadual de Amparo à Pesquisa (FAP) participante, com o objetivo de viabilizar parte da pesquisa de tese na Alemanha. O programa permite estadias de pesquisa de dois a seis meses em universidades, institutos de pesquisa, laboratórios ou bibliotecas alemãs, sem interrupção da bolsa nacional.",
+    "descrição": "O edital oferece financiamento complementar a doutorandos brasileiros que já possuam bolsa de estudos concedida pela CAPES ou por uma Fundação Estadual de Amparo à Pesquisa (FAP) participante, com o objetivo de viabilizar parte da pesquisa de tese na Alemanha. O programa inclui subsídio mensal, seguro-saúde e auxílio para passagem aérea, permitindo estadias de pesquisa de dois a seis meses em universidades, institutos de pesquisa, laboratórios ou bibliotecas alemãs.",
     "orgão_fomento": "FAPES",
     "categoria": "pesquisa",
     "status": "aberto",
-    "data_abertura": "",
+    "data_abertura": "2027-05-01",
     "data_encerramento": "2026-09-03",
     "link": "https://fapes.es.gov.br/Media/fapes/Editais/Divulgação%20CONFAP%20DAAD%202026.pdf",
-    "cronograma": [],
+    "cronograma": [
+        {
+            "evento": "Inscrições abertas",
+            "data": "2026-06-25"
+        },
+        {
+            "evento": "Encerramento das inscrições",
+            "data": "2026-09-03"
+        },
+        {
+            "evento": "Período de estadias de pesquisa na Alemanha",
+            "data": "2027-05-01"
+        }
+    ],
     "tags": [
         "doutorado",
         "intercâmbio internacional",
         "pesquisa",
-        "bolsa de estudos",
+        "bolsa",
         "Alemanha"
     ],
-    "anexos": [
-        {
-            "titulo": "DIRETRIZES FAPES - CHAMADA DAAD 2026",
-            "link": "https://fapes.es.gov.br/Media/fapes/Editais/Diretrizes%20-%20FAPES%202026-1.pdf",
-            "tipo": "anexo"
-        },
-        {
-            "titulo": "CHAMADA CONFAP DAAD - 1º Termo Aditivo e Declaração",
-            "link": "https://fapes.es.gov.br/Media/fapes/Editais/CONFAP-DAAD_1º_Termo_Aditivo_e_Declaração.pdf",
-            "tipo": "alteração"
-        }
-    ]
+    "anexos": [],
+    "modalidade": ""
 }
