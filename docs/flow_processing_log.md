@@ -12,6 +12,13 @@ Documento operacional para registrar a data de processamento dos fluxos do proje
 
 | Data/Hora | Fluxo | Resultado | Observações |
 | :-- | :-- | :-- | :-- |
+| 2026-08-01 02:53:42 -03:00 | `CNPQ` | Sucesso | Registry `cnpq`: 10 -> 10 (delta 0); `data/output/` com 650 JSONs; arquivos não-JSON: nenhum. Origem devolveu 9 itens brutos. |
+| 2026-08-01 02:53:40 -03:00 | `CAPES` | Sucesso | Registry `capes`: 22 -> 22 (delta 0); `data/output/` com 650 JSONs; arquivos não-JSON: nenhum. Origem devolveu 26 itens brutos. |
+| 2026-08-01 02:52:10 -03:00 | `PROEX_IFES` | Sucesso | Registry `proex_ifes`: 0 -> 0 (delta 0); `data/output/` com 650 JSONs; arquivos não-JSON: nenhum. Origem devolveu 7 itens brutos. |
+| 2026-08-01 02:50:11 -03:00 | `PRPPG_IFES` | Sucesso | Registry `prppg_ifes`: 16 -> 16 (delta 0); `data/output/` com 650 JSONs; arquivos não-JSON: nenhum. Origem devolveu 110 itens brutos. |
+| 2026-08-01 02:49:42 -03:00 | `CONIF` | Sucesso | Registry `conif`: 7 -> 7 (delta 0); `data/output/` com 650 JSONs; arquivos não-JSON: nenhum. Origem devolveu 6 itens brutos. |
+| 2026-08-01 02:49:00 -03:00 | `FINEP` | Sucesso | Registry `finep`: 30 -> 30 (delta 0); `data/output/` com 650 JSONs; arquivos não-JSON: nenhum. Origem devolveu 36 itens brutos. |
+| 2026-08-01 02:48:58 -03:00 | `FAPES` | Atenção | Registry `fapes`: 72 -> 72 (delta 0); `data/output/` com 650 JSONs; arquivos não-JSON: nenhum. Origem devolveu 0 itens brutos. A origem não devolveu nenhum item — verificar se o portal mudou. |
 | 2026-07-31 17:15:55 -03:00 | `CNPQ` | Sucesso | Registry `cnpq`: 10 -> 10 (delta 0); `data/output/` com 650 JSONs; arquivos não-JSON: nenhum. Origem devolveu 9 itens brutos. |
 | 2026-07-31 03:09:27 -03:00 | `CNPQ` | Atenção | Registry `cnpq`: 10 -> 10 (delta 0); `data/output/` com 153 JSONs; arquivos não-JSON: nenhum. Origem devolveu 9 itens brutos. |
 | 2026-07-31 03:09:24 -03:00 | `CAPES` | Atenção | Registry `capes`: 31 -> 31 (delta 0); `data/output/` com 153 JSONs; arquivos não-JSON: nenhum. Sem editais novos há 20 execuções seguidas — verificar se o source ainda funciona. |
