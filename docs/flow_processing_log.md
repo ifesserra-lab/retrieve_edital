@@ -12,6 +12,13 @@ Documento operacional para registrar a data de processamento dos fluxos do proje
 
 | Data/Hora | Fluxo | Resultado | Observações |
 | :-- | :-- | :-- | :-- |
+| 2026-08-04 02:49:29 -03:00 | `CNPQ` | Sucesso | Registry `cnpq`: 10 -> 11 (delta 1); `data/output/` com 652 JSONs; arquivos não-JSON: nenhum. Origem devolveu 9 itens brutos. |
+| 2026-08-04 02:49:09 -03:00 | `CAPES` | Sucesso | Registry `capes`: 22 -> 22 (delta 0); `data/output/` com 651 JSONs; arquivos não-JSON: nenhum. Origem devolveu 26 itens brutos. |
+| 2026-08-04 02:46:17 -03:00 | `PROEX_IFES` | Sucesso | Registry `proex_ifes`: 0 -> 0 (delta 0); `data/output/` com 651 JSONs; arquivos não-JSON: nenhum. Origem devolveu 7 itens brutos. |
+| 2026-08-04 02:44:04 -03:00 | `PRPPG_IFES` | Sucesso | Registry `prppg_ifes`: 16 -> 17 (delta 1); `data/output/` com 651 JSONs; arquivos não-JSON: nenhum. Origem devolveu 110 itens brutos. |
+| 2026-08-04 02:42:22 -03:00 | `CONIF` | Sucesso | Registry `conif`: 7 -> 7 (delta 0); `data/output/` com 650 JSONs; arquivos não-JSON: nenhum. Origem devolveu 6 itens brutos. |
+| 2026-08-04 02:41:39 -03:00 | `FINEP` | Sucesso | Registry `finep`: 30 -> 30 (delta 0); `data/output/` com 650 JSONs; arquivos não-JSON: nenhum. Origem devolveu 36 itens brutos. |
+| 2026-08-04 02:41:37 -03:00 | `FAPES` | Atenção | Registry `fapes`: 72 -> 72 (delta 0); `data/output/` com 650 JSONs; arquivos não-JSON: nenhum. Origem devolveu 0 itens brutos. A origem não devolveu nenhum item — verificar se o portal mudou. |
 | 2026-08-03 03:17:51 -03:00 | `CNPQ` | Sucesso | Registry `cnpq`: 10 -> 10 (delta 0); `data/output/` com 650 JSONs; arquivos não-JSON: nenhum. Origem devolveu 9 itens brutos. |
 | 2026-08-03 03:17:50 -03:00 | `CAPES` | Sucesso | Registry `capes`: 22 -> 22 (delta 0); `data/output/` com 650 JSONs; arquivos não-JSON: nenhum. Origem devolveu 26 itens brutos. |
 | 2026-08-03 03:15:55 -03:00 | `PROEX_IFES` | Atenção | Registry `proex_ifes`: 0 -> 0 (delta 0); `data/output/` com 650 JSONs; arquivos não-JSON: nenhum. Origem devolveu 0 itens brutos. A origem não devolveu nenhum item — verificar se o portal mudou. |

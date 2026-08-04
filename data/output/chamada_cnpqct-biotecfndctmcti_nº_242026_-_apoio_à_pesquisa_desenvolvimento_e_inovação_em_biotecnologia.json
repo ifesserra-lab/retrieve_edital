@@ -1,0 +1,74 @@
+{
+    "nome": "CHAMADA CNPQ/CT-BIOTEC/FNDCT/MCTI Nº 24/2026 - APOIO À PESQUISA, DESENVOLVIMENTO E INOVAÇÃO EM BIOTECNOLOGIA",
+    "descrição": "Apoiar projetos de pesquisa que visem contribuir significativamente para o desenvolvimento científico, tecnológico e a inovação no Brasil, nas áreas de Biotecnologia para saúde humana, Biotecnologia agropecuária, Biotecnologia ambiental e Biotecnologia industrial. Os objetivos incluem fortalecer grupos de pesquisa, desenvolver produtos e processos biotecnológicos para crescimento econômico sustentável, e promover ações de educação, popularização e divulgação científica para amplos setores da sociedade.",
+    "orgão_fomento": "CNPQ",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-08-03",
+    "data_encerramento": "2026-09-18",
+    "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-24-2026/chamada-publica-cnpq-N-24-2026",
+    "cronograma": [
+        {
+            "evento": "Abertura das inscrições",
+            "data": "2026-08-03"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2026-09-18"
+        },
+        {
+            "evento": "Data de publicação",
+            "data": "2026-08-03"
+        },
+        {
+            "evento": "Lançamento da Chamada no Diário Oficial da União e na página do CNPq",
+            "data": "2026-08-03"
+        },
+        {
+            "evento": "Prazo para impugnação da Chamada",
+            "data": "2026-08-13"
+        },
+        {
+            "evento": "Data limite para submissão das propostas",
+            "data": "2026-09-18"
+        },
+        {
+            "evento": "Período de Julgamento",
+            "data": "2026-10-19"
+        },
+        {
+            "evento": "Divulgação do resultado preliminar do julgamento",
+            "data": "2026-11-09"
+        },
+        {
+            "evento": "Prazo final para interposição de recurso administrativo",
+            "data": "2026-11-19"
+        },
+        {
+            "evento": "Divulgação da decisão final do julgamento",
+            "data": "2026-11-30"
+        }
+    ],
+    "tags": [
+        "biotecnologia",
+        "inovação",
+        "pesquisa científica",
+        "desenvolvimento tecnológico",
+        "sustentabilidade",
+        "cnpq",
+        "chamada pública"
+    ],
+    "anexos": [
+        {
+            "titulo": "Chamada",
+            "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-24-2026/Chamada_24_2026.pdf",
+            "tipo": "pdf"
+        }
+    ],
+    "modalidade": "",
+    "publico_alvo": [],
+    "ambito_geografico": "nacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "cnpq"
+}

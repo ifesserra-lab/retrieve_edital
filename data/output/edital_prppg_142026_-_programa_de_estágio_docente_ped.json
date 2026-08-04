@@ -1,0 +1,79 @@
+{
+    "nome": "EDITAL PRPPG 14/2026 - PROGRAMA DE ESTÁGIO DOCENTE (PED)",
+    "descrição": "O edital tem como objetivo ampliar as possibilidades de formação dos pós-graduandos do Instituto Federal do Espírito Santo (Ifes) por meio de experiências didático-pedagógicas nos cursos oferecidos na Educação Profissional e Tecnológica. Busca contribuir com a qualificação de discentes da pós-graduação lato sensu e stricto sensu para o exercício da docência, proporcionando estágios em três etapas: Estágio à Docência I (auxílio no planejamento e acompanhamento de práticas pedagógicas), Estágio à Docência II (ministração de até 50% do conteúdo programático de disciplinas) e Estágio à Docência III (ministração de 50% a 75% do conteúdo programático).",
+    "orgão_fomento": "PRPPG/IFES",
+    "categoria": "extensão",
+    "status": "aberto",
+    "data_abertura": "2026-08-03",
+    "data_encerramento": "2026-08-14",
+    "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=296",
+    "cronograma": [
+        {
+            "evento": "início do período do edital",
+            "data": "2026-08-03"
+        },
+        {
+            "evento": "fim do período do edital",
+            "data": "2026-08-14"
+        },
+        {
+            "evento": "Lançamento do Edital",
+            "data": "2026-08-03"
+        },
+        {
+            "evento": "Inscrições pelo link: https://forms.gle/bs5KfYhKB1ncxLoq5",
+            "data": "2026-08-03"
+        },
+        {
+            "evento": "Análise das Inscrições",
+            "data": "2026-08-15"
+        },
+        {
+            "evento": "Divulgação do Resultado Parcial",
+            "data": "2026-08-19"
+        },
+        {
+            "evento": "Recursos à Coordenadoria do PED",
+            "data": "2026-08-20"
+        },
+        {
+            "evento": "Divulgação do Resultado Final após Recursos",
+            "data": "2026-08-21"
+        },
+        {
+            "evento": "Inscrições",
+            "data": "2026-08-03"
+        }
+    ],
+    "tags": [
+        "estágio docente",
+        "formação pedagógica",
+        "pós-graduação",
+        "prppg",
+        "ifes",
+        "2026"
+    ],
+    "anexos": [
+        {
+            "titulo": "Edital",
+            "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=296#downloadTarget=ctl00%24Conteudo%24Consulta_Arquivo%24rptArquivo%24ctl01%24Download",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo II",
+            "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=296#downloadTarget=ctl00%24Conteudo%24Consulta_Arquivo%24rptArquivo%24ctl02%24Download",
+            "tipo": "docx"
+        },
+        {
+            "titulo": "Anexo III",
+            "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=296#downloadTarget=ctl00%24Conteudo%24Consulta_Arquivo%24rptArquivo%24ctl03%24Download",
+            "tipo": "docx"
+        }
+    ],
+    "modalidade": "",
+    "publico_alvo": [],
+    "ambito_geografico": "estadual-ES",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "prppg_ifes"
+}
