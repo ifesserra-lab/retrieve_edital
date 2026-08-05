@@ -1,0 +1,64 @@
+{
+    "nome": "CHAMADA CONFAP & CDTI - DIRETRIZES ESPECÍFICAS DA FAPES",
+    "descrição": "Apoiar projetos colaborativos em pesquisa e inovação tecnológica entre o Brasil (Espírito Santo) e a Espanha, abrangendo qualquer setor de atividade. Destina-se a profissionais vinculados a universidades, centros de pesquisa ou empresas capixabas que realizem atividades de pesquisa, desenvolvimento e inovação tecnológica, em parceria com empresas espanholas.",
+    "orgão_fomento": "FAPES",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-07-13",
+    "data_encerramento": "2026-10-08",
+    "link": "https://fapes.es.gov.br/Media/fapes/Editais/Diretrizes_Chamada%20Internacional_CDTI.2026.pdf",
+    "cronograma": [
+        {
+            "evento": "Lançamento da Chamada",
+            "data": "2026-07-13"
+        },
+        {
+            "evento": "Prazo para submissão de propostas",
+            "data": "2026-10-08"
+        },
+        {
+            "evento": "Submissão do projeto à Fapes para contratação (após notificação de aprovação pelo CDTI)",
+            "data": "Apenas após notificação de aprovação pelo CDTI"
+        }
+    ],
+    "tags": [
+        "colaboração internacional",
+        "inovação tecnológica",
+        "pesquisa científica",
+        "Espírito Santo",
+        "Espanha"
+    ],
+    "anexos": [
+        {
+            "titulo": "PUBLICAÇÃO CONFAP - CHAMADA CONFAP CDTI 2026",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/Postagem%20-%20CONFAP%20e%20CDTI%20lançam%20chamada%202026-2027.pdf",
+            "tipo": "edital"
+        },
+        {
+            "titulo": "ANEXO 1 - FORMULÁRIO DA CHAMADA CONFAP - CDTI 2026-2027",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/Anexo%201%20-%20Formulário_Chamada%20CONFAP%20-%20CDTI%202026-2027.docx",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "ANEXO 2 - GUIA CARTA DE INTENÇÕES - CHAMADA CONFAP - CDTI 2026-2027",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/Anexo%202%20-%20Guia%20Carta%20de%20Intenções%20Chamada%20CONFAP%20-%20CDTI%20%202026-2027.docx",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "EDITAL DA CHAMADA CONFAP - CDTI 2026-2027",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/Chamada%20CONFAP%20-%20CDTI%202026-2027.pdf",
+            "tipo": "edital"
+        },
+        {
+            "titulo": "TERMO DE ADESÃO - CHAMADA CONFAP-CDTI 2026",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/Termo%20de%20Adesão%20_%20CONFAP-CDTI%202026-2027.pdf",
+            "tipo": "anexo"
+        }
+    ],
+    "modalidade": "",
+    "publico_alvo": [],
+    "ambito_geografico": "estadual-ES",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "fapes"
+}

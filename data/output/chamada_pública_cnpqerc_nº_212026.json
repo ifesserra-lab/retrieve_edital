@@ -1,0 +1,78 @@
+{
+    "nome": "CHAMADA PÚBLICA CNPQ/ERC Nº 21/2026",
+    "descrição": "Apoiar até 10 projetos de pesquisa que envolvam a colaboração entre pesquisadores doutores brasileiros e projetos financiados pelo Conselho Europeu de Pesquisa (ERC), visando contribuir significativamente para o desenvolvimento científico, tecnológico e de inovação do Brasil. A chamada abrange diversas áreas temáticas, como biologia, saúde, ciências exatas, engenharias, ciências sociais e humanas, promovendo cooperação internacional, excelência científica e impacto social, além de ações de educação e divulgação científica.",
+    "orgão_fomento": "CNPQ",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-08-03",
+    "data_encerramento": "2026-09-30",
+    "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-21-2026/chamada-publica-cnpq-N-21-2026",
+    "cronograma": [
+        {
+            "evento": "Abertura das inscrições",
+            "data": "2026-08-03"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2026-09-30"
+        },
+        {
+            "evento": "Data de publicação",
+            "data": "2026-08-04"
+        },
+        {
+            "evento": "Lançamento da Chamada no Diário Oficial da União e na página do CNPq",
+            "data": "2026-08-03"
+        },
+        {
+            "evento": "Prazo para impugnação da Chamada",
+            "data": "2026-08-13"
+        },
+        {
+            "evento": "Data limite para submissão das propostas",
+            "data": "2026-09-30"
+        },
+        {
+            "evento": "Período de julgamento",
+            "data": "2026-10-01"
+        },
+        {
+            "evento": "Divulgação do resultado preliminar do julgamento no Diário Oficial da União e na página do CNPq",
+            "data": "2026-11-01"
+        },
+        {
+            "evento": "Prazo final para interposição de recurso administrativo",
+            "data": "2026-11-11"
+        },
+        {
+            "evento": "Divulgação da decisão no Diário Oficial da União e na página do CNPq",
+            "data": "2026-12-01"
+        },
+        {
+            "evento": "Prazo de implementação das bolsas",
+            "data": "2027-01-01"
+        }
+    ],
+    "tags": [
+        "cooperação internacional",
+        "pesquisa científica",
+        "bolsas de estudo",
+        "ERC",
+        "inovação tecnológica",
+        "cnpq",
+        "chamada pública"
+    ],
+    "anexos": [
+        {
+            "titulo": "Chamada",
+            "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-21-2026/ChamadaPblicaERC_21_2026_2717210.pdf",
+            "tipo": "pdf"
+        }
+    ],
+    "modalidade": "",
+    "publico_alvo": [],
+    "ambito_geografico": "nacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "cnpq"
+}
