@@ -1,0 +1,70 @@
+{
+    "nome": "EDITAL FAPES Nº 21/2026 - REDES DE PESQUISA, DESENVOLVIMENTO E INOVAÇÃO EM SETORES ESTRATÉGICOS",
+    "descrição": "Apoiar financeiramente a criação e o fortalecimento de redes estruturantes de Pesquisa, Desenvolvimento e Inovação (PD&I) em setores estratégicos do Espírito Santo. O edital visa selecionar projetos para formar e consolidar grupos de referência em áreas do conhecimento e setores estratégicos, promovendo ações coletivas de PD&I com articulação entre instituições científicas, tecnológicas e órgãos gestores de políticas públicas.",
+    "orgão_fomento": "FAPES",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-12-10",
+    "data_encerramento": "2026-09-10",
+    "link": "https://fapes.es.gov.br/Media/fapes/Editais/Edital_Fapes_21-2026_-_Redes_de_PDI_em_Setores_Estratégicos.pdf",
+    "cronograma": [
+        {
+            "evento": "Publicação do edital",
+            "data": "2026-08-06"
+        },
+        {
+            "evento": "Envio da proposta e documentos via SigFapes",
+            "data": "2026-09-14"
+        },
+        {
+            "evento": "Prazo para envio de dúvidas a respeito do edital",
+            "data": "2026-09-10"
+        },
+        {
+            "evento": "Divulgação do resultado preliminar da habilitação",
+            "data": "2026-09-24"
+        },
+        {
+            "evento": "Prazo para recorrer do resultado preliminar da habilitação",
+            "data": "2026-10-01"
+        },
+        {
+            "evento": "Divulgação do resultado final de habilitação",
+            "data": "2026-10-23"
+        },
+        {
+            "evento": "Divulgação do resultado preliminar de análise de mérito",
+            "data": "2026-11-10"
+        },
+        {
+            "evento": "Prazo para recorrer do resultado preliminar de análise de mérito",
+            "data": "2026-11-17"
+        },
+        {
+            "evento": "Divulgação do resultado final de análise de mérito",
+            "data": "2026-11-27"
+        },
+        {
+            "evento": "Início da contratação dos projetos selecionados",
+            "data": "2026-12-10"
+        },
+        {
+            "evento": "Início de execução dos projetos",
+            "data": "2027-01-04"
+        }
+    ],
+    "tags": [
+        "redes de pesquisa",
+        "inovação",
+        "setores estratégicos",
+        "Espírito Santo",
+        "PD&I"
+    ],
+    "anexos": [],
+    "modalidade": "",
+    "publico_alvo": [],
+    "ambito_geografico": "estadual-ES",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "fapes"
+}
