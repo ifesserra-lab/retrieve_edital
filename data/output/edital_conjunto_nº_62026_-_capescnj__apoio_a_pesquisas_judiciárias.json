@@ -1,0 +1,69 @@
+{
+    "nome": "EDITAL CONJUNTO Nº 6/2026 - CAPES/CNJ – APOIO A PESQUISAS JUDICIÁRIAS",
+    "descrição": "O edital tem por objetivo selecionar projetos de pesquisa coordenados por pesquisadores doutores, com concessão de bolsa de estágio pós-doutoral e recursos de custeio, voltados ao desenvolvimento de estudos jurídicos avançados em temas estratégicos para o Conselho Nacional de Justiça (CNJ). Busca fomentar pesquisas judiciárias de alto impacto, promover a integração entre academia e Poder Judiciário, e subsidiar políticas públicas baseadas em evidências, alinhadas a eixos temáticos prioritários como direitos de pessoas vulneráveis, direitos da natureza e judicialização das relações de consumo.",
+    "orgão_fomento": "CAPES",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-08-31",
+    "data_encerramento": "2026-08-31",
+    "link": "https://www.gov.br/capes/pt-br/acesso-a-informacao/acoes-e-programas/bolsas/programas-estrategicos/formacao-de-recursos-humanos-em-areas-estrategicas/capes-cnj-apoio-a-pesquisas-judiciarias-constitucionais",
+    "cronograma": [
+        {
+            "evento": "Impugnação do Edital",
+            "data": "3 dias úteis após a publicação do edital"
+        },
+        {
+            "evento": "Início do prazo para submissão das propostas",
+            "data": "2026-08-31"
+        },
+        {
+            "evento": "Data limite para submissão das propostas",
+            "data": "2026-10-02"
+        },
+        {
+            "evento": "Resultado preliminar da Análise Técnica",
+            "data": "2026-10-15"
+        },
+        {
+            "evento": "Prazo para envio de recurso referente ao resultado da Análise Técnica",
+            "data": "3 dias úteis após o recebimento da comunicação do resultado da análise técnica"
+        },
+        {
+            "evento": "Divulgação do resultado preliminar da Análise de Mérito",
+            "data": "2026-11-06"
+        },
+        {
+            "evento": "Prazo para envio de recurso referente à Análise de Mérito",
+            "data": "3 dias úteis após a divulgação do resultado preliminar no Diário Oficial da União (DOU)"
+        },
+        {
+            "evento": "Divulgação do resultado final no DOU",
+            "data": "2026-12-03"
+        },
+        {
+            "evento": "Início da implementação dos projetos",
+            "data": "2027-01-01"
+        }
+    ],
+    "tags": [
+        "pesquisa judiciária",
+        "pós-doutorado",
+        "CNJ",
+        "CAPES",
+        "direitos vulneráveis",
+        "capes"
+    ],
+    "anexos": [
+        {
+            "titulo": "Edital Conjunto nº 6/2026 - CAPES/CNJ - Apoio a Pesquisas Judiciárias, formato, pdf, 257kb",
+            "link": "https://www.gov.br/capes/pt-br/centrais-de-conteudo/editais/edital_2873621_sei___23038-001405_2026_81.pdf/@@display-file/file",
+            "tipo": "anexo"
+        }
+    ],
+    "modalidade": "",
+    "publico_alvo": [],
+    "ambito_geografico": "nacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "capes"
+}
