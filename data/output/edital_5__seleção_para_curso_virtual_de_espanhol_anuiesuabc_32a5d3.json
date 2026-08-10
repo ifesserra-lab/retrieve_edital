@@ -1,0 +1,44 @@
+{
+    "nome": "EDITAL 5 – SELEÇÃO PARA CURSO VIRTUAL DE ESPANHOL (ANUIES/UABC)",
+    "descrição": "CONIF REDE FEDERAL REDITEC Pesquisar Menu",
+    "orgão_fomento": "CONIF",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-06-03",
+    "data_encerramento": "",
+    "link": "https://portal.conif.org.br/editais/2026/edital-5-curso-virtual-de-espanhol-anuies",
+    "cronograma": [
+        {
+            "evento": "data de publicação",
+            "data": "2026-06-03"
+        }
+    ],
+    "tags": [
+        "conif",
+        "2026",
+        "pesquisa"
+    ],
+    "anexos": [
+        {
+            "titulo": "EDITAL CONIF/DIRINTER Nº 05",
+            "link": "https://portal.conif.org.br/images/Editais/2026/6_Junho/edital-05_26---espanhol-anuies-docx.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Número sorteio dos candidatos",
+            "link": "https://portal.conif.org.br/images/Editais/2026/6_Junho/editail_anuies-docx.pdf",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "Resultado Final",
+            "link": "https://portal.conif.org.br/images/Editais/2026/6_Junho/resultado-final-docx.pdf",
+            "tipo": "anexo"
+        }
+    ],
+    "modalidade": "",
+    "publico_alvo": [],
+    "ambito_geografico": "nacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "conif"
+}
