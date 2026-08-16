@@ -78,7 +78,8 @@
     "https://fapes.es.gov.br/Media/fapes/Editais/Anexo%202%20-%20Guia%20Carta%20de%20Intenções%20Chamada%20CONFAP%20-%20CDTI%20%202026-2027.docx",
     "https://fapes.es.gov.br/Media/fapes/Editais/Chamada%20CONFAP%20-%20CDTI%202026-2027.pdf",
     "https://fapes.es.gov.br/Media/fapes/Editais/Termo%20de%20Adesão%20_%20CONFAP-CDTI%202026-2027.pdf",
-    "https://fapes.es.gov.br/Media/fapes/Editais/Edital_Fapes_21-2026_-_Redes_de_PDI_em_Setores_Estratégicos.pdf"
+    "https://fapes.es.gov.br/Media/fapes/Editais/Edital_Fapes_21-2026_-_Redes_de_PDI_em_Setores_Estratégicos.pdf",
+    "https://fapes.es.gov.br/Media/fapes/Editais/Edital%20Fapes%2005_2026%20-%20Visita%20Técnico%20Cientifica%20(1).pdf"
   ],
   "finep": [
     "https://www.finep.gov.br/e/chamada-publica/222684/991625",
@@ -669,5 +670,12 @@
     "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-JU-CHIPS-2026-IMAF-CSA",
     "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-JU-CHIPS-2026-SDV-CSA",
     "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERC-2027-STG"
+  ],
+  "confap": [
+    "https://confap.org.br/pt/editais/114/chamada-confap-cdti-2026-2027",
+    "https://confap.org.br/pt/editais/113/daad-programa-de-auxilio-para-doutorandos-com-bolsa-nacional-2026",
+    "https://confap.org.br/pt/editais/112/1-chamada-da-parceria-de-materias-primas-para-a-transicao-verde-e-digital-ramp-",
+    "https://confap.org.br/pt/editais/111/chamada-confap-wbi-belgica-2026",
+    "https://confap.org.br/pt/editais/110/chamada-mci-mobility-confap-italy-2026"
   ]
 }

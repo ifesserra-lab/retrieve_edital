@@ -1,0 +1,50 @@
+{
+    "nome": "CHAMADA CONFAP & CDTI 2026-2027",
+    "descrição": "O Conselho Nacional das Fundações Estaduais de Amparo à Pesquisa ( CONFAP ) em parceria com o Centro para o Desenvolvimento Tecnológico e a Inovação da Espanha ( CDTI ) lançou, no dia 13 de julho, a chamada CONFAP & CDTI 2026-2027 , destinada ao apoio de projetos colaborativos de pesquisa e inovação tecnológica entre instituições do Brasil e da Espanha. A iniciativa integra as ações de cooperação internacional promovidas pelo CONFAP para ampliar a participação de pesquisadores e instituições brasileiras em projetos de pesquisa, desenvolvimento e inovação realizados em parceria com organismos internacionais de fomento. Os projetos selecionados serão financiados pelo CDTI, na Espanha, e pelas Fundações Estaduais de Amparo à Pesquisa (FAPs) participantes da chamada no Brasil (confira a lista abaixo). A chamada contempla propostas de qualquer área do conhecimento ou setor de atividade econômica. Os projetos deverão ter duração entre 12 e 36 meses. Fundações Estaduais de Amparo à Pesquisa (FAPs) participantes Fundação Araucária (Paraná) - Diretrizes ; FAPEAM (Amazonas); FAPEG (Goiás); FAPEMA (Maranhão); FAPERGS (Rio Grande do Sul); FAPES (Espírito Santo) - Diretrizes ; e FAPESB (Bahia). *Outras FAPs ainda poderão aderir à chamada. Elegibilidade Os consórcios proponentes deverão atender aos seguintes requisitos: É obrigatória a participação de uma instituição brasileira (empresa, universidade ou centro de pesquisa, conforme os critérios de elegibilidade da FAP participante) em parceria com uma empresa espanhola, formalizada por meio de um Acordo de Colaboração (Carta de Intenções). O consórcio poderá incluir parceiros adicionais de diferentes estados brasileiros. As FAPs participantes poderão estabelecer critérios complementares de elegibilidade. Nesses casos, as diretrizes específicas serão publicadas nos respectivos sites das Fundações. Os participantes brasileiros deverão consultar previamente as regras e modalidades de participação junto à FAP de seu estado. Submissão de propostas Os pesquisadores brasileiros deverão submeter suas propostas por meio da plataforma do CONFAP, disponível no link: https://sistema.confap.org.br . Algumas FAPs poderão exigir, adicionalmente, a submissão da proposta em suas próprias plataformas. Recomenda-se que os candidatos consultem previamente as orientações da Fundação de seu estado. Dúvidas gerais sobre a chamada podem ser esclarecidas pelo e-mail: internacional.confap@gmail.com Cronograma Data do lançamento da chamada: 13/07/2026 (segunda-feira). Data do encerramento das submissões das propostas: 08/10/2026 (quinta-feira) às 23:59 (horário de Brasília).",
+    "orgão_fomento": "CONFAP",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-07-13",
+    "data_encerramento": "2026-10-08",
+    "link": "https://confap.org.br/pt/editais/114/chamada-confap-cdti-2026-2027",
+    "cronograma": [
+        {
+            "evento": "Publicação da chamada",
+            "data": "2026-07-13"
+        },
+        {
+            "evento": "Prazo para envio da proposta",
+            "data": "2026-10-08"
+        }
+    ],
+    "tags": [
+        "cooperação internacional",
+        "CONFAP",
+        "FAPEAM",
+        "FAPEG",
+        "FAPEMA",
+        "FAPERGS",
+        "FAPES",
+        "FAPESB",
+        "Fundação Araucária",
+        "pesquisa"
+    ],
+    "anexos": [
+        {
+            "titulo": "Diretrizes",
+            "link": "https://www.fappr.pr.gov.br/sites/fundacao-araucaria/arquivos_restritos/files/documento/2026-07/diretrizes_chamada_confap_cdti_2026-2027-1.pdf",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Diretrizes",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/Diretrizes_Chamada%20Internacional_CDTI.2026.pdf",
+            "tipo": "pdf"
+        }
+    ],
+    "modalidade": "",
+    "publico_alvo": [],
+    "ambito_geografico": "internacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "confap"
+}

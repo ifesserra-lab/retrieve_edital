@@ -1,0 +1,64 @@
+{
+    "nome": "CHAMADA MCI – MOBILITY CONFAP ITALY 2026",
+    "descrição": "O Conselho Nacional das Fundações Estaduais de Amparo à Pesquisa ( CONFAP ) lançou, em 10 de junho de 2026, a chamada MCI – MOBILITY CONFAP ITALY 2026 , de apoio à mobilidade de pesquisadores do Brasil para universidades da Itália. A chamada é lançada no âmbito do Acordo de Cooperação assinado em junho de 2023 entre o CONFAP e a Universidade de Bolonha ( UNIBO ) – que atua como Secretariado Técnico da Rede das Universidades Italianas. A parceria tem o objetivo de facilitar e apoiar a colaboração efetiva entre os dois países para cooperação científica, tecnológica e de inovação por meio da mobilidade de pesquisadores de mestrado, doutorado e pós-doutorado do Brasil para as universidades italianas. Integram a Rede das Universidades Italianas: Universidade de Bolonha; Universidade de Bérgamo; Politécnico de Milão; Universidade Politécnica de Marche; Universidade Modena e Reggio Emília; Universidade de Palermo; Universidade de Pádua; Universidade de Pavia; Universidade de Pisa; Universidade de Roma - La Sapienza; Universidade de Roma Tor Vergata; Universidade de Roma Tre; Universidade de Siena; Politécnico de Turim; Universidade de Turim; Universidade de Trieste; Universidade de Udine; Universidade de Tuscia; Universidade de Milão; Universidade de Bari; Universidade de Ferrara;  Universidade de Verona; Escola Superior de Sant´Anna em Pisa; e Universidade de Parma. Elegibilidade São elegíveis pesquisadores vinculados a Universidades e Instituições de Pesquisa dos estados brasileiros das Fundações Estaduais de Amparo à Pesquisa (FAPs) que aderiram à chamada MCI 2026 ( vide listagem abaixo ) O fomento oferecido pelas FAPs aos pesquisadores do Brasil será realizado por meio de bolsas de estudo. Os candidatos devem consultar as modalidades de bolsas, regras e critérios de elegibilidade específicos de cada Fundação. Fundações Estaduais de Amparo à Pesquisa (FAPs) que aderiram à Chamada MCI – MOBILITY CONFAP ITALY 2026: 1. Alagoas – FAPEAL ( Diretrizes ) 2. Amazonas - FAPEAM 3. Bahia – FAPESB 4. Ceará – FUNCAP ( Diretrizes ) 5. Espírito Santo – FAPES 6. Federal Distrit - FAPDF 7. Goiás – FAPEG ( Diretrizes ) 8. Maranhão - FAPEMA 9. Pará – FAPESPA 10. Paraíba - FAPESQ ( Diretrizes ) 11. Paraná – Fundação Araucária ( Diretrizes ) 12. Pernambuco – FACEPE 13. Rio de Janeiro - FAPERJ 14. Rio Grande do Sul – FAPERGS 15. Santa Catarina – FAPESC *Outras FAPs ainda podem aderir a esta chamada. Submissão de propostas Os interessados podem submeter propostas até o dia 04 de setembro de 2026 pela plataforma do CONFAP, disponível no link: https://sistema.confap.org.br . Algumas FAPs podem solicitar que as candidaturas sejam apresentadas também em suas plataformas (consulte a FAP antes da submissão). A proposta não possui um formulário padrão e deve ser acompanhada de uma carta de apoio assinada pelo orientador da universidade na Itália, e pelos currículos do pesquisador proponente e do supervisor na Itália. Mais informações As oportunidades de pesquisa oferecidas pelas instituições de acolhimento elegíveis na Itália estão disponíveis no site do programa MCI, na página “Oportunidades de Pesquisa na Itália”, acesse aqui . Além das oportunidades publicadas no site, outras oportunidades podem ser consultadas diretamente nas universidades integrantes da rede MCI. Informações sobre as universidades que compõem a rede MCI estão disponíveis aqui . Dúvidas gerais sobre a chamada podem ser esclarecidas pelo e-mail: internacional.confap@gmail.com . Cronograma Lançamento da chamada: 10 de junho de 2026 . Prazo para envio das submissões de propostas: 04 de setembro de 2026 (sexta-feira), às 23:59 (horário de Brasília) . As mobilidades poderão ser realizadas a partir de novembro de 2026.",
+    "orgão_fomento": "CONFAP",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-06-10",
+    "data_encerramento": "2026-09-04",
+    "link": "https://confap.org.br/pt/editais/110/chamada-mci-mobility-confap-italy-2026",
+    "cronograma": [
+        {
+            "evento": "Publicação da chamada",
+            "data": "2026-06-10"
+        },
+        {
+            "evento": "Prazo para envio da proposta",
+            "data": "2026-09-04"
+        }
+    ],
+    "tags": [
+        "cooperação internacional",
+        "CONFAP",
+        "FACEPE",
+        "FAPDF",
+        "FAPEAL",
+        "FAPEAM",
+        "FAPEG",
+        "FAPEMA",
+        "FAPERGS",
+        "FAPERJ",
+        "FAPES",
+        "FAPESB",
+        "FAPESC",
+        "FAPESPA",
+        "FAPESQ",
+        "FUNCAP",
+        "Fundação Araucária",
+        "pesquisa",
+        "bolsa"
+    ],
+    "anexos": [
+        {
+            "titulo": "Diretrizes",
+            "link": "https://www.ce.gov.br/funcap/wp-content/uploads/sites/92/2026/07/Diretrizes-MCI-Italy-2026-2.pdf",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Diretrizes",
+            "link": "https://goias.gov.br/fapeg/wp-content/uploads/sites/5/2026/07/Chamada_Publica_FAPEG_15.2026___Mobility_CONFAP_Italy.pdf",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Diretrizes",
+            "link": "https://www.fappr.pr.gov.br/sites/fundacao-araucaria/arquivos_restritos/files/documento/2026-06/diretrizes_mci_italy_2026.pdf",
+            "tipo": "pdf"
+        }
+    ],
+    "modalidade": "",
+    "publico_alvo": [],
+    "ambito_geografico": "internacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "confap"
+}
