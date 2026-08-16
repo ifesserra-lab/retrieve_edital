@@ -10,6 +10,8 @@ from src.domain.models import RawEdital, EditalDomain
 from src.flow_health import emit_flow_stats
 from src import rejection_store
 from src.processed_store import get_keys_set, add_many, DEFAULT_PATH
+from src.components.transforms.mistral_client import MistralUnavailableError
+from src.components.transforms.extraction_contract import ExtractionUnavailableError
 
 # Load environment variables from .env file
 load_dotenv()
@@ -95,6 +97,10 @@ def run_pipeline(
                 domain_item = future.result()
                 if domain_item:
                     valid_domains.append(domain_item)
+            except ExtractionUnavailableError:
+                # Conta Mistral recusada mata a extração inteira, não um item.
+                # Engolir aqui fazia o fluxo terminar verde sem edital algum.
+                raise
             except Exception as e:
                 logger.error(f"Failed to transform item {raw_item.title}: {e}")
             

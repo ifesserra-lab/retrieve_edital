@@ -229,9 +229,31 @@ class TestClassifierFailureIsNotDisguisedAsAResult:
     Em 2026-07-31 a chave da API Mistral passou a responder 401. O classificador
     da FINEP engolia a falha e devolvia `inovação`, valor indistinguível de uma
     classificação real — o chamador recebia algo plausível e seguia adiante.
+
+    Devolver vazio corrigiu o palpite, mas não o silêncio: entre 2026-08-10 e
+    2026-08-16 a API respondeu 402 a toda chamada e o job seguiu verde por sete
+    dias. Recusa de credencial/assinatura passou a subir como
+    `MistralUnavailableError`; falha transitória continua devolvendo vazio.
     """
 
-    def test_classifier_returns_empty_when_it_fails(self):
+    def test_credential_refusal_raises_instead_of_returning_a_value(self):
+        from unittest.mock import MagicMock, patch
+
+        from src.components.transforms.mistral_client import (
+            MistralExtractionService,
+            MistralUnavailableError,
+        )
+
+        with patch.dict("os.environ", {"MISTRAL_API_KEY": "chave-de-teste"}):
+            service = MistralExtractionService()
+        service.client = MagicMock()
+        service.client.chat.complete.side_effect = RuntimeError("Status 401")
+
+        with pytest.raises(MistralUnavailableError):
+            service.categorize_finep_by_description("Subvenção à inovação.")
+
+    def test_transient_failure_still_returns_empty(self):
+        """Erro passageiro não derruba o fluxo: devolve vazio, sem palpite."""
         from unittest.mock import MagicMock, patch
 
         from src.components.transforms.mistral_client import MistralExtractionService
@@ -239,7 +261,7 @@ class TestClassifierFailureIsNotDisguisedAsAResult:
         with patch.dict("os.environ", {"MISTRAL_API_KEY": "chave-de-teste"}):
             service = MistralExtractionService()
         service.client = MagicMock()
-        service.client.chat.complete.side_effect = RuntimeError("Status 401")
+        service.client.chat.complete.side_effect = RuntimeError("Status 502")
 
         assert service.categorize_finep_by_description("Subvenção à inovação.") == ""
 

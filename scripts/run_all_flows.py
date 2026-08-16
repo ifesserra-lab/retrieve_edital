@@ -23,6 +23,7 @@ FLOW_COMMANDS = (
     ("PROEX_IFES", [sys.executable, "-m", "src.flows.ingest_proex_ifes_flow"]),
     ("CAPES", [sys.executable, "-m", "src.flows.ingest_capes_flow"]),
     ("CNPQ", [sys.executable, "-m", "src.flows.ingest_cnpq_flow"]),
+    ("CONFAP", [sys.executable, "-m", "src.flows.ingest_confap_flow"]),
 )
 REGISTRY_KEYS = {
     "FAPES": "fapes",
@@ -32,6 +33,7 @@ REGISTRY_KEYS = {
     "PROEX_IFES": "proex_ifes",
     "CAPES": "capes",
     "CNPQ": "cnpq",
+    "CONFAP": "confap",
 }
 LOG_PATH = Path("docs/flow_processing_log.md")
 REGISTRY_PATH = Path("registry/processed_editais.json")
@@ -350,6 +352,25 @@ def refresh_edital_status(workdir: Path) -> None:
     curate(workdir=workdir, apply=True, refresh_status_only=True, today=date.today())
 
 
+def purge_expired_rejections(workdir: Path) -> int:
+    """
+    Remove do índice de recusados as entradas cuja validade passou.
+
+    Enquanto o índice não era commitado ele nascia de novo a cada execução e
+    nunca crescia. Passando a persistir, sem esta poda ele acumularia para
+    sempre toda URL já recusada — e `get_active_keys` teria de percorrer a lista
+    inteira em cada fluxo. A entrada vencida já não segura o edital; tirá-la do
+    arquivo apenas evita que ele inche.
+    """
+    from src import rejection_store
+
+    caminho = workdir / rejection_store.DEFAULT_PATH
+    removidas = rejection_store.purge_expired(path=str(caminho), today=date.today())
+    if removidas:
+        print(f"[run_all_flows] Índice de recusados: {removidas} entradas vencidas removidas.")
+    return removidas
+
+
 def main(argv: Optional[list] = None) -> int:
     parser = argparse.ArgumentParser(description="Runner unificado dos fluxos ETL.")
     parser.add_argument(
@@ -372,6 +393,7 @@ def main(argv: Optional[list] = None) -> int:
         resultados[name] = run_flow(name, command, repo_root, args.timeout)
 
     refresh_edital_status(repo_root)
+    purge_expired_rejections(repo_root)
 
     falhas = [nome for nome, r in resultados.items() if r == RESULT_FAILURE]
     avisos = [nome for nome, r in resultados.items() if r == RESULT_WARNING]

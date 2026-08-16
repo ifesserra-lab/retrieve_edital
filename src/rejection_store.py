@@ -13,6 +13,13 @@ novamente.
 
 Índice separado do de processados de propósito: são coisas distintas. Um edital
 processado está publicado; um recusado não está, e pode voltar a ser candidato.
+
+**Este arquivo só funciona se for versionado.** Entre 2026-07-31 e 2026-08-16 o
+passo de commit do workflow adicionava apenas `registry/processed_editais.json`:
+o runner reescrevia este índice a cada noite e o descartava junto com o
+container, então a economia de OCR que ele existe para dar nunca aconteceu em
+produção. O `git add` dos workflows cobre `registry` inteiro por causa disso, e
+`tests/step_defs/test_run_all_flows.py` guarda a regra.
 """
 
 import json

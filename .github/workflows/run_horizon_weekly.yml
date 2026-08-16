@@ -32,6 +32,9 @@ jobs:
     - name: Run Horizon Europe Flow
       env:
         MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+        # Ver run_scraper.yml: provedor de reserva, secret opcional.
+        API_KEY: ${{ secrets.API_KEY }}
+        OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-4o' }}
         # Divisões do Horizon Europe a indexar. `HORIZON` cobre o programa
         # inteiro, porque a comparação é por prefixo — foi a decisão de
         # 2026-07-31. Para restringir, defina a variável de repositório
@@ -44,10 +47,15 @@ jobs:
       run: |
         python scripts/curate_output.py --refresh-status
 
+    # Ver a justificativa em run_scraper.yml: preserva o resultado parcial sem
+    # esconder a falha — o job segue vermelho.
     - name: Commit and Push JSON Results
+      if: always()
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add data/output registry/processed_editais.json || true
+        # Ver a justificativa em run_scraper.yml: sem o `registry` inteiro, o
+        # índice de recusados não persiste e o OCR se repete a cada execução.
+        git add data/output registry || true
         git diff --staged --quiet || git commit -m "chore: atualiza chamadas do Horizon Europe [skip ci]"
         git push

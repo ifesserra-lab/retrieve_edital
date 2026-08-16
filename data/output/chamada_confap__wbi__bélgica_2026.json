@@ -1,0 +1,68 @@
+{
+    "nome": "CHAMADA CONFAP & WBI – BÉLGICA 2026",
+    "descrição": "O Conselho Nacional das Fundações Estaduais de Amparo à Pesquisa ( CONFAP ), em parceria com a Wallonie-Bruxelles International ( WBI ), lançou, em 22 de junho de 2026 , a Chamada CONFAP & WBI – Bélgica 2026 , destinada ao financiamento de projetos conjuntos de pesquisa e inovação entre o Brasil e a Bélgica. A iniciativa é realizada no âmbito do Memorando de Entendimento (MoU) firmado entre o CONFAP e a WBI, em 2020, para promover a cooperação acadêmica e científica entre a região da Valônia-Bruxelas, na Bélgica, e o Brasil. A chamada tem como objetivo apoiar projetos conjuntos de pesquisa e inovação nas seguintes áreas temáticas: Inovação para uma melhor saúde; Sistemas de energia, materiais e habitats sustentáveis; Cadeia agroalimentar do futuro e gestão ambiental inovadora; Aeronáutica, espaço e defesa; e Amazônia. Os projetos aprovados poderão ter duração máxima de dois anos. As Fundações Estaduais de Amparo à Pesquisa (FAPs) participantes da chamada (veja a lista abaixo) poderão definir os recursos financeiros disponíveis, os valores máximos por projeto e os itens financiáveis, conforme suas respectivas diretrizes. As propostas poderão envolver a participação de dois ou mais pesquisadores vinculados a diferentes FAPs participantes. Confira a relação das Fundações Estaduais de Amparo à Pesquisa (FAPs) que aderiram à chamada: 1. Fundação Araucaria (Paraná) - Diretrizes 2. FACEPE (Pernambuco) 3. FAPEAL (Alagoas) 4. FAPEAM (Amazonas) 5. FAPEG (Goiás) - Diretrizes 6. FAPERGS (Rio Grande do Sul) 7. FAPERJ (Rio de Janeiro) 8. FAPES (Espírito Santo) - Diretrizes 9. FAPESC (Santa Catarina) 10. FAPESPA (Pará) 11. FAPESQ (Paraiba) - Diretrizes 12. FAPT (Tocantins) 13. FAPERO (Roraima) 14. FAPERR (Rondônia) 15. FAPEMA (Maranhão) *Outras Fundações ainda poderão aderir à chamada. Submissão de propostas Após consultar as regras de elegibilidade e as modalidades de participação definidas pela FAP de seu respectivo estado, os candidatos brasileiros deverão preencher o formulário de submissão de propostas ( disponível para download aqui ) e encaminhar a proposta, redigida em inglês, por meio da plataforma do CONFAP, disponível em https://sistema.confap.org.br . Além disso, os candidatos deverão verificar junto à FAP se há exigência de submissão adicional em plataforma própria da Fundação. ( Consulte o Ponto Focal de cada Fundação aqui ). Questões gerais e técnicas sobre a chamada podem ser esclarecidas pelo e-mail: internacional.confap@gmail.com Acesse a íntegra da chamada e o Anexo I ( formulário de submissão) no final desta página, em \"Arquivos para Download\". Cronograma Lançamento da chamada: 22 de junho de 2026; Encerramento da chamada: 30 de setembro de 202 6, até 23:59 (horário de Brasília); Previsão de início dos projetos: janeiro 2027. Assista aos depoimentos de pesquisadores com projetos aprovados em edições anteriores:",
+    "orgão_fomento": "CONFAP",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-06-22",
+    "data_encerramento": "2026-09-30",
+    "link": "https://confap.org.br/pt/editais/111/chamada-confap-wbi-belgica-2026",
+    "cronograma": [
+        {
+            "evento": "Publicação da chamada",
+            "data": "2026-06-22"
+        },
+        {
+            "evento": "Prazo para envio da proposta",
+            "data": "2026-09-30"
+        }
+    ],
+    "tags": [
+        "cooperação internacional",
+        "CONFAP",
+        "FACEPE",
+        "FAPEAL",
+        "FAPEAM",
+        "FAPEG",
+        "FAPEMA",
+        "FAPERGS",
+        "FAPERJ",
+        "FAPERO",
+        "FAPERR",
+        "FAPES",
+        "FAPESC",
+        "FAPESPA",
+        "FAPESQ",
+        "FAPT",
+        "Fundação Araucaria",
+        "pesquisa"
+    ],
+    "anexos": [
+        {
+            "titulo": "Diretrizes",
+            "link": "https://www.fappr.pr.gov.br/sites/fundacao-araucaria/arquivos_restritos/files/documento/2026-06/diretrizes_wbi_2026.pdf",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Diretrizes",
+            "link": "https://goias.gov.br/fapeg/wp-content/uploads/sites/5/2026/08/Chamada_Publica_FAPEG_17_2026_complementar_a_Chamada_CONFAP_WBI.pdf",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Diretrizes",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/Diretrizes%20Fapes%20WBI%20-2026.pdf",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Documento",
+            "link": "https://news.confap.org.br/wp-content/uploads/2026/06/CONFAP-WBI-2026-Anexo-I-Formulario-de-inscricao.doc",
+            "tipo": "pdf"
+        }
+    ],
+    "modalidade": "",
+    "publico_alvo": [],
+    "ambito_geografico": "internacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "confap"
+}

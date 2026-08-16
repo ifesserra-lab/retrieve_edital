@@ -73,6 +73,9 @@ SOURCE_PROFILES = {
     "PRPPG/IFES": ("estadual-ES", "prppg_ifes"),
     "PROEX/IFES": ("estadual-ES", "proex_ifes"),
     "HORIZON EUROPE": ("internacional", "horizon"),
+    # O CONFAP publica cooperação internacional cofinanciada pelas FAPs — o
+    # âmbito é internacional, não estadual, mesmo o dinheiro saindo das FAPs.
+    "CONFAP": ("internacional", "confap"),
 }
 
 # Valores canônicos de `publico_alvo`, conforme o §3.2 do PDF de análise.

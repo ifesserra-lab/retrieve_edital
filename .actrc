@@ -1,0 +1,26 @@
+# Configuração do `act` (https://github.com/nektos/act) para rodar os workflows
+# deste repositório localmente, sem consumir minutos do GitHub Actions.
+#
+# Uso:
+#   act --list                          # lista os jobs de todos os workflows
+#   act push -j test                    # roda a suíte BDD (workflow tests.yml)
+#   act workflow_dispatch -j scrape-editais   # roda o scraper diário
+#
+# Segredos: copie .secrets.example para .secrets e preencha. O arquivo .secrets
+# está no .gitignore e é lido automaticamente pela linha --secret-file abaixo.
+
+# Imagem "medium" do catthehacker: traz Python, Node e as ferramentas que
+# actions/setup-python espera. A imagem `act-latest` mínima não basta aqui —
+# o passo `playwright install chromium --with-deps` precisa de apt funcional.
+-P ubuntu-latest=catthehacker/ubuntu:act-latest
+
+# Os runners oficiais são x86_64. Sem isto, num Mac Apple Silicon o act sobe o
+# container em arm64 e o Playwright falha ao baixar o Chromium, que a Microsoft
+# só publica para linux/amd64.
+--container-architecture linux/amd64
+
+--secret-file .secrets
+
+# Reaproveita o container entre execuções: sem isto cada `act` reinstala as
+# dependências e o Chromium do zero (vários minutos por rodada).
+--reuse

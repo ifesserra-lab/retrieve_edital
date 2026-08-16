@@ -1,113 +1,189 @@
 {
+  "confap": {
+    "https://confap.org.br/pt/editais/100/chamada-erc-confap-2025": {
+      "motivo": "prazo encerrado em 2025-11-24",
+      "recusado_em": "2026-08-16",
+      "valida_ate": "2026-08-23"
+    },
+    "https://confap.org.br/pt/editais/101/chamada-transnacional-conjunta-biodiversa-biodivconnect-2025-2026": {
+      "motivo": "prazo encerrado em 2025-11-07",
+      "recusado_em": "2026-08-16",
+      "valida_ate": "2026-08-23"
+    },
+    "https://confap.org.br/pt/editais/102/3-chamada-transnacional-conjunta-da-parceria-de-economia-azul-sustentavel-": {
+      "motivo": "prazo encerrado em 2025-11-17",
+      "recusado_em": "2026-08-16",
+      "valida_ate": "2026-08-23"
+    },
+    "https://confap.org.br/pt/editais/103/chamada-transnacional-conjunta-2025-water-and-health": {
+      "motivo": "prazo encerrado em 2025-11-13",
+      "recusado_em": "2026-08-16",
+      "valida_ate": "2026-08-23"
+    },
+    "https://confap.org.br/pt/editais/104/premio-confap-de-ciencia-tecnologia-inovacao-professora-niede-guidon-5-edicao-2025": {
+      "motivo": "prazo encerrado em 2026-05-15",
+      "recusado_em": "2026-08-16",
+      "valida_ate": "2026-08-23"
+    },
+    "https://confap.org.br/pt/editais/105/premio-confap-de-boas-praticas-em-fomento-a-ct-i-5-edicao-2025": {
+      "motivo": "prazo encerrado em 2026-05-15",
+      "recusado_em": "2026-08-16",
+      "valida_ate": "2026-08-23"
+    },
+    "https://confap.org.br/pt/editais/106/chamada-marie-sk-odowska-curie-intercambio-de-pessoal-2026": {
+      "motivo": "prazo encerrado em 2026-04-16",
+      "recusado_em": "2026-08-16",
+      "valida_ate": "2026-08-23"
+    },
+    "https://confap.org.br/pt/editais/107/chamada-confap-brasillinois-2026": {
+      "motivo": "prazo encerrado em 2026-05-26",
+      "recusado_em": "2026-08-16",
+      "valida_ate": "2026-08-23"
+    },
+    "https://confap.org.br/pt/editais/108/chamada-nexbio-amazonia-2026": {
+      "motivo": "prazo encerrado em 2026-05-18",
+      "recusado_em": "2026-08-16",
+      "valida_ate": "2026-08-23"
+    },
+    "https://confap.org.br/pt/editais/109/chamada-erc-confap-2026": {
+      "motivo": "prazo encerrado em 2026-08-10",
+      "recusado_em": "2026-08-16",
+      "valida_ate": "2026-08-23"
+    },
+    "https://confap.org.br/pt/editais/115/5-edicao-da-chamada-gcub-mob": {
+      "motivo": "prazo encerrado em 2026-07-06",
+      "recusado_em": "2026-08-16",
+      "valida_ate": "2026-08-23"
+    },
+    "https://confap.org.br/pt/editais/86/chamada-transnacional-conjunta-biodivtransform-2024-2025": {
+      "motivo": "prazo encerrado em 2024-11-08",
+      "recusado_em": "2026-08-16",
+      "valida_ate": "2026-08-23"
+    },
+    "https://confap.org.br/pt/editais/87/chamada-transnacional-conjunta-water-for-circular-economy-2024": {
+      "motivo": "prazo encerrado em 2024-11-13",
+      "recusado_em": "2026-08-16",
+      "valida_ate": "2026-08-23"
+    },
+    "https://confap.org.br/pt/editais/88/chamada-confap-erc-ia-2024": {
+      "motivo": "prazo encerrado em 2024-11-25",
+      "recusado_em": "2026-08-16",
+      "valida_ate": "2026-08-23"
+    },
+    "https://confap.org.br/pt/editais/89/chamada-confap-maeci-2024": {
+      "motivo": "prazo encerrado em 2024-10-23",
+      "recusado_em": "2026-08-16",
+      "valida_ate": "2026-08-23"
+    },
+    "https://confap.org.br/pt/editais/90/chamada-confap-marie-sklodowska-curie-intercambio-de-pessoal-2024": {
+      "motivo": "prazo encerrado em 2025-02-05",
+      "recusado_em": "2026-08-16",
+      "valida_ate": "2026-08-23"
+    },
+    "https://confap.org.br/pt/editais/91/chamada-confap-conselho-nacional-de-pesquisa-da-italia-cnr-2024": {
+      "motivo": "prazo encerrado em 2024-11-29",
+      "recusado_em": "2026-08-16",
+      "valida_ate": "2026-08-23"
+    },
+    "https://confap.org.br/pt/editais/92/chamada-nexbio-amazonia-2025": {
+      "motivo": "prazo encerrado em 2025-03-21",
+      "recusado_em": "2026-08-16",
+      "valida_ate": "2026-08-23"
+    },
+    "https://confap.org.br/pt/editais/93/chamada-mci-mobility-confap-italy-2025": {
+      "motivo": "prazo encerrado em 2025-04-25",
+      "recusado_em": "2026-08-16",
+      "valida_ate": "2026-08-23"
+    },
+    "https://confap.org.br/pt/editais/94/chamada-confap-cdti-2025-2026-": {
+      "motivo": "prazo encerrado em 2025-09-12",
+      "recusado_em": "2026-08-16",
+      "valida_ate": "2026-08-23"
+    },
+    "https://confap.org.br/pt/editais/95/5-chamada-conjunta-multitematica-eu-lac-2025": {
+      "motivo": "prazo encerrado em 2025-05-22",
+      "recusado_em": "2026-08-16",
+      "valida_ate": "2026-08-23"
+    },
+    "https://confap.org.br/pt/editais/96/chamada-confap-marie-sk-odowska-curie-intercambio-de-pessoal-2025": {
+      "motivo": "prazo encerrado em 2025-10-08",
+      "recusado_em": "2026-08-16",
+      "valida_ate": "2026-08-23"
+    },
+    "https://confap.org.br/pt/editais/97/chamada-workshops-trilaterais-iniciativa-amazonia-10": {
+      "motivo": "prazo encerrado em 2024-12-13",
+      "recusado_em": "2026-08-16",
+      "valida_ate": "2026-08-23"
+    },
+    "https://confap.org.br/pt/editais/98/4-edicao-da-chamada-gcub-mob": {
+      "motivo": "prazo encerrado em 2025-07-17",
+      "recusado_em": "2026-08-16",
+      "valida_ate": "2026-08-23"
+    },
+    "https://confap.org.br/pt/editais/99/daad-programa-de-auxilio-para-doutorandos-com-bolsa-nacional-2025": {
+      "motivo": "prazo encerrado em 2025-09-09",
+      "recusado_em": "2026-08-16",
+      "valida_ate": "2026-08-23"
+    }
+  },
   "fapes": {
-    "https://fapes.es.gov.br/Media/fapes/Editais/EDITAL_FAPES_Nº_102026_DR._EMPREENDEDOR_CAPIXABA_-_CORRIGIDO.pdf": {
-      "motivo": "prazo encerrado em 2026-05-04",
-      "recusado_em": "2026-07-31",
-      "valida_ate": "2026-08-07"
-    },
-    "https://fapes.es.gov.br/Media/fapes/Editais/Edital%20Fapes%2005_2026%20-%20Visita%20Técnico%20Cientifica%20(1).pdf": {
-      "motivo": "prazo encerrado em 2026-02-09",
-      "recusado_em": "2026-07-31",
-      "valida_ate": "2026-08-07"
-    },
-    "https://fapes.es.gov.br/Media/fapes/Editais/Edital%20Programa%20Gênesis%202026%20-%20Assinado.pdf": {
-      "motivo": "prazo encerrado em 2026-06-30",
-      "recusado_em": "2026-07-31",
-      "valida_ate": "2026-08-07"
-    },
-    "https://fapes.es.gov.br/Media/fapes/Editais/Edital%20Universal%20Extensão%20-%20Assinado.pdf": {
-      "motivo": "prazo encerrado em 2026-06-30",
-      "recusado_em": "2026-07-31",
-      "valida_ate": "2026-08-07"
+    "https://fapes.es.gov.br/Media/fapes/Editais/EDITAL_FAPES_N_25_2025_Participação_Equipe_em_Mostras_e_Competições-2.pdf": {
+      "motivo": "prazo encerrado em 2025-11-10",
+      "recusado_em": "2026-08-16",
+      "valida_ate": "2026-08-23"
     },
     "https://fapes.es.gov.br/Media/fapes/Editais/Edital_Fapes_02-2026-Participação_Evento_Técnico_Científico.pdf": {
       "motivo": "prazo encerrado em 2026-02-06",
-      "recusado_em": "2026-07-31",
-      "valida_ate": "2026-08-07"
+      "recusado_em": "2026-08-16",
+      "valida_ate": "2026-08-23"
     },
     "https://fapes.es.gov.br/Media/fapes/Editais/Edital_Fapes_03_2026_Organização_Eventos_Técnico-Científicos.pdf": {
-      "motivo": "prazo encerrado em 2026-03-07",
-      "recusado_em": "2026-07-31",
-      "valida_ate": "2026-08-07"
+      "motivo": "prazo encerrado em 2026-02-06",
+      "recusado_em": "2026-08-16",
+      "valida_ate": "2026-08-23"
     },
     "https://fapes.es.gov.br/Media/fapes/Editais/Edital_Fapes_04_2026_-_Estágio_Técnico_Cientifico.pdf": {
-      "motivo": "prazo encerrado em 2026-03-10",
-      "recusado_em": "2026-07-31",
-      "valida_ate": "2026-08-07"
+      "motivo": "prazo encerrado em 2026-03-12",
+      "recusado_em": "2026-08-16",
+      "valida_ate": "2026-08-23"
     },
     "https://fapes.es.gov.br/Media/fapes/Editais/Edital_Fapes_28_2025_Publicação_de_Artigos_Técnico-Científicos.pdf": {
       "motivo": "prazo encerrado em 2025-12-22",
-      "recusado_em": "2026-07-31",
-      "valida_ate": "2026-08-07"
+      "recusado_em": "2026-08-16",
+      "valida_ate": "2026-08-23"
     }
   },
   "finep": {
     "https://www.finep.gov.br/e/chamada-publica/222684/753688": {
       "motivo": "prazo encerrado em 2026-05-29",
-      "recusado_em": "2026-07-31",
-      "valida_ate": "2026-08-07"
+      "recusado_em": "2026-08-16",
+      "valida_ate": "2026-08-23"
     },
     "https://www.finep.gov.br/e/chamada-publica/222684/755080": {
       "motivo": "prazo encerrado em 2026-04-09",
-      "recusado_em": "2026-07-31",
-      "valida_ate": "2026-08-07"
+      "recusado_em": "2026-08-16",
+      "valida_ate": "2026-08-23"
     },
     "https://www.finep.gov.br/e/chamada-publica/222684/755727": {
       "motivo": "prazo encerrado em 2026-05-11",
-      "recusado_em": "2026-07-31",
-      "valida_ate": "2026-08-07"
+      "recusado_em": "2026-08-16",
+      "valida_ate": "2026-08-23"
     },
     "https://www.finep.gov.br/e/chamada-publica/222684/755795": {
       "motivo": "prazo encerrado em 2026-06-08",
-      "recusado_em": "2026-07-31",
-      "valida_ate": "2026-08-07"
+      "recusado_em": "2026-08-16",
+      "valida_ate": "2026-08-23"
     },
     "https://www.finep.gov.br/e/chamada-publica/222684/755892": {
       "motivo": "prazo encerrado em 2026-07-03",
-      "recusado_em": "2026-07-31",
-      "valida_ate": "2026-08-07"
+      "recusado_em": "2026-08-16",
+      "valida_ate": "2026-08-23"
     },
     "https://www.finep.gov.br/e/chamada-publica/222684/756012": {
       "motivo": "prazo encerrado em 2026-05-28",
-      "recusado_em": "2026-07-31",
-      "valida_ate": "2026-08-07"
+      "recusado_em": "2026-08-16",
+      "valida_ate": "2026-08-23"
     }
   },
-  "horizon": {
-    "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-EIC-2025-ACCELERATOR-02-CHALLENGES-01": {
-      "motivo": "prazo encerrado em 2025-10-01",
-      "recusado_em": "2026-07-31",
-      "valida_ate": "2026-08-07"
-    },
-    "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-EIC-2025-ACCELERATOR-02-CHALLENGES-02": {
-      "motivo": "prazo encerrado em 2025-10-01",
-      "recusado_em": "2026-07-31",
-      "valida_ate": "2026-08-07"
-    },
-    "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-EIC-2025-ACCELERATOR-02-CHALLENGES-03": {
-      "motivo": "prazo encerrado em 2025-10-01",
-      "recusado_em": "2026-07-31",
-      "valida_ate": "2026-08-07"
-    },
-    "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-EIC-2025-ACCELERATOR-02-CHALLENGES-04": {
-      "motivo": "prazo encerrado em 2025-10-01",
-      "recusado_em": "2026-07-31",
-      "valida_ate": "2026-08-07"
-    },
-    "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-EIC-2025-ACCELERATOR-02-CHALLENGES-05": {
-      "motivo": "prazo encerrado em 2025-10-01",
-      "recusado_em": "2026-07-31",
-      "valida_ate": "2026-08-07"
-    },
-    "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-EIC-2025-ACCELERATOR-02-OPEN-01": {
-      "motivo": "prazo encerrado em 2025-10-01",
-      "recusado_em": "2026-07-31",
-      "valida_ate": "2026-08-07"
-    },
-    "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-JU-CHIPS-2025-IA-LEAI-two-stage": {
-      "motivo": "prazo encerrado em 2025-09-17",
-      "recusado_em": "2026-07-31",
-      "valida_ate": "2026-08-07"
-    }
-  }
+  "horizon": {}
 }

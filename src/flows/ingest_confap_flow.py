@@ -4,11 +4,11 @@ from typing import Optional
 
 from dotenv import load_dotenv
 
-from src.core.interfaces import ISource, ITransform, ISink
-from src.components.sources.conif_source import ConifSource
-from src.components.transforms.edital_normalizer import EditalNormalizer
 from src.components.sinks.json_sink import LocalJSONSink
-from src.domain.models import RawEdital, EditalDomain
+from src.components.sources.confap_source import ConfapSource
+from src.components.transforms.edital_normalizer import EditalNormalizer
+from src.core.interfaces import ISink, ISource, ITransform
+from src.domain.models import EditalDomain, RawEdital
 from src.flow_health import emit_flow_stats
 from src import rejection_store
 from src.processed_store import DEFAULT_PATH, add_many, get_keys_set
@@ -24,28 +24,28 @@ def run_pipeline(
     source: Optional[ISource[RawEdital]] = None,
     transform: Optional[ITransform[RawEdital, EditalDomain]] = None,
     sink: Optional[ISink[EditalDomain]] = None,
-    current_year: Optional[int] = None,
     processed_index_path: str = DEFAULT_PATH,
 ) -> None:
     """
-    Orquestra o ETL de editais do CONIF usando filtro de ano corrente
-    e registry incremental por URL de detalhe.
+    Orquestra o ETL das chamadas de cooperação internacional do CONFAP.
+
+    Deduplicação pela URL da página de detalhe, que é estável (id + slug).
     """
-    processed_urls = get_keys_set("conif", path=processed_index_path)
+    processed_urls = get_keys_set("confap", path=processed_index_path)
     # Recusas ainda válidas contam como já vistas: sem isso, um edital
     # que o portão rejeitou volta como novo em toda execução, com PDF
     # baixado e OCR refeito só para ser rejeitado de novo.
-    processed_urls = processed_urls | rejection_store.get_active_keys("conif")
-    source = source or ConifSource(current_year=current_year, processed_urls=processed_urls)
+    processed_urls = processed_urls | rejection_store.get_active_keys("confap")
+    source = source or ConfapSource(processed_urls=processed_urls)
     transform = transform or EditalNormalizer()
     sink = sink or LocalJSONSink()
 
-    logger.info("Starting CONIF Editais Pipeline...")
+    logger.info("Starting CONFAP Pipeline...")
     logger.info("Phase 1: Extraction")
     raw_data_list = source.read()
 
-    # Quantos itens a origem devolveu antes da deduplicação: é o que
-    # permite ao runner separar "portal sem novidade" de "source quebrado".
+    # Quantas chamadas a origem devolveu antes da deduplicação: é o que permite
+    # ao runner distinguir "portal sem novidade" de "source quebrado".
     listing_count = getattr(source, "last_listing_count", len(raw_data_list))
 
     if not raw_data_list:
@@ -59,8 +59,7 @@ def run_pipeline(
 
     with ThreadPoolExecutor(max_workers=2) as executor:
         future_to_item = {
-            executor.submit(transform.process, item): item
-            for item in raw_data_list
+            executor.submit(transform.process, item): item for item in raw_data_list
         }
         for future in future_to_item:
             raw_item = future_to_item[future]
@@ -82,18 +81,13 @@ def run_pipeline(
     )
 
     logger.info("Phase 3: Load/Sink")
-    # Emitido antes do sink, e fora do `if`: quando a origem responde mas todos
-    # os itens são rejeitados pelas regras de publicação, o runner precisa saber
-    # que a origem respondeu. Dentro do `if`, esse caso não emitia nada e o
-    # runner caía no proxy de sequência — o falso alarme que as estatísticas
-    # existem para evitar.
     emit_flow_stats(raw_count=listing_count, new_count=len(valid_domains))
-    rejection_store.record("conif", getattr(transform, "rejections", {}))
+    rejection_store.record("confap", getattr(transform, "rejections", {}))
 
     if valid_domains:
         persisted = sink.write(valid_domains)
         add_many(
-            "conif",
+            "confap",
             [d.link for d in persisted.values()],
             path=processed_index_path,
         )

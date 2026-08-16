@@ -28,3 +28,10 @@ venv*.bak/
 # Project specifics
 .gemini/
 .env
+
+# act (execução local dos workflows) — segredos reais, nunca versionar.
+# O template versionado é .secrets.example.
+.secrets
+.env.act
+# Artefatos que a execução local do workflow deixa para trás.
+.act-artifacts/
