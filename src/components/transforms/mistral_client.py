@@ -13,6 +13,18 @@ except ImportError:
     except ImportError:
         from mistralai.client import MistralClient as Mistral
 
+from src.components.transforms.extraction_contract import (
+    FINEP_CATEGORIES,
+    ExtractionUnavailableError,
+    SYSTEM_PROMPT_CLASSIFY_TITLES,
+    SYSTEM_PROMPT_EXTRACTION,
+    SYSTEM_PROMPT_FINEP,
+    build_classify_titles_prompt,
+    build_extraction_prompt,
+    build_finep_category_prompt,
+    canonical_finep_category,
+    map_to_domain,
+)
 from src.domain.models import EditalDomain
 
 logger = logging.getLogger(__name__)
@@ -32,9 +44,35 @@ RATE_LIMIT_BACKOFF_FACTOR = 2.0
 RATE_LIMIT_MAX_TOTAL_WAIT_SEC = 15 * 60
 
 
+class MistralUnavailableError(ExtractionUnavailableError):
+    """
+    A API do Mistral recusou a credencial ou a assinatura (401/402/403).
+
+    Diferente de um 429 ou de um PDF problemático, isto não é transitório: a
+    conta não volta a ter crédito no meio da execução. Tratar como falha comum
+    fazia cada PDF gastar três tentativas e ~45s antes de virar `None`, e o
+    fluxo então seguia como se o edital apenas não tivesse conteúdo — o job
+    terminava verde com a extração inteira morta. É por isso que esta exceção
+    existe e atravessa os `except Exception` do caminho de extração.
+    """
+
+
 def _is_rate_limit_error(exc: Exception) -> bool:
     s = str(exc).lower()
     return "429" in s or "rate" in s and "limit" in s or "rate_limited" in s
+
+
+def _is_credential_error(exc: Exception) -> bool:
+    """
+    Reconhece recusa de credencial ou de assinatura na resposta da API.
+
+    Casa pelo código de status na mensagem do SDK (`Status 402`) e também pelo
+    texto do corpo, porque o 402 da Mistral vem com `Check your subscription`.
+    """
+    s = str(exc).lower()
+    if "check your subscription" in s or "unauthorized" in s:
+        return True
+    return any(f"status {code}" in s for code in ("401", "402", "403"))
 
 
 def _call_with_rate_limit_retry(
@@ -54,8 +92,17 @@ def _call_with_rate_limit_retry(
     for attempt in range(RATE_LIMIT_MAX_RETRIES):
         try:
             return fn()
+        except MistralUnavailableError:
+            raise
         except Exception as e:
             last_exc = e
+            # Credencial ou assinatura recusada não é caso de espera: nenhum
+            # backoff devolve crédito à conta. Sobe já, e como tipo próprio,
+            # para não ser confundida com um PDF que falhou.
+            if _is_credential_error(e):
+                raise MistralUnavailableError(
+                    f"Mistral recusou a credencial/assinatura em '{context or 'Mistral API'}': {e}"
+                ) from e
             if not _is_rate_limit_error(e) or attempt == RATE_LIMIT_MAX_RETRIES - 1:
                 raise
 
@@ -150,13 +197,13 @@ class MistralExtractionService:
                 
                 # 3. Extract structured data via LLM (with rate-limit retry)
                 time.sleep(2)
-                prompt = self._get_extraction_prompt(full_ocr_text)
+                prompt = build_extraction_prompt(full_ocr_text)
                 
                 response = _call_with_rate_limit_retry(
                     lambda: self.client.chat.complete(
                         model=self.llm_model,
                         messages=[
-                            {"role": "system", "content": "Você é um especialista em análise de editais públicos de fomento (FAPES, CNPq, etc)."},
+                            {"role": "system", "content": SYSTEM_PROMPT_EXTRACTION},
                             {"role": "user", "content": prompt},
                         ],
                         response_format={"type": "json_object"},
@@ -173,8 +220,16 @@ class MistralExtractionService:
                 except Exception as cleanup_err:
                     logger.warning(f"Failed to delete uploaded file {uploaded_file_id}: {cleanup_err}")
     
-                return self._map_to_domain(extracted_data)
-    
+                return map_to_domain(extracted_data)
+
+            except MistralUnavailableError:
+                # Não conta como tentativa perdida: repetir não recupera crédito.
+                if uploaded_file_id:
+                    try:
+                        self.client.files.delete(file_id=uploaded_file_id)
+                    except Exception:
+                        pass
+                raise
             except Exception as e:
                 logger.error("Mistral extraction failed for %s on attempt %s: %s", filename, attempt, e)
                 if uploaded_file_id:
@@ -197,23 +252,13 @@ class MistralExtractionService:
         if not titles:
             return {}
 
-        prompt = f"""
-Classifique cada título de documento abaixo em uma das seguintes categorias:
-- 'edital': O documento principal da chamada pública ou concurso.
-- 'anexo': Documentos técnicos, formulários, declarações ou manuais complementares.
-- 'alteração': Aditivos, retificações ou mudanças no edital original.
-
-Retorne APENAS um JSON onde a chave é o título exato e o valor é a categoria.
-
-Títulos:
-{json.dumps(titles, indent=2, ensure_ascii=False)}
-"""
+        prompt = build_classify_titles_prompt(titles)
         try:
             response = _call_with_rate_limit_retry(
                 lambda: self.client.chat.complete(
                     model=self.llm_model,
                     messages=[
-                        {"role": "system", "content": "Você é um assistente especializado em organizar documentos de editais de fomento."},
+                        {"role": "system", "content": SYSTEM_PROMPT_CLASSIFY_TITLES},
                         {"role": "user", "content": prompt},
                     ],
                     response_format={"type": "json_object"},
@@ -224,6 +269,9 @@ Títulos:
             classification = json.loads(raw_json)
             logger.info("Classified %s titles: %s", len(titles), classification)
             return classification
+        except MistralUnavailableError:
+            # A heurística de fallback abaixo mascararia a conta sem crédito.
+            raise
         except Exception as e:
             logger.error(f"Failed to classify titles: {e}")
             # Fallback heuristic
@@ -238,7 +286,9 @@ Títulos:
                     fallback[t] = "edital"
             return fallback
 
-    FINEP_CATEGORIES = ("divulgação de conhecimento", "extensão", "inovação")
+    # Mantido como atributo de classe por compatibilidade: código existente lê
+    # `service.FINEP_CATEGORIES`. A fonte da verdade é o contrato compartilhado.
+    FINEP_CATEGORIES = FINEP_CATEGORIES
 
     def categorize_finep_by_description(self, description: str) -> str:
         """
@@ -247,23 +297,13 @@ Títulos:
         """
         if not (description or "").strip():
             return "inovação"
-        prompt = f"""
-Classifique o edital de chamada pública FINEP abaixo em exatamente UMA destas categorias:
-- divulgação de conhecimento: difusão científica, popularização da ciência, museus, feiras, eventos de divulgação, educação científica para o público.
-- extensão: extensão universitária, projetos que levam conhecimento à comunidade, parcerias universidade-sociedade, ações extensionistas.
-- inovação: PD&I, desenvolvimento tecnológico, inovação em empresas, subvenção econômica, startups, produtos/processos inovadores.
-
-Retorne APENAS um JSON com uma única chave "categoria" e o valor sendo exatamente uma das três opções acima (use a grafia exata).
-
-Descrição do edital:
-{description[:4000]}
-"""
+        prompt = build_finep_category_prompt(description)
         try:
             response = _call_with_rate_limit_retry(
                 lambda: self.client.chat.complete(
                     model=self.llm_model,
                     messages=[
-                        {"role": "system", "content": "Você é um classificador de editais de fomento. Responda apenas com o JSON solicitado."},
+                        {"role": "system", "content": SYSTEM_PROMPT_FINEP},
                         {"role": "user", "content": prompt},
                     ],
                     response_format={"type": "json_object"},
@@ -271,13 +311,9 @@ Descrição do edital:
                 context="categorize_finep",
             )
             data = json.loads(response.choices[0].message.content or "{}")
-            cat = (data.get("categoria") or "").strip().lower()
-            if cat in self.FINEP_CATEGORIES:
-                return cat
-            for allowed in self.FINEP_CATEGORIES:
-                if allowed in cat or cat in allowed:
-                    return allowed
-            return "inovação"
+            return canonical_finep_category(data.get("categoria")) or "inovação"
+        except MistralUnavailableError:
+            raise
         except Exception as e:
             # Devolve vazio, não um palpite: retornar "inovação" aqui tornava uma
             # chave de API inválida indistinguível de uma classificação real — o
@@ -286,48 +322,3 @@ Descrição do edital:
             logger.warning("Mistral categorize_finep_by_description failed: %s", e)
             return ""
 
-    def _get_extraction_prompt(self, ocr_text: str) -> str:
-        return f"""
-Analise o seguinte texto OCR de um edital de fomento e extraia as informações estruturadas em formato JSON.
-
-Para preencher o campo 'descrição', procure especificamente pela seção 'Objeto' ou pela seção 'Finalidade' (ou termos similares) no texto do edital e utilize-a para redigir um resumo claro e conciso.
-
-O JSON deve seguir exatamente esta estrutura:
-{{
-    "nome": "Título oficial do edital",
-    "descrição": "Resumo conciso baseado na seção 'Objeto' ou 'Finalidade' do edital",
-    "orgão_fomento": "Nome da instituição (Ex: FAPES)",
-    "categoria": "extensão, pesquisa, inovação ou outros",
-    "status": "aberto",
-    "data_abertura": "YYYY-MM-DD",
-    "data_encerramento": "YYYY-MM-DD ou \"\"",
-    "cronograma": [
-        {{"evento": "Descrição da etapa", "data": "ISO YYYY-MM-DD ou texto original caso seja data relativa (ex: '5 dias úteis após...')"}}
-    ],
-    "tags": ["lista", "de", "palavras-chave", "(MÍNIMO 3 TAGS)"]
-}}
-
-IMPORTANTE para o CRONOGRAMA:
-1. Priorize o formato ISO YYYY-MM-DD.
-2. Se houver um intervalo (ex: '10/11/2025 a 16/12/2025'), use apenas a primeira data no formato ISO ('2025-11-10').
-3. Se o texto disser 'A partir de 26/10/2026', use '2026-10-26'.
-4. Se a data for relativa (ex: '5 dias úteis após o resultado preliminar'), mantenha o texto original para processamento posterior.
-
-Texto do Edital:
-{ocr_text}
-"""
-
-    def _map_to_domain(self, data: Dict[str, Any]) -> EditalDomain:
-        # Basic mapping and defaults
-        return EditalDomain(
-            nome=data.get("nome", "").upper(),
-            descrição=data.get("descrição", ""),
-            orgão_fomento=data.get("orgão_fomento", "FAPES").upper(),
-            categoria=data.get("categoria", "outros").lower(),
-            status=data.get("status", "aberto"),
-            data_abertura=data.get("data_abertura") or "2026-01-01", # Default if missing
-            data_encerramento=data.get("data_encerramento") or "",
-            link="", # This will be set by the normalizer who has the URL
-            cronograma=[{"evento": item.get("evento") or item.get("etapa", ""), "data": item.get("data") or ""} for item in data.get("cronograma", [])],
-            tags=data.get("tags") if data.get("tags") and len(data.get("tags")) > 0 else ["fapes", "edital", "inovação"]
-        )

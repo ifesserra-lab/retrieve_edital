@@ -3,14 +3,16 @@ import re
 import io
 import logging
 from datetime import date
-from typing import List, Dict, Optional
+from typing import Any, List, Dict, Optional
 import pdfplumber
 
 from src.core.interfaces import ITransform
 from src.domain.models import RawEdital, EditalDomain
 from src.components.transforms import publication_rules
-from src.components.transforms.mistral_client import MistralExtractionService
+from src.components.transforms import cross_source_dedup
 from src.components.transforms.date_utils import normalize_schedule_dates
+from src.components.transforms.extraction_contract import ExtractionUnavailableError
+from src.components.transforms.extraction_fallback import build_extraction_service
 
 logger = logging.getLogger(__name__)
 
@@ -157,12 +159,21 @@ class EditalNormalizer(ITransform[RawEdital, EditalDomain]):
     Applies regex cleaning on metadata and uses Mistral for high-accuracy extraction.
     """
     
-    def __init__(self, extraction_service: Optional[MistralExtractionService] = None):
-        self.extraction_service = extraction_service or MistralExtractionService()
+    def __init__(
+        self,
+        extraction_service: Optional[Any] = None,
+        output_dir: str = "data/output",
+    ):
+        # Sem serviço injetado, a fábrica decide entre Mistral sozinho, Mistral
+        # com OpenAI de reserva, ou só OpenAI — conforme as chaves do ambiente.
+        self.extraction_service = extraction_service or build_extraction_service()
         # Recusas desta execução, como {url: motivo}. O fluxo as registra no
         # índice de recusados para não repetir OCR de um edital que o portão já
         # rejeitou — sem isso, ele volta como novo em toda execução.
         self.rejections: Dict[str, str] = {}
+        # Onde procurar o que já foi publicado, para a precedência entre fontes.
+        self.output_dir = output_dir
+        self._published_index: Optional[Dict[str, tuple]] = None
     
     def process(self, raw_data: RawEdital) -> Optional[EditalDomain]:
         """
@@ -268,6 +279,12 @@ class EditalNormalizer(ITransform[RawEdital, EditalDomain]):
                     return self._publish_or_discard(mistral_domain, raw_data)
                 else:
                     logger.warning(f"Mistral returned no domain for {clean_title}, falling back to basic extraction.")
+            except ExtractionUnavailableError:
+                # A extração básica abaixo produziria um edital sem o conteúdo do
+                # PDF e o fluxo o gravaria como se estivesse completo. Com a conta
+                # recusada isso vale para todos os editais, não para um só: a
+                # exceção sobe e derruba o fluxo, que é o sinal que faltava.
+                raise
             except Exception as e:
                 logger.error(f"Error during Mistral extraction for {clean_title}: {e}")
 
@@ -287,6 +304,8 @@ class EditalNormalizer(ITransform[RawEdital, EditalDomain]):
                         "Classificação FINEP indisponível; mantendo categoria da fonte: %s",
                         category,
                     )
+            except ExtractionUnavailableError:
+                raise
             except Exception as e:
                 logger.warning("Mistral categorização FINEP falhou, usando fallback: %s", e)
         if not tags:
@@ -364,4 +383,39 @@ class EditalNormalizer(ITransform[RawEdital, EditalDomain]):
         )
         edital.fonte_key = publication_rules.resolve_fonte_key(edital, raw_data)
         edital.publico_alvo = publication_rules.resolve_publico_alvo(edital, raw_data)
+
+        # Precedência entre fontes: a original vence o agregador. A recusa é
+        # registrada como qualquer outra, e por isso entra no índice com
+        # validade — sem isso o agregador recoletaria e redescartaria o mesmo
+        # edital toda noite, pagando OCR para jogar fora no fim.
+        if self._superseded_by_original_source(edital):
+            motivo = "já publicado pela fonte original"
+            logger.info("Edital não publicado (%s): %s", motivo, edital.nome[:70])
+            if raw_data.url:
+                self.rejections[raw_data.url] = motivo
+            return None
         return edital
+
+    def _superseded_by_original_source(self, edital: EditalDomain) -> bool:
+        """
+        True quando este edital vem de um agregador e a fonte original já o gravou.
+
+        O índice é montado sob demanda e reaproveitado na execução inteira: ler
+        `data/output/` custa ~0,09s para 650 arquivos, mas fazê-lo por edital
+        multiplicaria isso pelo número de itens do fluxo.
+        """
+        if not cross_source_dedup.is_aggregator(edital.fonte_key):
+            return False
+        if self._published_index is None:
+            self._published_index = cross_source_dedup.index_published(
+                self.output_dir
+            )
+        chave = cross_source_dedup.canonical_key(
+            edital.nome, edital.data_encerramento
+        )
+        if not chave:
+            return False
+        existente = self._published_index.get(chave)
+        return existente is not None and not cross_source_dedup.is_aggregator(
+            existente[0]
+        )

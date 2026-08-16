@@ -33,13 +33,31 @@ jobs:
     - name: Run Scraper (Extract, Transform, Sink)
       env:
         MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+        # Provedor de reserva. Quando a Mistral recusa a credencial ou a
+        # assinatura (401/402/403), a extração passa para a OpenAI em vez de o
+        # fluxo parar. Secret opcional: sem ele o pipeline roda só na Mistral,
+        # como antes.
+        API_KEY: ${{ secrets.API_KEY }}
+        OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-4o' }}
       run: |
         python scripts/run_all_flows.py
 
+    # `always()` porque o passo anterior agora falha de verdade quando a extração
+    # morre (ex.: 402 da Mistral). Sem isto, os editais que os fluxos saudáveis
+    # já coletaram e o registro em docs/flow_processing_log.md seriam descartados
+    # junto com a falha — perdendo exatamente a evidência de diagnóstico. O job
+    # continua vermelho: este passo preserva o resultado parcial, não o mascara.
     - name: Commit and Push JSON Results
+      if: always()
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add data/output registry/processed_editais.json docs/flow_processing_log.md || true
+        # `registry` inteiro, não só processed_editais.json. O índice de
+        # recusados (registry/rejected_editais.json) ficava de fora: o runner o
+        # reescrevia a cada noite e o descartava junto com o container, então
+        # ele não mudava desde 2026-07-31 e os mesmos editais recusados tinham
+        # PDF baixado e OCR refeito toda madrugada — exatamente o desperdício
+        # que o índice foi criado para evitar.
+        git add data/output registry docs/flow_processing_log.md || true
         git diff --staged --quiet || git commit -m "chore: atualiza dados raspados dos editais [skip ci]"
         git push

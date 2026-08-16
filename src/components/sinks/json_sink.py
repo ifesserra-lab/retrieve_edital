@@ -5,6 +5,7 @@ import logging
 from typing import Dict, List
 from dataclasses import asdict
 from src.core.interfaces import ISink
+from src.components.transforms import cross_source_dedup
 from src.domain.models import EditalDomain
 
 logger = logging.getLogger(__name__)
@@ -96,6 +97,28 @@ class LocalJSONSink(ISink[EditalDomain]):
         )
         return resolved
 
+    def _replace_aggregator_records(
+        self, items: List[EditalDomain]
+    ) -> List[EditalDomain]:
+        """
+        Remove o arquivo do agregador quando a fonte original grava o mesmo edital.
+
+        Devolve a lista de itens inalterada: quem decide o que gravar é o
+        chamador. Falha ao apagar não interrompe a gravação — ficar com dois
+        arquivos é ruim, não gravar o edital é pior.
+        """
+        _, obsoletos = cross_source_dedup.filter_superseded(items, self.output_dir)
+        for caminho in obsoletos:
+            try:
+                os.remove(caminho)
+                logger.info(
+                    "Registro do agregador removido em favor da fonte original: %s",
+                    os.path.basename(caminho),
+                )
+            except OSError as exc:
+                logger.warning("Falha ao remover %s: %s", caminho, exc)
+        return items
+
     def write(self, items: List[EditalDomain]) -> Dict[str, EditalDomain]:
         """
         Persiste os editais e devolve o que de fato foi para o disco, indexado pelo
@@ -118,6 +141,13 @@ class LocalJSONSink(ISink[EditalDomain]):
 
         # Ensure output directory exists
         os.makedirs(self.output_dir, exist_ok=True)
+
+        # Precedência entre fontes no sentido "original chega depois": se um
+        # agregador já gravou este edital, o arquivo dele sai para dar lugar ao
+        # da fonte original. O sentido oposto — agregador chegando quando a
+        # original já publicou — é resolvido antes, no normalizador, para que a
+        # recusa entre no índice com validade e não se repita toda noite.
+        items = self._replace_aggregator_records(items)
 
         persisted: Dict[str, EditalDomain] = {}
         for idx, item in enumerate(items, start=1):

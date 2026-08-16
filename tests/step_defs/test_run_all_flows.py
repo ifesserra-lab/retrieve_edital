@@ -3,6 +3,23 @@ import pytest
 from scripts import run_all_flows
 from src.flow_health import FlowStats
 
+# Referência capturada antes de qualquer stub, para o teste que exercita a poda
+# de verdade contra um diretório temporário.
+_purge_real = run_all_flows.purge_expired_rejections
+
+
+@pytest.fixture(autouse=True)
+def _nao_poda_o_registry_real(monkeypatch):
+    """
+    `main()` poda o índice de recusados do repositório em que roda.
+
+    Sem esta trava, todo teste que chama `main()` reescreve
+    `registry/rejected_editais.json` de verdade — foi o que aconteceu ao ligar a
+    poda: quatro testes já existentes apagaram as 21 entradas versionadas. Teste
+    não pode alterar dado versionado do projeto.
+    """
+    monkeypatch.setattr(run_all_flows, "purge_expired_rejections", lambda workdir: 0)
+
 
 def test_flow_commands_include_capes_and_cnpq_in_expected_order():
     assert [name for name, _ in run_all_flows.FLOW_COMMANDS] == [
@@ -13,6 +30,7 @@ def test_flow_commands_include_capes_and_cnpq_in_expected_order():
         "PROEX_IFES",
         "CAPES",
         "CNPQ",
+        "CONFAP",
     ]
 
 
@@ -25,6 +43,7 @@ def test_registry_keys_include_new_integrated_flows():
         "PROEX_IFES": "proex_ifes",
         "CAPES": "capes",
         "CNPQ": "cnpq",
+        "CONFAP": "confap",
     }
 
 
@@ -49,6 +68,7 @@ def test_main_runs_all_flows_in_sequence(monkeypatch, tmp_path):
         ("PROEX_IFES", "src.flows.ingest_proex_ifes_flow"),
         ("CAPES", "src.flows.ingest_capes_flow"),
         ("CNPQ", "src.flows.ingest_cnpq_flow"),
+        ("CONFAP", "src.flows.ingest_confap_flow"),
     ]
 
 
@@ -283,3 +303,83 @@ class TestBuildObservations:
 )
 def test_parse_log_row(line, expected):
     assert run_all_flows._parse_log_row(line) == expected
+
+
+class TestIndiceDeRecusadosPersiste:
+    """
+    O índice de recusados existe para não repetir OCR (ver src/rejection_store.py),
+    mas o passo de commit do workflow só adicionava `registry/processed_editais.json`.
+    O runner reescrevia `registry/rejected_editais.json` a cada noite e o descartava
+    junto com o container: o arquivo não mudava desde 2026-07-31 e os mesmos editais
+    recusados tinham PDF baixado e OCR refeito toda madrugada.
+    """
+
+    @pytest.mark.parametrize(
+        "workflow", ["run_scraper.yml", "run_horizon_weekly.yml"]
+    )
+    def test_workflow_versiona_o_indice_de_recusados(self, workflow):
+        from pathlib import Path
+
+        from src import rejection_store
+
+        repo_root = Path(__file__).resolve().parents[2]
+        conteudo = (repo_root / ".github/workflows" / workflow).read_text(
+            encoding="utf-8"
+        )
+        linha_add = next(
+            linha for linha in conteudo.splitlines() if linha.strip().startswith("git add")
+        )
+        alvos = linha_add.split("git add", 1)[1].split("||")[0].split()
+
+        # Staging do diretório inteiro cobre qualquer arquivo do registry; um
+        # caminho específico precisa nomear o índice de recusados.
+        indice = rejection_store.DEFAULT_PATH  # registry/rejected_editais.json
+        assert "registry" in alvos or indice in alvos, (
+            f"{workflow} não versiona {indice}: as recusas se perdem e o OCR se repete."
+        )
+
+    def test_main_poda_as_recusas_vencidas(self, monkeypatch):
+        chamadas = []
+
+        monkeypatch.setattr(
+            run_all_flows, "run_flow", lambda *a, **k: run_all_flows.RESULT_SUCCESS
+        )
+        monkeypatch.setattr(run_all_flows, "refresh_edital_status", lambda workdir: None)
+        monkeypatch.setattr(
+            run_all_flows,
+            "purge_expired_rejections",
+            lambda workdir: chamadas.append(workdir),
+        )
+
+        assert run_all_flows.main([]) == 0
+        assert len(chamadas) == 1, "a poda precisa rodar uma vez por execução"
+
+    def test_poda_remove_apenas_o_que_venceu(self, tmp_path):
+        import json
+        from datetime import date, timedelta
+
+        hoje = date.today()
+        indice = tmp_path / "registry" / "rejected_editais.json"
+        indice.parent.mkdir(parents=True)
+        indice.write_text(
+            json.dumps(
+                {
+                    "fapes": {
+                        "https://exemplo.test/vencido": {
+                            "motivo": "prazo encerrado",
+                            "valida_ate": (hoje - timedelta(days=1)).isoformat(),
+                        },
+                        "https://exemplo.test/vigente": {
+                            "motivo": "prazo encerrado",
+                            "valida_ate": (hoje + timedelta(days=3)).isoformat(),
+                        },
+                    }
+                }
+            ),
+            encoding="utf-8",
+        )
+
+        assert _purge_real(tmp_path) == 1
+
+        restante = json.loads(indice.read_text(encoding="utf-8"))
+        assert list(restante["fapes"]) == ["https://exemplo.test/vigente"]

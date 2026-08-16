@@ -21,6 +21,7 @@ SOURCES = (
     "capes",
     "cnpq",
     "horizon",
+    "confap",
 )
 
 
