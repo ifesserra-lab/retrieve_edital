@@ -1,0 +1,37 @@
+{
+    "nome": "QUANTUM-TESTING INFRASTRUCTURE FOR QUANTUM TECHNOLOGIES",
+    "descrição": "Área: Digital, Industry and Space; Global Challenges and European Industrial Competitiveness; Horizon Europe (HORIZON). Identificador da chamada no Funding & Tenders Portal: HORIZON-JU-EUROHPC-2026-QTI-13-01.",
+    "orgão_fomento": "HORIZON EUROPE",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-08-13",
+    "data_encerramento": "2026-11-17",
+    "link": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-JU-EUROHPC-2026-QTI-13-01",
+    "cronograma": [
+        {
+            "evento": "Abertura das inscrições",
+            "data": "2026-08-13"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2026-11-17"
+        }
+    ],
+    "tags": [
+        "horizon europe",
+        "internacional",
+        "Digital, Industry and Space",
+        "Global Challenges and European Industrial Competitiveness",
+        "Horizon Europe (HORIZON)"
+    ],
+    "anexos": [],
+    "modalidade": "",
+    "publico_alvo": [
+        "pesquisador",
+        "internacional"
+    ],
+    "ambito_geografico": "internacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "horizon"
+}
