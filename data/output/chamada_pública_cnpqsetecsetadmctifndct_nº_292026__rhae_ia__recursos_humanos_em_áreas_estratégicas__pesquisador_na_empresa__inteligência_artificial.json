@@ -1,0 +1,42 @@
+{
+    "nome": "CHAMADA PÚBLICA CNPQ/SETEC/SETAD/MCTI/FNDCT Nº 29/2026 – RHAE IA – RECURSOS HUMANOS EM ÁREAS ESTRATÉGICAS – PESQUISADOR NA EMPRESA – INTELIGÊNCIA ARTIFICIAL",
+    "descrição": "A Chamada RHAE IA visa apoiar projetos de Pesquisa, Desenvolvimento e Inovação (PD&I) que visem contribuir para o desenvolvimento tecnológico, a inovação e o empreendedorismo no Brasil, por meio da inserção de pesquisadores em empresas inovadoras e startups que desenvolvam soluções na temática de inteligência artificial (IA), alinhadas às missões do Programa Nova Indústria Brasil (NIB) e ao Plano Brasileiro de Inteligência Artificial (PBIA). Chamada",
+    "orgão_fomento": "CNPQ",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-08-19",
+    "data_encerramento": "2026-10-09",
+    "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-29-2026/chamada-publica-cnpq-N-29-2026",
+    "cronograma": [
+        {
+            "evento": "Abertura das inscrições",
+            "data": "2026-08-19"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2026-10-09"
+        },
+        {
+            "evento": "Data de publicação",
+            "data": "2026-08-19"
+        }
+    ],
+    "tags": [
+        "cnpq",
+        "chamada pública",
+        "pesquisa"
+    ],
+    "anexos": [
+        {
+            "titulo": "Chamada",
+            "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-29-2026/chamadapublica29_2026_RHAEIA_2769274.pdf",
+            "tipo": "pdf"
+        }
+    ],
+    "modalidade": "",
+    "publico_alvo": [],
+    "ambito_geografico": "nacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "cnpq"
+}

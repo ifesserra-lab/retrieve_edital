@@ -1,0 +1,42 @@
+{
+    "nome": "CHAMADA PÚBLICA CNPQ/CAPES Nº 30/2026 – PROGRAMA DE MESTRADO E DOUTORADO ACADÊMICO PARA INOVAÇÃO – MAI/DAI",
+    "descrição": "A edição de 2026 do Programa de Mestrado e Doutorado para Inovação (MAI/DAI), que estimula a realização de pesquisas de mestrado e doutorado em universidades em parceria com empresas, recebe propostas até o dia 11 de dezembro. A chamada é realizada pelo Conselho Nacional de Desenvolvimento Científico e Tecnológico (CNPq) e conta com a parceria da Coordenação de Aperfeiçoamento de Pessoal de Nível Superior (CAPES). Chamada",
+    "orgão_fomento": "CNPQ",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-08-19",
+    "data_encerramento": "2026-12-11",
+    "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-30-2026/chamada-publica-cnpq-N-30-2026",
+    "cronograma": [
+        {
+            "evento": "Abertura das inscrições",
+            "data": "2026-08-19"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2026-12-11"
+        },
+        {
+            "evento": "Data de publicação",
+            "data": "2026-08-19"
+        }
+    ],
+    "tags": [
+        "cnpq",
+        "chamada pública",
+        "pesquisa"
+    ],
+    "anexos": [
+        {
+            "titulo": "Chamada",
+            "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-30-2026/chamadapublica30_2026_MAIDAI_2766773.pdf",
+            "tipo": "pdf"
+        }
+    ],
+    "modalidade": "",
+    "publico_alvo": [],
+    "ambito_geografico": "nacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "cnpq"
+}
