@@ -12,6 +12,13 @@ Documento operacional para registrar a data de processamento dos fluxos do proje
 
 | Data/Hora | Fluxo | Resultado | Observações |
 | :-- | :-- | :-- | :-- |
+| 2026-08-22 00:40:54 -03:00 | `CNPQ` | Sucesso | Registry `cnpq`: 15 -> 15 (delta 0); `data/output/` com 678 JSONs; arquivos não-JSON: nenhum. Origem devolveu 9 itens brutos. |
+| 2026-08-22 00:40:53 -03:00 | `CAPES` | Sucesso | Registry `capes`: 31 -> 31 (delta 0); `data/output/` com 678 JSONs; arquivos não-JSON: nenhum. Origem devolveu 29 itens brutos. |
+| 2026-08-22 00:40:39 -03:00 | `PROEX_IFES` | Sucesso | Registry `proex_ifes`: 0 -> 0 (delta 0); `data/output/` com 678 JSONs; arquivos não-JSON: nenhum. Origem devolveu 7 itens brutos. |
+| 2026-08-22 00:37:30 -03:00 | `PRPPG_IFES` | Sucesso | Registry `prppg_ifes`: 17 -> 18 (delta 1); `data/output/` com 678 JSONs; arquivos não-JSON: nenhum. Origem devolveu 110 itens brutos. |
+| 2026-08-22 00:37:11 -03:00 | `CONIF` | Sucesso | Registry `conif`: 11 -> 11 (delta 0); `data/output/` com 677 JSONs; arquivos não-JSON: nenhum. Origem devolveu 6 itens brutos. |
+| 2026-08-22 00:37:06 -03:00 | `FINEP` | Sucesso | Registry `finep`: 31 -> 31 (delta 0); `data/output/` com 677 JSONs; arquivos não-JSON: nenhum. Origem devolveu 37 itens brutos. |
+| 2026-08-22 00:37:02 -03:00 | `FAPES` | Sucesso | Registry `fapes`: 79 -> 79 (delta 0); `data/output/` com 677 JSONs; arquivos não-JSON: nenhum. Origem devolveu 2 itens brutos. |
 | 2026-08-21 00:48:19 -03:00 | `CNPQ` | Sucesso | Registry `cnpq`: 15 -> 15 (delta 0); `data/output/` com 677 JSONs; arquivos não-JSON: nenhum. Origem devolveu 9 itens brutos. |
 | 2026-08-21 00:48:17 -03:00 | `CAPES` | Sucesso | Registry `capes`: 31 -> 31 (delta 0); `data/output/` com 677 JSONs; arquivos não-JSON: nenhum. Origem devolveu 29 itens brutos. |
 | 2026-08-21 00:48:01 -03:00 | `PROEX_IFES` | Atenção | Registry `proex_ifes`: 0 -> 0 (delta 0); `data/output/` com 677 JSONs; arquivos não-JSON: nenhum. Origem devolveu 0 itens brutos. A origem não devolveu nenhum item — verificar se o portal mudou. |

@@ -1,0 +1,72 @@
+{
+    "nome": "EDITAL 15/2026 - OUTROS",
+    "descrição": "EDITAL CONJUNTO PROEX/PROEN/PRPPG Nº 15/2026\n\nCHAMADA PÚBLICA INTERNA PARA SELEÇÃO DE PROPOSTA DESTINADA À COMPOSIÇÃO DA PROPOSTA INSTITUCIONAL DO INSTITUTO FEDERAL DE EDUCAÇÃO, CIÊNCIA E TECNOLOGIA DO ESPÍRITO SANTO (IFES), A SER SUBMETIDA AO EDITAL Nº 5/2026 DA SECRETARIA DE EDUCAÇÃO PROFISSIONAL E TECNOLÓGICA DO MINISTÉRIO DA EDUCAÇÃO (SETEC/MEC).",
+    "orgão_fomento": "PRPPG/IFES",
+    "categoria": "outros",
+    "status": "aberto",
+    "data_abertura": "2026-08-13",
+    "data_encerramento": "2026-08-24",
+    "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=297",
+    "cronograma": [
+        {
+            "evento": "início do período do edital",
+            "data": "2026-08-13"
+        },
+        {
+            "evento": "fim do período do edital",
+            "data": "2026-08-24"
+        },
+        {
+            "evento": "Publicação do Edital",
+            "data": "2026-08-10"
+        },
+        {
+            "evento": "Recursos contra o Edital",
+            "data": "2026-08-11"
+        },
+        {
+            "evento": "Resultado dos recursos contra o Edital",
+            "data": "2026-08-12"
+        },
+        {
+            "evento": "Submissão das propostas",
+            "data": "2026-08-13"
+        },
+        {
+            "evento": "Análise e avaliação das propostas",
+            "data": "2026-08-25"
+        },
+        {
+            "evento": "Resultado preliminar",
+            "data": "2026-09-03"
+        },
+        {
+            "evento": "Recurso contra o resultado preliminar",
+            "data": "2026-09-04"
+        },
+        {
+            "evento": "Resultado final",
+            "data": "2026-09-10"
+        },
+        {
+            "evento": "Consolidação da Proposta Institucional",
+            "data": "2026-09-11"
+        },
+        {
+            "evento": "Submissão à Setec/MEC",
+            "data": "2026-09-17"
+        }
+    ],
+    "tags": [
+        "prppg",
+        "ifes",
+        "2026"
+    ],
+    "anexos": [],
+    "modalidade": "",
+    "publico_alvo": [],
+    "ambito_geografico": "estadual-ES",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "prppg_ifes"
+}
