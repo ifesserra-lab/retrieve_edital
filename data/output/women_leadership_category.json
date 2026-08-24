@@ -1,0 +1,37 @@
+{
+    "nome": "WOMEN LEADERSHIP CATEGORY",
+    "descrição": "Chamada: The European Prize for Women Innovators. Área: The European Institute of Innovation and Technology (EIT); Innovative Europe; Horizon Europe (HORIZON). Identificador da chamada no Funding & Tenders Portal: HORIZON-EIT-2026-PRIZE-WIP-LEADERSHIP.",
+    "orgão_fomento": "HORIZON EUROPE",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-09-02",
+    "data_encerramento": "2026-12-01",
+    "link": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-EIT-2026-PRIZE-WIP-LEADERSHIP",
+    "cronograma": [
+        {
+            "evento": "Abertura das inscrições",
+            "data": "2026-09-02"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2026-12-01"
+        }
+    ],
+    "tags": [
+        "horizon europe",
+        "internacional",
+        "The European Institute of Innovation and Technology (EIT)",
+        "Innovative Europe",
+        "Horizon Europe (HORIZON)"
+    ],
+    "anexos": [],
+    "modalidade": "",
+    "publico_alvo": [
+        "pesquisador",
+        "internacional"
+    ],
+    "ambito_geografico": "internacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "horizon"
+}
