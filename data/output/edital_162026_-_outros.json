@@ -1,0 +1,86 @@
+{
+    "nome": "EDITAL 16/2026 - OUTROS",
+    "descrição": "EDITAL CONJUNTO ARINTER/PRPPG Nº 16/2026 - Seleção institucional de candidatos às modalidades de bolsas do Programa CAPES Global.Edu, no âmbito da Rede Globalis – Cooperação Internacional para o Desenvolvimento Sustentável\n\nAs inscrições serão realizadas exclusivamente por meio de formulário eletrônico disponibilizado pela Pró-Reitoria de Pesquisa e Pós-Graduação (PRPPG), no período estabelecido no cronograma deste Edital: https://forms.gle/n4CsspKb6CGNhYZt6",
+    "orgão_fomento": "PRPPG/IFES",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-08-27",
+    "data_encerramento": "2026-09-15",
+    "link": "https://sigpesq.ifes.edu.br/publico/Editais.aspx?cod=298",
+    "cronograma": [
+        {
+            "evento": "início do período do edital",
+            "data": "2026-08-27"
+        },
+        {
+            "evento": "fim do período do edital",
+            "data": "2026-09-15"
+        },
+        {
+            "evento": "Publicação do Edital",
+            "data": "2026-08-25"
+        },
+        {
+            "evento": "Período de impugnação ao Edital",
+            "data": "2026-08-25"
+        },
+        {
+            "evento": "Período de inscrições",
+            "data": "2026-08-27"
+        },
+        {
+            "evento": "Análise documental das inscrições",
+            "data": "2026-09-16"
+        },
+        {
+            "evento": "Resultado preliminar das inscrições homologadas",
+            "data": "2026-09-21"
+        },
+        {
+            "evento": "Interposição de recurso administrativo contra o resultado preliminar da homologação das inscrições",
+            "data": "2026-09-22"
+        },
+        {
+            "evento": "Resultado final da homologação das inscrições",
+            "data": "2026-09-24"
+        },
+        {
+            "evento": "Avaliação e classificação institucional das candidaturas",
+            "data": "2026-09-25"
+        },
+        {
+            "evento": "Divulgação do resultado preliminar da classificação institucional das candidaturas",
+            "data": "2026-09-30"
+        },
+        {
+            "evento": "Interposição de recurso contra o resultado preliminar da classificação institucional",
+            "data": "2026-10-01"
+        },
+        {
+            "evento": "Análise dos recursos contra o resultado preliminar da classificação institucional",
+            "data": "2026-10-03"
+        },
+        {
+            "evento": "Divulgação do resultado final da classificação institucional das candidaturas",
+            "data": "2026-10-04"
+        },
+        {
+            "evento": "Encaminhamento das candidaturas habilitadas ao Comitê Gestor da Rede GLOBALIS. Até",
+            "data": "2026-10-05"
+        }
+    ],
+    "tags": [
+        "prppg",
+        "ifes",
+        "2026",
+        "pesquisa",
+        "bolsa"
+    ],
+    "anexos": [],
+    "modalidade": "",
+    "publico_alvo": [],
+    "ambito_geografico": "estadual-ES",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "prppg_ifes"
+}
