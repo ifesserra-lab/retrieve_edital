@@ -12,6 +12,13 @@ Documento operacional para registrar a data de processamento dos fluxos do proje
 
 | Data/Hora | Fluxo | Resultado | Observações |
 | :-- | :-- | :-- | :-- |
+| 2026-08-29 06:43:46 -03:00 | `CNPQ` | Sucesso | Registry `cnpq`: 15 -> 15 (delta 0); `data/output/` com 681 JSONs; arquivos não-JSON: nenhum. Origem devolveu 8 itens brutos. |
+| 2026-08-29 06:43:44 -03:00 | `CAPES` | Sucesso | Registry `capes`: 32 -> 32 (delta 0); `data/output/` com 681 JSONs; arquivos não-JSON: nenhum. Origem devolveu 29 itens brutos. |
+| 2026-08-29 06:43:27 -03:00 | `PROEX_IFES` | Sucesso | Registry `proex_ifes`: 0 -> 0 (delta 0); `data/output/` com 681 JSONs; arquivos não-JSON: nenhum. Origem devolveu 7 itens brutos. |
+| 2026-08-29 06:40:15 -03:00 | `PRPPG_IFES` | Sucesso | Registry `prppg_ifes`: 19 -> 19 (delta 0); `data/output/` com 681 JSONs; arquivos não-JSON: nenhum. Origem devolveu 110 itens brutos. |
+| 2026-08-29 06:39:52 -03:00 | `CONIF` | Sucesso | Registry `conif`: 11 -> 11 (delta 0); `data/output/` com 681 JSONs; arquivos não-JSON: nenhum. Origem devolveu 6 itens brutos. |
+| 2026-08-29 06:39:46 -03:00 | `FINEP` | Sucesso | Registry `finep`: 31 -> 31 (delta 0); `data/output/` com 681 JSONs; arquivos não-JSON: nenhum. Origem devolveu 37 itens brutos. |
+| 2026-08-29 06:39:42 -03:00 | `FAPES` | Sucesso | Registry `fapes`: 79 -> 79 (delta 0); `data/output/` com 681 JSONs; arquivos não-JSON: nenhum. Origem devolveu 4 itens brutos. |
 | 2026-08-28 11:53:46 -03:00 | `CNPQ` | Sucesso | Registry `cnpq`: 15 -> 15 (delta 0); `data/output/` com 681 JSONs; arquivos não-JSON: nenhum. Origem devolveu 8 itens brutos. |
 | 2026-08-28 11:53:44 -03:00 | `CAPES` | Sucesso | Registry `capes`: 31 -> 32 (delta 1); `data/output/` com 681 JSONs; arquivos não-JSON: nenhum. Origem devolveu 29 itens brutos. |
 | 2026-08-28 11:52:38 -03:00 | `PROEX_IFES` | Sucesso | Registry `proex_ifes`: 0 -> 0 (delta 0); `data/output/` com 680 JSONs; arquivos não-JSON: nenhum. Origem devolveu 7 itens brutos. |
