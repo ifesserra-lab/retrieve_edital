@@ -1,0 +1,69 @@
+{
+    "nome": "PRIMEIROS PROJETOS DE PESQUISA – ESPÍRITO SANTO (PPP-ES)",
+    "descrição": "Apoiar o primeiro projeto de pesquisa científica de pesquisador doutor em início de carreira vinculado a Instituições de Ensino Superior ou de Pesquisa (IES/P), públicas ou privadas, no estado do Espírito Santo, em todas as 8 grandes áreas do conhecimento do Conselho Nacional de Desenvolvimento Científico e Tecnológico (CNPq). O edital visa promover o acesso a recursos para o desenvolvimento dos primeiros projetos, fortalecer a infraestrutura de pesquisa do estado e apoiar a formação e consolidação de novos grupos de pesquisa.",
+    "orgão_fomento": "FAPES",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-12-10",
+    "data_encerramento": "2026-09-28",
+    "link": "https://fapes.es.gov.br/Media/fapes/Editais/Edital%20Fapes%2024-2026%20PPP-ES.pdf",
+    "cronograma": [
+        {
+            "evento": "Publicação do edital",
+            "data": "2026-08-28"
+        },
+        {
+            "evento": "Envio da proposta e documentos via SigFapes",
+            "data": "2026-09-30"
+        },
+        {
+            "evento": "Prazo para envio de dúvidas a respeito do edital",
+            "data": "2026-09-28"
+        },
+        {
+            "evento": "Divulgação do resultado preliminar da habilitação",
+            "data": "2026-10-09"
+        },
+        {
+            "evento": "Prazo para recorrer do resultado preliminar da habilitação",
+            "data": "2026-10-16"
+        },
+        {
+            "evento": "Divulgação do resultado final de habilitação",
+            "data": "2026-10-23"
+        },
+        {
+            "evento": "Divulgação do resultado preliminar de análise de mérito",
+            "data": "2026-11-10"
+        },
+        {
+            "evento": "Prazo para recorrer do resultado preliminar de análise de mérito",
+            "data": "2026-11-17"
+        },
+        {
+            "evento": "Divulgação do resultado final de análise de mérito",
+            "data": "2026-11-27"
+        },
+        {
+            "evento": "Início da contratação dos projetos selecionados",
+            "data": "2026-12-10"
+        },
+        {
+            "evento": "Início de execução dos projetos",
+            "data": "2027-01-04"
+        }
+    ],
+    "tags": [
+        "pesquisa científica",
+        "doutores em início de carreira",
+        "fomento à pesquisa",
+        "Espírito Santo"
+    ],
+    "anexos": [],
+    "modalidade": "",
+    "publico_alvo": [],
+    "ambito_geografico": "estadual-ES",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "fapes"
+}
