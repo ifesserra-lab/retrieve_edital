@@ -1,0 +1,75 @@
+{
+    "nome": "EDITAL FAPES Nº 23/2026 - APOIO ÀS INCUBADORAS DO ESPÍRITO SANTO",
+    "descrição": "Chamada pública para apoio financeiro, técnico e institucional à gestão, estruturação e desenvolvimento de incubadoras de empresas sem fins lucrativos, localizadas no Espírito Santo, com foco em inovação. O objetivo é ampliar, aperfeiçoar e consolidar atividades de pré-incubação, incubação e pós-incubação, promovendo a capacitação de empreendedores, a sustentabilidade econômica das empresas incubadas e o desenvolvimento socioeconômico do estado.",
+    "orgão_fomento": "FAPES",
+    "categoria": "inovação",
+    "status": "aberto",
+    "data_abertura": "2026-12-01",
+    "data_encerramento": "2026-12-01",
+    "link": "https://fapes.es.gov.br/Media/fapes/Editais/Edital_23-2026_Apoio%20a%20Incubadoras_(Versão%20Final).pdf",
+    "cronograma": [
+        {
+            "evento": "Publicação da Chamada Pública",
+            "data": "2026-08-25"
+        },
+        {
+            "evento": "Envio da proposta e documentos via SigFapes",
+            "data": "2026-08-25"
+        },
+        {
+            "evento": "Divulgação do resultado preliminar de habilitação e análise de mérito",
+            "data": "2026-10-09"
+        },
+        {
+            "evento": "Prazo para recorrer",
+            "data": "2026-10-16"
+        },
+        {
+            "evento": "Divulgação do resultado final homologado",
+            "data": "2026-10-27"
+        },
+        {
+            "evento": "Contratação dos projetos selecionados",
+            "data": "2026-11-04"
+        },
+        {
+            "evento": "Início de execução dos projetos",
+            "data": "2026-12-01"
+        }
+    ],
+    "tags": [
+        "incubadoras",
+        "inovação",
+        "empreendedorismo",
+        "Espírito Santo",
+        "fomento"
+    ],
+    "anexos": [
+        {
+            "titulo": "ANEXO I",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/Anexo%20I%20-%20Formulário%20de%20Submissão%20da%20Proposta%20da%20Incubadora%20-%20Incubadoras%202026.docx",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "ANEXO II",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/Anexo%20II%20-%20Documentos%20Comprobatórios%20da%20Proposta%20%20-%20Incubadoras%202026.docx",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "ANEXO III",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/Anexo%20III%20-%20Modelo%20de%20Declaração%20das%20Empresas%20Incubadas%20-%20Incubadoras%202026.docx",
+            "tipo": "anexo"
+        },
+        {
+            "titulo": "ANEXO IV",
+            "link": "https://fapes.es.gov.br/Media/fapes/Editais/Anexo%20IV%20-%20Modelo%20de%20Carta%20de%20Compromisso%20da%20Parceria%20-%20Incubadoras%202026.docx",
+            "tipo": "anexo"
+        }
+    ],
+    "modalidade": "",
+    "publico_alvo": [],
+    "ambito_geografico": "estadual-ES",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "fapes"
+}
