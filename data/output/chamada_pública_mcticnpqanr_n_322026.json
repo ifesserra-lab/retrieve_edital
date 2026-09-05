@@ -1,0 +1,42 @@
+{
+    "nome": "CHAMADA PÚBLICA MCTI/CNPQ/ANR N° 32/2026",
+    "descrição": "Chamada Pública entre o Conselho Nacional de Desenvolvimento Científico e Tecnológico - CNPq e a Agência Nacional de Pesquisa - ANR, tendo por objetivo selecionar projetos de pesquisa conjuntos entre grupos brasileiros e franceses, que visem contribuir para o desenvolvimento científico, tecnológico e a inovação do país. Chamada  * Para mais informações em francês, consulte https://anr.fr/en / ou escreva para aapg.adfi@anr.fr",
+    "orgão_fomento": "CNPQ",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-09-03",
+    "data_encerramento": "2027-03-31",
+    "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-32-2026/chamada-publica-cnpq-N-32-2026",
+    "cronograma": [
+        {
+            "evento": "Abertura das inscrições",
+            "data": "2026-09-03"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2027-03-31"
+        },
+        {
+            "evento": "Data de publicação",
+            "data": "2026-09-03"
+        }
+    ],
+    "tags": [
+        "cnpq",
+        "chamada pública",
+        "pesquisa"
+    ],
+    "anexos": [
+        {
+            "titulo": "Chamada",
+            "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-32-2026/ChamadaPblicaANR322026_2766435.pdf",
+            "tipo": "pdf"
+        }
+    ],
+    "modalidade": "",
+    "publico_alvo": [],
+    "ambito_geografico": "nacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "cnpq"
+}
