@@ -1,0 +1,51 @@
+{
+    "nome": "THE EUROPEAN PRIZE FOR WOMEN INNOVATORS",
+    "descrição": "Área: The European Institute of Innovation and Technology (EIT); Horizon Europe (HORIZON); Innovative Europe; The European Innovation Council (EIC); Additional EIC activities. Identificador da chamada no Funding & Tenders Portal: HORIZON-EIC-2026-PRIZE-WIP.",
+    "orgão_fomento": "HORIZON EUROPE",
+    "categoria": "inovação",
+    "status": "aberto",
+    "data_abertura": "2026-09-02",
+    "data_encerramento": "2026-12-01",
+    "link": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-EIC-2026-PRIZE-WIP",
+    "cronograma": [
+        {
+            "evento": "Abertura das inscrições",
+            "data": "2026-09-02"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2026-12-01"
+        }
+    ],
+    "tags": [
+        "horizon europe",
+        "internacional",
+        "The European Institute of Innovation and Technology (EIT)",
+        "Horizon Europe (HORIZON)",
+        "Innovative Europe",
+        "eic",
+        "The European Innovation Council (EIC)",
+        "Additional EIC activities",
+        "Gender in innovation development",
+        "Innovation and diversity (e.g. gender)",
+        "Innovation policy",
+        "Related to SME and start-up support"
+    ],
+    "anexos": [
+        {
+            "titulo": "HORIZON Recognition Prize",
+            "link": "https://ec.europa.eu/research/participants/submission/manage/screen/submission/create-draft/46097?topic=HORIZON-EIC-2026-PRIZE-WIP",
+            "tipo": "link"
+        }
+    ],
+    "modalidade": "",
+    "publico_alvo": [
+        "pesquisador",
+        "internacional",
+        "empresa"
+    ],
+    "ambito_geografico": "internacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "horizon"
+}
