@@ -12,6 +12,13 @@ Documento operacional para registrar a data de processamento dos fluxos do proje
 
 | Data/Hora | Fluxo | Resultado | Observações |
 | :-- | :-- | :-- | :-- |
+| 2026-09-17 05:22:50 -03:00 | `CNPQ` | Sucesso | Registry `cnpq`: 16 -> 16 (delta 0); `data/output/` com 688 JSONs; arquivos não-JSON: nenhum. Origem devolveu 7 itens brutos. |
+| 2026-09-17 05:22:49 -03:00 | `CAPES` | Sucesso | Registry `capes`: 32 -> 32 (delta 0); `data/output/` com 688 JSONs; arquivos não-JSON: nenhum. Origem devolveu 29 itens brutos. |
+| 2026-09-17 05:22:33 -03:00 | `PROEX_IFES` | Sucesso | Registry `proex_ifes`: 0 -> 0 (delta 0); `data/output/` com 688 JSONs; arquivos não-JSON: nenhum. Origem devolveu 7 itens brutos. |
+| 2026-09-17 05:19:21 -03:00 | `PRPPG_IFES` | Sucesso | Registry `prppg_ifes`: 19 -> 19 (delta 0); `data/output/` com 688 JSONs; arquivos não-JSON: nenhum. Origem devolveu 110 itens brutos. |
+| 2026-09-17 05:18:57 -03:00 | `CONIF` | Sucesso | Registry `conif`: 13 -> 13 (delta 0); `data/output/` com 688 JSONs; arquivos não-JSON: nenhum. Origem devolveu 6 itens brutos. |
+| 2026-09-17 05:18:50 -03:00 | `FINEP` | Sucesso | Registry `finep`: 31 -> 31 (delta 0); `data/output/` com 688 JSONs; arquivos não-JSON: nenhum. Origem devolveu 35 itens brutos. |
+| 2026-09-17 05:18:45 -03:00 | `FAPES` | Sucesso | Registry `fapes`: 85 -> 85 (delta 0); `data/output/` com 688 JSONs; arquivos não-JSON: nenhum. Origem devolveu 3 itens brutos. |
 | 2026-09-16 05:15:26 -03:00 | `CNPQ` | Atenção | Registry `cnpq`: 16 -> 16 (delta 0); `data/output/` com 688 JSONs; arquivos não-JSON: nenhum. Origem devolveu 0 itens brutos. A origem não devolveu nenhum item — verificar se o portal mudou. |
 | 2026-09-16 05:14:55 -03:00 | `CAPES` | Atenção | Registry `capes`: 32 -> 32 (delta 0); `data/output/` com 688 JSONs; arquivos não-JSON: nenhum. Origem devolveu 0 itens brutos. A origem não devolveu nenhum item — verificar se o portal mudou. |
 | 2026-09-16 05:13:54 -03:00 | `PROEX_IFES` | Atenção | Registry `proex_ifes`: 0 -> 0 (delta 0); `data/output/` com 688 JSONs; arquivos não-JSON: nenhum. Origem devolveu 0 itens brutos. A origem não devolveu nenhum item — verificar se o portal mudou. |
