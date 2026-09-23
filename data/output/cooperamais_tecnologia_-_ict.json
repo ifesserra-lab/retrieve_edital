@@ -1,0 +1,91 @@
+{
+    "nome": "COOPERAMAIS TECNOLOGIA - ICT",
+    "descrição": "EDITAL DE SELEÇÃO PÚBLICA DE PROJETOS PARA O DESENVOLVIMENTO DE SOLUÇÕES TECNOLÓGICAS PARA A AGRICULTURA FAMILIAR, EM PARCERIA COM COOPERATIVAS DA AGRICULTURA FAMILIAR A chamada tem por objetivo selecionar projetos de P,D&I apresentados por ICTs públicas e privadas para desenvolvimento de soluções tecnológicas voltadas à agricultura familiar brasileira, obrigatoriamente em parceria com cooperativas da agricultura familiar. Orçamento total R$ 100 milhões em recursos não reembolsáveis do FNDCT/CT-Agro. Pelo menos 30% dos recursos deverão ser destinados às regiões Norte, Nordeste e Centro-Oeste, desde que existam projetos meritórios. Linhas Temáticas 1- Comercialização, acesso a mercados e logística cooperativa. 2 - Desenvolvimento de cadeias produtivas e agroindustrialização cooperativa. 3 - Gestão da inovação, transformação digital e absorção tecnológica. 4 - Economia circular. 5 - Eficiência energética e resiliência climática. Quem Pode Participar São elegíveis ICTs públicas e privadas com experiência comprovada em: pesquisa; desenvolvimento tecnológico; extensão tecnológica; transferência de tecnologia; capacitação ou assistência tecnológica voltadas à agricultura familiar ou ao PNRA. Exigência Central do Edital A ICT deve comprovar parceria formal prévia com pelo menos uma cooperativa da agricultura familiar estabelecida há pelo menos 1 ano antes da publicação do edital. Além disso: a cooperativa deve possuir CAF ativo; e pelo menos 70% dos cooperados devem possuir CAF Pessoa Física ativo. A comprovação deve ocorrer mediante instrumento jurídico válido, contendo identificação das partes, assinaturas e vigência mínima de um ano. Características dos Projetos - Valor solicitado Mínimo: R$ 3 milhões. Máximo: R$ 15 milhões. - Prazo: Até 36 meses. - Maturidade Tecnológica: O projeto deve partir de TRL 3 ou superior. Esse é um critério eliminatório tanto na habilitação quanto na avaliação de mérito. - Participação Cada ICT pode apresentar apenas uma proposta como executora principal. Pode participar de outras propostas como coexecutora. A proposta deve incluir, entre outros: - Carta de Manifestação de Interesse da Cooperativa. - Extrato CAF Pessoa Jurídica. - Documento que demonstre a parceria prévia de 1 ano. - Política de Inovação (para ICTs públicas). - Relação da equipe vinculada ao cronograma físico. - Justificativa do TRL inicial e final. - Metodologia detalhada. - Avaliação dos riscos tecnológicos.",
+    "orgão_fomento": "FINEP",
+    "categoria": "inovação",
+    "status": "aberto",
+    "data_abertura": "2026-09-22",
+    "data_encerramento": "2026-12-01",
+    "link": "https://www.finep.gov.br/e/chamada-publica/222684/1060260",
+    "cronograma": [
+        {
+            "evento": "Data de publicação",
+            "data": "2026-09-22"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2026-12-01"
+        }
+    ],
+    "tags": [
+        "ICT",
+        "Não reembolsável",
+        "Todo Brasil",
+        "chamada pública"
+    ],
+    "anexos": [
+        {
+            "titulo": "Edital",
+            "link": "https://www.finep.gov.br/documents/20120/758476/Edital+da+CHAMADA+P%C3%9ABLICA+COOPERAMAIS_ICT.pdf/d73f2a2c-61b9-b0c0-9b3c-81a1eaad6e18?version=1.0&t=1790109255234&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=eed0d334-6cec-919b-0244-3e7a7f582fbc",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo I: Detalhamento dos Temas",
+            "link": "https://www.finep.gov.br/documents/20120/758476/Anexo+1_Linhas_Tematicas.pdf/6b270370-c757-1051-45af-3c74af9010c4?version=1.0&t=1790105308558&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=b3fd2d4d-2b4e-9212-292f-128a26168cc3",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo II: Definição de TRL",
+            "link": "https://www.finep.gov.br/documents/20120/758476/Anexo+2_Definicao_TRL.pdf/edbc4659-2e82-cd4e-80f4-0885c6d1fe34?version=1.0&t=1790105520473&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=c8b436fb-aa51-4335-9a0b-d92c581f4b19",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo III: Orientações para Apresentação de Projeto Resumido de Obras",
+            "link": "https://www.finep.gov.br/documents/20120/758476/Anexo+3_Projeto_Resumido.pdf/113355e1-32d3-e40e-9c53-9dd9bb03342a?version=1.0&t=1790105572677&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=15d0df7a-725b-23d2-953b-df4996834ad9",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo IV: Exigências para Avaliação dos Itens de Orçamento",
+            "link": "https://www.finep.gov.br/documents/20120/758476/Anexo+4_Itens_de_Orcamento.pdf/9bb2851f-7d8a-e2b9-0ce0-fde9850987a9?version=1.0&t=1790105634805&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=350427c5-eb93-9771-4bd2-1ddc18a60bba",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo V: Condições para Despesas Relativas a Bolsas",
+            "link": "https://www.finep.gov.br/documents/20120/758476/Anexo+5_bolsas.pdf/3b5208e1-143f-547a-ee74-2d01c806d741?version=1.0&t=1790105726576&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=e2730431-3f76-86b9-e7cb-a1c8800c7d2b",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo VI: Tabela com Requisitos e Valores para Pagamento de Pessoal",
+            "link": "https://www.finep.gov.br/documents/20120/758476/Anexo+6_Pagamento_de_Pessoal.pdf/fe8e4969-ba39-1d20-ce36-ea5f324f2b75?version=1.0&t=1790105784217&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=191978a8-67e5-b499-64bb-7b67a6ce106d",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo VII: Modelo de Carta de Manifestação de interesse da Cooperativa",
+            "link": "https://www.finep.gov.br/documents/20120/758476/Anexo+7_Carta_de_Manifestacao_interesse.pdf/b85d3b8c-b140-91b0-7083-1216ddc5d065?version=1.0&t=1790105868483&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=17b5bc80-0dfa-9775-e522-5af8aabdc1b2",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo VIII: Modelo de apresentação de informações sobre equipe",
+            "link": "https://www.finep.gov.br/documents/20120/758476/Anexo+8_Equipe_e_Atividades.ods/9b1ddf64-b896-e46f-b28d-2e3c4986eac4?version=1.0&t=1790106006845&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=419f8aa0-89a8-247a-da12-10d27970210a",
+            "tipo": "formato aberto"
+        },
+        {
+            "titulo": "Anexo IX: Metodologia de Cálculo do Indicador de Desempenho de Prazos (IDP);",
+            "link": "https://www.finep.gov.br/documents/20120/758476/Anexo+9_Metodolodia_de_Calculo_IDP.pdf/2e4f63ab-47bc-68a5-c77c-35f699f9f4bb?version=1.0&t=1790106052757&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=23e6cd8b-9bf1-05f1-07e3-c91ff9434c2e",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo X: Minuta de Convênio - Cláusulas Padrão",
+            "link": "https://www.finep.gov.br/documents/20120/758476/Anexo+10+-+Minuta+padr%C3%A3o+de+conv%C3%AAnio.pdf/90408079-06b4-1a6a-f1ae-c7735c1fef72?version=1.0&t=1790106218957&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=36681b2c-8509-417d-1ff5-aec702435d7b",
+            "tipo": "pdf"
+        }
+    ],
+    "modalidade": "",
+    "publico_alvo": [
+        "ict-empresa"
+    ],
+    "ambito_geografico": "nacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "finep"
+}
