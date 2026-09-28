@@ -1,0 +1,44 @@
+{
+    "nome": "ERC CONSOLIDATOR GRANT",
+    "descrição": "Chamada: Call for Proposals for ERC Consolidator Grant. Área: European Research Council (ERC); Frontier science; Excellent Science; Horizon Europe (HORIZON). Identificador da chamada no Funding & Tenders Portal: ERC-2027-COG.",
+    "orgão_fomento": "HORIZON EUROPE",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-09-24",
+    "data_encerramento": "2027-01-12",
+    "link": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERC-2027-COG",
+    "cronograma": [
+        {
+            "evento": "Abertura das inscrições",
+            "data": "2026-09-24"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2027-01-12"
+        }
+    ],
+    "tags": [
+        "horizon europe",
+        "internacional",
+        "European Research Council (ERC)",
+        "Frontier science",
+        "Excellent Science",
+        "Horizon Europe (HORIZON)"
+    ],
+    "anexos": [
+        {
+            "titulo": "HORIZON ERC Grants",
+            "link": "https://ec.europa.eu/research/participants/submission/manage/screen/submission/create-draft/46410?topic=ERC-2027-COG",
+            "tipo": "link"
+        }
+    ],
+    "modalidade": "",
+    "publico_alvo": [
+        "pesquisador",
+        "internacional"
+    ],
+    "ambito_geografico": "internacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "horizon"
+}
