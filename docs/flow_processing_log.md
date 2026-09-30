@@ -12,6 +12,13 @@ Documento operacional para registrar a data de processamento dos fluxos do proje
 
 | Data/Hora | Fluxo | Resultado | Observações |
 | :-- | :-- | :-- | :-- |
+| 2026-09-30 06:21:15 -03:00 | `CNPQ` | Sucesso | Registry `cnpq`: 16 -> 16 (delta 0); `data/output/` com 692 JSONs; arquivos não-JSON: nenhum. Origem devolveu 5 itens brutos. |
+| 2026-09-30 06:21:14 -03:00 | `CAPES` | Sucesso | Registry `capes`: 32 -> 32 (delta 0); `data/output/` com 692 JSONs; arquivos não-JSON: nenhum. Origem devolveu 29 itens brutos. |
+| 2026-09-30 06:21:00 -03:00 | `PROEX_IFES` | Sucesso | Registry `proex_ifes`: 0 -> 0 (delta 0); `data/output/` com 692 JSONs; arquivos não-JSON: nenhum. Origem devolveu 8 itens brutos. |
+| 2026-09-30 06:17:41 -03:00 | `PRPPG_IFES` | Atenção | Registry `prppg_ifes`: 19 -> 19 (delta 0); `data/output/` com 692 JSONs; arquivos não-JSON: nenhum. Origem devolveu 0 itens brutos. A origem não devolveu nenhum item — verificar se o portal mudou. |
+| 2026-09-30 06:17:39 -03:00 | `CONIF` | Sucesso | Registry `conif`: 13 -> 13 (delta 0); `data/output/` com 692 JSONs; arquivos não-JSON: nenhum. Origem devolveu 6 itens brutos. |
+| 2026-09-30 06:17:33 -03:00 | `FINEP` | Sucesso | Registry `finep`: 34 -> 34 (delta 0); `data/output/` com 692 JSONs; arquivos não-JSON: nenhum. Origem devolveu 35 itens brutos. |
+| 2026-09-30 06:17:29 -03:00 | `FAPES` | Sucesso | Registry `fapes`: 85 -> 85 (delta 0); `data/output/` com 692 JSONs; arquivos não-JSON: nenhum. Origem devolveu 10 itens brutos. |
 | 2026-09-29 06:34:05 -03:00 | `CNPQ` | Sucesso | Registry `cnpq`: 16 -> 16 (delta 0); `data/output/` com 692 JSONs; arquivos não-JSON: nenhum. Origem devolveu 5 itens brutos. |
 | 2026-09-29 06:34:03 -03:00 | `CAPES` | Sucesso | Registry `capes`: 32 -> 32 (delta 0); `data/output/` com 692 JSONs; arquivos não-JSON: nenhum. Origem devolveu 29 itens brutos. |
 | 2026-09-29 06:33:47 -03:00 | `PROEX_IFES` | Sucesso | Registry `proex_ifes`: 0 -> 0 (delta 0); `data/output/` com 692 JSONs; arquivos não-JSON: nenhum. Origem devolveu 8 itens brutos. |
