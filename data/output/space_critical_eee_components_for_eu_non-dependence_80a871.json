@@ -1,0 +1,37 @@
+{
+    "nome": "SPACE CRITICAL EEE COMPONENTS FOR EU NON-DEPENDENCE",
+    "descrição": "Chamada: SPACE. Área: Horizon Europe (HORIZON); Global Challenges and European Industrial Competitiveness; Digital, Industry and Space. Identificador da chamada no Funding & Tenders Portal: HORIZON-CL4-2027-SPACE-07-83.",
+    "orgão_fomento": "HORIZON EUROPE",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2027-10-07",
+    "data_encerramento": "2028-01-20",
+    "link": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2027-SPACE-07-83",
+    "cronograma": [
+        {
+            "evento": "Abertura das inscrições",
+            "data": "2027-10-07"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2028-01-20"
+        }
+    ],
+    "tags": [
+        "horizon europe",
+        "internacional",
+        "Horizon Europe (HORIZON)",
+        "Global Challenges and European Industrial Competitiveness",
+        "Digital, Industry and Space"
+    ],
+    "anexos": [],
+    "modalidade": "",
+    "publico_alvo": [
+        "pesquisador",
+        "internacional"
+    ],
+    "ambito_geografico": "internacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "horizon"
+}

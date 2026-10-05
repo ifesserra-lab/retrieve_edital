@@ -1,0 +1,47 @@
+{
+    "nome": "STARTUP EUROPE - CANCELLED",
+    "descrição": "Chamada: Interconnected Innovation Ecosystems (2027.1). Área: Horizon Europe (HORIZON); Innovative Europe; European innovation ecosystems. Identificador da chamada no Funding & Tenders Portal: HORIZON-EIE-2027-01-CONNECT-01-CANCELLED.",
+    "orgão_fomento": "HORIZON EUROPE",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2027-06-01",
+    "data_encerramento": "2027-09-15",
+    "link": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-EIE-2027-01-CONNECT-01-CANCELLED",
+    "cronograma": [
+        {
+            "evento": "Abertura das inscrições",
+            "data": "2027-06-01"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2027-09-15"
+        }
+    ],
+    "tags": [
+        "horizon europe",
+        "internacional",
+        "Horizon Europe (HORIZON)",
+        "Innovative Europe",
+        "European innovation ecosystems",
+        "Business development",
+        "Business support services",
+        "Entrepreneurship",
+        "Incubator companies",
+        "Innovation support services",
+        "Market development",
+        "Market-creating innovation",
+        "New business opportunities",
+        "Start-up companies",
+        "Technology development"
+    ],
+    "anexos": [],
+    "modalidade": "",
+    "publico_alvo": [
+        "pesquisador",
+        "internacional"
+    ],
+    "ambito_geografico": "internacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "horizon"
+}

@@ -1,0 +1,37 @@
+{
+    "nome": "EUROPEAN NETWORK FOR UPSCALING VENTURE BUILDERS’ ROLES IN RESEARCH PERFORMING ORGANISATIONS (CSA)",
+    "descrição": "Chamada: INDUSTRY. Área: Digital, Industry and Space; Global Challenges and European Industrial Competitiveness; Horizon Europe (HORIZON). Identificador da chamada no Funding & Tenders Portal: HORIZON-CL4-2027-01-MAT-PROD-50.",
+    "orgão_fomento": "HORIZON EUROPE",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-10-13",
+    "data_encerramento": "2027-02-02",
+    "link": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2027-01-MAT-PROD-50",
+    "cronograma": [
+        {
+            "evento": "Abertura das inscrições",
+            "data": "2026-10-13"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2027-02-02"
+        }
+    ],
+    "tags": [
+        "horizon europe",
+        "internacional",
+        "Digital, Industry and Space",
+        "Global Challenges and European Industrial Competitiveness",
+        "Horizon Europe (HORIZON)"
+    ],
+    "anexos": [],
+    "modalidade": "",
+    "publico_alvo": [
+        "pesquisador",
+        "internacional"
+    ],
+    "ambito_geografico": "internacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "horizon"
+}

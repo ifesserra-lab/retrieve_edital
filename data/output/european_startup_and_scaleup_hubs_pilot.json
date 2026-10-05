@@ -1,0 +1,45 @@
+{
+    "nome": "EUROPEAN STARTUP AND SCALEUP HUBS PILOT",
+    "descrição": "Chamada: Interconnected Innovation Ecosystems (2027.2). Área: European innovation ecosystems; Innovative Europe; Horizon Europe (HORIZON). Identificador da chamada no Funding & Tenders Portal: HORIZON-EIE-2027-02-CONNECT-01.",
+    "orgão_fomento": "HORIZON EUROPE",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-10-06",
+    "data_encerramento": "2027-01-05",
+    "link": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-EIE-2027-02-CONNECT-01",
+    "cronograma": [
+        {
+            "evento": "Abertura das inscrições",
+            "data": "2026-10-06"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2027-01-05"
+        }
+    ],
+    "tags": [
+        "horizon europe",
+        "internacional",
+        "European innovation ecosystems",
+        "Innovative Europe",
+        "Horizon Europe (HORIZON)",
+        "Entrepreneurship",
+        "Incubator companies",
+        "Innovation support services",
+        "Internationalisation - Market access",
+        "Market-creating innovation",
+        "New business opportunities",
+        "Spin-off companies",
+        "Start-up companies"
+    ],
+    "anexos": [],
+    "modalidade": "",
+    "publico_alvo": [
+        "pesquisador",
+        "internacional"
+    ],
+    "ambito_geografico": "internacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "horizon"
+}

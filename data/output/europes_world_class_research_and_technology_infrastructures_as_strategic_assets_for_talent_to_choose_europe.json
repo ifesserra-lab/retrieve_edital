@@ -1,0 +1,37 @@
+{
+    "nome": "EUROPE’S WORLD CLASS RESEARCH AND TECHNOLOGY INFRASTRUCTURES AS STRATEGIC ASSETS FOR TALENT TO CHOOSE EUROPE",
+    "descrição": "Chamada: Bridging actions 2027. Área: Research infrastructures; Excellent Science; Horizon Europe (HORIZON). Identificador da chamada no Funding & Tenders Portal: HORIZON-BRIDGING-2027-03-07.",
+    "orgão_fomento": "HORIZON EUROPE",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2027-03-09",
+    "data_encerramento": "2027-06-15",
+    "link": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-BRIDGING-2027-03-07",
+    "cronograma": [
+        {
+            "evento": "Abertura das inscrições",
+            "data": "2027-03-09"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2027-06-15"
+        }
+    ],
+    "tags": [
+        "horizon europe",
+        "internacional",
+        "Research infrastructures",
+        "Excellent Science",
+        "Horizon Europe (HORIZON)"
+    ],
+    "anexos": [],
+    "modalidade": "",
+    "publico_alvo": [
+        "pesquisador",
+        "internacional"
+    ],
+    "ambito_geografico": "internacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "horizon"
+}

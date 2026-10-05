@@ -1,0 +1,37 @@
+{
+    "nome": "SKILLS FOR INNOVATIVE SMES",
+    "descrição": "Chamada: Bridging actions 2027. Área: Marie Skłodowska-Curie Actions (MSCA); Excellent Science; Horizon Europe (HORIZON). Identificador da chamada no Funding & Tenders Portal: HORIZON-BRIDGING-2027-05-01.",
+    "orgão_fomento": "HORIZON EUROPE",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-12-01",
+    "data_encerramento": "2027-03-03",
+    "link": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-BRIDGING-2027-05-01",
+    "cronograma": [
+        {
+            "evento": "Abertura das inscrições",
+            "data": "2026-12-01"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2027-03-03"
+        }
+    ],
+    "tags": [
+        "horizon europe",
+        "internacional",
+        "Marie Skłodowska-Curie Actions (MSCA)",
+        "Excellent Science",
+        "Horizon Europe (HORIZON)"
+    ],
+    "anexos": [],
+    "modalidade": "",
+    "publico_alvo": [
+        "pesquisador",
+        "internacional"
+    ],
+    "ambito_geografico": "internacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "horizon"
+}

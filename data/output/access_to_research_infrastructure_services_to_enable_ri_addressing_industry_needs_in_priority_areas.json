@@ -1,0 +1,43 @@
+{
+    "nome": "ACCESS TO RESEARCH INFRASTRUCTURE SERVICES TO ENABLE R&I ADDRESSING INDUSTRY NEEDS IN PRIORITY AREAS",
+    "descrição": "Chamada: Bridging actions 2027. Área: Horizon Europe (HORIZON). Identificador da chamada no Funding & Tenders Portal: HORIZON-BRIDGING-2027-03-06.",
+    "orgão_fomento": "HORIZON EUROPE",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2027-03-09",
+    "data_encerramento": "2027-06-15",
+    "link": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-BRIDGING-2027-03-06",
+    "cronograma": [
+        {
+            "evento": "Abertura das inscrições",
+            "data": "2027-03-09"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2027-06-15"
+        }
+    ],
+    "tags": [
+        "horizon europe",
+        "internacional",
+        "Horizon Europe (HORIZON)",
+        "Area 1 from Work Programme",
+        "Area 2 from Work Programme",
+        "Area 3 from Work Programme",
+        "Area 4 from Work Programme",
+        "Data, Computing and Digital Research Infrastructures",
+        "Health and Food",
+        "Physical Sciences and Engineering",
+        "Social Sciences and Humanities"
+    ],
+    "anexos": [],
+    "modalidade": "",
+    "publico_alvo": [
+        "pesquisador",
+        "internacional"
+    ],
+    "ambito_geografico": "internacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "horizon"
+}

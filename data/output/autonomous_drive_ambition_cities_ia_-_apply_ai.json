@@ -1,0 +1,48 @@
+{
+    "nome": "AUTONOMOUS DRIVE AMBITION CITIES (IA) - APPLY AI",
+    "descrição": "Chamada: Bridging actions 2027. Área: Climate, Energy and Mobility; Global Challenges and European Industrial Competitiveness; Horizon Europe (HORIZON). Identificador da chamada no Funding & Tenders Portal: HORIZON-BRIDGING-2027-01-10.",
+    "orgão_fomento": "HORIZON EUROPE",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-10-20",
+    "data_encerramento": "2027-02-16",
+    "link": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-BRIDGING-2027-01-10",
+    "cronograma": [
+        {
+            "evento": "Abertura das inscrições",
+            "data": "2026-10-20"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2027-02-16"
+        }
+    ],
+    "tags": [
+        "horizon europe",
+        "internacional",
+        "Climate, Energy and Mobility",
+        "Global Challenges and European Industrial Competitiveness",
+        "Horizon Europe (HORIZON)",
+        "Artificial intelligence, intelligent systems, multi agent systems",
+        "Cyber-physical systems",
+        "Energy end-use efficiency and energy services",
+        "Energy systems, smart energy, smart grids, wireless energy transfer",
+        "Internet of Things",
+        "Machine learning, statistical data processing and applications using signal processing (e.g. speech, image, video)",
+        "Monitoring and control systems",
+        "Networks (communication networks, sensor networks, networks of robots, etc.)",
+        "Piloting",
+        "Renewable electricity",
+        "Systems engineering, sensorics, actorics, automation"
+    ],
+    "anexos": [],
+    "modalidade": "",
+    "publico_alvo": [
+        "pesquisador",
+        "internacional"
+    ],
+    "ambito_geografico": "internacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "horizon"
+}

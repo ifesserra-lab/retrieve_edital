@@ -1,0 +1,40 @@
+{
+    "nome": "DEVELOPING A MODEL FOR A DATA LAB FOR SCIENCE LINKING WITH EOSC AND RAISE (RAISE PILOT) (CSA)",
+    "descrição": "Chamada: AI in Science. Área: Research infrastructures; Artificial Intelligence and Robotics; Excellent Science; Horizon Europe (HORIZON); Digital, Industry and Space; Global Challenges and European Industrial Competitiveness. Identificador da chamada no Funding & Tenders Portal: HORIZON-RAISE-2027-01-04.",
+    "orgão_fomento": "HORIZON EUROPE",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-10-13",
+    "data_encerramento": "2027-02-02",
+    "link": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-RAISE-2027-01-04",
+    "cronograma": [
+        {
+            "evento": "Abertura das inscrições",
+            "data": "2026-10-13"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2027-02-02"
+        }
+    ],
+    "tags": [
+        "horizon europe",
+        "internacional",
+        "Research infrastructures",
+        "Artificial Intelligence and Robotics",
+        "Excellent Science",
+        "Horizon Europe (HORIZON)",
+        "Digital, Industry and Space",
+        "Global Challenges and European Industrial Competitiveness"
+    ],
+    "anexos": [],
+    "modalidade": "",
+    "publico_alvo": [
+        "pesquisador",
+        "internacional"
+    ],
+    "ambito_geografico": "internacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "horizon"
+}
