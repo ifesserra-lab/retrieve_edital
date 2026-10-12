@@ -1,0 +1,37 @@
+{
+    "nome": "ERA RESEARCH MANAGERS",
+    "descrição": "Chamada: ERA Chairs and Research Managers. Área: Widening participation and spreading excellence; Widening Participation and Strengthening the European Research Area; Horizon Europe (HORIZON). Identificador da chamada no Funding & Tenders Portal: HORIZON-WIDERA-2027-02-WIDENING-02.",
+    "orgão_fomento": "HORIZON EUROPE",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2027-04-06",
+    "data_encerramento": "2027-09-14",
+    "link": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-WIDERA-2027-02-WIDENING-02",
+    "cronograma": [
+        {
+            "evento": "Abertura das inscrições",
+            "data": "2027-04-06"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2027-09-14"
+        }
+    ],
+    "tags": [
+        "horizon europe",
+        "internacional",
+        "Widening participation and spreading excellence",
+        "Widening Participation and Strengthening the European Research Area",
+        "Horizon Europe (HORIZON)"
+    ],
+    "anexos": [],
+    "modalidade": "",
+    "publico_alvo": [
+        "pesquisador",
+        "internacional"
+    ],
+    "ambito_geografico": "internacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "horizon"
+}
