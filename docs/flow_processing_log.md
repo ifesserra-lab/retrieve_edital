@@ -12,6 +12,13 @@ Documento operacional para registrar a data de processamento dos fluxos do proje
 
 | Data/Hora | Fluxo | Resultado | Observações |
 | :-- | :-- | :-- | :-- |
+| 2026-11-25 09:02:07 -03:00 | `CNPQ` | Atenção | Registry `cnpq`: 16 -> 16 (delta 0); `data/output/` com 733 JSONs; arquivos não-JSON: nenhum. Origem devolveu 0 itens brutos. A origem não devolveu nenhum item — verificar se o portal mudou. |
+| 2026-11-25 09:01:56 -03:00 | `CAPES` | Atenção | Registry `capes`: 32 -> 32 (delta 0); `data/output/` com 733 JSONs; arquivos não-JSON: nenhum. Origem devolveu 0 itens brutos. A origem não devolveu nenhum item — verificar se o portal mudou. |
+| 2026-11-25 09:01:35 -03:00 | `PROEX_IFES` | Sucesso | Registry `proex_ifes`: 0 -> 0 (delta 0); `data/output/` com 733 JSONs; arquivos não-JSON: nenhum. Origem devolveu 9 itens brutos. |
+| 2026-11-25 08:58:01 -03:00 | `PRPPG_IFES` | Sucesso | Registry `prppg_ifes`: 19 -> 19 (delta 0); `data/output/` com 733 JSONs; arquivos não-JSON: nenhum. Origem devolveu 110 itens brutos. |
+| 2026-11-25 08:57:38 -03:00 | `CONIF` | Sucesso | Registry `conif`: 13 -> 13 (delta 0); `data/output/` com 733 JSONs; arquivos não-JSON: nenhum. Origem devolveu 6 itens brutos. |
+| 2026-11-25 08:57:33 -03:00 | `FINEP` | Sucesso | Registry `finep`: 34 -> 34 (delta 0); `data/output/` com 733 JSONs; arquivos não-JSON: nenhum. Origem devolveu 31 itens brutos. |
+| 2026-11-25 08:57:29 -03:00 | `FAPES` | Atenção | Registry `fapes`: 85 -> 85 (delta 0); `data/output/` com 733 JSONs; arquivos não-JSON: nenhum. Origem devolveu 0 itens brutos. A origem não devolveu nenhum item — verificar se o portal mudou. |
 | 2026-09-30 06:21:15 -03:00 | `CNPQ` | Sucesso | Registry `cnpq`: 16 -> 16 (delta 0); `data/output/` com 692 JSONs; arquivos não-JSON: nenhum. Origem devolveu 5 itens brutos. |
 | 2026-09-30 06:21:14 -03:00 | `CAPES` | Sucesso | Registry `capes`: 32 -> 32 (delta 0); `data/output/` com 692 JSONs; arquivos não-JSON: nenhum. Origem devolveu 29 itens brutos. |
 | 2026-09-30 06:21:00 -03:00 | `PROEX_IFES` | Sucesso | Registry `proex_ifes`: 0 -> 0 (delta 0); `data/output/` com 692 JSONs; arquivos não-JSON: nenhum. Origem devolveu 8 itens brutos. |
