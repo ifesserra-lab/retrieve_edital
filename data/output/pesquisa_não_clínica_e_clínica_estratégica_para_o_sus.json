@@ -1,0 +1,93 @@
+{
+    "nome": "PESQUISA NÃO CLÍNICA E CLÍNICA ESTRATÉGICA PARA O SUS",
+    "descrição": "SELEÇÃO PÚBLICA MCTI/FINEP/FNDCT – Pesquisa Não Clínica e Clínica Estratégica para o SUS – fortalecimento da capacidade nacional e desenvolvimento de tecnologias inovadoras de interesse estratégico para o SUS  Esta Seleção Pública objetiva conceder recursos não-reembolsáveis para apoiar projetos voltados ao fortalecimento da capacidade nacional de pesquisa não clínica e clínica  necessárias ao desenvolvimento de tecnologias inovadoras em saúde de interesse estratégico para o Sistema Único de Saúde (SUS), por meio do fortalecimento de plataformas tecnológicas, da ampliação e qualificação da capacidade de realização de ensaios não clínicos e clínicos, da aplicação de ferramentas digitais e de inteligência artificial, contribuindo para a soberania científica, tecnológica e produtiva nacional e para o fortalecimento do Complexo Econômico-Industrial da Saúde (CEIS).  Orçamento da chamada: R$ 120.000.000,00 Público-alvo: ICTs Os materiais de orientação para cadastro e preenchimento do formulário no sistema podem ser acessados em https://www.finep.gov.br/en/financiamento-nao-reembolsavel  Em caso de dúvidas e orientações sobre a seleção pública: cp_pesquisa_clinica_ict@finep.gov.br",
+    "orgão_fomento": "FINEP",
+    "categoria": "pesquisa",
+    "status": "aberto",
+    "data_abertura": "2026-11-25",
+    "data_encerramento": "2027-04-03",
+    "link": "https://www.finep.gov.br/e/chamada-publica/222684/1171625",
+    "cronograma": [
+        {
+            "evento": "Data de publicação",
+            "data": "2026-11-25"
+        },
+        {
+            "evento": "Prazo para envio de propostas",
+            "data": "2027-04-03"
+        }
+    ],
+    "tags": [
+        "Saúde e Ciências da Vida",
+        "ICT",
+        "Não reembolsável",
+        "Todo Brasil",
+        "chamada pública",
+        "bolsa"
+    ],
+    "anexos": [
+        {
+            "titulo": "Edital",
+            "link": "https://www.finep.gov.br/documents/20120/758476/Edital+Pesquisa+N%C3%A3o+Cl%C3%ADnica+e+Cl%C3%ADnica.pdf/94c93811-11cf-b2ed-65ef-c4f71313ec93?version=1.0&t=1795634434944&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=752aee88-f86a-30e0-a2e7-5bab6e26ea7c",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo I – Definição do Nível de Maturidade Tecnológica",
+            "link": "https://www.finep.gov.br/documents/20120/758476/Anexo+I+%E2%80%93+Defini%C3%A7%C3%A3o+do+N%C3%ADvel+de+Maturidade+Tecnol%C3%B3gica.pdf/be4db8e4-1c65-9ffb-06c6-2fb868fdae7f?version=1.0&t=1795634486885&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=edf7643c-f4cc-2312-5fc4-0ad27a356c4d",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo II – Modelo de apresentação de informações sobre equipe",
+            "link": "https://www.finep.gov.br/documents/20120/758476/Anexo+II_Equipe_e_Atividades.ods/db85555c-9b5b-b1a9-0d6b-56bb2d0fac2b?version=1.0&t=1795634857953&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=55bfe661-6f5a-26c7-53c5-368a3ad5b69b",
+            "tipo": "formato aberto"
+        },
+        {
+            "titulo": "Anexo III – Exigências para avaliação dos itens de orçamento",
+            "link": "https://www.finep.gov.br/documents/20120/758476/Anexo+III_Exig%C3%AAncias+para+avalia%C3%A7%C3%A3o+dos+itens+de+or%C3%A7amento.pdf/12ef69bb-63c4-60f5-9921-956a6a186e6d?version=1.0&t=1795634905846&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=4c676797-5734-0451-b66d-a23043e1c51e",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo IV – Tabela de Requisitos e Valores para Pagamento de Pessoal e Diárias",
+            "link": "https://www.finep.gov.br/documents/20120/758476/Anexo+IV+%E2%80%93+Tabela+de+Requisitos+e+Valores+para+Pagamento+de+Pessoal+e+Di%C3%A1rias.pdf/f5c7b19b-1534-c9b8-bc25-75b02b24e9f1?version=1.0&t=1795635103893&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=432e25df-3ba5-1d6f-17cb-cceb8ab99ee7",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo V – Pagamento de Bolsas",
+            "link": "https://www.finep.gov.br/documents/20120/758476/Anexo+V+%E2%80%93+Pagamento+de+Bolsas.pdf/119fce92-8066-8709-e964-4f015e6fa3e8?version=1.0&t=1795635163704&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=c6da9fa8-9af2-fff1-f283-e7073ca6cd1b",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo VI – Modelo de Carta de Manifestação de Interesse da Empresa",
+            "link": "https://www.finep.gov.br/documents/20120/758476/Anexo+VI+%E2%80%93+Modelo+de+Carta+de+Manifesta%C3%A7%C3%A3o+de+Interesse+da+Empresa.pdf/601910c2-7fdc-41c6-338c-245104ac2295?version=1.0&t=1795635208052&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=b03a86cd-aaf8-3307-2139-ff7fbee16d45",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo VII – Modelo de Declaração de Não Sobreposição de Apoio Financeiro Público",
+            "link": "https://www.finep.gov.br/documents/20120/758476/Anexo+VII+%E2%80%93+Modelo+de+Declara%C3%A7%C3%A3o+de+N%C3%A3o+Sobreposi%C3%A7%C3%A3o+de+Apoio+Financeiro+P%C3%BAblico.pdf/3c51d987-16a0-8bd0-a30d-0b39a7de337d?version=1.0&t=1795635255644&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=3520f786-8a88-3cb6-df58-0f391da1508b",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo VIII - Minuta de Convênio para Pesquisa, Desenvolvimento e Inovação",
+            "link": "https://www.finep.gov.br/documents/20120/758476/Anexo+VIII+%E2%80%93+Minuta+de+Conv%C3%AAnio+para+Pesquisa%2C+Desenvolvimento+e+Inova%C3%A7%C3%A3o.pdf/7ab1e07e-0b2f-f9c3-d985-8c9c2c3e193f?version=1.0&t=1795635312600&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=a9208658-93b8-7063-a664-28f4ca0d9e89",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo IX – Atestado Ambiental",
+            "link": "https://www.finep.gov.br/documents/20120/758476/Anexo+IX+%E2%80%93+Atestado+Ambiental.pdf/0694c890-8962-23f9-dc1c-ad57cf13ed10?version=1.0&t=1795635365727&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=e16c4f4d-bd35-7a76-3b2e-3c9f1adafdd2",
+            "tipo": "pdf"
+        },
+        {
+            "titulo": "Anexo X - Projeto Resumido de obras",
+            "link": "https://www.finep.gov.br/documents/20120/758476/Anexo+X+-+Projeto+Resumido+de+obras.pdf/c2a9a142-d113-20ce-4e10-9332a58b5885?version=1.0&t=1795642060250&download=true&objectDefinitionExternalReferenceCode=5c06f88d-cc8a-003f-94e4-d9ed8cb642f3&objectEntryExternalReferenceCode=442ee514-fe25-6b89-5a15-f792ee6c511a",
+            "tipo": "pdf"
+        }
+    ],
+    "modalidade": "",
+    "publico_alvo": [
+        "ict-empresa"
+    ],
+    "ambito_geografico": "nacional",
+    "valor_estimado": null,
+    "trl_exigido": "",
+    "fonte_key": "finep"
+}
